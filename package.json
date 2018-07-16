@@ -1,0 +1,34 @@
+{
+  "name": "redux-starter-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "raw-loader": "^0.5.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.4.8",
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "babel-runtime": "^6.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wearepush/redux-starter-ui.git"
+  },
+  "author": "liberty-lending",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wearepush/redux-starter-ui/issues"
+  },
+  "homepage": "https://github.com/wearepush/redux-starter-ui#readme"
+}
