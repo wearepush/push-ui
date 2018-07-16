@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.26.3",
-    "raw-loader": "^0.5.1",
+    "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
@@ -19,13 +19,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "heroku-postbuild": "npm run build-storybook",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wearepush/redux-starter-ui.git"
   },
-  "author": "liberty-lending",
+  "author": "wearepush",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wearepush/redux-starter-ui/issues"
