@@ -28,3 +28,6 @@ webpack-stats.json
 
 *.sublime-workspace
 *.sublime-project
+
+# Tests
+coverage/

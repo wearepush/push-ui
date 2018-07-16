@@ -1,0 +1,20 @@
+{
+  "moduleFileExtensions": [
+    "jsx",
+    "js",
+    "json"
+  ],
+  "moduleNameMapper": {
+    "^.*\\.(css|scss)$": "identity-obj-proxy"
+  },
+  "moduleDirectories": ["node_modules"],
+  "testEnvironment": "jsdom",
+  "coverageDirectory": "./coverage/",
+  "collectCoverage": true,
+  "setupFiles": [
+    "<rootDir>/scripts/enzyme.config.js"
+  ],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  }
+}
