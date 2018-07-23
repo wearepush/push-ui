@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "./index.js",
   "module": "./es/index.js",
@@ -64,7 +64,7 @@
     "dist",
     "*.js.flow"
   ],
-  "npmName": "redux-form",
+  "npmName": "redux-starter-ui",
   "npmFileMap": [
     {
       "basePath": "/dist/",
