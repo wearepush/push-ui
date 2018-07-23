@@ -1,8 +1,8 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "module": "./es/index.js",
   "modules.root": "./es",
   "jsnext:main": "./es/index.js",
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s storybook-static -o dist",
+    "build-storybook": "build-storybook",
     "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
