@@ -34,8 +34,8 @@
     "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src --out-dir dist --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
-    "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/redux-form-ui.js",
-    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/redux-form-ui.min.js",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/redux-starter-ui.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/redux-starter-ui.min.js",
     "heroku-postbuild": "npm run build-storybook",
     "start": "node server.js",
     "clean": "rimraf $(cd src; ls) dist lib es",
@@ -52,9 +52,25 @@
     "url": "git+https://github.com/wearepush/redux-starter-ui.git"
   },
   "author": "wearepush",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wearepush/redux-starter-ui/issues"
   },
-  "homepage": "https://github.com/wearepush/redux-starter-ui#readme"
+  "homepage": "https://github.com/wearepush/redux-starter-ui#readme",
+  "files": [
+    "README.md",
+    "es",
+    "lib",
+    "dist",
+    "*.js.flow"
+  ],
+  "npmName": "redux-form",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ]
 }
