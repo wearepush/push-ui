@@ -24,7 +24,8 @@ before_script:
   - export NODE_ENV=development
 
 script:
-  - npm test
+  - npm run validate
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
 
 env:
   - TRAVIS=travis CXX=g++-4.8

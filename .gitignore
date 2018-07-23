@@ -18,8 +18,10 @@ yarn.lock
 .env
 
 # Dist
-dist/
-storybook-static/
+dist
+lib
+es
+storybook-static
 
 # Webpack
 webpack-assets.json
