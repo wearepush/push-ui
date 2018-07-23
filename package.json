@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "dependencies": {
@@ -20,11 +20,17 @@
     "jest": "^23.4.1"
   },
   "scripts": {
-    "test": "NODE_ENV=test jest --config jest.config.json",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s storybook-static -o dist",
+    "build": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
     "heroku-postbuild": "npm run build-storybook",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "NODE_ENV=test jest --config jest.config.json",
+    "clean-dist": "rm -rf ./dist",
+    "postpublish": "git push --tags",
+    "prepare": "npm run build",
+    "preversion": "npm test",
+    "ship-it": "npm publish --tag next"
   },
   "repository": {
     "type": "git",
