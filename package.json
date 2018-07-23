@@ -2,7 +2,7 @@
   "name": "redux-starter-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "babel-core": "^6.26.3",
     "express": "^4.16.3",
