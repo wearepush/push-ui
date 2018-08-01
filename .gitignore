@@ -20,7 +20,6 @@ yarn.lock
 # Dist
 dist
 lib
-es
 storybook-static
 
 # Webpack

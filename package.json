@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -43,15 +43,14 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:es:css && npm run build:umd && npm run build:umd:min",
+    "build": "npm run clean && npm run build:lib && npm run build:lib:css && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src --out-dir lib --ignore __tests__",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
-    "build:es:css": "babel src --out-dir es --copy-files --only .scss",
+    "build:lib:css": "babel src --out-dir lib --copy-files --only .scss",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/index.min.js",
     "heroku-postbuild": "npm run build-storybook",
     "start": "node server.js",
-    "clean": "rimraf $(cd src; ls) dist lib es",
+    "clean": "rimraf $(cd src; ls) dist lib",
     "postpublish": "git push --tags",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "validate": " npm run test:cov && npm run clean && npm run build",
@@ -72,7 +71,6 @@
   "homepage": "https://github.com/wearepush/redux-starter-ui#readme",
   "files": [
     "README.md",
-    "es",
     "lib",
     "dist",
     "*.js.flow"
