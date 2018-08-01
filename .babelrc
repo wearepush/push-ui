@@ -3,5 +3,16 @@
     "env",
     "react",
     "stage-0",
+  ],
+  "plugins": [
+    [
+      "css-modules-transform",
+      {
+        "generateScopedName": "[name]",
+        "extensions": [
+          ".scss"
+        ]
+      }
+    ]
   ]
 }

@@ -198,9 +198,9 @@ export default class Button extends PureComponent {
       buttonProps.role = 'button';
     }
 
-    const className = cx(styles.Button, {
+    const className = cx('Button', {
       [classNameProp]: !!classNameProp,
-      [styles[classNameProp]]: !!styles[classNameProp] && !!classNameProp,
+      // [styles[classNameProp]]: !!styles[classNameProp] && !!classNameProp,
       'is-disabled': disabled,
       'is-full-width': fullWidth,
       [`is-size-${size}`]: !!size,
