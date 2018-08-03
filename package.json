@@ -42,14 +42,15 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min && npm run build:lib:css",
     "build:lib": "babel src --out-dir lib --ignore __tests__,__mocks__,.stories.js",
+    "build:lib:css": "babel src --out-dir lib --copy-files --only .scss",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/index.min.js",
     "heroku-postbuild": "npm run build-storybook",
-    "start": "node server.js",
+    "server": "node server.js",
     "clean": "rimraf $(cd src; ls) dist lib",
     "postpublish": "git push --tags",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
