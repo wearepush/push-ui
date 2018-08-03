@@ -46,9 +46,7 @@ var config = {
             options:
             {
               sourceMap: true,
-              importLoaders: 2,
-              modules: true,
-              localIdentName: '[local]' // __[hash:base64:5]
+              importLoaders: 2
             }
           },
           {
