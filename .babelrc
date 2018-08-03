@@ -8,7 +8,6 @@
     [
       "css-modules-transform",
       {
-        "generateScopedName": "[name]",
         "extensions": [
           ".scss"
         ]

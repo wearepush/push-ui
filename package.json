@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -44,9 +44,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "npm run clean && npm run build:lib && npm run build:lib:css && npm run build:umd && npm run build:umd:min",
-    "build:lib": "babel src --out-dir lib",
-    "build:lib:css": "babel src --out-dir lib --copy-files --only .scss",
+    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build:lib": "babel src --out-dir lib --ignore __tests__,__mocks__,.stories.js",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/index.min.js",
     "heroku-postbuild": "npm run build-storybook",
