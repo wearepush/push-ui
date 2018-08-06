@@ -175,13 +175,13 @@ describe('Button', () => {
     it('should render color', () => {
       const button = shallow(
         <Button
-          color="danger"
+          color="warning"
         >
           Button
         </Button>
       );
-      expect(button.hasClass('is-danger')).toBe(true);
-      expect(button.props().color).toEqual('danger');
+      expect(button.hasClass('is-warning')).toBe(true);
+      expect(button.props().color).toEqual('warning');
     });
 
     it('should render variant button', () => {

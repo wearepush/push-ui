@@ -22,7 +22,7 @@ export default class Button extends PureComponent {
     */
     color: oneOf([
       'alert',
-      'danger',
+      'warning',
       'primary',
       'success',
       'default',

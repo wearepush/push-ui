@@ -3,47 +3,47 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Checkbox from './Checkbox';
+import Radio from './Radio';
 
-storiesOf('Checkbox', module)
+storiesOf('Radio', module)
   .add('with default icon', () =>
-    <Checkbox
+    <Radio
       onClick={action('clicked')}
-      name="checkbox-0"
-      placeholder="Checkbox placeholder"
+      name="Radio-0"
+      placeholder="Radio placeholder"
     />
   )
   .add('with custom icon', () => (
-    <Checkbox
+    <Radio
       onClick={action('clicked')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
+      name="Radio-1"
+      placeholder="Radio placeholder"
       custom
     />
   ))
   .add('disabled', () => (
-    <Checkbox
+    <Radio
       onClick={action('clicked')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
+      name="Radio-1"
+      placeholder="Radio placeholder"
       disabled
       custom
     />
   ))
   .add('checked', () => (
-    <Checkbox
+    <Radio
       onClick={action('clicked')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
+      name="Radio-1"
+      placeholder="Radio placeholder"
       custom
       checked
     />
   ))
   .add('unchecked', () => (
-    <Checkbox
+    <Radio
       onClick={action('clicked')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
+      name="Radio-1"
+      placeholder="Radio placeholder"
       custom
       unchecked
     />

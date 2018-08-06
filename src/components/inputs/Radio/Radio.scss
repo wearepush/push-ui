@@ -21,11 +21,11 @@ $Radio: 'Radio';
 
   &.is-invalid {
     .#{$Radio}__placeholder {
-      color: $color-danger;
+      color: $color-warning;
     }
 
     .#{$Radio}__icon {
-      border-color: $color-danger;
+      border-color: $color-warning;
     }
   }
 
@@ -36,10 +36,8 @@ $Radio: 'Radio';
   }
 
   &.is-disabled {
-    background-color: red !important;
 
     &:hover {
-      background-color: red !important;
       .#{$Radio}__icon {
         border-color: $color-default !important;
       }

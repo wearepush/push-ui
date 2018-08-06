@@ -48,7 +48,7 @@ $Button: 'Button';
   /*
   * Size
   */
-  &.is-full-width {
+  &.is-size-full-width {
     width: 100%;
   }
 
@@ -70,14 +70,14 @@ $Button: 'Button';
   &.is-contained {
 
     //Color
-    &.is-danger {
-      border-color: $color-danger;
-      background-color: $color-danger;
+    &.is-warning {
+      border-color: $color-warning;
+      background-color: $color-warning;
 
       &:hover,
       &:focus {
-        background-color: tint($color-danger, 12%);
-        border-color: tint($color-danger, 12%);
+        background-color: tint($color-warning, 12%);
+        border-color: tint($color-warning, 12%);
       }
     }
 
@@ -132,13 +132,13 @@ $Button: 'Button';
   &.is-outlined {
     background-color: $white;
 
-    &.is-danger {
-      border-color: $color-danger;
-      color: $color-danger;
+    &.is-warning {
+      border-color: $color-warning;
+      color: $color-warning;
 
       &:hover,
       &:focus {
-        background-color: tint($color-danger, 95%);
+        background-color: tint($color-warning, 95%);
       }
     }
 

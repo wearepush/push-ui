@@ -51,7 +51,7 @@ $TextField: 'TextField';
 
 
   &.is-invalid {
-    border-color: $color-danger;
+    border-color: $color-warning;
   }
 
   &.is-empty {
@@ -72,10 +72,10 @@ $TextField: 'TextField';
 
   &.is-invalid {
     input {
-      border-color: $color-danger;
+      border-color: $color-warning;
 
       &:focus {
-        box-shadow: 0px 0px 0px 1px $color-danger;
+        box-shadow: 0px 0px 0px 1px $color-warning;
       }
     }
   }

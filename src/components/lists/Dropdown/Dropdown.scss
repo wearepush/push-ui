@@ -39,8 +39,8 @@ $Dropdown: 'Dropdown';
       border: solid $color-nile-blue;
       border-width: 0 2px 2px 0;
       display: inline-block;
-      padding: 3px;
-      margin-top: -6px;
+      padding: 1px;
+      margin-top: -8px;
     }
 
     &:hover {
@@ -71,23 +71,43 @@ $Dropdown: 'Dropdown';
         height: 6px;
         width: 6px;
         border-width: 0 1px 1px 0;
-        padding: 1px;
-        margin-top: -3px;
+        padding: 0;
+        margin-top: -5px;
+      }
+
+      &.is-open {
+        &:after {
+          margin-top: -2px;
+        }
       }
     }
 
     &.is-size-medium {
       font-size: 14px;
 
+       &:after {
+        height: 8px;
+        width: 8px;
+        border-width: 0 1px 1px 0;
+        padding: 1px;
+        margin-top: -8px;
+      }
+
       &.is-open {
         &:after {
-          margin-top: -1px;
+          margin-top: -3px;
         }
       }
     }
 
     &.is-size-large {
       font-size: 16px;
+
+      &.is-open {
+        &:after {
+          margin-top: -3px;
+        }
+      }
     }
   }
 
@@ -114,7 +134,7 @@ $Dropdown: 'Dropdown';
     text-align: left;
     z-index: 100;
 
-
+    // position
     &.is-bl {
       top: 100%;
       left: 0;

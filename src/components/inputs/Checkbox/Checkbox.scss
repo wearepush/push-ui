@@ -24,11 +24,11 @@ $Checkbox: 'Checkbox';
 
   &.is-invalid {
     .#{$Checkbox}__placeholder {
-      color: $color-danger;
+      color: $color-warning;
     }
 
     .#{$Checkbox}__icon {
-      border-color: $color-danger;
+      border-color: $color-warning;
     }
   }
 
