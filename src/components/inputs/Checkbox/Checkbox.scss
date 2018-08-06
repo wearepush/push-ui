@@ -35,6 +35,7 @@ $Checkbox: 'Checkbox';
 
   &__label {
     cursor: pointer;
+    display: block;
     font-size: 14px;
     line-height: 18px;
 
@@ -52,8 +53,8 @@ $Checkbox: 'Checkbox';
   }
 
   &__icon {
-    display: inline-block;
-    vertical-align: middle;
+    display: block;
+    float: left;
 
     &.is-default-icon {
       width: 18px;
@@ -126,10 +127,9 @@ $Checkbox: 'Checkbox';
 
   &__placeholder {
     color: $color-link;
-    display: inline-block;
-    vertical-align: middle;
+    display: block;
     font-size: 14px;
     line-height: 18px;
-    padding-left: 13px;
+    padding: 2px 0 2px 36px;
   }
 }
