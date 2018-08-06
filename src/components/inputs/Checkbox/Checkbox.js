@@ -223,11 +223,12 @@ export default class Checkbox extends PureComponent {
     return (
       <label
         htmlFor={this.id}
+        className="Checkbox__label"
       >
         <input
           {...inputProps}
           checked={checked}
-          className='Checkbox__input'
+          className="Checkbox__input"
           disabled={disabled}
           id={this.id}
           onBlur={this.onBlur}
@@ -261,6 +262,7 @@ export default class Checkbox extends PureComponent {
 
     return (
       <label
+        className="Checkbox__label"
         htmlFor={this.id}
       >
         <div

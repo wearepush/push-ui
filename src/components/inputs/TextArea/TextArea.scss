@@ -8,6 +8,7 @@ $TextArea: 'TextArea';
   &__input {
     border: 1px solid $color-default;
     border-radius: $base-border-radius;
+    box-sizing: border-box;
     color: $color-down-river;
     display: block;
     font-family: $base-font-family;
@@ -16,7 +17,7 @@ $TextArea: 'TextArea';
     padding: 13px 16px;
     resize: none;
     transition: border-color $base-duration $base-timing, box-shadow $base-duration $base-timing;
-    // width: 100%;
+    width: 100%;
 
     &::placeholder {
       color: $color-cadet-blue;

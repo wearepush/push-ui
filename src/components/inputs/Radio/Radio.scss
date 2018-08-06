@@ -14,7 +14,7 @@ $Radio: 'Radio';
   }
 
   &.is-disabled {
-    label {
+    .#{$Radio}__label {
       cursor: not-allowed;
     }
   }
@@ -45,7 +45,7 @@ $Radio: 'Radio';
 
   }
 
-  label {
+  &__label {
     cursor: pointer;
 
     &:focus {

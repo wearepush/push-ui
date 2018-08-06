@@ -5,7 +5,7 @@ $TextField: 'TextField';
 
 .#{$TextField} {
 
-  & > input {
+  &__input {
     display: block;
     font-family: $base-font-family;
     font-size: 14px;
@@ -54,14 +54,8 @@ $TextField: 'TextField';
     border-color: $color-warning;
   }
 
-  &.is-empty {
-  }
-
-  &.is-not-empty {
-  }
-
   &.is-valid {
-    input {
+    .#{$TextField}__input {
       border-color: $color-success;
 
       &:focus {
@@ -71,15 +65,12 @@ $TextField: 'TextField';
   }
 
   &.is-invalid {
-    input {
+    .#{$TextField}__input {
       border-color: $color-warning;
 
       &:focus {
         box-shadow: 0px 0px 0px 1px $color-warning;
       }
     }
-  }
-
-  &__input {
   }
 }

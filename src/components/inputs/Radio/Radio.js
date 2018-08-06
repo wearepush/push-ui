@@ -224,6 +224,7 @@ export default class Radio extends PureComponent {
 
     return (
       <label
+        className="Radio__label"
         htmlFor={this.id}
       >
         <input
