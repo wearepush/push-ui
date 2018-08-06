@@ -5,17 +5,18 @@ import { action } from '@storybook/addon-actions';
 
 import TextField from './TextField';
 
-storiesOf('TextField', module)
+storiesOf('inputs/TextField', module)
   .add('default', () =>
     <TextField
-      onClick={action('clicked')}
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
       name="TextField-0"
       placeholder="TextField placeholder"
     />
   )
   .add('valid', () =>
     <TextField
-      onClick={action('clicked')}
       name="TextField-0"
       placeholder="TextField placeholder"
       valid
@@ -23,7 +24,6 @@ storiesOf('TextField', module)
   )
   .add('invalid', () =>
     <TextField
-      onClick={action('clicked')}
       name="TextField-0"
       placeholder="TextField placeholder"
       invalid
@@ -31,9 +31,15 @@ storiesOf('TextField', module)
   )
   .add('disabled', () =>
     <TextField
-      onClick={action('clicked')}
       name="TextField-0"
       placeholder="TextField placeholder"
       disabled
+    />
+  )
+  .add('controlled', () =>
+    <TextField
+      name="TextField-0"
+      placeholder="TextField placeholder"
+      value="text"
     />
   );

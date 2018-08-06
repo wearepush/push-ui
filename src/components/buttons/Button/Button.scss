@@ -46,12 +46,15 @@ $Button: 'Button';
   }
 
   /*
-  * Size
+  * Width
   */
-  &.is-size-full-width {
+  &.is-full-width {
     width: 100%;
   }
 
+  /*
+  * Size
+  */
   &.is-size-small {
     font-size: 10px;
   }
