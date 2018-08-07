@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import Dropdown from './Dropdown';
 
-storiesOf('Dropdown', module)
+storiesOf('lists/Dropdown', module)
   .add('size', () =>
     <div>
       <Dropdown

@@ -5,17 +5,18 @@ import { action } from '@storybook/addon-actions';
 
 import TextArea from './TextArea';
 
-storiesOf('TextArea', module)
+storiesOf('inputs/TextArea', module)
   .add('default', () =>
     <TextArea
-      onClick={action('clicked')}
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
       name="textArea-0"
       placeholder="TextArea placeholder"
     />
   )
   .add('valid', () =>
     <TextArea
-      onClick={action('clicked')}
       name="textArea-0"
       placeholder="TextArea placeholder"
       valid
@@ -23,7 +24,6 @@ storiesOf('TextArea', module)
   )
   .add('invalid', () =>
     <TextArea
-      onClick={action('clicked')}
       name="textArea-0"
       placeholder="TextArea placeholder"
       invalid
@@ -31,9 +31,15 @@ storiesOf('TextArea', module)
   )
   .add('disabled', () =>
     <TextArea
-      onClick={action('clicked')}
       name="textArea-0"
       placeholder="TextArea placeholder"
       disabled
+    />
+  )
+  .add('controlled', () =>
+    <TextArea
+      name="textArea-0"
+      placeholder="TextArea placeholder"
+      value="test"
     />
   );

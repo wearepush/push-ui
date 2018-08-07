@@ -6,9 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import Button from './Button';
 
-// storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-storiesOf('Button', module)
+storiesOf('buttons/Button', module)
   .add('outlined', () =>
     <div>
       <Button
@@ -75,6 +73,44 @@ storiesOf('Button', module)
       </Button>
     </div>
   )
+  .add('float', () =>
+    <div>
+      <Button
+        float
+        variant="contained"
+      >
+        Hello Button
+      </Button>
+      <Button
+        float
+        variant="contained"
+        color="warning"
+      >
+        Hello Button
+      </Button>
+      <Button
+        float
+        variant="contained"
+        color="success"
+      >
+        Hello Button
+      </Button>
+      <Button
+        float
+        variant="contained"
+        color="alert"
+      >
+        Hello Button
+      </Button>
+      <Button
+        float
+        variant="contained"
+        color="default"
+      >
+        Hello Button
+      </Button>
+    </div>
+  )
   .add('size', () =>
     <div>
       <Button
@@ -93,7 +129,7 @@ storiesOf('Button', module)
         Hello Button
       </Button>
       <Button
-        size="full-width"
+        fullWidth
       >
         Hello Button
       </Button>
