@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import Root from './../__mocks__/Root';
 import configureStore from './../__mocks__/store';
-import validate from './validate';
+import validate from './__mocks__/validate';
 import { FormTextField } from '../../index';
 
 const mapPropsToForm = {
