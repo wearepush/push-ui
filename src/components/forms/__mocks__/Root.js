@@ -1,5 +1,5 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { object, node } from 'prop-types';
 import { Provider } from 'react-redux';
 
 const Root = ({
@@ -13,7 +13,7 @@ const Root = ({
 
 Root.propTypes = {
   store: object.isRequired,
-  children: object.isRequired
+  children: node.isRequired
 };
 
 export default Root;

@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import Root from './../__mocks__/Root';
 import configureStore from './../__mocks__/store';
 import validate from './__mocks__/validate';
-import { FormTextField } from '../../index';
+import { FormTextField, FormButton } from '../../index';
 
 const mapPropsToForm = {
   form: 'testForm',
@@ -49,6 +49,12 @@ storiesOf('forms/FormTextField', module)
           name="password"
           type="password"
         />
+        <FormButton
+          float={true}
+          form={mapPropsToForm.form}
+        >
+          {'Login'}
+        </FormButton>
       </MountForm>
     </Root>
   );
