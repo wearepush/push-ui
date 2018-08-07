@@ -3,7 +3,7 @@ import { array, bool, object, node, number, oneOfType, string } from 'prop-types
 import { Field } from 'redux-form';
 import { FormField, Checkbox } from '../../index';
 
-const FormCheckbox = ({
+const _FormCheckbox = ({
   custom,
   checkedIcon,
   disabled,
@@ -43,7 +43,7 @@ const FormCheckbox = ({
   );
 };
 
-FormCheckbox.propTypes = {
+_FormCheckbox.propTypes = {
   checkedIcon: node,
   custom: bool,
   disabled: bool,
@@ -63,7 +63,7 @@ FormCheckbox.propTypes = {
   ]),
 };
 
-FormCheckbox.defaultProps = {
+_FormCheckbox.defaultProps = {
   custom: false,
   checkedIcon: null,
   disabled: false,
@@ -74,4 +74,5 @@ FormCheckbox.defaultProps = {
   valueProp: undefined,
 };
 
-export default props => <Field {...props} component={FormCheckbox} valueProp={props.value} type="checkbox" />; // eslint-disable-line
+const FormCheckbox = props => <Field {...props} component={_FormCheckbox} valueProp={props.value} type="checkbox" />; // eslint-disable-line
+export default FormCheckbox;

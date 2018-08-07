@@ -3,7 +3,7 @@ import { bool, object, oneOf, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TextField } from '../../index';
 
-const FormTextField = ({
+const _FormTextField = ({
   disabled,
   id,
   input,
@@ -12,6 +12,7 @@ const FormTextField = ({
   meta,
   placeholder,
   type,
+  ...rest
 }) => {
   const _id = id || input.name;
   return (
@@ -33,13 +34,13 @@ const FormTextField = ({
         placeholder={placeholder}
         type={type}
         value={input.value}
-        valid={meta.valid}
+        valid={!!input.value && !meta.error && !meta.warning && meta.valid}
       />
     </FormField>
   );
 };
 
-FormTextField.propTypes = {
+_FormTextField.propTypes = {
   disabled: bool,
   id: string,
   input: object.isRequired,
@@ -56,7 +57,7 @@ FormTextField.propTypes = {
   ]),
 };
 
-FormTextField.defaultProps = {
+_FormTextField.defaultProps = {
   disabled: false,
   id: '',
   inputProps: null,
@@ -65,4 +66,5 @@ FormTextField.defaultProps = {
   type: 'text',
 };
 
-export default props => <Field {...props} component={FormTextField} />;
+const FormTextField = props => <Field {...props} component={_FormTextField} />;
+export default FormTextField;

@@ -3,7 +3,7 @@ import { bool, object, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TextArea } from '../../index';
 
-const FormTextArea = ({
+const _FormTextArea = ({
   disabled,
   id,
   input,
@@ -37,7 +37,7 @@ const FormTextArea = ({
   );
 };
 
-FormTextArea.propTypes = {
+_FormTextArea.propTypes = {
   disabled: bool,
   id: string,
   input: object.isRequired,
@@ -47,7 +47,7 @@ FormTextArea.propTypes = {
   placeholder: string,
 };
 
-FormTextArea.defaultProps = {
+_FormTextArea.defaultProps = {
   disabled: false,
   id: '',
   inputProps: null,
@@ -55,4 +55,5 @@ FormTextArea.defaultProps = {
   placeholder: '',
 };
 
-export default props => <Field {...props} component={FormTextArea} type="textarea" />;
+const FormTextArea = props => <Field {...props} component={_FormTextArea} type="textarea" />;
+export default FormTextArea;

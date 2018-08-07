@@ -3,7 +3,7 @@ import { bool, object, node, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, Radio } from '../../index';
 
-const FormRadio = ({
+const _FormRadio = ({
   custom,
   checkedIcon,
   disabled,
@@ -42,7 +42,7 @@ const FormRadio = ({
   );
 };
 
-FormRadio.propTypes = {
+_FormRadio.propTypes = {
   checkedIcon: node,
   custom: bool,
   disabled: bool,
@@ -55,7 +55,7 @@ FormRadio.propTypes = {
   unCheckedIcon: node,
 };
 
-FormRadio.defaultProps = {
+_FormRadio.defaultProps = {
   custom: false,
   checkedIcon: null,
   disabled: false,
@@ -65,4 +65,5 @@ FormRadio.defaultProps = {
   unCheckedIcon: null,
 };
 
-export default props => <Field {...props} component={FormRadio} type="radio" />;
+const FormRadio = props => <Field {...props} component={_FormRadio} type="radio" />;
+export default FormRadio;
