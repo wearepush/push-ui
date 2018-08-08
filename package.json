@@ -64,7 +64,7 @@
     "postpublish": "git push --tags",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
-    "test": "cross-env NODE_ENV=test jest --runInBand --config jest.config.json",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm run test -- --coverage",
     "lint": "eslint -c .eslintrc src",
@@ -94,5 +94,26 @@
         "*.js"
       ]
     }
-  ]
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "jsx",
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^.*\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "moduleDirectories": ["node_modules"],
+    "testEnvironment": "jsdom",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "setupFiles": [
+      "<rootDir>/scripts/enzyme.config.js"
+    ],
+    "roots": ["<rootDir>/src"],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  }
 }
