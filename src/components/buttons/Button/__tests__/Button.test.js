@@ -196,16 +196,16 @@ describe('Button', () => {
       expect(button.props().variant).toEqual('outlined');
     });
 
-    it('should render float button', () => {
-      const button = shallow(
-        <Button
-          float
-        >
-          Button
-        </Button>
-      );
-      expect(button.hasClass('is-float')).toBe(true);
-    });
+    // it('should render float button', () => {
+    //   const button = shallow(
+    //     <Button
+    //       float
+    //     >
+    //       Button
+    //     </Button>
+    //   );
+    //   expect(button.hasClass('is-float')).toBe(true);
+    // });
 
     it('should handle events', () => {
       const onClickSpy = jest.fn();
