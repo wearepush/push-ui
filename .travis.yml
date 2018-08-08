@@ -3,5 +3,9 @@ language: node_js
 node_js:
   - "8"
 
+install:
+  - npm install -g codecov
+
 script:
   - npm run validate
+  - codecov
