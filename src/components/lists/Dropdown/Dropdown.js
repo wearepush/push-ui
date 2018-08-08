@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { bool, node, number, string, oneOf, oneOfType, arrayOf } from 'prop-types';
 import cx from 'classnames';
-import styles from './Dropdown.scss';
+import {} from './Dropdown.scss';
 
 export const DropdownButton = ({
   className: classNameProp,
@@ -143,7 +143,7 @@ export default class Dropdown extends Component {
     document.body.addEventListener('click', this.changeMenuHandler);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.isControled || this.isHoverTrigger) return;
     this.setState({
       isOpen: nextProps.isOpen

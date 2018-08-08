@@ -1,0 +1,19 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "globals": {
+    "document": true,
+    "module": true,
+    "expect": true,
+    "it": true,
+    "describe": true,
+    "jest": true,
+    "afterAll": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "beforeEach": true,
+  }
+}

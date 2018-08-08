@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { bool, func, number, object, oneOfType, oneOf, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './TextField.scss';
+import {} from './TextField.scss';
 
 export default class TextField extends PureComponent {
   isControlled = null;

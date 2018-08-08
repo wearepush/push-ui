@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './Button.scss';
+import styles from './Button.scss'; // eslint-disable-line
 
 export default class Button extends PureComponent {
   static propTypes = {

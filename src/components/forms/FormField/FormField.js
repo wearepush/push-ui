@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, node, shape, string } from 'prop-types';
 import { FormFieldLabel, FormFieldError } from '../../index';
-import styles from './FormField.scss';
+import {} from './FormField.scss';
 
 const FormField = ({
   children,

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { array, bool, func, number, object, oneOfType, node, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './Checkbox.scss';
+import {} from './Checkbox.scss';
 
 export default class Checkbox extends PureComponent {
   isControlled = null;

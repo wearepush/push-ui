@@ -11,8 +11,7 @@ const _FormTextField = ({
   label,
   meta,
   placeholder,
-  type,
-  ...rest
+  type
 }) => {
   const _id = id || input.name;
   return (

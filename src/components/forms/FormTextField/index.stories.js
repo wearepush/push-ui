@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Form } from 'redux-form';
+import { func, node } from 'prop-types';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import Root from './../__mocks__/Root';
 import configureStore from './../__mocks__/store';
@@ -15,12 +15,17 @@ const mapPropsToForm = {
 const initialState = {};
 const store = configureStore(initialState);
 class ComponentForm extends Component {
+  static propTypes = {
+    children: node.isRequired,
+    handleSubmit: func.isRequired,
+  };
+
   onSubmit = (values) => {
-    console.log(values);
+    console.log(values); // eslint-disable-line
   };
 
   render() {
-    const { children, handleSubmit, error } = this.props;
+    const { children, handleSubmit } = this.props;
     return (
       <Form
         onSubmit={handleSubmit(this.onSubmit)}
