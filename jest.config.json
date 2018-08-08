@@ -1,8 +1,21 @@
 {
+  "collectCoverageFrom": [
+    "src/**/*.js",
+    "!src/**/__tests__/**/*.js"
+  ],
+  "coverageReporters": [
+    "text",
+    "lcov",
+    "html"
+  ],
   "moduleFileExtensions": [
     "jsx",
     "js",
     "json"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "/dist/"
   ],
   "moduleNameMapper": {
     "^.*\\.(css|scss)$": "identity-obj-proxy"
