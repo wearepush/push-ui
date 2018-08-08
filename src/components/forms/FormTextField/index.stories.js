@@ -5,12 +5,12 @@ import { storiesOf } from '@storybook/react';
 
 import Root from './../__mocks__/Root';
 import configureStore from './../__mocks__/store';
-import validate from './__mocks__/validate';
+import validateTextField from './__mocks__/validateTextField';
 import { FormTextField, FormButton } from '../../index';
 
 const mapPropsToForm = {
   form: 'testForm',
-  validate
+  validate: validateTextField
 };
 const initialState = {};
 const store = configureStore(initialState);

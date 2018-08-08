@@ -5,12 +5,12 @@ import { storiesOf } from '@storybook/react';
 
 import Root from './../__mocks__/Root';
 import configureStore from './../__mocks__/store';
-import validate from './__mocks__/validate';
+import validateCheckbox from './__mocks__/validateCheckbox';
 import { FormCheckbox, FormButton } from '../../index';
 
 const mapPropsToForm = {
   form: 'testForm',
-  validate
+  validate: validateCheckbox
 };
 const initialState = {};
 const store = configureStore(initialState);
