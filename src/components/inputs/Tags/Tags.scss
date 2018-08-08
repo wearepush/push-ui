@@ -1,0 +1,103 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+// $TagsWrapper: 'TagsWrapper';
+
+// .#{$TagsWrapper} {
+//   display: block;
+//   &__tag {
+//     display: inline-block;
+//     vertical-align: middle;
+//     border: 1px solid #ccc;
+//     border-radius: 3px;
+//     background-color: #fff;
+//     margin: 3px;
+//     padding: 0 5px;
+//   }
+
+//   &__selected {}
+  
+//   &__tags {
+//     margin: 0 -3px;
+//   }
+  
+//   &__input {
+//     margin: 0 3px;
+//     &_field {
+//       border: 1px solid #ccc;
+//       border-radius: 3px;
+//     }
+//   }
+  
+//   &__suggestions {
+//     background: yellow;
+//     &_active {
+//       background: green;
+//     }
+//   }
+  
+//   &__remove_btn {
+//     color: firebrick
+//   }
+// }
+
+.TagsWrapper__tags {
+  position: relative;
+}
+
+/* Styles for the input */
+.TagsWrapper__tagInput {
+  width: 200px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.TagsWrapper__tagInput input.TagsWrapper__tagInputField,
+.TagsWrapper__tagInput input.TagsWrapper__tagInputField:focus {
+  height: 31px;
+  margin: 0;
+  font-size: 12px;
+  width: 100%;
+  border: 1px solid #eee;
+}
+
+/* Styles for selected tags */
+.TagsWrapper__selected span.TagsWrapper__tag {
+  border: 1px solid #ddd;
+  background: #eee;
+  font-size: 12px;
+  display: inline-block;
+  padding: 5px;
+  margin: 0 5px;
+  cursor: move;
+  border-radius: 2px;
+}
+.TagsWrapper__selected a.TagsWrapper__remove {
+  color: #aaa;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Styles for suggestions */
+.TagsWrapper__suggestions {
+  position: absolute;
+}
+.TagsWrapper__suggestions ul {
+  list-style-type: none;
+  box-shadow: .05em .01em .5em rgba(0,0,0,.2);
+  background: white;
+  width: 200px;
+}
+.TagsWrapper__suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0;
+}
+.TagsWrapper__suggestions li mark {
+  text-decoration: underline;
+  background: none;
+  font-weight: 600;
+}
+.TagsWrapper__suggestions ul li.TagsWrapper__activeSuggestion {
+  background: #b7cfe0;
+  cursor: pointer;
+}
