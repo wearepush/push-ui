@@ -97,7 +97,7 @@ class Tags extends Component {
     * Array of values in controled component
     */
     value: array
-  }
+  };
 
   static defaultProps = {
     accessor: {
@@ -123,7 +123,7 @@ class Tags extends Component {
     tagInputClassName: '',
     tagInputFieldClassName: '',
     value: undefined
-  }
+  };
 
   constructor(props) {
     super(props);

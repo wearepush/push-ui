@@ -17,8 +17,6 @@ const customTags = [
   { id: 'Thailand', text: 'Thailand' }
 ];
 
-const isTrue = true;
-
 storiesOf('inputs/Tags', module)
   .add('default', () =>
     <Tags
@@ -29,9 +27,19 @@ storiesOf('inputs/Tags', module)
       }}
     />
   )
+  .add('disabled', () =>
+    <Tags
+      disabled
+      defaultValue={customData}
+      accessor={{
+        id: 'id',
+        value: 'text'
+      }}
+    />
+  )
   .add('read only', () =>
     <Tags
-      readOnly={isTrue}
+      readOnly
       tags={customData}
       accessor={{
         id: 'id',
@@ -39,7 +47,7 @@ storiesOf('inputs/Tags', module)
       }}
     />
   )
-  .add('controled', () => 
+  .add('controlled', () =>
     <Tags
       value={customData}
       tags={customTags}

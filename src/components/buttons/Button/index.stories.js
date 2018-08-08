@@ -132,4 +132,13 @@ storiesOf('buttons/Button', module)
         Hello Button
       </Button>
     </div>
+  ).add('link', () =>
+    <div>
+      <Button
+        href="http://google.com/"
+        target="_blank"
+      >
+        Hello Button
+      </Button>
+    </div>
   );

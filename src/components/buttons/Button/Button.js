@@ -180,12 +180,10 @@ export default class Button extends PureComponent {
 
     let ComponentProp = component;
 
-    if (!ComponentProp) {
-      if (other.href) {
-        ComponentProp = 'a';
-      } else {
-        ComponentProp = 'button';
-      }
+    if (other.href) {
+      ComponentProp = 'a';
+    } else {
+      ComponentProp = 'button';
     }
 
     const buttonProps = {};
