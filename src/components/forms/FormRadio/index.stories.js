@@ -5,32 +5,38 @@ import { storiesOf } from '@storybook/react';
 import Root from './../__mocks__/Root';
 import Form from './../__mocks__/Form';
 import configureStore from './../__mocks__/store';
-import validateCheckbox from './__mocks__/validateCheckbox';
-import { FormCheckbox, FormButton } from '../../index';
+import validateRadio from './__mocks__/validateRadio';
+import { FormRadio, FormButton } from '../../index';
 
 const mapPropsToForm = {
   form: 'testForm',
-  validate: validateCheckbox
+  validate: validateRadio
 };
 const initialState = {};
 const store = configureStore(initialState);
 const MountForm = reduxForm(mapPropsToForm)(Form);
 
-storiesOf('forms/FormCheckbox', module)
+storiesOf('forms/FormRadio', module)
   .add('default', () =>
     <Root
       store={store}
     >
       <MountForm>
-        <FormCheckbox
-          placeholder="Remember me"
-          name="remember"
+        <FormRadio
+          placeholder="Female"
+          name="gender"
+          value="0"
+        />
+        <FormRadio
+          placeholder="Male"
+          name="gender"
+          value="1"
         />
         <FormButton
-          float
+          float={true}
           form={mapPropsToForm.form}
         >
-          {'Submit'}
+          {'Login'}
         </FormButton>
       </MountForm>
     </Root>

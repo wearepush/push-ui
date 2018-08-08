@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { reduxForm, Form } from 'redux-form';
-import { func, node } from 'prop-types';
+import React from 'react';
+import { reduxForm } from 'redux-form';
 import { storiesOf } from '@storybook/react';
 
 import Root from './../__mocks__/Root';
+import Form from './../__mocks__/Form';
 import configureStore from './../__mocks__/store';
 import validateTextField from './__mocks__/validateTextField';
 import { FormTextField, FormButton } from '../../index';
@@ -14,29 +14,7 @@ const mapPropsToForm = {
 };
 const initialState = {};
 const store = configureStore(initialState);
-class ComponentForm extends Component {
-  static propTypes = {
-    children: node.isRequired,
-    handleSubmit: func.isRequired,
-  };
-
-  onSubmit = (values) => {
-    console.log(values); // eslint-disable-line
-  };
-
-  render() {
-    const { children, handleSubmit } = this.props;
-    return (
-      <Form
-        onSubmit={handleSubmit(this.onSubmit)}
-      >
-        {children}
-      </Form>
-    );
-  }
-}
-
-const MountForm = reduxForm(mapPropsToForm)(ComponentForm);
+const MountForm = reduxForm(mapPropsToForm)(Form);
 
 storiesOf('forms/FormTextField', module)
   .add('default', () =>
