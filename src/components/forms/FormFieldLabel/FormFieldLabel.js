@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './FormFieldLabel.scss';
+import {} from './FormFieldLabel.scss';
 
 const FormFieldLabel = ({
   active,

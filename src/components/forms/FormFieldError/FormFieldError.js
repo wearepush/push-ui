@@ -1,7 +1,7 @@
 import React from 'react';
 import { oneOf, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './FormFieldError.scss';
+import {} from './FormFieldError.scss';
 
 const FormFieldError = ({
   text,
