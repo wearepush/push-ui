@@ -1,6 +1,7 @@
 {
   "collectCoverageFrom": [
     "src/**/*.js",
+    "!src/**/*.stories.js",
     "!src/**/__tests__/**/*.js"
   ],
   "coverageReporters": [
