@@ -8,7 +8,6 @@
 [![NPM Version](https://img.shields.io/npm/v/redux-starter-ui.svg?style=flat)](https://www.npmjs.com/package/redux-starter-ui)
 [![NPM Downloads](https://img.shields.io/npm/dm/redux-starter-ui.svg?style=flat)](https://npmcharts.com/compare/redux-starter-ui?minimal=true)
 [![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://wearepush-redux-starter-ui.herokuapp.com)
-[![NSP Status](https://nodesecurity.io/orgs/push/projects/f1643f8e-2f90-453c-940b-c6ac9df6bc2a/badge)](https://nodesecurity.io/orgs/push/projects/f1643f8e-2f90-453c-940b-c6ac9df6bc2a)
 [![codecov](https://codecov.io/gh/wearepush/redux-starter-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/wearepush/redux-starter-ui)
 
 ## About
