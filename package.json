@@ -30,6 +30,7 @@
     "babel-plugin-css-modules-transform": "^1.6.1",
     "babel-runtime": "^6.26.0",
     "codecov": "^3.0.4",
+    "codecov.io": "^0.1.6",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "enzyme": "^3.3.0",
@@ -96,22 +97,39 @@
     }
   ],
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/__tests__/**/*.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
     "moduleFileExtensions": [
       "jsx",
       "js",
       "json"
     ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
     "moduleNameMapper": {
       "^.*\\.(css|scss)$": "identity-obj-proxy"
     },
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "testEnvironment": "jsdom",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "setupFiles": [
       "<rootDir>/scripts/enzyme.config.js"
     ],
-    "roots": ["<rootDir>/src"],
+    "roots": [
+      "<rootDir>/src"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
