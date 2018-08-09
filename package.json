@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
