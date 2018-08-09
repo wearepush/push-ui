@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.24",
+  "version": "1.0.23",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -62,6 +62,7 @@
     "server": "node server.js",
     "clean": "rimraf $(cd src; ls) dist lib",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
+    "preversion": "npm run lint",
     "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test jest --runInBand --config jest.config.json",
     "test:watch": "npm test -- --watch",
