@@ -15,11 +15,13 @@ deploy:
     on:
       repo: wearepush/redux-starter-ui
       branch: master
+      tags: true
   - provider: npm
     email: $NPM_EMAIL
     api_key: $NPM_TOKEN
     skip_cleanup: true
-    tag: next
+    tag: latest
     on:
       repo: wearepush/redux-starter-ui
       branch: master
+      tags: true
