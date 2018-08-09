@@ -11,11 +11,6 @@ const testingData = [
   { id: 'Thailand', text: 'Thailand' }
 ];
 
-const testingData2 = [
-  { id: 'USA', value: 'USA' },
-  { id: 'Germany', value: 'Germany' }
-];
-
 const customTags = [
   { _id: 'Sri Lanka', _name: 'Sri Lanka' },
   { _id: 'Thailand', _name: 'Thailand' }
