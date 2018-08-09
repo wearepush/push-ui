@@ -61,7 +61,6 @@
     "heroku-postbuild": "npm run build-storybook",
     "server": "node server.js",
     "clean": "rimraf $(cd src; ls) dist lib",
-    "postpublish": "git push --tags",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test jest --runInBand --config jest.config.json",
