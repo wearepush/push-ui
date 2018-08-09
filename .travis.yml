@@ -1,15 +1,22 @@
 language: node_js
 
 node_js:
-  - "8"
+  - '8'
 
 script:
   - npm run validate
   - codecov
 
 deploy:
-  provider: npm
-  email: $NPM_EMAIL
-  api_key: $NPM_TOKEN
-  skip_cleanup: true
-  tag: next
+  - provider: releases
+    api_key:
+      secure: $GITHUB_OAUTH_TOKEN
+    on:
+      repo: wearepush/redux-starter-ui
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    tag: next
+    on:
+      repo: wearepush/redux-starter-ui
