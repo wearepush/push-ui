@@ -94,5 +94,8 @@
         "*.js"
       ]
     }
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
