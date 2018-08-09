@@ -51,24 +51,6 @@ describe('Tags', () => {
       expect(props.value).toEqual(undefined);
       tags.unmount();
     });
-
-    it('should return accessor func with args', () => {
-      const accessorSpy = jest.fn();
-      const tags = mount(
-        <Tags
-          accessor={(c) => {
-            accessorSpy();
-            return {
-              id: c.id,
-              text: c.value
-            };
-          }}
-          defaultValue={testingData2}
-        />
-      );
-      expect(accessorSpy).toHaveBeenCalledTimes(testingData2.length);
-      tags.unmount();
-    });
   });
 
   describe('uncontroled component', () => {
