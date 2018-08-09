@@ -14,6 +14,7 @@ deploy:
     file: "*"
     on:
       repo: wearepush/redux-starter-ui
+      branch: master
   - provider: npm
     email: $NPM_EMAIL
     api_key: $NPM_TOKEN
@@ -21,3 +22,4 @@ deploy:
     tag: next
     on:
       repo: wearepush/redux-starter-ui
+      branch: master
