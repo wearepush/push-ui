@@ -11,11 +11,6 @@ const testingData = [
   { id: 'Thailand', text: 'Thailand' }
 ];
 
-const testingData2 = [
-  { id: 'USA', value: 'USA' },
-  { id: 'Germany', value: 'Germany' }
-];
-
 const customTags = [
   { _id: 'Sri Lanka', _name: 'Sri Lanka' },
   { _id: 'Thailand', _name: 'Thailand' }
@@ -49,24 +44,6 @@ describe('Tags', () => {
       expect(props.tagInputFieldClassName).toBe('');
       expect(props.tags).toEqual([]);
       expect(props.value).toEqual(undefined);
-      tags.unmount();
-    });
-
-    it('should return accessor func with args', () => {
-      const accessorSpy = jest.fn();
-      const tags = mount(
-        <Tags
-          accessor={(c) => {
-            accessorSpy();
-            return {
-              id: c.id,
-              text: c.value
-            };
-          }}
-          defaultValue={testingData2}
-        />
-      );
-      expect(accessorSpy).toHaveBeenCalledTimes(testingData2.length);
       tags.unmount();
     });
   });
