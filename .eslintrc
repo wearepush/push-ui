@@ -4,6 +4,14 @@
     "eslint:recommended",
     "plugin:react/recommended"
   ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-console": 0
+  },
   "globals": {
     "document": true,
     "module": true,
@@ -15,6 +23,6 @@
     "afterEach": true,
     "beforeAll": true,
     "beforeEach": true,
-    "global": true,
+    "global": true
   }
 }

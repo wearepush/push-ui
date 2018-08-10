@@ -1,5 +1,6 @@
 export { default as FormButton } from './FormButton/FormButton';
 export { default as FormCheckbox } from './FormCheckbox/FormCheckbox';
+export { default as FormDatePicker } from './FormDatePicker/FormDatePicker';
 export { default as FormField } from './FormField/FormField';
 export { default as FormFieldError } from './FormFieldError/FormFieldError';
 export { default as FormFieldLabel } from './FormFieldLabel/FormFieldLabel';
