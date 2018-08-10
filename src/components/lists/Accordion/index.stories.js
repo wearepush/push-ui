@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Accordion from '../Accordion/Accordion';
-import AccordionItem from '../AccordionItem/AccordionItem';
+import Accordion from './Accordion';
+import AccordionItem from './AccordionItem/AccordionItem';
 
 const props = {
   onHeadingClick: ({ isOpen }) => {
