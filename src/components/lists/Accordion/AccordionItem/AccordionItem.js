@@ -96,7 +96,6 @@ export default class AccordionItem extends Component {
     );
     return (
       <div
-        key={Math.random(100)}
         className={classNames}
         onClick={this.handleClick}
         onKeyPress={this.handleKeyPress}
