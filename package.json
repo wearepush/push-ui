@@ -64,6 +64,7 @@
     "clean": "rimraf $(cd src; ls) dist lib",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "preversion": "npm run lint",
+    "postversion": "git push && git push --tags",
     "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test jest --runInBand --config jest.config.json",
     "test:watch": "npm test -- --watch",
