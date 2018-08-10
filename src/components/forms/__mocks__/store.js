@@ -4,7 +4,13 @@ import createReducer from './reducer.js';
 export default function configureStore(initialState = {}) {
   const reducer = createReducer();
   const middlewares = [];
-  const composeEnhancers = compose;
+
+  const composeEnhancers =
+    (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    })) || compose;
+
   const enhancer = composeEnhancers(
     applyMiddleware(...middlewares)
   );

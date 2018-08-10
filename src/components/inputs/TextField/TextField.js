@@ -16,7 +16,7 @@ export default class TextField extends PureComponent {
     */
     className: string,
     /**
-    * If `true`, the switch will be disabled.
+    * If `true`, the input will be disabled.
     */
     disabled: bool,
     /**

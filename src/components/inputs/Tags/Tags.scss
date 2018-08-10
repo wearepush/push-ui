@@ -2,62 +2,29 @@
 @import "../../../styles/mixins";
 
 // $TagsWrapper: 'TagsWrapper';
-
 // .#{$TagsWrapper} {
-//   display: block;
-//   &__tag {
-//     display: inline-block;
-//     vertical-align: middle;
-//     border: 1px solid #ccc;
-//     border-radius: 3px;
-//     background-color: #fff;
-//     margin: 3px;
-//     padding: 0 5px;
-//   }
-
-//   &__selected {}
-  
-//   &__tags {
-//     margin: 0 -3px;
-//   }
-  
-//   &__input {
-//     margin: 0 3px;
-//     &_field {
-//       border: 1px solid #ccc;
-//       border-radius: 3px;
-//     }
-//   }
-  
-//   &__suggestions {
-//     background: yellow;
-//     &_active {
-//       background: green;
-//     }
-//   }
-  
-//   &__remove_btn {
-//     color: firebrick
-//   }
-// }
 
 .TagsWrapper__tags {
   position: relative;
 }
 
 /* Styles for the input */
-.TagsWrapper__tagInput {
+.TagsWrapper__input {
   width: 200px;
   border-radius: 2px;
   display: inline-block;
 }
-.TagsWrapper__tagInput input.TagsWrapper__tagInputField,
-.TagsWrapper__tagInput input.TagsWrapper__tagInputField:focus {
+
+.TagsWrapper__input_field {
   height: 31px;
   margin: 0;
   font-size: 12px;
   width: 100%;
   border: 1px solid #eee;
+
+  &.is-invalid {
+    border-color: red;
+  }
 }
 
 /* Styles for selected tags */

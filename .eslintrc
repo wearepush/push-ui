@@ -16,5 +16,6 @@
     "beforeAll": true,
     "beforeEach": true,
     "setTimeout": true,
+    "global": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.0.22",
+  "version": "1.0.34",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -44,6 +44,7 @@
     "node-sass": "^4.9.2",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^3.0.0",
+    "redux-devtools-extension": "^2.13.5",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.22.0",
@@ -62,14 +63,13 @@
     "heroku-postbuild": "npm run build-storybook",
     "server": "node server.js",
     "clean": "rimraf $(cd src; ls) dist lib",
-    "postpublish": "git push --tags",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
+    "preversion": "npm run lint",
     "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test jest --runInBand --config jest.config.json",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm run test -- --coverage",
-    "lint": "eslint -c .eslintrc src",
-    "ship-it": "npm publish --tag next"
+    "lint": "eslint -c .eslintrc src"
   },
   "repository": {
     "type": "git",

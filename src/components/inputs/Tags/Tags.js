@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
-import { array, bool, func, object, string, oneOfType } from 'prop-types';
+import { array, bool, func, number, object, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
 
@@ -16,10 +16,22 @@ class Tags extends Component {
     /**
     * Pattern of array values's keys
     */
-    accessor: oneOfType([
-      func,
-      object
-    ]),
+    accessor: object,
+    /**
+    * Boolean value to control whether the
+    * text-input should be autofocused on mount
+    */
+    autofocus: bool,
+    /**
+    *  Ensure the first matching suggestion is automatically
+    * converted to a tag when a delimiter key is pressed
+    */
+    autocomplete: bool,
+    /**
+    * Boolean value to control whether tags should
+    * be deleted when the 'Delete' key is pressed in an empty Input Box
+    */
+    allowDeleteFromEmptyInput: bool,
     /**
     * Active suggestion class name
     */
@@ -28,6 +40,30 @@ class Tags extends Component {
     * Default array of values in uncontroled component
     */
     defaultValue: array,
+    /**
+    * Disable input
+    */
+    disabled: bool,
+    /**
+    *  The id attribute added to the input
+    */
+    id: string,
+    /**
+    * If `false`, the input will be under list of tags.
+    */
+    inline: bool,
+    /**
+    * If `true`, the component is invalid.
+    */
+    invalid: bool,
+    /**
+    * How many characters are needed for suggestions to appear
+    */
+    minQueryLength: number,
+    /**
+    * Input name
+    */
+    name: string,
     /**
     * Callback fired when a new tag was added.
     */
@@ -70,6 +106,10 @@ class Tags extends Component {
     */
     selectedClassName: string,
     /**
+    * Array of exists tags
+    */
+    suggestions: array,
+    /**
     * Suggestion className
     */
     suggestionsClassName: string,
@@ -94,9 +134,13 @@ class Tags extends Component {
     */
     tagInputFieldClassName: string,
     /**
+    * If `true`, the component is invalid.
+    */
+    valid: bool,
+    /**
     * Array of values in controled component
     */
-    value: array
+    value: array,
   };
 
   static defaultProps = {
@@ -104,8 +148,17 @@ class Tags extends Component {
       id: 'id',
       value: 'value'
     },
+    autofocus: true,
+    autocomplete: false,
+    allowDeleteFromEmptyInput: true,
     activeSuggestionClassName: '',
     defaultValue: [],
+    disabled: false,
+    id: undefined,
+    inline: true,
+    invalid: false,
+    minQueryLength: 2,
+    name: '',
     onAdd: undefined,
     onBlur: undefined,
     onDrag: undefined,
@@ -116,13 +169,15 @@ class Tags extends Component {
     readOnly: false,
     removeBtnClassName: '',
     selectedClassName: '',
+    suggestions: [],
     suggestionsClassName: '',
     tags: [],
     tagClassName: '',
     tagsClassName: '',
     tagInputClassName: '',
     tagInputFieldClassName: '',
-    value: undefined
+    valid: false,
+    value: undefined,
   };
 
   constructor(props) {
@@ -138,18 +193,29 @@ class Tags extends Component {
 
   handleAccessor = (arrayObj) => {
     const { accessor } = this.props;
-    if (typeof accessor === 'function') {
-      return arrayObj.map(accessor);
-    }
     const { id, value } = accessor;
-    return arrayObj.map((el, i) => ({
-      id: arrayObj[i][id],
-      text: arrayObj[i][value]
-    }));
+
+    let result = [];
+    if (arrayObj && arrayObj.length > 0) {
+      result = arrayObj.map((el, i) => ({
+        id: arrayObj[i][id],
+        text: arrayObj[i][value]
+      }));
+    }
+    return result;
   }
 
-  handleAddition = (tag) => {
+  parseValue = (value) => {
+    const { accessor } = this.props;
+    return {
+      [accessor.id]: value.id,
+      [accessor.value]: value.text,
+    };
+  }
+
+  handleAddition = (value) => {
     const { onAdd } = this.props;
+    const tag = this.parseValue(value);
     if (!this.isControled) this.setState(state => ({ tags: [...state.tags, tag] }));
     onAdd && onAdd([...this.props.tags, tag], tag);
   }
@@ -163,11 +229,12 @@ class Tags extends Component {
     onDelete && onDelete(tags, tagsList[i]);
   }
 
-  handleDrag = (tag, currPos, newPos) => {
+  handleDrag = (value, currPos, newPos) => {
     if (this.props.readOnly) return;
     const { onDrag } = this.props;
     const tags = this.isControled ? this.props.tags : this.state.tags;
     const newTags = tags.slice();
+    const tag = this.parseValue(value);
     newTags.splice(currPos, 1);
     newTags.splice(newPos, 0, tag);
     if (!this.isControled) this.setState({ tags: newTags });
@@ -190,9 +257,27 @@ class Tags extends Component {
   }
 
   render() {
-    const { tags, suggestions } = this.isControled ? this.props : this.state;
+    let tags = [];
+    let suggestions = [];
+    if (this.isControled) {
+      tags = this.handleAccessor(this.props.tags);
+      suggestions = this.handleAccessor(this.props.suggestions);
+    } else {
+      tags = this.state.tags;
+      suggestions = this.state.suggestions;
+    }
+
     const {
+      autofocus,
+      autocomplete,
+      allowDeleteFromEmptyInput,
       activeSuggestionClassName,
+      disabled,
+      id,
+      inline,
+      invalid,
+      minQueryLength,
+      name,
       placeholder,
       readOnly,
       removeBtnClassName,
@@ -202,13 +287,21 @@ class Tags extends Component {
       tagsClassName,
       tagInputClassName,
       tagInputFieldClassName,
+      valid,
     } = this.props;
 
     const classNames = {
       tag: cx("TagsWrapper__tag", { tagClassName: !!tagClassName, 'is-readonly': readOnly }),
       tags: cx("TagsWrapper__tags", { tagsClassName: !!tagsClassName, 'is-readonly': readOnly }),
       tagInput: cx("TagsWrapper__input", { tagInputClassName: !!tagInputClassName }),
-      tagInputField: cx("TagsWrapper__input_field", { tagInputFieldClassName: !!tagInputFieldClassName }),
+      tagInputField: cx("TagsWrapper__input_field",
+        {
+          tagInputFieldClassName: !!tagInputFieldClassName,
+          'is-disabled': disabled,
+          'is-valid': valid,
+          'is-invalid': invalid
+        }
+      ),
       selected: cx("TagsWrapper__selected", { selectedClassName: !!selectedClassName }),
       remove: cx("TagsWrapper__remove_btn", { removeBtnClassName: !!removeBtnClassName }),
       suggestions: cx("TagsWrapper__suggestions", { suggestionsClassName: !!suggestionsClassName }),
@@ -217,14 +310,22 @@ class Tags extends Component {
 
     return (
       <ReactTags
+        autofocus={autofocus}
+        autocomplete={autocomplete}
+        allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
         classNames={classNames}
         delimiters={delimiters}
+        disabled={disabled}
+        id={id}
+        inline={inline}
         handleAddition={this.handleAddition}
         handleDrag={this.handleDrag}
         handleDelete={this.handleDelete}
         handleInputBlur={this.handleInputBlur}
         handleInputChange={this.handleInputChange}
         handleInputFocus={this.handleInputFocus}
+        minQueryLength={minQueryLength}
+        name={name}
         placeholder={placeholder}
         readOnly={readOnly}
         suggestions={suggestions}
