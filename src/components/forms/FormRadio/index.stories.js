@@ -23,6 +23,7 @@ storiesOf('forms/FormRadio', module)
     >
       <MountForm>
         <FormRadio
+          className="test"
           placeholder="Female"
           name="gender"
           value="0"

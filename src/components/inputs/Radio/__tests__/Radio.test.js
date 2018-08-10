@@ -144,6 +144,7 @@ describe('Radio', () => {
       it('should render with initial state', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value="0"
@@ -159,6 +160,7 @@ describe('Radio', () => {
       it('should render with disabled prop', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             disabled
             name="name"
             placeholder="placeholder"
@@ -172,6 +174,7 @@ describe('Radio', () => {
       it('should render with tabIndex prop', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             tabIndex="-10"
@@ -185,6 +188,7 @@ describe('Radio', () => {
       it('should render with value type array', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value={[1, 2, 3]}
@@ -197,6 +201,7 @@ describe('Radio', () => {
       it('should render with value type bool', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value
@@ -209,6 +214,7 @@ describe('Radio', () => {
       it('should render with value type object', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value={{ test: true }}
@@ -221,6 +227,7 @@ describe('Radio', () => {
       it('should render with value type number', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value={1}
@@ -233,6 +240,7 @@ describe('Radio', () => {
       it('should render with value type string', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value="test"
@@ -247,6 +255,7 @@ describe('Radio', () => {
       it('should render with initial state', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             name="name"
             placeholder="placeholder"
             value="0"
@@ -263,6 +272,7 @@ describe('Radio', () => {
       it('should render with checked initial state', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             defaultChecked
             name="name"
             placeholder="placeholder"
@@ -283,6 +293,7 @@ describe('Radio', () => {
         const onFocusSpy = jest.fn();
         const radio = shallow(
           <Radio
+            custom={false}
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
             onFocus={onFocusSpy}
@@ -334,6 +345,7 @@ describe('Radio', () => {
       it('should render with initial state', () => {
         const radio = shallow(
           <Radio
+            custom={false}
             checked
             name="name"
             placeholder="placeholder"
@@ -354,6 +366,7 @@ describe('Radio', () => {
         const onFocusSpy = jest.fn();
         const radio = shallow(
           <Radio
+            custom={false}
             checked
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
