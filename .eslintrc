@@ -15,5 +15,6 @@
     "afterEach": true,
     "beforeAll": true,
     "beforeEach": true,
+    "setTimeout": true,
   }
 }
