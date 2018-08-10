@@ -79,7 +79,10 @@ export default class Radio extends PureComponent {
     /**
     * The label of the component.
     */
-    placeholder: string.isRequired,
+    placeholder: oneOfType([
+      string,
+      node,
+    ]).isRequired,
     /**
     * @ignore
     */
@@ -102,7 +105,7 @@ export default class Radio extends PureComponent {
 
   static defaultProps = {
     active: false,
-    custom: false,
+    custom: true,
     checked: null,
     checkedIcon: null,
     className: '',

@@ -24,6 +24,7 @@ const makeForm = ({
       return (
         <form>
           <FormRadio
+            custom={false}
             iconChecked={iconChecked}
             iconUnChecked={iconUnChecked}
             label="Remember"
