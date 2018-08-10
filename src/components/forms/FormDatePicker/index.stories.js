@@ -5,9 +5,12 @@ import { storiesOf } from '@storybook/react';
 import Root from './../__mocks__/Root';
 import Form from './../__mocks__/Form';
 import configureStore from './../__mocks__/store';
-import { FormDatePicker } from '../../index';
+import { FormDatePicker, FormButton } from '../../index';
 
 const mapPropsToForm = {
+  initialValues: {
+    datepicker: '',
+  },
   form: 'testForm',
 };
 const initialState = {};
@@ -21,8 +24,15 @@ storiesOf('forms/FormDatePicker', module)
     >
       <MountForm>
         <FormDatePicker
-            name="datepicker"
-         />
+          label="date picker"
+          name="datepicker"
+        />
+        <FormButton
+          float
+          form={mapPropsToForm.form}
+        >
+          {'Submit'}
+        </FormButton>
       </MountForm>
     </Root>
   );

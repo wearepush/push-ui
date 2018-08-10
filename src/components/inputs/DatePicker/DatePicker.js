@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Flatpickr from 'react-flatpickr';
+import cx from 'classnames';
 import { array, bool, string, func, oneOfType, object } from 'prop-types';
 import { } from './DatePicker.scss';
 
@@ -10,9 +11,9 @@ class DatePicker extends Component {
      * date format
      */
     dateFormat: string,
-     /**
-     * if 'True' disable input
-     */
+    /**
+    * if 'True' disable input
+    */
     disabled: bool,
     /**
     * Array of disable dates or array of objects with disable ranges, also can be function
@@ -30,6 +31,10 @@ class DatePicker extends Component {
     * (date) => (date.getDay() === 5 || date.getDay() === 6);
      */
     enableDates: oneOfType([array, func]),
+    /**
+    * If `true`, the component is invalid.
+    */
+    invalid: bool,
     /**
      * Callbeck fired when input was blured
      */
@@ -67,7 +72,11 @@ class DatePicker extends Component {
     /**
      * Value of date
      */
-    value: object,
+    value: oneOfType([object, string]),
+    /**
+     * If `true`, the component is invalid.
+     */
+    valid: bool,
 
   }
 
@@ -75,6 +84,7 @@ class DatePicker extends Component {
     dateFormat: 'y-m-d',
     disabled: false,
     disable: [],
+    invalid: false,
     enableDates: [],
     onBlur: undefined,
     onChange: undefined,
@@ -82,7 +92,8 @@ class DatePicker extends Component {
     onOpen: undefined,
     timeEnable: false,
     mode: '',
-    value: undefined
+    value: undefined,
+    valid: false,
   }
 
   constructor(props) {
@@ -98,20 +109,20 @@ class DatePicker extends Component {
   onChangeHandler = (selectedDates, dateStr, instance) => {
     const { onChange } = this.props;
     if (!this.isControled) this.setState({ selectedDates });
-    onChange && onChange(selectedDates, dateStr, instance);
+    onChange && onChange(selectedDates.toString(), dateStr, instance);
   }
 
   onOpenHandler = (selectedDates, dateStr, instance) => {
     const { onOpen } = this.props;
     if (!this.isControled) this.setState({ selectedDates });
-    onOpen && onOpen(selectedDates, dateStr, instance);
+    onOpen && onOpen(selectedDates.toString(), dateStr, instance);
   }
 
   onCloseHandler = (selectedDates, dateStr, instance) => {
     const { onClose } = this.props;
     if (!this.isControled) this.setState({ selectedDates });
     onClose && setTimeout(() => {
-      onClose(selectedDates, dateStr, instance);
+      onClose(selectedDates.toString(), dateStr, instance);
     }, 0);
   }
 
@@ -121,18 +132,27 @@ class DatePicker extends Component {
       disabled,
       disableDates,
       enableDates,
+      invalid,
       timeEnable,
       maxDate,
       minDate,
       mode,
       value,
+      valid
     } = this.props;
+
     return (
       <Flatpickr
+        className={
+          cx("DatePicker", {
+            'is-valid': valid,
+            'is-invalid': invalid,
+          })
+        }
+        disable={disableDates}
         disabled={disabled}
         data-enable-time={timeEnable}
         dateformat={dateFormat}
-        disable={disableDates}
         enable-dates={enableDates}
         onChange={this.onChangeHandler}
         onBlur={this.onBlurHandler}
@@ -141,7 +161,7 @@ class DatePicker extends Component {
         max-date={maxDate}
         min-date={minDate}
         mode={mode}
-        value={value ? value : new Date()}
+        value={value ? new Date(value) : new Date()}
       />
     )
   }
