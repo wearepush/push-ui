@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
-import { array, bool, func, number, object, string } from 'prop-types';
+import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
 
@@ -106,6 +106,14 @@ class Tags extends Component {
     */
     selectedClassName: string,
     /**
+    * The size of the button.
+    */
+    size: oneOf([
+      'small',
+      'medium',
+      'large'
+    ]),
+    /**
     * Array of exists tags
     */
     suggestions: array,
@@ -169,6 +177,7 @@ class Tags extends Component {
     readOnly: false,
     removeBtnClassName: '',
     selectedClassName: '',
+    size: 'medium',
     suggestions: [],
     suggestionsClassName: '',
     tags: [],
@@ -184,9 +193,10 @@ class Tags extends Component {
     super(props);
     this.isControled = props.value !== undefined;
     if (!this.isControled) {
+      // TODO: replace tags to defaultValue
       this.state = {
         tags: this.handleAccessor(props.tags),
-        suggestions: this.handleAccessor(props.defaultValue)
+        suggestions: this.handleAccessor(props.suggestions)
       };
     }
   }
@@ -281,6 +291,7 @@ class Tags extends Component {
       placeholder,
       readOnly,
       removeBtnClassName,
+      size,
       selectedClassName,
       suggestionsClassName,
       tagClassName,
@@ -291,7 +302,11 @@ class Tags extends Component {
     } = this.props;
 
     const classNames = {
-      tag: cx("TagsWrapper__tag", { tagClassName: !!tagClassName, 'is-readonly': readOnly }),
+      tag: cx("TagsWrapper__tag", {
+        tagClassName: !!tagClassName,
+        'is-readonly': readOnly,
+        [`is-size-${size}`]: !!size,
+      }),
       tags: cx("TagsWrapper__tags", { tagsClassName: !!tagsClassName, 'is-readonly': readOnly }),
       tagInput: cx("TagsWrapper__input", { tagInputClassName: !!tagInputClassName }),
       tagInputField: cx("TagsWrapper__input_field",
@@ -299,7 +314,8 @@ class Tags extends Component {
           tagInputFieldClassName: !!tagInputFieldClassName,
           'is-disabled': disabled,
           'is-valid': valid,
-          'is-invalid': invalid
+          'is-invalid': invalid,
+          [`is-size-${size}`]: !!size,
         }
       ),
       selected: cx("TagsWrapper__selected", { selectedClassName: !!selectedClassName }),
@@ -328,6 +344,7 @@ class Tags extends Component {
         name={name}
         placeholder={placeholder}
         readOnly={readOnly}
+        size={size}
         suggestions={suggestions}
         tags={tags}
       />
