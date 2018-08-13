@@ -144,6 +144,7 @@ describe('Checkbox', () => {
         />
       );
       expect(console.error).toHaveBeenCalledTimes(1);
+      checkbox.unmount();
     });
   });
 
