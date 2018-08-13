@@ -23,7 +23,6 @@ storiesOf('inputs/Radio', module)
       onBlur={action('blur')}
       name="Radio-1"
       placeholder="Radio placeholder"
-      custom
       value="0"
     />
   ))
@@ -32,7 +31,6 @@ storiesOf('inputs/Radio', module)
       name="Radio-1"
       placeholder="Radio placeholder"
       disabled
-      custom
       value="0"
     />
   ))
@@ -41,14 +39,12 @@ storiesOf('inputs/Radio', module)
       <Radio
         name="Radio-1"
         placeholder="Radio placeholder"
-        custom
         checked={false}
         value="0"
       />
       <Radio
         name="Radio-1"
         placeholder="Radio placeholder"
-        custom
         checked
         value="1"
       />

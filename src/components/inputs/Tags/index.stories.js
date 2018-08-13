@@ -5,90 +5,70 @@ import { action } from '@storybook/addon-actions';
 import Tags from './Tags';
 
 const customData = [
-  { id: 'USA', text: 'USA' },
-  { id: 'Germany', text: 'Germany' },
-  { id: 'Austria', text: 'Austria' },
-  { id: 'Costa Rica', text: 'Costa Rica' },
-  { id: 'Sri Lanka', text: 'Sri Lanka' },
-  { id: 'Thailand', text: 'Thailand' }
+  { id: 'USA', value: 'USA' },
+  { id: 'Germany', value: 'Germany' },
+  { id: 'Austria', value: 'Austria' },
+  { id: 'Costa Rica', value: 'Costa Rica' },
+  { id: 'Sri Lanka', value: 'Sri Lanka' },
+  { id: 'Thailand', value: 'Thailand' }
 ];
 
 const customTags = [
-  { id: 'Sri Lanka', text: 'Sri Lanka' },
-  { id: 'Thailand', text: 'Thailand' },
-  { id: 'USA', text: 'USA' },
-  { id: 'Vietnam', text: 'Vietnam' },
-  { id: 'Munich', text: 'Munich' },
-  { id: 'Amsterdam', text: 'Amsterdam' },
-  { id: 'Viena', text: 'Viena' },
-  { id: 'Milan', text: 'Milan' },
-  { id: 'Palermo', text: 'Palermo' },
-  { id: 'Etna', text: 'Etna' },
+  { id: 'Sri Lanka', value: 'Sri Lanka' },
+  { id: 'Thailand', value: 'Thailand' },
+  { id: 'USA', value: 'USA' },
+  { id: 'Vietnam', value: 'Vietnam' },
+  { id: 'Munich', value: 'Munich' },
+  { id: 'Amsterdam', value: 'Amsterdam' },
+  { id: 'Viena', value: 'Viena' },
+  { id: 'Milan', value: 'Milan' },
+  { id: 'Palermo', value: 'Palermo' },
+  { id: 'Etna', value: 'Etna' },
 ];
 
 const suggestions = [
-  { id: 'Sri Lanka', text: 'Sri Lanka' },
-  { id: 'Thailand', text: 'Thailand' },
-  { id: 'USA', text: 'USA' },
-  { id: 'Vietnam', text: 'Vietnam' },
-  { id: 'Munich', text: 'Munich' },
-  { id: 'Amsterdam', text: 'Amsterdam' },
-  { id: 'Viena', text: 'Viena' },
-  { id: 'Milan', text: 'Milan' },
-  { id: 'Migan', text: 'Migan' },
-  { id: 'Palermo', text: 'Palermo' },
-  { id: 'Etna', text: 'Etna' },
+  { id: 'Sri Lanka', value: 'Sri Lanka' },
+  { id: 'Thailand', value: 'Thailand' },
+  { id: 'USA', value: 'USA' },
+  { id: 'Vietnam', value: 'Vietnam' },
+  { id: 'Munich', value: 'Munich' },
+  { id: 'Amsterdam', value: 'Amsterdam' },
+  { id: 'Viena', value: 'Viena' },
+  { id: 'Milan', value: 'Milan' },
+  { id: 'Migan', value: 'Migan' },
+  { id: 'Palermo', value: 'Palermo' },
+  { id: 'Etna', value: 'Etna' },
 ];
 
 storiesOf('inputs/Tags', module)
   .add('default', () =>
     <Tags
+      defaultValue={customData}
       onAdd={action('onAdd')}
       onDelete={action('onDelete')}
       onDrag={action('onDrag')}
-      defaultValue={customData}
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
     />
   )
   .add('disabled', () =>
     <Tags
-      disabled
       defaultValue={customData}
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
+      disabled
     />
   )
   .add('suggestions', () =>
     <Tags
       suggestions={suggestions}
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
     />
   )
   .add('float', () =>
     <Tags
       defaultValue={customData}
       float
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
     />
   )
   .add('controlled', () =>
     <Tags
       defaultValue={customTags}
       value={customData}
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
     />
   );

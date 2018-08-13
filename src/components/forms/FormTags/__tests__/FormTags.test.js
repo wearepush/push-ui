@@ -12,6 +12,7 @@ beforeEach(() => {
 
 const makeForm = ({
   renderSpy = undefined,
+  onDragSpy = undefined,
   onFocusSpy = undefined,
   onChangeSpy = undefined,
   onBlurSpy = undefined,
@@ -25,6 +26,7 @@ const makeForm = ({
             label="Tags"
             name="tags"
             placeholder="Tags"
+            onDrag={onDragSpy}
             onFocus={onFocusSpy}
             onChange={onChangeSpy}
             onBlur={onBlurSpy}
@@ -64,13 +66,24 @@ describe('FormTags', () => {
     const onFocusSpy = jest.fn();
     const onChangeSpy = jest.fn();
     const onBlurSpy = jest.fn();
+    const onDragSpy = jest.fn();
     const Form = makeForm({
       renderSpy,
       onFocusSpy,
       onChangeSpy,
       onBlurSpy,
+      onDragSpy,
     });
-    const dom = renderForm(Form, {}, {});
+    const dom = renderForm(Form,
+      {},
+      {
+        initialValues: {
+          tags: [
+            { id: 'USA', value: 'USA' },
+            { id: 'Germany', value: 'Germany' }
+          ]
+        }
+      });
 
     const inputElement = dom.find('.TagsWrapper__input_field');
 
@@ -78,7 +91,7 @@ describe('FormTags', () => {
     inputElement.simulate('focus');
 
     expect(onFocusSpy).toHaveBeenCalled();
-    expect(renderSpy).toHaveBeenCalledTimes(1);
+    expect(renderSpy).toHaveBeenCalledTimes(2);
 
     // onChange
     inputElement.simulate('change', { target: { value: 'Test' } });
@@ -86,7 +99,7 @@ describe('FormTags', () => {
     inputElement.simulate('keyDown', { keyCode: 13 });
     expect(onChangeSpy).toHaveBeenCalledTimes(1);
 
-    expect(renderSpy).toHaveBeenCalledTimes(2);
+    expect(renderSpy).toHaveBeenCalledTimes(3);
 
     const tagRemoveBtn = dom.find('.TagsWrapper__remove_btn').last();
     tagRemoveBtn.simulate('click');
@@ -95,7 +108,7 @@ describe('FormTags', () => {
     // // onBlur
     inputElement.simulate('blur');
     expect(onBlurSpy).toHaveBeenCalled();
-    expect(renderSpy).toHaveBeenCalledTimes(3);
+    expect(renderSpy).toHaveBeenCalledTimes(5);
 
     dom.unmount();
   });

@@ -14,6 +14,7 @@ const mapPropsToForm = {
     tags: [
       { number: '1', label: 'Tag 1' },
       { number: '2', label: 'Tag 2' },
+      { number: '3', label: 'Tag 3' },
     ]
   },
   validate: validateTags

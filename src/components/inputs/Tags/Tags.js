@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
+import { WithContext } from 'react-tag-input';
+// import { DragDropContext } from 'react-dnd';
+// import HTML5Backend from 'react-dnd-html5-backend';
 import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
@@ -200,16 +202,26 @@ class Tags extends Component {
 
     let result = [];
     if (obj && obj.length > 0) {
-      result = obj.map((el, i) => ({
-        id: obj[i][id],
-        text: obj[i][value]
-      }));
+      result = obj.map((c) => {
+        if (!c[id]) {
+          console.warn('You need to specify correct accessor id');
+          return;
+        } else if (!c[value]) {
+          console.warn('You need to specify correct accessor value');
+          return;
+        }
+        return {
+          id: c[id],
+          text: c[value]
+        };
+      });
     }
     return result;
   }
 
   parseValue = (value) => {
     const { accessor } = this.props;
+
     return {
       [accessor.id]: value.id,
       [accessor.value]: value.text,
@@ -217,59 +229,87 @@ class Tags extends Component {
   }
 
   getValue = () => {
-    return this.isControled ? this.props.value : this.state.tags;
+    if (this.isControled) {
+      return this.props.value;
+    }
+
+    return this.state.tags.map((c) => {
+      return this.parseValue(c);
+    });
   }
 
   handleAddition = (value) => {
     const { onAdd } = this.props;
-    const tag = this.parseValue(value);
-    const currentTags = this.getValue();
-    const tags = [...currentTags, tag];
     if (!this.isControled) {
-      this.setState({ tags });
+      this.setState(state => ({ tags: [...state.tags, value] }));
     }
-    onAdd && onAdd(tags, tag);
+
+    if (onAdd) {
+      const tags = this.getValue();
+      const tag = this.parseValue(value);
+      onAdd([...tags, tag], tag);
+    }
   }
 
   handleDelete = (i) => {
     if (this.props.disabled) return;
     const { onDelete } = this.props;
-    const currentTags = this.getValue();
-    const tags = currentTags.filter((tag, index) => index !== i);
-    if (!this.isControled) this.setState({ tags });
-    onDelete && onDelete(tags, currentTags[i]);
+    let tags = [];
+    if (!this.isControled) {
+      tags = this.state.tags.filter((tag, index) => index !== i);
+      this.setState({ tags });
+    }
+    if (onDelete) {
+      const currentTags = this.getValue();
+      tags = currentTags.filter((tag, index) => index !== i);
+      onDelete(tags, currentTags[i]);
+    }
   }
 
   handleDrag = (value, currPos, newPos) => {
     if (this.props.disabled) return;
     const { onDrag } = this.props;
-    const currentTags = this.getValue();
-    const newTags = currentTags.slice();
-    const tag = this.parseValue(value);
-    newTags.splice(currPos, 1);
-    newTags.splice(newPos, 0, tag);
+
+    let tag = null;
+    let tags = [];
     if (!this.isControled) {
-      this.setState({ tags: newTags });
+      tags = [...this.state.tags];
+      tag = value;
+    } else {
+      tags = [...this.props.value];
+      tag = this.parseValue(value);
     }
-    onDrag && onDrag(newTags);
+
+    tags.splice(currPos, 1);
+    tags.splice(newPos, 0, tag);
+
+    !this.isControled && this.setState({ tags });
+
+    onDrag && onDrag([...tags]);
   }
 
-  handleInputBlur = (event) => {
+  handleInputBlur = (value) => {
     const { onBlur } = this.props;
-    const currentTags = this.getValue();
-    onBlur && onBlur(event, currentTags);
+    if (onBlur) {
+      const currentTags = this.getValue();
+      onBlur(value, currentTags);
+    }
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = (value) => {
     const { onChange } = this.props;
-    const currentTags = this.getValue();
-    onChange && onChange(event, currentTags);
+    if (onChange) {
+      const currentTags = this.getValue();
+      onChange(value, currentTags);
+    }
   }
 
-  handleInputFocus = (event) => {
+  handleInputFocus = () => {
     const { onFocus } = this.props;
-    const currentTags = this.getValue();
-    onFocus && onFocus(event, currentTags);
+    if (onFocus) {
+      const currentTags = this.getValue();
+      onFocus(currentTags);
+    }
   }
 
   render() {
@@ -316,7 +356,6 @@ class Tags extends Component {
       }),
       tags: cx("TagsWrapper__tags", {
         tagsClassName: !!tagsClassName,
-        'is-disabled': disabled
       }),
       tagInput: cx("TagsWrapper__input", {
         tagInputClassName: !!tagInputClassName
@@ -343,9 +382,8 @@ class Tags extends Component {
         activeSuggestionClassName: !!activeSuggestionClassName
       })
     };
-
     return (
-      <ReactTags
+      <WithContext
         autofocus={autofocus}
         autocomplete={autocomplete}
         allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
@@ -372,3 +410,4 @@ class Tags extends Component {
 }
 
 export default Tags;
+// export default DragDropContext(HTML5Backend)(Tags);

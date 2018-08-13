@@ -27,7 +27,6 @@ const _FormTags = ({
         onFocus={(event, values) => input.onFocus(values)}
         onBlur={(event, values) => input.onBlur(values)}
         name={input.name}
-        tags={input.value}
         value={input.value}
         valid={!!input.value && !meta.error && !meta.warning && meta.valid}
       />
