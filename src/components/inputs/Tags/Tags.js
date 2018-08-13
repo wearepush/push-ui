@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
+import { WithContext } from 'react-tag-input';
+// import { DragDropContext } from 'react-dnd';
+// import HTML5Backend from 'react-dnd-html5-backend';
 import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
@@ -57,6 +59,10 @@ class Tags extends Component {
     */
     invalid: bool,
     /**
+    * If `true`, the base button will be rounded.
+    */
+    float: bool,
+    /**
     * How many characters are needed for suggestions to appear
     */
     minQueryLength: number,
@@ -93,11 +99,6 @@ class Tags extends Component {
     */
     placeholder: string,
     /**
-    * Read-only mode without the input box and
-    * removeComponent and drag-n-drop features disabled
-    */
-    readOnly: bool,
-    /**
     * Remove's button className
     */
     removeBtnClassName: string,
@@ -121,10 +122,6 @@ class Tags extends Component {
     * Suggestion className
     */
     suggestionsClassName: string,
-    /**
-    * Array of visible tags
-    */
-    tags: array,
     /**
     * Tag className
     */
@@ -165,6 +162,7 @@ class Tags extends Component {
     id: undefined,
     inline: true,
     invalid: false,
+    float: false,
     minQueryLength: 2,
     name: '',
     onAdd: undefined,
@@ -174,13 +172,11 @@ class Tags extends Component {
     onDelete: undefined,
     onFocus: undefined,
     placeholder: '',
-    readOnly: false,
     removeBtnClassName: '',
     selectedClassName: '',
     size: 'medium',
     suggestions: [],
     suggestionsClassName: '',
-    tags: [],
     tagClassName: '',
     tagsClassName: '',
     tagInputClassName: '',
@@ -193,84 +189,134 @@ class Tags extends Component {
     super(props);
     this.isControled = props.value !== undefined;
     if (!this.isControled) {
-      // TODO: replace tags to defaultValue
       this.state = {
-        tags: this.handleAccessor(props.tags),
+        tags: this.handleAccessor(props.defaultValue),
         suggestions: this.handleAccessor(props.suggestions)
       };
     }
   }
 
-  handleAccessor = (arrayObj) => {
+  handleAccessor = (obj) => {
     const { accessor } = this.props;
     const { id, value } = accessor;
 
     let result = [];
-    if (arrayObj && arrayObj.length > 0) {
-      result = arrayObj.map((el, i) => ({
-        id: arrayObj[i][id],
-        text: arrayObj[i][value]
-      }));
+    if (obj && obj.length > 0) {
+      result = obj.map((c) => {
+        if (!c[id]) {
+          console.warn('You need to specify correct accessor id');
+          return;
+        } else if (!c[value]) {
+          console.warn('You need to specify correct accessor value');
+          return;
+        }
+        return {
+          id: c[id],
+          text: c[value]
+        };
+      });
     }
     return result;
   }
 
   parseValue = (value) => {
     const { accessor } = this.props;
+
     return {
       [accessor.id]: value.id,
       [accessor.value]: value.text,
     };
   }
 
+  getValue = () => {
+    if (this.isControled) {
+      return this.props.value;
+    }
+
+    return this.state.tags.map((c) => {
+      return this.parseValue(c);
+    });
+  }
+
   handleAddition = (value) => {
     const { onAdd } = this.props;
-    const tag = this.parseValue(value);
-    if (!this.isControled) this.setState(state => ({ tags: [...state.tags, tag] }));
-    onAdd && onAdd([...this.props.tags, tag], tag);
+    if (!this.isControled) {
+      this.setState(state => ({ tags: [...state.tags, value] }));
+    }
+
+    if (onAdd) {
+      const tags = this.getValue();
+      const tag = this.parseValue(value);
+      onAdd([...tags, tag], tag);
+    }
   }
 
   handleDelete = (i) => {
-    if (this.props.readOnly) return;
+    if (this.props.disabled) return;
     const { onDelete } = this.props;
-    const tagsList = this.isControled ? this.props.tags : this.state.tags;
-    const tags = tagsList.filter((tag, index) => index !== i);
-    if (!this.isControled) this.setState({ tags });
-    onDelete && onDelete(tags, tagsList[i]);
+    let tags = [];
+    if (!this.isControled) {
+      tags = this.state.tags.filter((tag, index) => index !== i);
+      this.setState({ tags });
+    }
+    if (onDelete) {
+      const currentTags = this.getValue();
+      tags = currentTags.filter((tag, index) => index !== i);
+      onDelete(tags, currentTags[i]);
+    }
   }
 
   handleDrag = (value, currPos, newPos) => {
-    if (this.props.readOnly) return;
+    if (this.props.disabled) return;
     const { onDrag } = this.props;
-    const tags = this.isControled ? this.props.tags : this.state.tags;
-    const newTags = tags.slice();
-    const tag = this.parseValue(value);
-    newTags.splice(currPos, 1);
-    newTags.splice(newPos, 0, tag);
-    if (!this.isControled) this.setState({ tags: newTags });
-    onDrag && onDrag(newTags);
+
+    let tag = null;
+    let tags = [];
+    if (!this.isControled) {
+      tags = [...this.state.tags];
+      tag = value;
+    } else {
+      tags = [...this.props.value];
+      tag = this.parseValue(value);
+    }
+
+    tags.splice(currPos, 1);
+    tags.splice(newPos, 0, tag);
+
+    !this.isControled && this.setState({ tags });
+
+    onDrag && onDrag([...tags]);
   }
 
-  handleInputBlur = (event) => {
+  handleInputBlur = (value) => {
     const { onBlur } = this.props;
-    onBlur && onBlur(event, this.props.tags);
+    if (onBlur) {
+      const currentTags = this.getValue();
+      onBlur(value, currentTags);
+    }
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = (value) => {
     const { onChange } = this.props;
-    onChange && onChange(event, this.props.tags);
+    if (onChange) {
+      const currentTags = this.getValue();
+      onChange(value, currentTags);
+    }
   }
 
-  handleInputFocus = (event) => {
+  handleInputFocus = () => {
     const { onFocus } = this.props;
-    onFocus && onFocus(event, this.props.tags);
+    if (onFocus) {
+      const currentTags = this.getValue();
+      onFocus(currentTags);
+    }
   }
 
   render() {
     let tags = [];
     let suggestions = [];
     if (this.isControled) {
-      tags = this.handleAccessor(this.props.tags);
+      tags = this.handleAccessor(this.props.value);
       suggestions = this.handleAccessor(this.props.suggestions);
     } else {
       tags = this.state.tags;
@@ -286,10 +332,10 @@ class Tags extends Component {
       id,
       inline,
       invalid,
+      float,
       minQueryLength,
       name,
       placeholder,
-      readOnly,
       removeBtnClassName,
       size,
       selectedClassName,
@@ -304,11 +350,16 @@ class Tags extends Component {
     const classNames = {
       tag: cx("TagsWrapper__tag", {
         tagClassName: !!tagClassName,
-        'is-readonly': readOnly,
+        'is-disabled': disabled,
         [`is-size-${size}`]: !!size,
+        'is-float': !!float,
       }),
-      tags: cx("TagsWrapper__tags", { tagsClassName: !!tagsClassName, 'is-readonly': readOnly }),
-      tagInput: cx("TagsWrapper__input", { tagInputClassName: !!tagInputClassName }),
+      tags: cx("TagsWrapper__tags", {
+        tagsClassName: !!tagsClassName,
+      }),
+      tagInput: cx("TagsWrapper__input", {
+        tagInputClassName: !!tagInputClassName
+      }),
       tagInputField: cx("TagsWrapper__input_field",
         {
           tagInputFieldClassName: !!tagInputFieldClassName,
@@ -318,20 +369,26 @@ class Tags extends Component {
           [`is-size-${size}`]: !!size,
         }
       ),
-      selected: cx("TagsWrapper__selected", { selectedClassName: !!selectedClassName }),
-      remove: cx("TagsWrapper__remove_btn", { removeBtnClassName: !!removeBtnClassName }),
-      suggestions: cx("TagsWrapper__suggestions", { suggestionsClassName: !!suggestionsClassName }),
-      activeSuggestion: cx("TagsWrapper__suggestions_active", { activeSuggestionClassName: !!activeSuggestionClassName })
+      selected: cx("TagsWrapper__selected", {
+        selectedClassName: !!selectedClassName
+      }),
+      remove: cx("TagsWrapper__remove_btn", {
+        removeBtnClassName: !!removeBtnClassName
+      }),
+      suggestions: cx("TagsWrapper__suggestions", {
+        suggestionsClassName: !!suggestionsClassName
+      }),
+      activeSuggestion: cx("TagsWrapper__suggestions_active", {
+        activeSuggestionClassName: !!activeSuggestionClassName
+      })
     };
-
     return (
-      <ReactTags
+      <WithContext
         autofocus={autofocus}
         autocomplete={autocomplete}
         allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
         classNames={classNames}
         delimiters={delimiters}
-        disabled={disabled}
         id={id}
         inline={inline}
         handleAddition={this.handleAddition}
@@ -343,7 +400,7 @@ class Tags extends Component {
         minQueryLength={minQueryLength}
         name={name}
         placeholder={placeholder}
-        readOnly={readOnly}
+        readOnly={disabled}
         size={size}
         suggestions={suggestions}
         tags={tags}
@@ -353,3 +410,4 @@ class Tags extends Component {
 }
 
 export default Tags;
+// export default DragDropContext(HTML5Backend)(Tags);

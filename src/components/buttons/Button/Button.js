@@ -38,7 +38,7 @@ export default class Button extends PureComponent {
     */
     disabled: bool,
     /**
-    * If `true`, the base button will be disabled.
+    * If `true`, the base button will be rounded.
     */
     float: bool,
     /**

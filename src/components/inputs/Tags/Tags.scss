@@ -22,13 +22,11 @@ $TagsWrapper: 'TagsWrapper';
     &:nth-child(4n+1) {
       background-color: tint($color-success, 65%);
       border-color: tint($color-success, 65%);
-      // color: $color-deep-green;
     }
 
     &:nth-child(4n+2) {
       background-color: tint($color-primary, 80%);
       border-color: tint($color-primary, 80%);
-      // color: $color-denim;
     }
 
     &:nth-child(4n+3) {
@@ -41,13 +39,17 @@ $TagsWrapper: 'TagsWrapper';
       border-color: tint($color-warning, 70%);
     }
 
-    &--is-rounded {
+    &.is-float {
       border-radius: 100px;
     }
-  }
 
-  &__selected {
-    cursor: move;
+    &[draggable="true"] {
+      cursor: move;
+    }
+
+    &.is-disabled {
+      cursor: default;
+    }
   }
 
   &__remove_btn {
@@ -89,7 +91,6 @@ $TagsWrapper: 'TagsWrapper';
   }
 
   &__activeSuggestion {
-    // background-color: $color-pink;
     cursor: pointer;
   }
 
