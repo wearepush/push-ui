@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import Tags from './Tags';
 
@@ -42,6 +43,9 @@ const suggestions = [
 storiesOf('inputs/Tags', module)
   .add('default', () =>
     <Tags
+      onAdd={action('onAdd')}
+      onDelete={action('onDelete')}
+      onDrag={action('onDrag')}
       defaultValue={customData}
       accessor={{
         id: 'id',
@@ -59,16 +63,6 @@ storiesOf('inputs/Tags', module)
       }}
     />
   )
-  .add('read only', () =>
-    <Tags
-      readOnly
-      tags={customData}
-      accessor={{
-        id: 'id',
-        value: 'text'
-      }}
-    />
-  )
   .add('suggestions', () =>
     <Tags
       suggestions={suggestions}
@@ -78,10 +72,20 @@ storiesOf('inputs/Tags', module)
       }}
     />
   )
+  .add('float', () =>
+    <Tags
+      defaultValue={customData}
+      float
+      accessor={{
+        id: 'id',
+        value: 'text'
+      }}
+    />
+  )
   .add('controlled', () =>
     <Tags
+      defaultValue={customTags}
       value={customData}
-      tags={customTags}
       accessor={{
         id: 'id',
         value: 'text'

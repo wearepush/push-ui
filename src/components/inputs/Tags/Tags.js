@@ -57,6 +57,10 @@ class Tags extends Component {
     */
     invalid: bool,
     /**
+    * If `true`, the base button will be rounded.
+    */
+    float: bool,
+    /**
     * How many characters are needed for suggestions to appear
     */
     minQueryLength: number,
@@ -93,11 +97,6 @@ class Tags extends Component {
     */
     placeholder: string,
     /**
-    * Read-only mode without the input box and
-    * removeComponent and drag-n-drop features disabled
-    */
-    readOnly: bool,
-    /**
     * Remove's button className
     */
     removeBtnClassName: string,
@@ -121,10 +120,6 @@ class Tags extends Component {
     * Suggestion className
     */
     suggestionsClassName: string,
-    /**
-    * Array of visible tags
-    */
-    tags: array,
     /**
     * Tag className
     */
@@ -165,6 +160,7 @@ class Tags extends Component {
     id: undefined,
     inline: true,
     invalid: false,
+    float: false,
     minQueryLength: 2,
     name: '',
     onAdd: undefined,
@@ -174,13 +170,11 @@ class Tags extends Component {
     onDelete: undefined,
     onFocus: undefined,
     placeholder: '',
-    readOnly: false,
     removeBtnClassName: '',
     selectedClassName: '',
     size: 'medium',
     suggestions: [],
     suggestionsClassName: '',
-    tags: [],
     tagClassName: '',
     tagsClassName: '',
     tagInputClassName: '',
@@ -193,23 +187,22 @@ class Tags extends Component {
     super(props);
     this.isControled = props.value !== undefined;
     if (!this.isControled) {
-      // TODO: replace tags to defaultValue
       this.state = {
-        tags: this.handleAccessor(props.tags),
+        tags: this.handleAccessor(props.defaultValue),
         suggestions: this.handleAccessor(props.suggestions)
       };
     }
   }
 
-  handleAccessor = (arrayObj) => {
+  handleAccessor = (obj) => {
     const { accessor } = this.props;
     const { id, value } = accessor;
 
     let result = [];
-    if (arrayObj && arrayObj.length > 0) {
-      result = arrayObj.map((el, i) => ({
-        id: arrayObj[i][id],
-        text: arrayObj[i][value]
+    if (obj && obj.length > 0) {
+      result = obj.map((el, i) => ({
+        id: obj[i][id],
+        text: obj[i][value]
       }));
     }
     return result;
@@ -223,54 +216,67 @@ class Tags extends Component {
     };
   }
 
+  getValue = () => {
+    return this.isControled ? this.props.value : this.state.tags;
+  }
+
   handleAddition = (value) => {
     const { onAdd } = this.props;
     const tag = this.parseValue(value);
-    if (!this.isControled) this.setState(state => ({ tags: [...state.tags, tag] }));
-    onAdd && onAdd([...this.props.tags, tag], tag);
+    const currentTags = this.getValue();
+    const tags = [...currentTags, tag];
+    if (!this.isControled) {
+      this.setState({ tags });
+    }
+    onAdd && onAdd(tags, tag);
   }
 
   handleDelete = (i) => {
-    if (this.props.readOnly) return;
+    if (this.props.disabled) return;
     const { onDelete } = this.props;
-    const tagsList = this.isControled ? this.props.tags : this.state.tags;
-    const tags = tagsList.filter((tag, index) => index !== i);
+    const currentTags = this.getValue();
+    const tags = currentTags.filter((tag, index) => index !== i);
     if (!this.isControled) this.setState({ tags });
-    onDelete && onDelete(tags, tagsList[i]);
+    onDelete && onDelete(tags, currentTags[i]);
   }
 
   handleDrag = (value, currPos, newPos) => {
-    if (this.props.readOnly) return;
+    if (this.props.disabled) return;
     const { onDrag } = this.props;
-    const tags = this.isControled ? this.props.tags : this.state.tags;
-    const newTags = tags.slice();
+    const currentTags = this.getValue();
+    const newTags = currentTags.slice();
     const tag = this.parseValue(value);
     newTags.splice(currPos, 1);
     newTags.splice(newPos, 0, tag);
-    if (!this.isControled) this.setState({ tags: newTags });
+    if (!this.isControled) {
+      this.setState({ tags: newTags });
+    }
     onDrag && onDrag(newTags);
   }
 
   handleInputBlur = (event) => {
     const { onBlur } = this.props;
-    onBlur && onBlur(event, this.props.tags);
+    const currentTags = this.getValue();
+    onBlur && onBlur(event, currentTags);
   }
 
   handleInputChange = (event) => {
     const { onChange } = this.props;
-    onChange && onChange(event, this.props.tags);
+    const currentTags = this.getValue();
+    onChange && onChange(event, currentTags);
   }
 
   handleInputFocus = (event) => {
     const { onFocus } = this.props;
-    onFocus && onFocus(event, this.props.tags);
+    const currentTags = this.getValue();
+    onFocus && onFocus(event, currentTags);
   }
 
   render() {
     let tags = [];
     let suggestions = [];
     if (this.isControled) {
-      tags = this.handleAccessor(this.props.tags);
+      tags = this.handleAccessor(this.props.value);
       suggestions = this.handleAccessor(this.props.suggestions);
     } else {
       tags = this.state.tags;
@@ -286,10 +292,10 @@ class Tags extends Component {
       id,
       inline,
       invalid,
+      float,
       minQueryLength,
       name,
       placeholder,
-      readOnly,
       removeBtnClassName,
       size,
       selectedClassName,
@@ -304,11 +310,17 @@ class Tags extends Component {
     const classNames = {
       tag: cx("TagsWrapper__tag", {
         tagClassName: !!tagClassName,
-        'is-readonly': readOnly,
+        'is-disabled': disabled,
         [`is-size-${size}`]: !!size,
+        'is-float': !!float,
       }),
-      tags: cx("TagsWrapper__tags", { tagsClassName: !!tagsClassName, 'is-readonly': readOnly }),
-      tagInput: cx("TagsWrapper__input", { tagInputClassName: !!tagInputClassName }),
+      tags: cx("TagsWrapper__tags", {
+        tagsClassName: !!tagsClassName,
+        'is-disabled': disabled
+      }),
+      tagInput: cx("TagsWrapper__input", {
+        tagInputClassName: !!tagInputClassName
+      }),
       tagInputField: cx("TagsWrapper__input_field",
         {
           tagInputFieldClassName: !!tagInputFieldClassName,
@@ -318,10 +330,18 @@ class Tags extends Component {
           [`is-size-${size}`]: !!size,
         }
       ),
-      selected: cx("TagsWrapper__selected", { selectedClassName: !!selectedClassName }),
-      remove: cx("TagsWrapper__remove_btn", { removeBtnClassName: !!removeBtnClassName }),
-      suggestions: cx("TagsWrapper__suggestions", { suggestionsClassName: !!suggestionsClassName }),
-      activeSuggestion: cx("TagsWrapper__suggestions_active", { activeSuggestionClassName: !!activeSuggestionClassName })
+      selected: cx("TagsWrapper__selected", {
+        selectedClassName: !!selectedClassName
+      }),
+      remove: cx("TagsWrapper__remove_btn", {
+        removeBtnClassName: !!removeBtnClassName
+      }),
+      suggestions: cx("TagsWrapper__suggestions", {
+        suggestionsClassName: !!suggestionsClassName
+      }),
+      activeSuggestion: cx("TagsWrapper__suggestions_active", {
+        activeSuggestionClassName: !!activeSuggestionClassName
+      })
     };
 
     return (
@@ -331,7 +351,6 @@ class Tags extends Component {
         allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
         classNames={classNames}
         delimiters={delimiters}
-        disabled={disabled}
         id={id}
         inline={inline}
         handleAddition={this.handleAddition}
@@ -343,7 +362,7 @@ class Tags extends Component {
         minQueryLength={minQueryLength}
         name={name}
         placeholder={placeholder}
-        readOnly={readOnly}
+        readOnly={disabled}
         size={size}
         suggestions={suggestions}
         tags={tags}
