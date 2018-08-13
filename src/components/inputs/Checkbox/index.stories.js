@@ -22,7 +22,7 @@ storiesOf('inputs/Checkbox', module)
       onBlur={action('blur')}
       name="checkbox-1"
       placeholder="Checkbox placeholder"
-      custom
+      viewType="custom"
     />
   ))
   .add('disabled', () => (
@@ -30,7 +30,17 @@ storiesOf('inputs/Checkbox', module)
       name="checkbox-1"
       placeholder="Checkbox placeholder"
       disabled
-      custom
+      viewType="custom"
+    />
+  ))
+  .add('toggle', () => (
+    <Checkbox
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
+      name="checkbox-1"
+      placeholder="Checkbox placeholder"
+      viewType="toggle"
     />
   ))
   .add('controlled', () => (
@@ -38,13 +48,13 @@ storiesOf('inputs/Checkbox', module)
       <Checkbox
         name="checkbox-0"
         placeholder="Checkbox placeholder"
-        custom
+        viewType="custom"
         checked={false}
       />
       <Checkbox
         name="checkbox-1"
         placeholder="Checkbox placeholder"
-        custom
+        viewType="custom"
         checked
       />
     </div>
