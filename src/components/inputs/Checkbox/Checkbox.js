@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { array, bool, func, number, object, oneOfType, node, string } from 'prop-types';
+import { array, bool, func, number, object, oneOf, oneOfType, node, string } from 'prop-types';
 import cx from 'classnames';
-import {} from './Checkbox.scss';
+import { } from './Checkbox.scss';
 
 export default class Checkbox extends PureComponent {
   isControlled = null;
@@ -11,10 +11,6 @@ export default class Checkbox extends PureComponent {
     * If `true`, the component is active.
     */
     active: bool,
-    /**
-    * If `true`, the component has custom render.
-    */
-    custom: bool,
     /**
     * If `true`, the component is checked.
     */
@@ -76,6 +72,14 @@ export default class Checkbox extends PureComponent {
     */
     placeholder: string.isRequired,
     /**
+     * View of style, default, custom or toggler
+     */
+    viewType: oneOf([
+      'default',
+      'toggle',
+      'custom'
+    ]),
+    /**
     * @ignore
     */
     tabIndex: oneOfType([number, string]),
@@ -97,7 +101,6 @@ export default class Checkbox extends PureComponent {
 
   static defaultProps = {
     active: false,
-    custom: false,
     checked: null,
     checkedIcon: null,
     className: '',
@@ -113,6 +116,7 @@ export default class Checkbox extends PureComponent {
     tabIndex: null,
     unCheckedIcon: null,
     value: undefined,
+    viewType: 'default',
   };
 
   constructor(props, context) {
@@ -135,7 +139,8 @@ export default class Checkbox extends PureComponent {
     this.isEventChecked = this.isEventChecked.bind(this);
     this.renderPlaceholder = this.renderPlaceholder.bind(this);
     this.renderDefault = this.renderDefault.bind(this);
-    this.renderCustom = this.renderCustom.bind(this);
+    this.renderComponent = this.renderComponent.bind(this);
+    this.renderToggle = this.renderToggle.bind(this);
   }
 
   state = {};
@@ -191,7 +196,7 @@ export default class Checkbox extends PureComponent {
   }
 
   isEventChecked(event) {
-    if (!this.props.custom) {
+    if (this.props.viewType !== 'custom') {
       return event.currentTarget.checked;
     } else if (event.currentTarget.getAttribute('aria-checked') === 'false') {
       return true;
@@ -320,17 +325,67 @@ export default class Checkbox extends PureComponent {
     );
   }
 
-  render() {
+  renderToggle() {
     const {
-      custom,
-      className: classNameProp,
       disabled,
-      invalid,
+      inputProps,
+      inputRef,
+      name,
+      tabIndex,
+      value,
     } = this.props;
 
     const checked = this.isChecked();
     const active = this.isActive();
 
+    return (
+      <label
+        htmlFor={this.id}
+        className="Checkbox__label"
+      >
+        <div className="Checkbox__toggle">
+          <div className="Checkbox__toggle-icon" />
+        </div>
+        <input
+          {...inputProps}
+          checked={checked}
+          className="Checkbox__input"
+          disabled={disabled}
+          id={this.id}
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          ref={inputRef}
+          name={name}
+          tabIndex={active ? -1 : tabIndex || 0}
+          type="checkbox"
+          value={value}
+        />
+        {this.renderPlaceholder()}
+      </label>
+    );
+  }
+
+  renderComponent() {
+    const { viewType } = this.props;
+    switch (viewType) {
+      case 'default': return this.renderDefault();
+      case 'custom': return this.renderCustom();
+      case 'toggle': return this.renderToggle();
+      default: return this.renderDefault();
+    }
+  }
+
+  render() {
+    const {
+      className: classNameProp,
+      disabled,
+      invalid,
+      viewType
+    } = this.props;
+
+    const checked = this.isChecked();
+    const active = this.isActive();
     const className = cx('Checkbox', {
       [classNameProp]: !!classNameProp,
       'is-active': active,
@@ -338,14 +393,13 @@ export default class Checkbox extends PureComponent {
       'is-disabled': disabled,
       'is-invalid': invalid,
       'is-unchecked': !checked,
+      [`is-view-${viewType}`]: !!viewType
     });
 
     return (
       <div className={className}>
-        {!custom ?
-          this.renderDefault()
-          :
-          this.renderCustom()
+        {
+          this.renderComponent()
         }
       </div>
     );

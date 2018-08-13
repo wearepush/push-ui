@@ -16,7 +16,9 @@ describe('Checkbox', () => {
       const instance = checkbox.instance();
       const state = instance.state;
       expect(state.active).toBe(true);
+      const customCheckbox = checkbox.find('.Checkbox');
       expect(checkbox.hasClass('is-active')).toBe(true);
+      expect(customCheckbox.hasClass('is-view-default')).toBe(true);
     });
 
     it('should render with invalid prop', () => {
@@ -67,11 +69,14 @@ describe('Checkbox', () => {
       const checkbox = shallow(
         <Checkbox
           checked
+          viewType="default"
           name="name"
           placeholder="placeholder"
         />
       );
+      const defaultCheckbox = checkbox.find('.Checkbox');
       expect(checkbox.hasClass('is-checked')).toBe(true);
+      expect(defaultCheckbox.hasClass('is-view-default')).toBe(true);
     });
 
     it('should render with unchecked prop', () => {
@@ -127,6 +132,18 @@ describe('Checkbox', () => {
         />
       );
       expect(checkbox.instance().props.inputRef).toBe(undefined);
+    });
+    it('should render with broken prop', () => {
+      
+      jest.spyOn(global.console, 'error')
+      const checkbox = shallow(
+        <Checkbox
+          viewType='trash'
+          name="name"
+          placeholder="placeholder"
+        />
+      );
+      expect(console.error).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -367,27 +384,50 @@ describe('Checkbox', () => {
     });
   });
 
+  describe('toggle checkbox', () => {
+    describe('init state and props', () => {
+      it('should render with initial state', () => {
+        const checkbox = shallow(
+          <Checkbox
+            viewType="toggle"
+            name="name"
+            placeholder="placeholder"
+          />
+        );
+        const toggleBox = checkbox.find('.Checkbox');
+        const inputElement = checkbox.find('.Checkbox__input');
+        expect(inputElement.prop('name')).toBe('name');
+        expect(inputElement.prop('id')).toBe('name');
+        expect(inputElement.prop('value')).toBe(undefined);
+        expect(inputElement.prop('type')).toBe('checkbox');
+        expect(toggleBox.hasClass('is-view-toggle')).toBe(true);
+      });
+    });
+  });
+
   describe('custom checkbox', () => {
     describe('init state and props', () => {
       it('should render with initial state', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
           />
         );
+        const customCheckbox = checkbox.find('.Checkbox');
         const inputElement = checkbox.find('.Checkbox__input');
         expect(inputElement.prop('name')).toBe('name');
         expect(inputElement.prop('id')).toBe('name');
         expect(inputElement.prop('value')).toBe(undefined);
         expect(inputElement.prop('role')).toBe('checkbox');
+        expect(customCheckbox.hasClass('is-view-custom')).toBe(true);
       });
 
       it('should render with disabled prop', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             disabled
             name="name"
             placeholder="placeholder"
@@ -400,7 +440,7 @@ describe('Checkbox', () => {
       it('should render with tabIndex prop', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             tabIndex="-10"
@@ -413,7 +453,7 @@ describe('Checkbox', () => {
       it('should render with value type array', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             value={[1, 2, 3]}
@@ -426,7 +466,7 @@ describe('Checkbox', () => {
       it('should render with value type bool', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             value
@@ -439,7 +479,7 @@ describe('Checkbox', () => {
       it('should render with value type object', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             value={{ test: true }}
@@ -452,7 +492,7 @@ describe('Checkbox', () => {
       it('should render with value type number', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             value={1}
@@ -465,7 +505,7 @@ describe('Checkbox', () => {
       it('should render with value type string', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
             value="test"
@@ -478,7 +518,7 @@ describe('Checkbox', () => {
       it('should render with custom icon', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             checkedIcon={<div className="test-checkedIcon">checkedIcon</div>}
             name="name"
             placeholder="placeholder"
@@ -501,7 +541,7 @@ describe('Checkbox', () => {
       it('should render with initial state', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
           />
@@ -517,7 +557,7 @@ describe('Checkbox', () => {
       it('should render with checked initial state', () => {
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             defaultChecked
             name="name"
             placeholder="placeholder"
@@ -537,7 +577,7 @@ describe('Checkbox', () => {
         const onFocusSpy = jest.fn();
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
             onFocus={onFocusSpy}
@@ -569,7 +609,7 @@ describe('Checkbox', () => {
         const onFocusSpy = jest.fn();
         const checkbox = shallow(
           <Checkbox
-            custom
+            viewType="custom"
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
             onFocus={onFocusSpy}
@@ -614,7 +654,7 @@ describe('Checkbox', () => {
         const checkbox = shallow(
           <Checkbox
             checked
-            custom
+            viewType="custom"
             name="name"
             placeholder="placeholder"
           />
@@ -634,7 +674,7 @@ describe('Checkbox', () => {
         const checkbox = shallow(
           <Checkbox
             checked
-            custom
+            viewType="custom"
             onBlur={onBlurSpy}
             onChange={onChangeSpy}
             onFocus={onFocusSpy}

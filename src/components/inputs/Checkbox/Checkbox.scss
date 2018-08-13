@@ -132,4 +132,49 @@ $Checkbox: 'Checkbox';
     line-height: 18px;
     padding: 2px 0 2px 36px;
   }
+
+  // Toogle
+
+  &.is-view-toggle {
+    .#{$Checkbox} {
+      &__input {
+        visibility: hidden;
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        margin: 0;
+        }
+      &__placeholder {
+        display: inline-block;
+      }
+    }
+    &.is-checked {
+      .#{$Checkbox}__toggle-icon {
+        background: blue;
+        left: calc(100% - 23px);
+      }
+    }
+  }
+
+  &__toggle {
+    width: 60px;
+    height: 25px;
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    background-color:#ccc;
+  }
+  &__toggle-icon {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    top: 0;
+    left: 2px;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    transition: .3s ease all;
+    background-color: #fff;
+  }
 }
