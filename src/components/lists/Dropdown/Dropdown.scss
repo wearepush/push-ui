@@ -12,6 +12,10 @@ $Dropdown: 'Dropdown';
     outline-offset: 0;
   }
 
+  &__button {
+    margin: 0 5px;
+  }
+
   &__default_button {
     background-color: $white;
     border: 1px solid $color-default;

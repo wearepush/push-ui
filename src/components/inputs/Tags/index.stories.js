@@ -14,7 +14,29 @@ const customData = [
 
 const customTags = [
   { id: 'Sri Lanka', text: 'Sri Lanka' },
-  { id: 'Thailand', text: 'Thailand' }
+  { id: 'Thailand', text: 'Thailand' },
+  { id: 'USA', text: 'USA' },
+  { id: 'Vietnam', text: 'Vietnam' },
+  { id: 'Munich', text: 'Munich' },
+  { id: 'Amsterdam', text: 'Amsterdam' },
+  { id: 'Viena', text: 'Viena' },
+  { id: 'Milan', text: 'Milan' },
+  { id: 'Palermo', text: 'Palermo' },
+  { id: 'Etna', text: 'Etna' },
+];
+
+const suggestions = [
+  { id: 'Sri Lanka', text: 'Sri Lanka' },
+  { id: 'Thailand', text: 'Thailand' },
+  { id: 'USA', text: 'USA' },
+  { id: 'Vietnam', text: 'Vietnam' },
+  { id: 'Munich', text: 'Munich' },
+  { id: 'Amsterdam', text: 'Amsterdam' },
+  { id: 'Viena', text: 'Viena' },
+  { id: 'Milan', text: 'Milan' },
+  { id: 'Migan', text: 'Migan' },
+  { id: 'Palermo', text: 'Palermo' },
+  { id: 'Etna', text: 'Etna' },
 ];
 
 storiesOf('inputs/Tags', module)
@@ -41,6 +63,15 @@ storiesOf('inputs/Tags', module)
     <Tags
       readOnly
       tags={customData}
+      accessor={{
+        id: 'id',
+        value: 'text'
+      }}
+    />
+  )
+  .add('suggestions', () =>
+    <Tags
+      suggestions={suggestions}
       accessor={{
         id: 'id',
         value: 'text'

@@ -1,70 +1,124 @@
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
 
-// $TagsWrapper: 'TagsWrapper';
-// .#{$TagsWrapper} {
+$TagsWrapper: 'TagsWrapper';
+.#{$TagsWrapper} {
+  &__tags {
+    position: relative;
+  }
 
-.TagsWrapper__tags {
-  position: relative;
-}
+  &__tag {
+    color: $color-denim;
+    border: 1px solid;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0;
+    font-family: $base-font-family;
+    padding: 5px 8px;
+    margin: 0 5px 5px;
 
-/* Styles for the input */
-.TagsWrapper__input {
-  width: 200px;
-  border-radius: 2px;
-  display: inline-block;
-}
+    &:nth-child(4n+1) {
+      background-color: tint($color-success, 65%);
+      border-color: tint($color-success, 65%);
+      // color: $color-deep-green;
+    }
 
-.TagsWrapper__input_field {
-  height: 31px;
-  margin: 0;
-  font-size: 12px;
-  width: 100%;
-  border: 1px solid #eee;
+    &:nth-child(4n+2) {
+      background-color: tint($color-primary, 80%);
+      border-color: tint($color-primary, 80%);
+      // color: $color-denim;
+    }
 
-  &.is-invalid {
-    border-color: red;
+    &:nth-child(4n+3) {
+      background-color: tint($color-alert, 70%);
+      border-color: tint($color-alert, 70%);
+    }
+
+    &:nth-child(4n+4) {
+      background-color: tint($color-warning, 70%);
+      border-color: tint($color-warning, 70%);
+    }
+
+    &--is-rounded {
+      border-radius: 100px;
+    }
+  }
+
+  &__selected {
+    cursor: move;
+  }
+
+  &__remove_btn {
+    padding: 4px 0 4px 14px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  &__input {
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__input_field {
+    background-color: $_form-background-color;
+    border: $base-border;
+    border-radius: $base-border-radius;
+    transition: border-color $base-duration $base-timing, box-shadow $base-duration $base-timing;
+    font-size: 11px;
+    padding: 5px 8px;
+    text-transform: capitalize;
+    width: 182px;
+
+    &:hover {
+      border-color: shade($base-border-color, 20%);
+    }
+
+    &:focus {
+      border-color: $action-color;
+      box-shadow: $_form-box-shadow;
+      outline: none;
+    }
+
+
+    &.is-invalid {
+      border-color: $color-warning;
+    }
+  }
+
+  &__activeSuggestion {
+    // background-color: $color-pink;
+    cursor: pointer;
+  }
+
+  &__suggestions {
+    background-color: $white;
+    box-shadow: 0 0 1px 0 rgba(10,31,68,0.08), 0 3px 4px 0 rgba(10,31,68,0.10);
+    border-radius: $base-border-radius;
+    margin-top: 5px;
+    position: absolute;
+    width: 200px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      padding: 5px 8px;
+
+      li {
+        font-size: 11px;
+        line-height: 13px;
+        font-family: $base-font-family;
+        padding: 5px 0;
+      }
+    }
+
+    &_active {
+      background-color: tint($color-default, 70%);
+      color: $color-primary;
+    }
   }
 }
 
-/* Styles for selected tags */
-.TagsWrapper__selected span.TagsWrapper__tag {
-  border: 1px solid #ddd;
-  background: #eee;
-  font-size: 12px;
-  display: inline-block;
-  padding: 5px;
-  margin: 0 5px;
-  cursor: move;
-  border-radius: 2px;
-}
-.TagsWrapper__selected a.TagsWrapper__remove {
-  color: #aaa;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-/* Styles for suggestions */
-.TagsWrapper__suggestions {
-  position: absolute;
-}
-.TagsWrapper__suggestions ul {
-  list-style-type: none;
-  box-shadow: .05em .01em .5em rgba(0,0,0,.2);
-  background: white;
-  width: 200px;
-}
-.TagsWrapper__suggestions li {
-  border-bottom: 1px solid #ddd;
-  padding: 5px 10px;
-  margin: 0;
-}
-.TagsWrapper__suggestions li mark {
-  text-decoration: underline;
-  background: none;
-  font-weight: 600;
-}
-.TagsWrapper__suggestions ul li.TagsWrapper__activeSuggestion {
-  background: #b7cfe0;
-  cursor: pointer;
-}
