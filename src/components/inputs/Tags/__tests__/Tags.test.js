@@ -1,6 +1,8 @@
 import React from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import { shallow, mount } from 'enzyme';
-import { Tags } from '../../index.js';
+import { Tags, TagsWithOutContext } from '../../index';
 
 const testingData = [
   { id: 'USA', value: 'USA' },
@@ -390,6 +392,22 @@ describe('Tags', () => {
       expect(onDeleteSpy).toHaveBeenCalledTimes(1);
       expect(onDeleteSpy).toHaveBeenCalledWith([{ id: 'USA', text: 'USA' }], { id: 'Germany', text: 'Germany' });
 
+      tags.unmount();
+    });
+  });
+
+  describe('with out contex', () => {
+    it('should render TagsWithOutContext', () => {
+      let defaultManager;
+      const getDefaultManager = () => {
+        if (!defaultManager) {
+          defaultManager = DragDropContext(HTML5Backend);
+        }
+        return defaultManager;
+      };
+      const WithOutContext = getDefaultManager()(TagsWithOutContext);
+      const tags = mount(<WithOutContext />);
+      expect(tags.length).toEqual(1);
       tags.unmount();
     });
   });

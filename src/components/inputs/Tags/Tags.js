@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { WithContext } from 'react-tag-input';
-// import { DragDropContext } from 'react-dnd';
-// import HTML5Backend from 'react-dnd-html5-backend';
+import { WithContext, WithOutContext } from 'react-tag-input';
 import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
@@ -312,30 +310,12 @@ class Tags extends Component {
     }
   }
 
-  render() {
-    let tags = [];
-    let suggestions = [];
-    if (this.isControled) {
-      tags = this.handleAccessor(this.props.value);
-      suggestions = this.handleAccessor(this.props.suggestions);
-    } else {
-      tags = this.state.tags;
-      suggestions = this.state.suggestions;
-    }
-
+  getClassNames = () => {
     const {
-      autofocus,
-      autocomplete,
-      allowDeleteFromEmptyInput,
       activeSuggestionClassName,
       disabled,
-      id,
-      inline,
       invalid,
       float,
-      minQueryLength,
-      name,
-      placeholder,
       removeBtnClassName,
       size,
       selectedClassName,
@@ -382,12 +362,45 @@ class Tags extends Component {
         activeSuggestionClassName: !!activeSuggestionClassName
       })
     };
+    return classNames;
+  }
+
+  getComponentData = () => {
+    let tags = [];
+    let suggestions = [];
+    if (this.isControled) {
+      tags = this.handleAccessor(this.props.value);
+      suggestions = this.handleAccessor(this.props.suggestions);
+    } else {
+      tags = this.state.tags;
+      suggestions = this.state.suggestions;
+    }
+    return {
+      tags,
+      suggestions
+    }
+  }
+
+  render() {
+    const {
+      autofocus,
+      autocomplete,
+      allowDeleteFromEmptyInput,
+      disabled,
+      size,
+      id,
+      inline,
+      minQueryLength,
+      name,
+      placeholder,
+    } = this.props;
+    const { tags, suggestions } = this.getComponentData();
     return (
       <WithContext
         autofocus={autofocus}
         autocomplete={autocomplete}
         allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
-        classNames={classNames}
+        classNames={this.getClassNames()}
         delimiters={delimiters}
         id={id}
         inline={inline}
@@ -410,4 +423,46 @@ class Tags extends Component {
 }
 
 export default Tags;
-// export default DragDropContext(HTML5Backend)(Tags);
+
+
+export class TagsWithOutContext extends Tags {
+  render() {
+    const {
+      autofocus,
+      autocomplete,
+      allowDeleteFromEmptyInput,
+      disabled,
+      size,
+      id,
+      inline,
+      minQueryLength,
+      name,
+      placeholder,
+    } = this.props;
+    const { tags, suggestions } = this.getComponentData();
+    return (
+      <WithOutContext
+        autofocus={autofocus}
+        autocomplete={autocomplete}
+        allowDeleteFromEmptyInput={allowDeleteFromEmptyInput}
+        classNames={this.getClassNames()}
+        delimiters={delimiters}
+        id={id}
+        inline={inline}
+        handleAddition={this.handleAddition}
+        handleDrag={this.handleDrag}
+        handleDelete={this.handleDelete}
+        handleInputBlur={this.handleInputBlur}
+        handleInputChange={this.handleInputChange}
+        handleInputFocus={this.handleInputFocus}
+        minQueryLength={minQueryLength}
+        name={name}
+        placeholder={placeholder}
+        readOnly={disabled}
+        size={size}
+        suggestions={suggestions}
+        tags={tags}
+      />
+    );
+  }
+}
