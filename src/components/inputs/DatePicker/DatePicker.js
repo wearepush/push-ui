@@ -1,36 +1,28 @@
-
 import React, { Component } from 'react';
 import Flatpickr from 'react-flatpickr';
 import cx from 'classnames';
-import { array, bool, string, func, oneOfType, object } from 'prop-types';
+import { bool, string, func, oneOf, oneOfType, object } from 'prop-types';
 import { } from './DatePicker.scss';
 
 class DatePicker extends Component {
+  isControlled = null;
+
   static propTypes = {
     /**
-     * date format
+    * If `true`, the component is active.
+    */
+    active: bool,
+    /**
+     * Value of date
      */
-    dateFormat: string,
+    defaultValue: oneOfType([
+      object,
+      string,
+    ]),
     /**
     * if 'True' disable input
     */
     disabled: bool,
-    /**
-    * Array of disable dates or array of objects with disable ranges, also can be function
-    * Examples: 
-    * ['2025-01-30', '2025-02-21', '2025-03-08', new Date(2025, 4, 9) ];
-    * [{ from: '2025-04-01', to: '2025-05-01' }, { from: '2025-09-01', to: '2025-12-01'}];
-    * (date) => (date.getDay() === 5 || date.getDay() === 6);
-    */
-    disableDates: oneOfType([array, func]),
-    /**
-    * Array of enable dates or array of objects with enable ranges, also can be function
-    * Examples: 
-    * ['2025-01-30', '2025-02-21', '2025-03-08', new Date(2025, 4, 9) ];
-    * [{ from: '2025-04-01', to: '2025-05-01' }, { from: '2025-09-01', to: '2025-12-01'}];
-    * (date) => (date.getDay() === 5 || date.getDay() === 6);
-     */
-    enableDates: oneOfType([array, func]),
     /**
     * If `true`, the component is invalid.
     */
@@ -46,122 +38,133 @@ class DatePicker extends Component {
     /**
      * Callback fired when the datepicker open
      */
-    onOpen: func,
+    onFocus: func,
     /**
-     * Callback fired when the datepicker close
+     * Flatpickr options https://flatpickr.js.org/options/
      */
-    onClose: func,
-    /**
-     * Lock and unlock hours/minutes setup
-     */
-    timeEnable: bool,
+    options: object,
     /**
      * Possible to select multiple dates 'multiple' or 'range'
      */
-    mode: string,
-    /**
-     * Min date
-     * can be string like 'today'
-     */
-    minDate: oneOfType([object, string]),
-    /**
-    * Max date
-    * can be string like 'today'
-    */
-    maxDate: oneOfType([object, string]),
+    mode: oneOf([
+      'single',
+      'multiple',
+      'range',
+    ]),
     /**
      * Value of date
      */
-    value: oneOfType([object, string]),
+    value: oneOfType([
+      object,
+      string,
+    ]),
     /**
-     * If `true`, the component is invalid.
+     * If `true`, the component is valid.
      */
     valid: bool,
-
-  }
+  };
 
   static defaultProps = {
-    dateFormat: 'y-m-d',
+    active: false,
+    defaultValue: undefined,
     disabled: false,
-    disable: [],
     invalid: false,
-    enableDates: [],
     onBlur: undefined,
     onChange: undefined,
-    onClose: undefined,
-    onOpen: undefined,
-    timeEnable: false,
-    mode: '',
+    onFocus: undefined,
+    options: {
+      altFormat: 'F j, Y',
+      dateFormat: 'y-m-d',
+    },
+    mode: undefined,
     value: undefined,
     valid: false,
-  }
+  };
 
   constructor(props) {
     super(props);
     this.isControled = props.value !== undefined;
     if (!this.isControled) {
-      this.state = {
-        value: props.value !== undefined ? props.value : new Date()
-      }
+      // not controlled, use internal state
+      this.state.value = props.defaultValue !== undefined ? props.defaultValue : undefined;
+      this.state.active = props.active;
     }
+    this.onBlur = this.onBlur.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.isActive = this.isActive.bind(this);
+    this.getValue = this.getValue.bind(this);
   }
 
-  onChangeHandler = (selectedDates, dateStr, instance) => {
+  state = {};
+
+  onChange(value, dateStr) {
     const { onChange } = this.props;
-    if (!this.isControled) this.setState({ selectedDates });
-    onChange && onChange(selectedDates.toString(), dateStr, instance);
+    if (!this.isControled) {
+      this.setState({ value });
+    }
+    onChange && onChange(value, dateStr);
   }
 
-  onOpenHandler = (selectedDates, dateStr, instance) => {
-    const { onOpen } = this.props;
-    if (!this.isControled) this.setState({ selectedDates });
-    onOpen && onOpen(selectedDates.toString(), dateStr, instance);
+  onFocus(value, dateStr) {
+    const { onFocus } = this.props;
+    if (!this.isControled) {
+      this.setState({ active: true });
+    }
+    onFocus && onFocus(value, dateStr);
   }
 
-  onCloseHandler = (selectedDates, dateStr, instance) => {
-    const { onClose } = this.props;
-    if (!this.isControled) this.setState({ selectedDates });
-    onClose && setTimeout(() => {
-      onClose(selectedDates.toString(), dateStr, instance);
+  onBlur(value, dateStr) {
+    const { onBlur } = this.props;
+    if (!this.isControled) {
+      this.setState({ active: false });
+    }
+    onBlur && setTimeout(() => {
+      onBlur(value, dateStr);
     }, 0);
+  }
+
+  isActive() {
+    return this.isControlled ? this.props.active : this.state.active;
+  }
+
+  getValue() {
+    return this.isControlled ? this.props.value : this.state.value;
   }
 
   render() {
     const {
-      dateFormat,
       disabled,
-      disableDates,
-      enableDates,
       invalid,
-      timeEnable,
-      maxDate,
-      minDate,
       mode,
-      value,
+      options: propsOptions,
       valid
     } = this.props;
-
+    const active = this.isActive();
+    const value = this.getValue();
+    const options = {
+      allowInput: disabled,
+      ...propsOptions
+    };
+    if (mode) {
+      options.mode = mode;
+    }
     return (
       <Flatpickr
         className={
-          cx("DatePicker", {
+          cx('DatePicker', {
+            'is-active': active,
             'is-valid': valid,
             'is-invalid': invalid,
+            'is-disabled': disabled,
           })
         }
-        disable={disableDates}
         disabled={disabled}
-        data-enable-time={timeEnable}
-        dateformat={dateFormat}
-        enable-dates={enableDates}
-        onChange={this.onChangeHandler}
-        onBlur={this.onBlurHandler}
-        onOpen={this.onOpenHandler}
-        onClose={this.onCloseHandler}
-        max-date={maxDate}
-        min-date={minDate}
-        mode={mode}
-        value={value ? new Date(value) : new Date()}
+        onChange={this.onChange}
+        onClose={this.onBlur}
+        onOpen={this.onFocus}
+        options={options}
+        value={value}
       />
     )
   }

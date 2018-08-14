@@ -148,6 +148,7 @@ export default class TextField extends PureComponent {
     this.onKeyPress = this.onKeyPress.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
+    this.isActive = this.isActive.bind(this);
     this.isEmpty = this.isEmpty.bind(this);
     this.renderDefault = this.renderDefault.bind(this);
   }
