@@ -6,12 +6,11 @@ import Root from './../__mocks__/Root';
 import Form from './../__mocks__/Form';
 import configureStore from './../__mocks__/store';
 import { FormDatePicker, FormButton } from '../../index';
+import validateDatepicker from './__mocks__/validateDatepicker';
 
 const mapPropsToForm = {
-  initialValues: {
-    datepicker: '',
-  },
   form: 'testForm',
+  validate: validateDatepicker,
 };
 const initialState = {};
 const store = configureStore(initialState);
@@ -24,8 +23,8 @@ storiesOf('forms/FormDatePicker', module)
     >
       <MountForm>
         <FormDatePicker
-          label="date picker"
-          name="datepicker"
+          label="Select date"
+          name="date"
         />
         <FormButton
           float

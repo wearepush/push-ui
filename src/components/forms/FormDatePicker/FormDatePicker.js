@@ -8,20 +8,21 @@ const _FormDatePicker = ({
   input,
   label,
   meta,
-    ...rest
+  ...rest
 }) => {
   const _id = id || input.name;
   return (
     <FormField
+      meta={meta}
       label={label}
       name={_id}
     >
       <DatePicker
         {...rest}
         invalid={meta.touched && meta.invalid}
-        onChange={(value) => input.onChange(value)}
-        onClose={(value) => input.onBlur(value)}
-        onOpen={(value) => input.onFocus(value)}
+        onBlur={(value, dateStr) => input.onBlur(dateStr)}
+        onChange={(value, dateStr) => input.onChange(dateStr)}
+        onFocus={(value, dateStr) => input.onFocus(dateStr)}
         name={input.name}
         valid={!!input.value && !meta.error && !meta.warning && meta.valid}
         value={input.value}
@@ -41,7 +42,6 @@ _FormDatePicker.defaultProps = {
   id: '',
   label: '',
 };
-
 
 const FormDatePicker = props => <Field {...props} component={_FormDatePicker} type="input" />;
 export default FormDatePicker;
