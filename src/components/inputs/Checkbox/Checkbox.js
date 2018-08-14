@@ -70,7 +70,10 @@ export default class Checkbox extends PureComponent {
     /**
     * The label of the component.
     */
-    placeholder: string.isRequired,
+    placeholder: oneOfType([
+      string,
+      node,
+    ]).isRequired,
     /**
      * View of style, default, custom or toggler
      */
@@ -116,7 +119,7 @@ export default class Checkbox extends PureComponent {
     tabIndex: null,
     unCheckedIcon: null,
     value: undefined,
-    viewType: 'default',
+    viewType: 'custom',
   };
 
   constructor(props, context) {

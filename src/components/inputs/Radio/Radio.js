@@ -206,7 +206,7 @@ export default class Radio extends PureComponent {
 
   renderPlaceholder() {
     return (
-      <span className="Radio__placeholder">
+      <span className='Radio__placeholder'>
         {this.props.placeholder}
       </span>
     );
@@ -227,13 +227,13 @@ export default class Radio extends PureComponent {
 
     return (
       <label
-        className="Radio__label"
+        className='Radio__label'
         htmlFor={this.id}
       >
         <input
           {...inputProps}
           checked={checked}
-          className="Radio__input"
+          className='Radio__input'
           disabled={disabled}
           id={this.id}
           onBlur={this.onBlur}
@@ -272,7 +272,7 @@ export default class Radio extends PureComponent {
         <div
           {...inputProps}
           aria-checked={checked}
-          className="Radio__input"
+          className='Radio__input'
           disabled={disabled}
           id={this.id}
           role="radio"
@@ -289,7 +289,7 @@ export default class Radio extends PureComponent {
             (
               <div
                 className={
-                  cx("Radio__icon", {
+                  cx('Radio__icon', {
                     'is-custom-icon': true,
                     'is-checked': checked,
                     'is-unchecked': !checked,
@@ -308,7 +308,7 @@ export default class Radio extends PureComponent {
             (
               <div
                 className={
-                  cx("Radio__icon", {
+                  cx('Radio__icon', {
                     'is-default-icon': true,
                     'is-checked': checked,
                     'is-unchecked': !checked,
@@ -335,7 +335,7 @@ export default class Radio extends PureComponent {
     const checked = this.isChecked();
     const active = this.isActive();
 
-    const className = cx("Radio", {
+    const className = cx('Radio', {
       [classNameProp]: !!classNameProp,
       'is-active': active,
       'is-checked': checked,

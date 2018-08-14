@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import Radio from './Radio';
 
 storiesOf('inputs/Radio', module)
-  .add('with default icon', () =>
+  .add('with custom icon', () =>
     <Radio
       onFocus={action('focus')}
       onChange={action('change')}
@@ -16,16 +16,6 @@ storiesOf('inputs/Radio', module)
       value="0"
     />
   )
-  .add('with custom icon', () => (
-    <Radio
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
-      name="Radio-1"
-      placeholder="Radio placeholder"
-      value="0"
-    />
-  ))
   .add('disabled', () => (
     <Radio
       name="Radio-1"
@@ -49,4 +39,15 @@ storiesOf('inputs/Radio', module)
         value="1"
       />
     </div>
+  ))
+  .add('with default icon', () => (
+    <Radio
+      custom={false}
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
+      name="Radio-1"
+      placeholder="Radio placeholder"
+      value="0"
+    />
   ));
