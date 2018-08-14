@@ -10,6 +10,11 @@
 [![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://wearepush-redux-starter-ui.herokuapp.com)
 [![codecov](https://codecov.io/gh/wearepush/redux-starter-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/wearepush/redux-starter-ui)
 
+---
+
+## [Live Demo](https://wearepush-redux-starter-ui.herokuapp.com) :eyes:
+
+
 ## About
 
 The starter ui includes the following technologies:
