@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import Checkbox from './Checkbox';
 
 storiesOf('inputs/Checkbox', module)
-  .add('with default icon', () =>
+  .add('with custom icon', () =>
     <Checkbox
       onFocus={action('focus')}
       onChange={action('change')}
@@ -15,16 +15,6 @@ storiesOf('inputs/Checkbox', module)
       placeholder="Checkbox placeholder"
     />
   )
-  .add('with custom icon', () => (
-    <Checkbox
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
-      viewType="custom"
-    />
-  ))
   .add('disabled', () => (
     <Checkbox
       name="checkbox-1"
@@ -58,4 +48,14 @@ storiesOf('inputs/Checkbox', module)
         checked
       />
     </div>
+  ))
+  .add('with default icon', () => (
+    <Checkbox
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
+      name="checkbox-1"
+      placeholder="Checkbox placeholder"
+      viewType="default"
+    />
   ));

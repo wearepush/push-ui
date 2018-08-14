@@ -55,15 +55,12 @@ describe('Radio', () => {
 
       inputElement.simulate('focus', { currentTarget: { checked: true } });
       expect(onFocusSpy).not.toHaveBeenCalled();
-      expect(radio.instance().state).toEqual({ checked: false, active: false });
 
       inputElement.simulate('change', { currentTarget: { checked: true } });
       expect(onChangeSpy).not.toHaveBeenCalled();
-      expect(radio.instance().state).toEqual({ checked: false, active: false });
 
       inputElement.simulate('blur', { currentTarget: { checked: true } });
       expect(onBlurSpy).not.toHaveBeenCalled();
-      expect(radio.instance().state).toEqual({ checked: false, active: false });
     });
 
     it('should render with checked prop', () => {

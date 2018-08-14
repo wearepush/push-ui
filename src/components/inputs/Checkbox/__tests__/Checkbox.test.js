@@ -1,4 +1,3 @@
-/* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
 import Checkbox from '../Checkbox.js';
@@ -18,7 +17,7 @@ describe('Checkbox', () => {
       expect(state.active).toBe(true);
       const customCheckbox = checkbox.find('.Checkbox');
       expect(checkbox.hasClass('is-active')).toBe(true);
-      expect(customCheckbox.hasClass('is-view-default')).toBe(true);
+      expect(customCheckbox.hasClass('is-view-custom')).toBe(true);
     });
 
     it('should render with invalid prop', () => {
@@ -133,8 +132,26 @@ describe('Checkbox', () => {
       );
       expect(checkbox.instance().props.inputRef).toBe(undefined);
     });
+
+    it('shouldn\'t call onChange when disabled', () => {
+      const onChangeSpy = jest.fn();
+      const checkbox = shallow(
+        <Checkbox
+          disabled
+          name="name"
+          placeholder="placeholder"
+          onChange={onChangeSpy}
+          viewType="default"
+        />
+      );
+
+      const inputElement = checkbox.find('.Checkbox__input');
+
+      inputElement.simulate('change', { currentTarget: { checked: false } });
+      expect(onChangeSpy).not.toHaveBeenCalledTimes(1);
+    });
+
     it('should render with broken prop', () => {
-      
       jest.spyOn(global.console, 'error')
       const checkbox = shallow(
         <Checkbox
@@ -155,6 +172,7 @@ describe('Checkbox', () => {
           <Checkbox
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -170,6 +188,7 @@ describe('Checkbox', () => {
             disabled
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -182,6 +201,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             tabIndex="-10"
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -194,6 +214,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             value={[1, 2, 3]}
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -206,6 +227,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             value
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -218,6 +240,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             value={{ test: true }}
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -230,6 +253,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             value={1}
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -242,6 +266,7 @@ describe('Checkbox', () => {
             name="name"
             placeholder="placeholder"
             value="test"
+            viewType="default"
           />
         );
         const inputElement = checkbox.find('.Checkbox__input');
@@ -255,6 +280,7 @@ describe('Checkbox', () => {
           <Checkbox
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
         const instance = checkbox.instance();
@@ -271,6 +297,7 @@ describe('Checkbox', () => {
             defaultChecked
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
         const instance = checkbox.instance();
@@ -292,6 +319,7 @@ describe('Checkbox', () => {
             onFocus={onFocusSpy}
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
 
@@ -340,6 +368,7 @@ describe('Checkbox', () => {
             checked
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
         const instance = checkbox.instance();
@@ -362,6 +391,7 @@ describe('Checkbox', () => {
             onFocus={onFocusSpy}
             name="name"
             placeholder="placeholder"
+            viewType="default"
           />
         );
 

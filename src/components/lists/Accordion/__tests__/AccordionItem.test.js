@@ -1,5 +1,5 @@
 import React from 'react';
-import AccordionItem from '../AccordionItem/AccordionItem';
+import AccordionItem from '../AccordionItem';
 import { shallow, mount } from 'enzyme';
 
 describe('AccordionItem', () => {
@@ -51,11 +51,25 @@ describe('AccordionItem', () => {
         toggler.find('.Accordion__item').hasClass('Accordion__item--active')
       ).toEqual(true);
     });
+
+    it('should update state when receive new props', () => {
+      const toggler = mount(<AccordionItem />);
+      toggler.setProps({ open: true });
+
+      expect(toggler.instance().state.open).toEqual(true);
+    });
+
+    it('should update state when receive new props', () => {
+      const toggler = mount(<AccordionItem />);
+      toggler.setProps({ open: false });
+
+      expect(toggler.instance().state.open).toEqual(false);
+    });
   });
 
   describe('Renders a node title as expected', () => {
     const titleNode = shallow(
-      <h2 className="TitleClass">
+      <h2 className="TitleClass" key="test">
         <img src="some_image.png" alt="Something" />
         A heading
       </h2>

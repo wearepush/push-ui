@@ -32,6 +32,7 @@ const makeForm = ({
             onFocus={onFocusSpy}
             onChange={onChangeSpy}
             onBlur={onBlurSpy}
+            viewType="default"
           />
         </form>
       );
