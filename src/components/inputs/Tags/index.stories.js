@@ -1,8 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { TagsWithOutContext } from '../Tags/Tags';
 import Tags from './Tags';
+
+const WithOutContext = DragDropContext(HTML5Backend)(TagsWithOutContext);
 
 const customData = [
   { id: 'USA', value: 'USA' },
@@ -68,7 +72,11 @@ storiesOf('inputs/Tags', module)
   )
   .add('controlled', () =>
     <Tags
-      defaultValue={customTags}
       value={customData}
+    />
+  )
+  .add('with out contxt', () =>
+    <WithOutContext
+      defaultValue={customTags}
     />
   );

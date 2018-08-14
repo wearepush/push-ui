@@ -2,6 +2,7 @@ import {
   Checkbox,
   Radio,
   Tags,
+  TagsWithOutContext,
   TextArea,
   TextField,
 } from '../index';
@@ -17,6 +18,10 @@ describe('index', () => {
 
   it('should export Tags', () => {
     expect(typeof Tags).toBe('function');
+  });
+
+  it('should export TagsWithOutContext', () => {
+    expect(typeof TagsWithOutContext).toBe('function');
   });
 
   it('should export TextArea', () => {
