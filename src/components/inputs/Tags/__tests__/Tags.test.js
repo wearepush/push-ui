@@ -1,6 +1,4 @@
 import React from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { shallow, mount } from 'enzyme';
 import { Tags, TagsWithOutContext } from '../../index';
 
@@ -398,15 +396,7 @@ describe('Tags', () => {
 
   describe('with out contex', () => {
     it('should render TagsWithOutContext', () => {
-      let defaultManager;
-      const getDefaultManager = () => {
-        if (!defaultManager) {
-          defaultManager = DragDropContext(HTML5Backend);
-        }
-        return defaultManager;
-      };
-      const WithOutContext = getDefaultManager()(TagsWithOutContext);
-      const tags = mount(<WithOutContext />);
+      const tags = mount(<TagsWithOutContext />);
       expect(tags.length).toEqual(1);
       tags.unmount();
     });

@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import { WithContext, WithOutContext } from 'react-tag-input';
 import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import { } from './Tags.scss';
+
+let defaultManager;
+const getDefaultManager = () => {
+  if (!defaultManager) {
+    defaultManager = DragDropContext(HTML5Backend);
+  }
+  return defaultManager;
+};
 
 const KeyCodes = {
   comma: 188,
@@ -425,7 +435,7 @@ class Tags extends Component {
 export default Tags;
 
 
-export class TagsWithOutContext extends Tags {
+class WithOutContextTags extends Tags {
   render() {
     const {
       autofocus,
@@ -466,3 +476,5 @@ export class TagsWithOutContext extends Tags {
     );
   }
 }
+
+export const TagsWithOutContext = getDefaultManager()(WithOutContextTags);

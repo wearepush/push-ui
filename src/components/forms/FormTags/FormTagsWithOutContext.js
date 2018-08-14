@@ -1,6 +1,4 @@
 import React from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import { object, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TagsWithOutContext } from '../../index';
@@ -58,4 +56,5 @@ class FormTagsWithOutContext extends React.Component {
     );
   }
 }
-export default DragDropContext(HTML5Backend)(FormTagsWithOutContext);
+
+export default FormTagsWithOutContext;
