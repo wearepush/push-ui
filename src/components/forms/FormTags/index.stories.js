@@ -1,11 +1,15 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { storiesOf } from '@storybook/react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import Root from './../__mocks__/Root';
 import Form from './../__mocks__/Form';
 import configureStore from './../__mocks__/store';
 import validateTags from './__mocks__/validateTags';
-import { FormTags, FormTagsWithOutContext, FormButton } from '../../index';
+import { FormTags,  FormButton } from '../../index';
+
+const WithOutContext = DragDropContext(HTML5Backend)(FormTags);
 
 const mapPropsToForm = {
   form: 'testForm',
@@ -18,6 +22,7 @@ const mapPropsToForm = {
   },
   validate: validateTags
 };
+
 const initialState = {};
 const store = configureStore(initialState);
 const MountForm = reduxForm(mapPropsToForm)(Form);
@@ -29,6 +34,7 @@ storiesOf('forms/FormTags', module)
     >
       <MountForm>
         <FormTags
+          isContext
           accessor={{
             id: 'number',
             value: 'label',
@@ -46,12 +52,13 @@ storiesOf('forms/FormTags', module)
       </MountForm>
     </Root>
   )
-  .add('with out context', () =>
+  .add('without context', () =>
     <Root
       store={store}
     >
       <MountForm>
-        <FormTagsWithOutContext
+        <WithOutContext
+          withoutContext
           accessor={{
             id: 'number',
             value: 'label',

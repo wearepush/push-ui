@@ -1,22 +1,27 @@
-import React from 'react';
-import { object, string } from 'prop-types';
+import React, { PureComponent } from 'react';
+import { bool, object, string } from 'prop-types';
 import { Field } from 'redux-form';
-import { FormField, Tags } from '../../index';
+import { FormField, Tags, TagsWithOutContext } from '../../index';
 
 const _FormTags = ({
   id,
   input,
   label,
   meta,
+  withoutContext,
   ...rest
 }) => {
   const _id = id || input.name;
+  let Component = Tags;
+  if (withoutContext) {
+    Component = TagsWithOutContext;
+  }
   return (
     <FormField
       label={label}
       name={_id}
     >
-      <Tags
+      <Component
         {...rest}
         active={meta.active}
         id={id}
@@ -39,12 +44,21 @@ _FormTags.propTypes = {
   input: object.isRequired,
   label: string,
   meta: object.isRequired,
+  withoutContext: bool.isRequired,
 };
 
 _FormTags.defaultProps = {
   id: '',
   label: '',
+  withoutContext: false,
 };
 
-const FormTags = props => <Field {...props} component={_FormTags} type="select-multiple" />; // eslint-disable-line
+class FormTags extends PureComponent {
+  render() {
+    return (
+      <Field {...this.props} component={_FormTags} type="select-multiple" />
+    );
+  }
+}
+
 export default FormTags;
