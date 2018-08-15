@@ -198,19 +198,6 @@ describe('TextField', () => {
       expect(input.hasClass('TextField__test')).toBe(true);
     });
 
-    it('should render with input props', () => {
-      const input = shallow(
-        <TextField
-          inputProps={{
-            'data-test': true
-          }}
-          name="name"
-          placeholder="placeholder"
-        />
-      );
-      expect(input.find('.TextField__input').prop('data-test')).toBe(true);
-    });
-
     it('should render with input ref prop', () => {
       const input = shallow(
         <TextField
