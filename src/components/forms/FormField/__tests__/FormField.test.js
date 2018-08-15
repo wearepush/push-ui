@@ -60,4 +60,18 @@ describe('FormField', () => {
     );
     expect(formField.find('.FormField__error').length).toBe(1);
   });
+
+  it('it should render with custom className', () => {
+    const children = (<div>Children</div>);
+    const formField = shallow(
+      <FormField
+        className="email-for-field"
+        name="email"
+        label="Email"
+      >
+        {children}
+      </FormField>
+    );
+    expect(formField.find('.email-for-field').length).toBe(1);
+  });
 });

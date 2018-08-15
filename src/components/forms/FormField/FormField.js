@@ -1,6 +1,7 @@
 import React from 'react';
 import { bool, node, shape, string } from 'prop-types';
 import { FormFieldLabel, FormFieldError } from '../../index';
+import cx from 'classnames';
 import {} from './FormField.scss';
 
 const FormField = ({
@@ -8,9 +9,12 @@ const FormField = ({
   label,
   meta,
   name,
+  className,
 }) => (
   <div
-    className="FormField"
+    className={cx("FormField", {
+      [className]: !!className
+    })}
   >
     {label && (
       <div className="FormField__label">
@@ -39,6 +43,7 @@ const FormField = ({
 FormField.propTypes = {
   children: node.isRequired,
   label: string,
+  className: string,
   meta: shape({
     active: bool,
     error: string,
@@ -51,6 +56,7 @@ FormField.propTypes = {
 
 FormField.defaultProps = {
   label: '',
+  className: '',
   meta: {
     active: false,
     error: '',
