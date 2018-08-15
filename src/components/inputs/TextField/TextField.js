@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { bool, func, number, object, oneOfType, oneOf, string } from 'prop-types';
+import { bool, func, number, oneOfType, oneOf, string } from 'prop-types';
 import cx from 'classnames';
 import {} from './TextField.scss';
 
@@ -26,10 +26,6 @@ export default class TextField extends PureComponent {
       number,
       string,
     ]),
-    /**
-    * Properties applied to the `input` element.
-    */
-    inputProps: object,
     /**
     * Use that property to pass a ref callback to the native input component.
     */
@@ -113,7 +109,6 @@ export default class TextField extends PureComponent {
     className: '',
     disabled: false,
     defaultValue: undefined,
-    inputProps: null,
     inputRef: undefined,
     invalid: false,
     id: '',
@@ -251,7 +246,6 @@ export default class TextField extends PureComponent {
     const {
       defaultValue,
       disabled,
-      inputProps,
       inputRef,
       invalid,
       name,
@@ -267,7 +261,6 @@ export default class TextField extends PureComponent {
 
     return (
       <input
-        {...inputProps}
         className={
           cx('TextField__input', {
             'is-active': active,

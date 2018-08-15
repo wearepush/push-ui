@@ -34,4 +34,23 @@ storiesOf('forms/FormCheckbox', module)
         </FormButton>
       </MountForm>
     </Root>
+  )
+  .add('toggle', () =>
+    <Root
+      store={store}
+    >
+      <MountForm>
+        <FormCheckbox
+          viewType="toggle"
+          placeholder="Remember me"
+          name="remember"
+        />
+        <FormButton
+          float
+          form={mapPropsToForm.form}
+        >
+          {'Submit'}
+        </FormButton>
+      </MountForm>
+    </Root>
   );
