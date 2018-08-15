@@ -12,6 +12,9 @@
   "rules": {
     "no-console": 0
   },
+  "plugins": [
+    "jsdoc"
+  ],
   "globals": {
     "document": true,
     "module": true,

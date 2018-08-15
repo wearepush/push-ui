@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { TagsWithOutContext } from '../Tags/Tags';
-import Tags from './Tags';
+
+import Tags, { TagsWithOutContext } from './Tags';
 
 const WithOutContext = DragDropContext(HTML5Backend)(TagsWithOutContext);
 
@@ -45,6 +46,7 @@ const suggestions = [
 ];
 
 storiesOf('inputs/Tags', module)
+  .addDecorator(withInfo)
   .add('default', () =>
     <Tags
       defaultValue={customData}

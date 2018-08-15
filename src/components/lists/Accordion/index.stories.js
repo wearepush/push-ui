@@ -1,11 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 
 storiesOf('lists/Accordion', module)
+  .addDecorator(withInfo)
   .add('default', () =>
     <Accordion>
       <AccordionItem title="Section 1 title" onHeadingClick={action('toggle')}>
@@ -32,5 +34,13 @@ storiesOf('lists/Accordion', module)
           aliquip ex ea commodo consequat.
         </p>
       </AccordionItem>
-    </Accordion>
+    </Accordion>,
+    {
+      info: {
+        propTables: [
+          Accordion,
+          AccordionItem,
+        ]
+      }
+    }
   );
