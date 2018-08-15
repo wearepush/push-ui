@@ -28,7 +28,7 @@ const _FormTextArea = ({
         onChange={(event, value) => input.onChange(value)}
         onFocus={(event, value) => input.onFocus(value)}
         name={input.name}
-        valid={meta.valid}
+        valid={!!input.value && !meta.error && !meta.warning && meta.valid}
         value={input.value}
       />
     </FormField>
