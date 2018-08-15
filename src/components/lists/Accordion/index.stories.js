@@ -32,5 +32,13 @@ storiesOf('lists/Accordion', module)
           aliquip ex ea commodo consequat.
         </p>
       </AccordionItem>
-    </Accordion>
+    </Accordion>,
+    {
+      info: {
+        propTables: [
+          Accordion,
+          AccordionItem,
+        ]
+      }
+    }
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { storiesOf } from '@storybook/react';
+import { storiesOf, addDecorator } from '@storybook/react';
 
 import Root from './../__mocks__/Root';
 import Form from './../__mocks__/Form';
@@ -16,41 +16,35 @@ const initialState = {};
 const store = configureStore(initialState);
 const MountForm = reduxForm(mapPropsToForm)(Form);
 
+const Decorator = (storyFn) => (
+  <Root
+    store={store}
+  >
+    <MountForm>
+      { storyFn() }
+      <FormButton
+        float
+        form={mapPropsToForm.form}
+      >
+        {'Submit'}
+      </FormButton>
+    </MountForm>
+  </Root>
+);
+
+addDecorator(Decorator);
+
 storiesOf('forms/FormCheckbox', module)
   .add('default', () =>
-    <Root
-      store={store}
-    >
-      <MountForm>
-        <FormCheckbox
-          placeholder="Remember me"
-          name="remember"
-        />
-        <FormButton
-          float
-          form={mapPropsToForm.form}
-        >
-          {'Submit'}
-        </FormButton>
-      </MountForm>
-    </Root>
+    <FormCheckbox
+      placeholder="Remember me"
+      name="remember"
+    />
   )
   .add('toggle', () =>
-    <Root
-      store={store}
-    >
-      <MountForm>
-        <FormCheckbox
-          viewType="toggle"
-          placeholder="Remember me"
-          name="remember"
-        />
-        <FormButton
-          float
-          form={mapPropsToForm.form}
-        >
-          {'Submit'}
-        </FormButton>
-      </MountForm>
-    </Root>
+    <FormCheckbox
+      viewType="toggle"
+      placeholder="Remember me"
+      name="remember"
+    />
   );
