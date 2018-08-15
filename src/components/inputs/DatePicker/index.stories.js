@@ -1,9 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
+
 import DatePicker from './DatePicker';
 
 storiesOf('inputs/DatePicker', module)
+  .addDecorator(withInfo)
   .add('default', () =>
     <DatePicker
       defaultValue="18-08-15"

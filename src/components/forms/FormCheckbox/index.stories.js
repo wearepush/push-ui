@@ -1,40 +1,19 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
-import { storiesOf, addDecorator } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
 
-import Root from './../__mocks__/Root';
-import Form from './../__mocks__/Form';
-import configureStore from './../__mocks__/store';
-import validateCheckbox from './__mocks__/validateCheckbox';
-import { FormCheckbox, FormButton } from '../../index';
+import withForm from './../__mocks__/FormDecorator';
+import validate from './__mocks__/validateCheckbox';
+import { FormCheckbox } from '../../index';
 
-const mapPropsToForm = {
+const form = {
   form: 'testForm',
-  validate: validateCheckbox
+  validate,
 };
-const initialState = {};
-const store = configureStore(initialState);
-const MountForm = reduxForm(mapPropsToForm)(Form);
-
-const Decorator = (storyFn) => (
-  <Root
-    store={store}
-  >
-    <MountForm>
-      { storyFn() }
-      <FormButton
-        float
-        form={mapPropsToForm.form}
-      >
-        {'Submit'}
-      </FormButton>
-    </MountForm>
-  </Root>
-);
-
-addDecorator(Decorator);
 
 storiesOf('forms/FormCheckbox', module)
+  .addDecorator(withInfo)
+  .addDecorator(withForm({ form }))
   .add('default', () =>
     <FormCheckbox
       placeholder="Remember me"

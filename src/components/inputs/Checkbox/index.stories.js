@@ -2,10 +2,12 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 
 import Checkbox from './Checkbox';
 
 storiesOf('inputs/Checkbox', module)
+  .addDecorator(withInfo)
   .add('with custom icon', () =>
     <Checkbox
       onFocus={action('focus')}

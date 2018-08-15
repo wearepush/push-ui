@@ -48,6 +48,10 @@ export default class Checkbox extends PureComponent {
     */
     id: string,
     /**
+    * The name of the `input` element.
+    */
+    name: string.isRequired,
+    /**
     * @ignore
     */
     onBlur: func,
@@ -63,10 +67,6 @@ export default class Checkbox extends PureComponent {
     * @ignore
     */
     onFocus: func,
-    /**
-    * The name of the `input` element.
-    */
-    name: string.isRequired,
     /**
     * The label of the component.
     */

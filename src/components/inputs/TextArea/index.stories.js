@@ -2,10 +2,12 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
 
 import TextArea from './TextArea';
 
 storiesOf('inputs/TextArea', module)
+  .addDecorator(withInfo)
   .add('default', () =>
     <TextArea
       onFocus={action('focus')}
