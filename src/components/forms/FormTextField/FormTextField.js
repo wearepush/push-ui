@@ -7,11 +7,11 @@ const _FormTextField = ({
   disabled,
   id,
   input,
-  inputProps,
   label,
   meta,
   placeholder,
-  type
+  type,
+  ...rest
 }) => {
   const _id = id || input.name;
   return (
@@ -21,11 +21,11 @@ const _FormTextField = ({
       name={_id}
     >
       <TextField
+        {...rest}
         active={meta.active}
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        inputProps={inputProps}
         onBlur={(event) => input.onBlur(event)}
         onChange={(event, value) => input.onChange(value)}
         onFocus={(event, value) => input.onFocus(value)}
