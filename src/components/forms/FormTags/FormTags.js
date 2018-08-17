@@ -20,6 +20,7 @@ const _FormTags = ({
     <FormField
       label={label}
       name={_id}
+      meta={meta}
     >
       <Component
         {...rest}
