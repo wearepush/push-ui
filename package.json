@@ -1,6 +1,6 @@
 {
   "name": "redux-starter-ui",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -127,14 +127,18 @@
     "moduleNameMapper": {
       "^.*\\.(css|scss)$": "identity-obj-proxy"
     },
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "testEnvironment": "jsdom",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "setupFiles": [
       "<rootDir>/scripts/enzyme.config.js"
     ],
-    "roots": ["<rootDir>/src"],
+    "roots": [
+      "<rootDir>/src"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
