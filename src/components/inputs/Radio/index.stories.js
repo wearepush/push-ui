@@ -2,54 +2,33 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import Radio from './Radio';
 
 storiesOf('inputs/Radio', module)
   .addDecorator(withInfo)
-  .add('with custom icon', () =>
+  .addDecorator(withKnobs)
+  .add('default', () =>
     <Radio
+      custom={boolean('custom', true)}
+      disabled={boolean('disabled', false)}
+      invalid={boolean('invalid', false)}
       onFocus={action('focus')}
       onChange={action('change')}
       onBlur={action('blur')}
-      name="Radio-0"
+      name="radio"
       placeholder="Radio placeholder"
+      valid={boolean('valid', false)}
       value="0"
     />
   )
-  .add('disabled', () => (
-    <Radio
-      name="Radio-1"
-      placeholder="Radio placeholder"
-      disabled
-      value="0"
-    />
-  ))
   .add('controlled', () => (
-    <div>
-      <Radio
-        name="Radio-1"
-        placeholder="Radio placeholder"
-        checked={false}
-        value="0"
-      />
-      <Radio
-        name="Radio-1"
-        placeholder="Radio placeholder"
-        checked
-        value="1"
-      />
-    </div>
-  ))
-  .add('with default icon', () => (
     <Radio
-      custom={false}
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
-      name="Radio-1"
+      name="radio"
       placeholder="Radio placeholder"
+      checked={false}
       value="0"
     />
   ));

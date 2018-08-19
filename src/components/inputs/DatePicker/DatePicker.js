@@ -83,8 +83,8 @@ class DatePicker extends Component {
 
   constructor(props) {
     super(props);
-    this.isControled = props.value !== undefined;
-    if (!this.isControled) {
+    this.isControlled = props.value !== undefined;
+    if (!this.isControlled) {
       // not controlled, use internal state
       this.state.value = props.defaultValue !== undefined ? props.defaultValue : undefined;
       this.state.active = props.active;
@@ -100,7 +100,7 @@ class DatePicker extends Component {
 
   onChange(value, dateStr) {
     const { onChange } = this.props;
-    if (!this.isControled) {
+    if (!this.isControlled) {
       this.setState({ value });
     }
     onChange && onChange(value, dateStr);
@@ -108,7 +108,7 @@ class DatePicker extends Component {
 
   onFocus(value, dateStr) {
     const { onFocus } = this.props;
-    if (!this.isControled) {
+    if (!this.isControlled) {
       this.setState({ active: true });
     }
     onFocus && onFocus(value, dateStr);
@@ -116,7 +116,7 @@ class DatePicker extends Component {
 
   onBlur(value, dateStr) {
     const { onBlur } = this.props;
-    if (!this.isControled) {
+    if (!this.isControlled) {
       this.setState({ active: false });
     }
     onBlur && setTimeout(() => {
@@ -142,6 +142,7 @@ class DatePicker extends Component {
     } = this.props;
     const active = this.isActive();
     const value = this.getValue();
+
     const options = {
       allowInput: disabled,
       ...propsOptions

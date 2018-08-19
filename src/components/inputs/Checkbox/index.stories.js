@@ -2,62 +2,32 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import Checkbox from './Checkbox';
 
 storiesOf('inputs/Checkbox', module)
   .addDecorator(withInfo)
-  .add('with custom icon', () =>
+  .addDecorator(withKnobs)
+  .add('default', () =>
     <Checkbox
+      disabled={boolean('disabled', false)}
+      invalid={boolean('invalid', false)}
       onFocus={action('focus')}
       onChange={action('change')}
       onBlur={action('blur')}
       name="checkbox-0"
       placeholder="Checkbox placeholder"
+      valid={boolean('valid', false)}
+      viewType={select('viewType', ['default', 'custom', 'toggle'], 'custom')}
     />
   )
-  .add('disabled', () => (
-    <Checkbox
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
-      disabled
-      viewType="custom"
-    />
-  ))
-  .add('toggle', () => (
-    <Checkbox
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
-      name="checkbox-1"
-      placeholder="Checkbox placeholder"
-      viewType="toggle"
-    />
-  ))
   .add('controlled', () => (
-    <div>
-      <Checkbox
-        name="checkbox-0"
-        placeholder="Checkbox placeholder"
-        viewType="custom"
-        checked={false}
-      />
-      <Checkbox
-        name="checkbox-1"
-        placeholder="Checkbox placeholder"
-        viewType="custom"
-        checked
-      />
-    </div>
-  ))
-  .add('with default icon', () => (
     <Checkbox
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
-      name="checkbox-1"
+      checked={false}
+      name="checkbox-0"
       placeholder="Checkbox placeholder"
-      viewType="default"
+      viewType="custom"
     />
   ));

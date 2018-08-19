@@ -1,46 +1,28 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import DatePicker from './DatePicker';
 
 storiesOf('inputs/DatePicker', module)
   .addDecorator(withInfo)
+  .addDecorator(withKnobs)
   .add('default', () =>
     <DatePicker
+      disabled={boolean('disabled', false)}
+      invalid={boolean('invalid', false)}
       defaultValue="18-08-15"
+      mode={select('mode', ['single', 'multiple', 'range'], 'single')}
       onBlur={action('onBlur')}
       onChange={action('onChange')}
       onFocus={action('onFocus')}
-      mode="single"
+      valid={boolean('valid', false)}
     />
   )
-  .add('disabled', () =>
+  .add('controlled', () =>
     <DatePicker
-      disabled
-      defaultValue="18-08-15"
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      onFocus={action('onFocus')}
-      mode="single"
-    />
-  )
-  .add('multiple', () =>
-    <DatePicker
-      defaultValue="18-08-15"
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      onFocus={action('onFocus')}
-      mode="multiple"
-    />
-  )
-  .add('range', () =>
-    <DatePicker
-      defaultValue="18-08-15"
-      onBlur={action('onBlur')}
-      onChange={action('onChange')}
-      onFocus={action('onFocus')}
-      mode="range"
+      value="18-08-15"
     />
   );

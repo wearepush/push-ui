@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -47,29 +48,16 @@ const suggestions = [
 
 storiesOf('inputs/Tags', module)
   .addDecorator(withInfo)
+  .addDecorator(withKnobs)
   .add('default', () =>
     <Tags
+      disabled={boolean('disabled', false)}
       defaultValue={customData}
+      float={boolean('float', false)}
       onAdd={action('onAdd')}
       onDelete={action('onDelete')}
       onDrag={action('onDrag')}
-    />
-  )
-  .add('disabled', () =>
-    <Tags
-      defaultValue={customData}
-      disabled
-    />
-  )
-  .add('suggestions', () =>
-    <Tags
       suggestions={suggestions}
-    />
-  )
-  .add('float', () =>
-    <Tags
-      defaultValue={customData}
-      float
     />
   )
   .add('controlled', () =>

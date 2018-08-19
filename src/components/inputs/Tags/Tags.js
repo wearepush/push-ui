@@ -12,6 +12,8 @@ const KeyCodes = {
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class Tags extends Component {
+  isControlled = null;
+
   static propTypes = {
     /**
     * Pattern of array values's keys
@@ -185,8 +187,8 @@ class Tags extends Component {
 
   constructor(props) {
     super(props);
-    this.isControled = props.value !== undefined;
-    if (!this.isControled) {
+    this.isControlled = props.value !== undefined;
+    if (!this.isControlled) {
       this.state = {
         tags: this.handleAccessor(props.defaultValue),
         suggestions: this.handleAccessor(props.suggestions)
@@ -227,7 +229,7 @@ class Tags extends Component {
   }
 
   getValue = () => {
-    if (this.isControled) {
+    if (this.isControlled) {
       return this.props.value;
     }
 
@@ -238,7 +240,7 @@ class Tags extends Component {
 
   handleAddition = (value) => {
     const { onAdd } = this.props;
-    if (!this.isControled) {
+    if (!this.isControlled) {
       this.setState(state => ({ tags: [...state.tags, value] }));
     }
 
@@ -253,7 +255,7 @@ class Tags extends Component {
     if (this.props.disabled) return;
     const { onDelete } = this.props;
     let tags = [];
-    if (!this.isControled) {
+    if (!this.isControlled) {
       tags = this.state.tags.filter((tag, index) => index !== i);
       this.setState({ tags });
     }
@@ -270,7 +272,7 @@ class Tags extends Component {
 
     let tag = null;
     let tags = [];
-    if (!this.isControled) {
+    if (!this.isControlled) {
       tags = [...this.state.tags];
       tag = value;
     } else {
@@ -281,7 +283,7 @@ class Tags extends Component {
     tags.splice(currPos, 1);
     tags.splice(newPos, 0, tag);
 
-    !this.isControled && this.setState({ tags });
+    !this.isControlled && this.setState({ tags });
 
     onDrag && onDrag([...tags]);
   }
@@ -368,7 +370,7 @@ class Tags extends Component {
   getComponentData = () => {
     let tags = [];
     let suggestions = [];
-    if (this.isControled) {
+    if (this.isControlled) {
       tags = this.handleAccessor(this.props.value);
       suggestions = this.handleAccessor(this.props.suggestions);
     } else {
