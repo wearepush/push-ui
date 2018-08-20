@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { bool, node, number, string, oneOf, oneOfType, arrayOf } from 'prop-types';
 import cx from 'classnames';
-import {} from './Dropdown.scss';
+import { } from './Dropdown.scss';
 
 export const DropdownButton = ({
   className: classNameProp,
@@ -130,12 +130,14 @@ export default class Dropdown extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isOpen: props.isOpen !== undefined ? props.isOpen : false
-    };
     this.containerRef = React.createRef();
     this.isControled = props.isOpen !== undefined;
     this.isHoverTrigger = props.trigger === 'hover';
+    if (!this.isControled) {
+      this.state = {
+        isOpen: props.isOpen !== undefined ? props.isOpen : false
+      };
+    }
   }
 
   componentDidMount() {
@@ -192,9 +194,9 @@ export default class Dropdown extends Component {
   }
 
   renderDrop = () => {
-    const { isOpen } = this.state;
+    const isOpen = this.isControled ? this.props.isOpen : this.state.isOpen;
     const { children, dropPosition, dropListClassName } = this.props;
-    if (!this.containerRef || !isOpen || !children) return null;
+    if (!this.containerRef || !children || !isOpen) return null;
     return (
       <div
         className={
@@ -238,7 +240,7 @@ export default class Dropdown extends Component {
   }
 
   render() {
-    const { isOpen } = this.state;
+    const isOpen = this.isControled ? this.props.isOpen : this.state.isOpen;
     const {
       className: classNameProp,
       classNameButton: classNameButtonProp,
