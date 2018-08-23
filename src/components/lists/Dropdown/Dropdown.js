@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'; // eslint-disable-line
 import { bool, node, number, string, oneOf, oneOfType, arrayOf } from 'prop-types';
 import cx from 'classnames';
 import { } from './Dropdown.scss';
@@ -131,9 +131,9 @@ export default class Dropdown extends Component {
 
   constructor(props) {
     super(props);
-    this.isControled = props.isOpen !== undefined;
+    this.isControlled = props.isOpen !== undefined;
     this.isHoverTrigger = props.trigger === 'hover';
-    if (!this.isControled) {
+    if (!this.isControlled) {
       this.state = {
         isOpen: props.isOpen !== undefined ? props.isOpen : false
       };
@@ -141,24 +141,24 @@ export default class Dropdown extends Component {
   }
 
   componentDidMount() {
-    if (this.isControled || this.isHoverTrigger) return;
+    if (this.isControlled || this.isHoverTrigger) return;
     document.body.addEventListener('click', this.changeMenuHandler);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.isControled || this.isHoverTrigger) return;
+    if (this.isControlled || this.isHoverTrigger) return;
     this.setState({
       isOpen: nextProps.isOpen
     });
   }
 
   componentWillUnmount() {
-    if (this.isControled || this.isHoverTrigger) return;
+    if (this.isControlled || this.isHoverTrigger) return;
     document.body.removeEventListener('click', this.changeMenuHandler);
   }
 
   changeMenuHandler = (e) => {
-    if (this.isControled) return;
+    if (this.isControlled) return;
     const { isSelfClosed } = this.props;
     const { isOpen } = this.state;
     const $target = e.target;
@@ -171,19 +171,19 @@ export default class Dropdown extends Component {
   }
 
   clickButtonHandler = () => {
-    if (this.isControled || this.isHoverTrigger) return;
+    if (this.isControlled || this.isHoverTrigger) return;
     this.setState(state => ({ isOpen: !state.isOpen }));
   }
 
   hoverButtonEnterHandler = () => {
-    if (this.isControled || !this.isHoverTrigger || this.state.isOpen) return;
+    if (this.isControlled || !this.isHoverTrigger || this.state.isOpen) return;
     this.setState({
       isOpen: true
     });
   }
 
   hoverButtonLeaveHandler = () => {
-    if (this.isControled || !this.isHoverTrigger || !this.state.isOpen) return;
+    if (this.isControlled || !this.isHoverTrigger || !this.state.isOpen) return;
     this.setState({
       isOpen: false
     });
@@ -198,7 +198,7 @@ export default class Dropdown extends Component {
   }
 
   renderDrop = () => {
-    const isOpen = this.isControled ? this.props.isOpen : this.state.isOpen;
+    const isOpen = this.isControlled ? this.props.isOpen : this.state.isOpen;
     const { children, dropPosition, dropListClassName } = this.props;
     if (!children || !isOpen) return null;
     return (
@@ -235,7 +235,7 @@ export default class Dropdown extends Component {
       return (
         <DropdownButton
           className={this.props.classNameDefaultButton}
-          isOpen={this.isControled ? this.props.isOpen : this.state.isOpen}
+          isOpen={this.isControlled ? this.props.isOpen : this.state.isOpen}
           size={size}
           text={button}
         />
@@ -244,7 +244,7 @@ export default class Dropdown extends Component {
   }
 
   render() {
-    const isOpen = this.isControled ? this.props.isOpen : this.state.isOpen;
+    const isOpen = this.isControlled ? this.props.isOpen : this.state.isOpen;
     const {
       className: classNameProp,
       classNameButton: classNameButtonProp,
