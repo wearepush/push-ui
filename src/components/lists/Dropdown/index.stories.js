@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'; // eslint-disable-line
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
@@ -28,8 +27,8 @@ class ControlledDropdown extends Component {
   changeState = (e) => {
     const { isOpen } = this.state;
     const $target = e.target;
-    const container = ReactDOM.findDOMNode(this.drop);
-    const btn = ReactDOM.findDOMNode(this.buttonRef);
+    const container = ReactDOM.findDOMNode(this.drop); // eslint-disable-line
+    const btn = ReactDOM.findDOMNode(this.buttonRef); // eslint-disable-line
     if (
       $target !== container &&
       $target !== btn &&
@@ -75,14 +74,6 @@ storiesOf('lists/Dropdown', module)
       button="My Settings"
       isSelfClosed
       trigger="hover"
-    >
-      <span>1</span>
-    </Dropdown>
-  )
-  .add('controlled', () =>
-    <Dropdown
-      button="My Settings"
-      isOpen
     >
       <span>1</span>
     </Dropdown>
