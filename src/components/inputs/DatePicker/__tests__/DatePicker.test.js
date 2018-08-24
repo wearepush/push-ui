@@ -140,7 +140,6 @@ describe('DatePicker', () => {
           attachTo: document.body
         }
       );
-      const inputElement = datepicker.find('input');
       let calendar = null;
 
       const flatpickr = document.querySelector(".flatpickr-input")._flatpickr;
@@ -196,7 +195,6 @@ describe('DatePicker', () => {
         }
       );
 
-      const inputElement = datepicker.find('input');
       const flatpickr = document.querySelector(".flatpickr-input")._flatpickr;
       flatpickr.input.focus();
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
