@@ -43,5 +43,5 @@ _FormDatePicker.defaultProps = {
   label: '',
 };
 
-const FormDatePicker = props => <Field {...props} component={_FormDatePicker} type="input" />;
+const FormDatePicker = props => <Field {...props} component={_FormDatePicker} type="text" />;
 export default FormDatePicker;
