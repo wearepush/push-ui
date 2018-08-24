@@ -13,6 +13,10 @@ class DatePicker extends Component {
     */
     active: bool,
     /**
+    * @ignore
+    */
+    className: string,
+    /**
      * Value of date
      */
     defaultValue: oneOfType([
@@ -134,6 +138,7 @@ class DatePicker extends Component {
 
   render() {
     const {
+      className: classNameProp,
       disabled,
       invalid,
       mode,
@@ -150,16 +155,18 @@ class DatePicker extends Component {
     if (mode) {
       options.mode = mode;
     }
+
+    const className = cx('DatePicker', {
+      [classNameProp]: !!classNameProp,
+      'is-active': active,
+      'is-valid': valid,
+      'is-invalid': invalid,
+      'is-disabled': disabled,
+    });
+
     return (
       <Flatpickr
-        className={
-          cx('DatePicker', {
-            'is-active': active,
-            'is-valid': valid,
-            'is-invalid': invalid,
-            'is-disabled': disabled,
-          })
-        }
+        className={className}
         disabled={disabled}
         onChange={this.onChange}
         onClose={this.onBlur}
