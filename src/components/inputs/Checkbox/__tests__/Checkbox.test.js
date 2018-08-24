@@ -152,7 +152,8 @@ describe('Checkbox', () => {
     });
 
     it('should render with broken prop', () => {
-      jest.spyOn(global.console, 'error')
+      const console = global.console;
+      global.console = { error: jest.fn(), log: global.console.log };
       const checkbox = shallow(
         <Checkbox
           viewType='trash'
@@ -160,8 +161,9 @@ describe('Checkbox', () => {
           placeholder="placeholder"
         />
       );
-      expect(console.error).toHaveBeenCalledTimes(1);
+      expect(global.console.error).toHaveBeenCalledTimes(1);
       checkbox.unmount();
+      global.console = console;
     });
   });
 
