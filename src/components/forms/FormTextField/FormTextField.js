@@ -16,8 +16,9 @@ const _FormTextField = ({
   const _id = id || input.name;
   return (
     <FormField
-      meta={meta}
+      isEmpty={!!input.value}
       label={label}
+      meta={meta}
       name={_id}
     >
       <TextField

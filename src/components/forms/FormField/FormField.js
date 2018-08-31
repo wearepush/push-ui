@@ -10,6 +10,7 @@ const FormField = ({
   meta,
   name,
   className,
+  isEmpty,
 }) => (
     <div
       className={cx("FormField", {
@@ -20,13 +21,16 @@ const FormField = ({
         <div className={cx("FormField__label", {
           'is-active': meta.active,
           'is-invalid': meta.touched && meta.invalid,
-          'is-valid': meta.valid
+          'is-valid': meta.valid,
+          'is-empty': isEmpty,
+          'is-not-empty': !isEmpty
         })}>
           <FormFieldLabel
             active={meta.active}
             invalid={meta.touched && meta.invalid}
             htmlFor={name}
             label={label}
+            isEmpty={isEmpty}
           />
         </div>
       )}
@@ -46,8 +50,9 @@ const FormField = ({
 
 FormField.propTypes = {
   children: node.isRequired,
-  label: string,
   className: string,
+  isEmpty: bool,
+  label: string,
   meta: shape({
     active: bool,
     error: string,
@@ -59,8 +64,9 @@ FormField.propTypes = {
 };
 
 FormField.defaultProps = {
-  label: '',
   className: '',
+  isEmpty: false,
+  label: '',
   meta: {
     active: false,
     error: '',
