@@ -9,6 +9,7 @@ const FormFieldLabel = ({
   disabled,
   htmlFor,
   label,
+  isEmpty
 }) => (
   <label
     className={
@@ -16,6 +17,8 @@ const FormFieldLabel = ({
         'is-active': active,
         'is-invalid': invalid,
         'is-disabled': disabled,
+        'is-empty': isEmpty,
+        'is-not-empty': isEmpty,
       })
     }
     htmlFor={htmlFor}
@@ -26,13 +29,15 @@ const FormFieldLabel = ({
 
 FormFieldLabel.propTypes = {
   active: bool,
-  invalid: bool,
   disabled: bool,
+  invalid: bool,
   htmlFor: string.isRequired,
+  isEmpty: bool,
   label: string.isRequired,
 };
 
 FormFieldLabel.defaultProps = {
+  isEmpty: false,
   active: false,
   invalid: false,
   disabled: false,

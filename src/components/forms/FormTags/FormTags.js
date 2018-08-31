@@ -21,6 +21,7 @@ const _FormTags = ({
       label={label}
       name={_id}
       meta={meta}
+      isEmpty={input.value.length === 0}
     >
       <Component
         {...rest}
@@ -34,7 +35,7 @@ const _FormTags = ({
         onBlur={(event, values) => input.onBlur(values)}
         name={input.name}
         value={input.value}
-        valid={!!input.value && !meta.error && !meta.warning && meta.valid}
+        valid={input.value.length > 0 && !meta.error && !meta.warning && meta.valid}
       />
     </FormField>
   );
