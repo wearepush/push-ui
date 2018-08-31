@@ -18,7 +18,7 @@ const FormFieldLabel = ({
         'is-invalid': invalid,
         'is-disabled': disabled,
         'is-empty': isEmpty,
-        'is-not-empty': isEmpty,
+        'is-not-empty': !isEmpty,
       })
     }
     htmlFor={htmlFor}

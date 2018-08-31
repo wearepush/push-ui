@@ -13,6 +13,8 @@ describe('FormFieldLabel', () => {
     expect(label.find('.FormFieldLabel').length).toBe(1);
     expect(label.find('.FormFieldLabel').text()).toBe('Email');
     expect(label.prop('htmlFor')).toBe('email');
+    expect(label.find('.is-not-empty').length).toBe(1);
+
   });
 
   it('it should render with active state', () => {
