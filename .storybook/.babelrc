@@ -1,10 +1,10 @@
 {
   "presets": [
-    "env",
-    "react",
-    "stage-0",
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
-    "react-docgen"
+    "@babel/plugin-proposal-class-properties",
+    ["react-docgen", {}, 'react-docgen-storybook']
   ]
 }

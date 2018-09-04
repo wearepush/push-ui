@@ -89,7 +89,13 @@ var config = {
           loader: 'babel-loader',
           options: {
             babelrc: false,
-            presets: ["env", "react", "stage-0"]
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react"
+            ],
+            "plugins": [
+              "@babel/plugin-proposal-class-properties",
+            ]
           }
         }
       }
