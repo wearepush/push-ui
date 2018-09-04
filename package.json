@@ -6,7 +6,6 @@
   "module": "./es/index.js",
   "modules.root": "./es",
   "jsnext:main": "./es/index.js",
-  "sideEffects": false,
   "dependencies": {
     "bourbon": "^5.1.0",
     "bourbon-neat": "^3.0.0",

@@ -39,7 +39,7 @@ var config = {
         test: /\.(scss)$/,
         use: [
           {
-            loader: env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader : 'css-loader',
@@ -68,7 +68,7 @@ var config = {
         test: /\.(css)$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader : 'css-loader',
