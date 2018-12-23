@@ -14,7 +14,7 @@
     "react-dom": "^16.6.3",
     "react-flatpickr": "^3.6.4",
     "react-redux": "^6.0.0",
-    "react-tag-input": "^6.1.0",
+    "react-tag-input": "^5.2.3",
     "redux": "^4.0.1",
     "redux-form": "^8.0.4"
   },
@@ -41,7 +41,7 @@
     "codecov": "^4.0.0-0",
     "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
-    "css-loader": "^1.0.1",
+    "css-loader": "^2.0.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
