@@ -7,9 +7,12 @@
   "modules.root": "./es",
   "jsnext:main": "./es/index.js",
   "dependencies": {
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "bourbon": "^5.1.0",
     "bourbon-neat": "^3.0.1",
     "classnames": "^2.2.6",
+    "emotion-theming": "^10.0.7",
     "express": "^4.16.4",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
