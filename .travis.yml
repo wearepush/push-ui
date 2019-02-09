@@ -21,4 +21,13 @@ deploy:
     skip_cleanup: true
     on:
       repo: wearepush/redux-starter-ui
-      tags: true
+      branch: master
+      tag: latest
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      repo: wearepush/redux-starter-ui
+      branch: next
+      tag: next
