@@ -1,7 +1,31 @@
 import React, { PureComponent } from 'react';
 import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
+import { css } from '@emotion/core';
 import cx from 'classnames';
-import styles from './Button.scss'; // eslint-disable-line
+
+const baseStyles = ({ colors }) => {
+  return css`
+  appearance: none;
+  background-color: ${colors.primary};
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  line-height: 1;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear, box-shadow 300ms linear;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+`;
+};
 
 export default class Button extends PureComponent {
   static propTypes = {
@@ -211,6 +235,7 @@ export default class Button extends PureComponent {
       <ComponentProp
         className={className}
         color={color}
+        css={ baseStyles }
         onClick={onClick}
         onBlur={onBlur}
         onFocus={onFocus}
