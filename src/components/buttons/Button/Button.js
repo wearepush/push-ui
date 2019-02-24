@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
-import { css } from '@emotion/core';
+import styled, { css } from 'react-emotion';
 import cx from 'classnames';
 
-const baseStyles = ({ colors }) => {
+const baseStyles = ({ theme: {colors} }) => {
   return css`
   appearance: none;
-  background-color: ${colors.primary};
+  background-color: red;
   border-width: 1px;
   border-style: solid;
   border-radius: 3px;
@@ -26,6 +26,9 @@ const baseStyles = ({ colors }) => {
   white-space: nowrap;
 `;
 };
+
+const ButtonWrapper = styled('button')(baseStyles);
+const LinkWrapper = styled('a')(baseStyles);
 
 export default class Button extends PureComponent {
   static propTypes = {
@@ -205,13 +208,12 @@ export default class Button extends PureComponent {
     let ComponentProp = component;
 
     if (other.href) {
-      ComponentProp = 'a';
+      ComponentProp = LinkWrapper;
     } else {
-      ComponentProp = 'button';
+      ComponentProp = ButtonWrapper;
     }
 
     const buttonProps = {};
-
     if (ComponentProp === 'button') {
       buttonProps.type = type || 'button';
       buttonProps.disabled = disabled;
@@ -235,7 +237,6 @@ export default class Button extends PureComponent {
       <ComponentProp
         className={className}
         color={color}
-        css={ baseStyles }
         onClick={onClick}
         onBlur={onBlur}
         onFocus={onFocus}

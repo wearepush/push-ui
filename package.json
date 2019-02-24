@@ -7,18 +7,18 @@
   "modules.root": "./es",
   "jsnext:main": "./es/index.js",
   "dependencies": {
-    "@emotion/core": "^10.0.7",
-    "@emotion/styled": "^10.0.7",
     "bourbon": "^5.1.0",
     "bourbon-neat": "^3.0.1",
     "classnames": "^2.2.6",
-    "emotion-theming": "^10.0.7",
+    "emotion": "^9.2.12",
+    "emotion-theming": "^9.2.9",
     "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.8.3",
+    "react-emotion": "^9.2.12",
     "react-flatpickr": "^3.7.1",
     "react-redux": "^6.0.1",
     "react-tag-input": "^6.3.0",
@@ -30,17 +30,17 @@
     "@babel/core": "^7.3.3",
     "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
-    "@emotion/babel-preset-css-prop": "^10.0.7",
-    "@storybook/addon-actions": "5.0.0-rc.5",
-    "@storybook/addon-info": "5.0.0-rc.5",
-    "@storybook/addon-knobs": "5.0.0-rc.5",
-    "@storybook/addon-links": "5.0.0-rc.5",
-    "@storybook/react": "5.0.0-rc.5",
+    "@storybook/addon-actions": "5.0.0-beta.4",
+    "@storybook/addon-info": "5.0.0-beta.4",
+    "@storybook/addon-knobs": "5.0.0-beta.4",
+    "@storybook/addon-links": "5.0.0-beta.4",
+    "@storybook/react": "5.0.0-beta.4",
     "autoprefixer": "^9.4.8",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-css-modules-transform": "^1.6.2",
+    "babel-plugin-emotion": "^9.2.11",
     "babel-plugin-react-docgen": "^2.0.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -115,44 +115,5 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.stories.js",
-      "!src/**/__tests__/**/*.js"
-    ],
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
-    ],
-    "moduleFileExtensions": [
-      "jsx",
-      "js",
-      "json"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ],
-    "moduleNameMapper": {
-      "^.*\\.(css|scss)$": "identity-obj-proxy"
-    },
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "testEnvironment": "jsdom",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "setupFiles": [
-      "<rootDir>/scripts/enzyme.config.js"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
   }
 }

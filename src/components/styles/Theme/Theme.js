@@ -112,7 +112,6 @@ export default class Theme extends Component {
   render() {
     const { isTransitioning, themeId, ...config } = this.state;
     const theme = this.getTheme(themeId, config);
-
     return (
       <Fragment>
         <ThemeProvider theme={theme}>{this.props.children}</ThemeProvider>
