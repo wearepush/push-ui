@@ -1,19 +1,12 @@
 {
   "presets": [
     "@babel/preset-env",
-    "@babel/preset-react"
+    "@babel/preset-react",
+    "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
     "emotion",
     "@babel/plugin-proposal-class-properties",
-    [
-      "css-modules-transform",
-      {
-        "extensions": [
-          ".scss"
-        ]
-      }
-    ]
   ],
   "ignore": ["node_modules"]
 }
