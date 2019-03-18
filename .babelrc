@@ -1,12 +1,37 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react",
-    "@emotion/babel-preset-css-prop"
-  ],
-  "plugins": [
-    "emotion",
-    "@babel/plugin-proposal-class-properties",
-  ],
+  "env": {
+    "production": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@emotion/babel-preset-css-prop"
+      ],
+      "plugins": [
+        "emotion",
+        "@babel/plugin-proposal-class-properties",
+      ]
+    },
+    "development": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@emotion/babel-preset-css-prop"
+      ],
+      "plugins": [
+        "emotion",
+        "@babel/plugin-proposal-class-properties",
+      ]
+    },
+    "test": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "emotion",
+        "@babel/plugin-proposal-class-properties",
+      ]
+    }
+  },
   "ignore": ["node_modules"]
 }
