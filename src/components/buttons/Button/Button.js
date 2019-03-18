@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import cx from 'classnames';
 
 const baseStyles = ({colors}) => {
+  console.log('colors', colors);
   return css`
   appearance: none;
   background-color: red;

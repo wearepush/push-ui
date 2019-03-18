@@ -70,7 +70,6 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
   pre, code {
     font-family: ${theme.fontStack.mono};
   }
-
   body,
   button,
   input,
@@ -81,7 +80,6 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
     font-weight: ${theme.fontWeight.regular};
     text-decoration-skip: edges;
   }
-
   .fonts-loaded {
     body,
     button,
@@ -92,7 +90,6 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
       font-family: ${theme.fontStack.default};
     }
   }
-
   #nprogress {
     position: fixed;
     top: 0;
@@ -102,13 +99,11 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
     height: 3px;
     pointer-events: none;
     z-index: 1001;
-
     .bar {
       background: ${theme.colors.primary};
       height: 100%;
       width: 100%;
     }
-
     .peg {
       box-shadow: 0 0 10px ${theme.colors.primary}, 0 0 5px ${theme.colors.primary};
       display: block;
@@ -120,7 +115,6 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
       width: 100px;
     }
   }
-
   /**
    * Allow custom styles to override the default styles
    */

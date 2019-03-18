@@ -5,7 +5,13 @@ import themes from '../src/styles/themes';
 import injectGlobalStyles from '../src/styles/global-styles';
 import { Theme } from '../src/components/styles';
 
-injectGlobalStyles({ theme: themes.standard() });
+const custom = `
+html,
+body {
+  background: transparent;
+}`;
+
+injectGlobalStyles({ theme: themes.standard(), custom });
 
 const withTheme = storyFn => (
   <Theme
