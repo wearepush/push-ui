@@ -3,28 +3,68 @@ import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
 import { css } from '@emotion/core';
 import cx from 'classnames';
 
-const baseStyles = ({colors}) => {
-  console.log('colors', colors);
+const baseStyles = ({ colors, button }) => {
+  const style = {
+    backgroundColor: colors.primary,
+    backgroundColorHover: colors.primary,
+    borderRadius: '3px',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    color: colors.white,
+    display: 'inline-block',
+    fontSize: '1rem',
+    fontWeight: '400',
+    lineHeight: '1',
+    padding: '10px 10px',
+    ...button
+  };
   return css`
-  appearance: none;
-  background-color: red;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1rem;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-  line-height: 1;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear, box-shadow 300ms linear;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+    appearance: none;
+    background-color: ${style.backgroundColor};
+    border-width: ${style.borderWidth};
+    border-style: ${style.borderStyle};
+    border-radius: ${style.borderRadius};
+    color: ${style.color};
+    cursor: pointer;
+    display: ${style.display};
+    font-size: ${style.fontSize};
+    -webkit-font-smoothing: antialiased;
+    font-weight: ${style.fontWeight};
+    line-height: ${style.lineHeight};
+    padding: ${style.padding};
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 300ms linear, border-color 300ms linear, color 300ms linear, box-shadow 300ms linear;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: ${style.backgroundColorHover};
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    /*
+    * Width
+    */
+    &.is-full-width {
+      width: 100%;
+    }
+    /*
+    * Size
+    */
+    &.is-size-small {
+      font-size: 10px;
+    }
+    &.is-size-medium {
+      font-size: 14px;
+    }
+    &.is-size-large {
+      font-size: 16px;
+    }
 `;
 };
 

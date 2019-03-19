@@ -111,6 +111,7 @@ const misc = {
   alert: '#FFAD0D',
   success: '#0BB07B',
   default: '#E1E4E8',
+  disabled: '#F1F2F4',
 };
 
 const breakpoints = {

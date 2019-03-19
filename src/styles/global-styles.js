@@ -80,41 +80,6 @@ export const createGlobalStyles = ({ theme, custom = '' }) => `
     font-weight: ${theme.fontWeight.regular};
     text-decoration-skip: edges;
   }
-  .fonts-loaded {
-    body,
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-      font-family: ${theme.fontStack.default};
-    }
-  }
-  #nprogress {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    background: ${theme.colors.white};
-    height: 3px;
-    pointer-events: none;
-    z-index: 1001;
-    .bar {
-      background: ${theme.colors.primary};
-      height: 100%;
-      width: 100%;
-    }
-    .peg {
-      box-shadow: 0 0 10px ${theme.colors.primary}, 0 0 5px ${theme.colors.primary};
-      display: block;
-      height: 100%;
-      opacity: 1;
-      position: absolute;
-      right: 0;
-      transform: rotate(3deg) translate(0, -4px);
-      width: 100px;
-    }
-  }
   /**
    * Allow custom styles to override the default styles
    */
