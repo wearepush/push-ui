@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { node, object } from "prop-types";
+import { node, object, string } from "prop-types";
 import { ThemeProvider } from "emotion-theming";
 
 import createGlobalStyles from '../../../styles/global-styles';
@@ -7,6 +7,7 @@ import createGlobalStyles from '../../../styles/global-styles';
 export default class Theme extends Component {
   static propTypes = {
     children: node.isRequired,
+    initialThemeId: string.isRequired,
     themes: object.isRequired
   };
 
@@ -29,7 +30,7 @@ export default class Theme extends Component {
   }
 
   setTheme = themeId =>
-    new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => { // eslint-disable-line
       if (themeId === this.state.themeId) {
         resolve();
         return;
