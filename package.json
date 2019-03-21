@@ -85,7 +85,7 @@
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags",
-    "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
+    "validate": "npm run clean && npm run build && npm run lint",
     "test": "cross-env NODE_ENV=test jest --runInBand",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm run test -- --coverage",

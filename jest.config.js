@@ -7,7 +7,7 @@ module.exports = {
   ],
   coverageReporters: ["text", "lcov", "html"],
   moduleFileExtensions: ["js"],
-  coveragePathIgnorePatterns: ["/node_modules/", "/dist/", "/src/"],
+  coveragePathIgnorePatterns: ["/node_modules/", "/dist/"],
   moduleNameMapper: {
     "^.*\\.(css|scss)$": "identity-obj-proxy"
   },
