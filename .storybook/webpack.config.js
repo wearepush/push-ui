@@ -1,10 +1,10 @@
-module.exports = (storybookBaseConfig, configType) => {
+module.exports = ({ config }) => {
   // configType has a value of 'DEVELOPMENT' or 'PRODUCTION'
   // You can change the configuration based on that.
   // 'PRODUCTION' is used when building the static version of storybook.
 
-  if (configType === 'DEVELOPMENT') {
-    storybookBaseConfig.module.rules.push({
+  if (config.mode === 'DEVELOPMENT') {
+    config.module.rules.push({
       enforce: 'pre',
       test: /\.js?$/,
       exclude: /node_modules/,
@@ -13,7 +13,7 @@ module.exports = (storybookBaseConfig, configType) => {
   }
 
   // Make whatever fine-grained changes you need
-  storybookBaseConfig.module.rules.push({
+  config.module.rules.push({
     test: /\.scss$/,
     loaders: [
       require.resolve('style-loader'),
@@ -25,5 +25,5 @@ module.exports = (storybookBaseConfig, configType) => {
   });
 
   // Return the altered config
-  return storybookBaseConfig;
+  return config;
 };
