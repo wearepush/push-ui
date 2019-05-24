@@ -4,6 +4,6 @@ import {
 
 describe('index', () => {
   it('should export Button', () => {
-    expect(typeof Button).toBe('function');
+    expect(typeof Button).toBe('object');
   });
 });
