@@ -16,7 +16,7 @@ const _FormRadio = ({
     <FormField
       label={label}
       name={_id}
-      isEmpty={!!input.value}
+      isEmpty={!input.value}
     >
       <Radio
         {...rest}

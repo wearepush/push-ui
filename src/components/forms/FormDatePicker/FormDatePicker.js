@@ -16,7 +16,7 @@ const _FormDatePicker = ({
       meta={meta}
       label={label}
       name={_id}
-      isEmpty={!!input.value}
+      isEmpty={!input.value}
     >
       <DatePicker
         {...rest}
