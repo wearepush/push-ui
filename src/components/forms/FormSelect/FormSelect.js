@@ -5,6 +5,7 @@ import { FormField, Select } from '../../index';
 
 const _FormSelect = ({
   disabled,
+  fieldProps,
   id,
   input,
   label,
@@ -15,6 +16,7 @@ const _FormSelect = ({
   const _id = id || input.name;
   return (
     <FormField
+      {...fieldProps}
       isEmpty={!input.value}
       label={label}
       meta={meta}
@@ -40,6 +42,7 @@ const _FormSelect = ({
 
 _FormSelect.propTypes = {
   disabled: bool,
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   inputProps: object,
@@ -50,6 +53,7 @@ _FormSelect.propTypes = {
 
 _FormSelect.defaultProps = {
   disabled: false,
+  fieldProps: null,
   id: '',
   inputProps: null,
   label: '',

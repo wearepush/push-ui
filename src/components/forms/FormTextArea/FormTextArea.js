@@ -5,6 +5,7 @@ import { FormField, TextArea } from '../../index';
 
 const _FormTextArea = ({
   disabled,
+  fieldProps,
   id,
   input,
   label,
@@ -14,6 +15,7 @@ const _FormTextArea = ({
   const _id = id || input.name;
   return (
     <FormField
+      {...fieldProps}
       isEmpty={!input.value}
       label={label}
       meta={meta}
@@ -38,6 +40,7 @@ const _FormTextArea = ({
 
 _FormTextArea.propTypes = {
   disabled: bool,
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
@@ -46,6 +49,7 @@ _FormTextArea.propTypes = {
 
 _FormTextArea.defaultProps = {
   disabled: false,
+  fieldProps: null,
   id: '',
   label: '',
 };

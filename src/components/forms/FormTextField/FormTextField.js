@@ -5,6 +5,7 @@ import { FormField, TextField } from '../../index';
 
 const _FormTextField = ({
   disabled,
+  fieldProps,
   id,
   input,
   label,
@@ -16,6 +17,7 @@ const _FormTextField = ({
   const _id = id || input.name;
   return (
     <FormField
+      {...fieldProps}
       isEmpty={!input.value}
       label={label}
       meta={meta}
@@ -42,6 +44,7 @@ const _FormTextField = ({
 
 _FormTextField.propTypes = {
   disabled: bool,
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   inputProps: object,
@@ -59,6 +62,7 @@ _FormTextField.propTypes = {
 
 _FormTextField.defaultProps = {
   disabled: false,
+  fieldProps: null,
   id: '',
   inputProps: null,
   label: '',

@@ -5,6 +5,7 @@ import { FormField, Radio } from '../../index';
 
 const _FormRadio = ({
   disabled,
+  fieldProps,
   id,
   input,
   label,
@@ -14,6 +15,7 @@ const _FormRadio = ({
   const _id = id || `${input.name}-${JSON.stringify(input.value)}`; // replace to hash
   return (
     <FormField
+      {...fieldProps}
       label={label}
       name={_id}
       isEmpty={!input.value}
@@ -38,6 +40,7 @@ const _FormRadio = ({
 
 _FormRadio.propTypes = {
   disabled: bool,
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
@@ -46,6 +49,7 @@ _FormRadio.propTypes = {
 
 _FormRadio.defaultProps = {
   disabled: false,
+  fieldProps: null,
   id: '',
   label: '',
 };

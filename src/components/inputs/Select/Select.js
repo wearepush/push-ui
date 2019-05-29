@@ -250,7 +250,7 @@ export default class Select extends PureComponent {
 
     const active = this.isActive();
     const empty = this.isEmpty();
-    const className = cx('TextField', {
+    const className = cx('Select', {
       [classNameProp]: !!classNameProp,
       'is-active': active,
       'is-empty': empty,

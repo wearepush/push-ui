@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { FormField, Tags, TagsWithOutContext } from '../../index';
 
 const _FormTags = ({
+  fieldProps,
   id,
   input,
   label,
@@ -18,6 +19,7 @@ const _FormTags = ({
   }
   return (
     <FormField
+      {...fieldProps}
       label={label}
       name={_id}
       meta={meta}
@@ -42,6 +44,7 @@ const _FormTags = ({
 };
 
 _FormTags.propTypes = {
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
@@ -50,6 +53,7 @@ _FormTags.propTypes = {
 };
 
 _FormTags.defaultProps = {
+  fieldProps: null,
   id: '',
   label: '',
   withoutContext: false,

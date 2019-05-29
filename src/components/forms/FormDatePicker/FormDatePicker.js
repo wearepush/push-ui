@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { DatePicker, FormField } from '../../index';
 
 const _FormDatePicker = ({
+  fieldProps,
   id,
   input,
   label,
@@ -13,6 +14,7 @@ const _FormDatePicker = ({
   const _id = id || input.name;
   return (
     <FormField
+      {...fieldProps}
       meta={meta}
       label={label}
       name={_id}
@@ -33,6 +35,7 @@ const _FormDatePicker = ({
 };
 
 _FormDatePicker.propTypes = {
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
@@ -40,6 +43,7 @@ _FormDatePicker.propTypes = {
 };
 
 _FormDatePicker.defaultProps = {
+  fieldProps: null,
   id: '',
   label: '',
 };
