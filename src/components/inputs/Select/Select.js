@@ -212,7 +212,7 @@ export default class Select extends PureComponent {
     return (
       <select
         className={
-          cx('TextField__input', {
+          cx('Select__input', {
             'is-active': active,
             'is-disabled': disabled,
             'is-empty': empty,
