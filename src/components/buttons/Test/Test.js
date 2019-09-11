@@ -1,30 +1,23 @@
 import React, { PureComponent } from 'react';
-import { object } from 'prop-types';
 import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
-
-const theme = {
-  colors: {
-    primary: 'hotpink'
-  }
-};
+import { space, layout, color } from 'styled-system';
+import theme from './theme';
 
 const SomeText = styled.div`
-  color: ${props => props.theme.colors.primary};
+  color: ${props => {
+    return props.theme.colors.primary;
+  }};
+  ${color};
+  ${space};
+  ${layout};
 `;
 
 export default class Test extends PureComponent {
-  static propTypes = {
-    theme: object.isRequired,
-  };
-
   render() {
     return (
-      <ThemeProvider theme={this.props.theme || theme}>
-        <SomeText>some text</SomeText>
-        <div css={theme => ({ color: theme.colors.primary })}>
-          some other text
-        </div>
+      <ThemeProvider theme={theme}>
+        <SomeText {...this.props}>some text</SomeText>
       </ThemeProvider>
     );
   }
