@@ -17,7 +17,7 @@ import { ThemeProvider } from '../src/components/styles';
 
 const withThemeProvider = storyFn => (
   <ThemeProvider
-    theme={themes.standard}
+    theme={themes.standard()}
   >
     {storyFn()}
   </ThemeProvider>

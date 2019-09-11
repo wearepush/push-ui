@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { node, object } from 'prop-types';
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 
@@ -10,11 +10,9 @@ export default class ThemeProvider extends Component {
 
   render() {
     return (
-      <Fragment>
-        <EmotionThemeProvider theme={this.props.theme}>
-          {this.props.children}
-        </EmotionThemeProvider>
-      </Fragment>
+      <EmotionThemeProvider theme={this.props.theme}>
+        {this.props.children}
+      </EmotionThemeProvider>
     );
   }
 }

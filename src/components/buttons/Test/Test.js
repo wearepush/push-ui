@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import styled from '@emotion/styled';
-import { ThemeProvider } from 'emotion-theming';
+import { withTheme } from 'emotion-theming';
 import { space, layout, color } from 'styled-system';
-import theme from './theme';
+
+import themes from '../../../styles/themes';
 
 const SomeText = styled.div`
   color: ${props => {
@@ -13,12 +14,16 @@ const SomeText = styled.div`
   ${layout};
 `;
 
-export default class Test extends PureComponent {
+export class BaseTest extends PureComponent {
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <SomeText {...this.props}>some text</SomeText>
-      </ThemeProvider>
+      <SomeText {...this.props}>some text</SomeText>
     );
   }
 }
+
+BaseTest.defaultProps = {
+  theme: themes.standard(),
+};
+
+export default withTheme(BaseTest);
