@@ -14,16 +14,15 @@ const SomeText = styled.div`
   ${layout};
 `;
 
-export class BaseTest extends PureComponent {
+export class Test extends PureComponent {
   render() {
+    const { theme } = this.props;
+    const _theme = Object.keys(theme).length ? theme : themes.standard();
+
     return (
-      <SomeText {...this.props}>some text</SomeText>
+      <SomeText {...this.props} theme={_theme}>some text</SomeText>
     );
   }
 }
 
-BaseTest.defaultProps = {
-  theme: themes.standard(),
-};
-
-export default withTheme(BaseTest);
+export default withTheme(Test);
