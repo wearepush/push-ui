@@ -1,6 +1,6 @@
 export default {
   colors: {
-    primary: '#f00',
+    primary: '#000',
     white: '#fff',
     blue: '#007ce0',
     navy: '#004175',

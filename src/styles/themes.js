@@ -1,7 +1,7 @@
 function standard() {
   return {
     colors: {
-      primary: 'red',
+      primary: 'yellow',
     },
   };
 }
