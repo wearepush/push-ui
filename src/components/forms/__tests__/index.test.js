@@ -12,7 +12,7 @@ import {
 
 describe('index', () => {
   it('should export FormButton', () => {
-    expect(typeof FormButton).toBe('function');
+    expect(typeof FormButton).toBe('object');
   });
 
   it('should export FormCheckbox', () => {

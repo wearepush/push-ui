@@ -5,6 +5,7 @@ import { FormField, Checkbox } from '../../index';
 
 const _FormCheckbox = ({
   disabled,
+  fieldProps,
   id,
   input,
   label,
@@ -15,6 +16,7 @@ const _FormCheckbox = ({
   const _id = id || input.name;
   return (
     <FormField
+      {...fieldProps}
       label={label}
       name={_id}
     >
@@ -37,6 +39,7 @@ const _FormCheckbox = ({
 
 _FormCheckbox.propTypes = {
   disabled: bool,
+  fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
@@ -52,6 +55,7 @@ _FormCheckbox.propTypes = {
 
 _FormCheckbox.defaultProps = {
   disabled: false,
+  fieldProps: null,
   id: '',
   label: '',
   valueProp: undefined,

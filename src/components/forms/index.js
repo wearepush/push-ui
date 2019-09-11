@@ -9,3 +9,4 @@ export { default as FormSelect } from './FormSelect/FormSelect';
 export { default as FormTags } from './FormTags/FormTags';
 export { default as FormTextField } from './FormTextField/FormTextField';
 export { default as FormTextArea } from './FormTextArea/FormTextArea';
+export { default as FormTextMask } from './FormTextMask/FormTextMask';
