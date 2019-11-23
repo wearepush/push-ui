@@ -1,9 +1,8 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 
-import themes from '../src/styles/themes';
 // import injectGlobalStyles from '../src/styles/global-styles';
-import { ThemeProvider } from '../src/components/styles';
+import { ThemeProvider, theme } from '../src/components/styles';
 
 // Dynamically decide wich styles to load.
 // if (PRODUCTION) {
@@ -17,7 +16,7 @@ import { ThemeProvider } from '../src/components/styles';
 
 const withThemeProvider = storyFn => (
   <ThemeProvider
-    theme={themes.standard()}
+    theme={theme}
   >
     {storyFn()}
   </ThemeProvider>

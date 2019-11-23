@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
 import cx from 'classnames';
-import styles from './Button.scss'; // eslint-disable-line
+import { withTheme } from 'emotion-theming';
+import { theme as defaultTheme } from '../../styles';
+import { StyledButton } from './Button.style';
 
-export default class Button extends PureComponent {
+export class Button extends PureComponent {
   static propTypes = {
     /**
     * Use that property to pass a ref callback to the native button component.
@@ -20,13 +22,7 @@ export default class Button extends PureComponent {
     /**
     * The button text color.
     */
-    color: oneOf([
-      'alert',
-      'warning',
-      'primary',
-      'success',
-      'default',
-    ]),
+    color: string,
     /**
     * The component used for the root node.
     * Either a string to use a DOM element or a component.
@@ -45,50 +41,6 @@ export default class Button extends PureComponent {
     * If `true`, the button will take up the full width of its container.
     */
     fullWidth: bool,
-    /**
-    * @ignore
-    */
-    onBlur: func,
-    /**
-    * @ignore
-    */
-    onClick: func,
-    /**
-    * @ignore
-    */
-    onFocus: func,
-    /**
-    * @ignore
-    */
-    onKeyDown: func,
-    /**
-    * @ignore
-    */
-    onKeyUp: func,
-    /**
-    * @ignore
-    */
-    onMouseDown: func,
-    /**
-    * @ignore
-    */
-    onMouseLeave: func,
-    /**
-    * @ignore
-    */
-    onMouseUp: func,
-    /**
-    * @ignore
-    */
-    onTouchEnd: func,
-    /**
-    * @ignore
-    */
-    onTouchMove: func,
-    /**
-    * @ignore
-    */
-    onTouchStart: func,
     /**
     * @ignore
     */
@@ -131,17 +83,6 @@ export default class Button extends PureComponent {
     disabled: false,
     float: false,
     fullWidth: false,
-    onBlur: undefined,
-    onClick: undefined,
-    onFocus: undefined,
-    onKeyDown: undefined,
-    onKeyUp: undefined,
-    onMouseDown: undefined,
-    onMouseLeave: undefined,
-    onMouseUp: undefined,
-    onTouchEnd: undefined,
-    onTouchMove: undefined,
-    onTouchStart: undefined,
     role: 'button',
     size: 'medium',
     tabIndex: 0,
@@ -159,17 +100,6 @@ export default class Button extends PureComponent {
       disabled,
       float,
       fullWidth,
-      onClick,
-      onBlur,
-      onFocus,
-      onKeyDown,
-      onKeyUp,
-      onMouseDown,
-      onMouseLeave,
-      onMouseUp,
-      onTouchEnd,
-      onTouchMove,
-      onTouchStart,
       role,
       size,
       tabIndex,
@@ -183,7 +113,7 @@ export default class Button extends PureComponent {
     if (other.href) {
       ComponentProp = 'a';
     } else {
-      ComponentProp = 'button';
+      ComponentProp = StyledButton;
     }
 
     const buttonProps = {};
@@ -207,24 +137,17 @@ export default class Button extends PureComponent {
       'is-float': !!float,
     });
 
+    const { theme } = this.props;
+    const _theme = Object.keys(theme).length ? theme : defaultTheme;
+
     return (
       <ComponentProp
         className={className}
         color={color}
-        onClick={onClick}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
-        onTouchEnd={onTouchEnd}
-        onTouchMove={onTouchMove}
-        onTouchStart={onTouchStart}
         ref={buttonRef}
         role={role}
         tabIndex={disabled ? -1 : parseInt(tabIndex, 10)}
+        theme={_theme}
         variant={variant}
         {...buttonProps}
         {...other}
@@ -234,3 +157,5 @@ export default class Button extends PureComponent {
     );
   }
 }
+
+export default withTheme(Button);

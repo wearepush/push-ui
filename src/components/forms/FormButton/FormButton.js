@@ -7,15 +7,15 @@ import { Button } from '../../index';
 const FormButton = ({
   dispatch,
   form,
-  ...rest,
+  ...rest
 }) => (
   <Button
-    {...rest}
     onClick={(e) => {
       const action = dispatch(submit(form));
       rest.onClick && rest.onClick(e, action);
     }}
     type="button"
+    {...rest}
   />
 );
 
