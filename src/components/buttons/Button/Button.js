@@ -1,93 +1,61 @@
-import React, { PureComponent } from 'react';
-import { bool, func, node, number, oneOfType, oneOf, string } from 'prop-types';
-import cx from 'classnames';
-import { withTheme } from 'emotion-theming';
-import { theme as defaultTheme } from '../../styles';
-import { StyledButton } from './Button.style';
+import React, { PureComponent } from "react";
+import { bool, func, node, number, oneOfType, string } from "prop-types";
+import cx from "classnames";
+import { withTheme } from "emotion-theming";
+import { theme as defaultTheme } from "../../styles";
+import { StyledButton, StyledLink } from "./Button.style";
 
 export class Button extends PureComponent {
   static propTypes = {
     /**
-    * Use that property to pass a ref callback to the native button component.
-    */
+     * Use that property to pass a ref callback to the native button component.
+     */
     buttonRef: func,
     /**
-    * The content of the button.
-    */
+     * The content of the button.
+     */
     children: node.isRequired,
     /**
-    * @ignore
-    */
+     * @ignore
+     */
     className: string,
     /**
-    * The button text color.
-    */
-    color: string,
-    /**
-    * The component used for the root node.
-    * Either a string to use a DOM element or a component.
-    * The default value is a `button`.
-    */
+     * The component used for the root node.
+     * Either a string to use a DOM element or a component.
+     * The default value is a `button`.
+     */
     component: string,
     /**
-    * If `true`, the base button will be disabled.
-    */
+     * If `true`, the base button will be disabled.
+     */
     disabled: bool,
     /**
-    * If `true`, the base button will be rounded.
-    */
-    float: bool,
-    /**
-    * If `true`, the button will take up the full width of its container.
-    */
-    fullWidth: bool,
-    /**
-    * @ignore
-    */
+     * @ignore
+     */
     role: string,
     /**
-    * @ignore
-    */
-    tabIndex: oneOfType([
-      number,
-      string
-    ]),
+     * @ignore
+     */
+    tabIndex: oneOfType([number, string]),
     /**
-    * The size of the button.
-    */
-    size: oneOf([
-      'small',
-      'medium',
-      'large'
-    ]),
-    /**
-    * @ignore
-    */
+     * @ignore
+     */
     type: string,
     /**
-    * The variant of the button style:
-    * outlined: the button with outline;
-    * contained: the button distinguished by the elevation and fill;
-    */
-    variant: oneOf([
-      'contained',
-      'outlined'
-    ])
+     * The button variant.
+     */
+    variant: string,
   };
 
   static defaultProps = {
     buttonRef: undefined,
-    className: '',
-    color: 'primary',
-    component: 'button',
+    className: "",
+    component: "button",
     disabled: false,
-    float: false,
-    fullWidth: false,
-    role: 'button',
-    size: 'medium',
+    role: "button",
     tabIndex: 0,
-    type: 'button',
-    variant: 'contained'
+    type: "button",
+    variant: "primary",
   };
 
   render() {
@@ -98,46 +66,27 @@ export class Button extends PureComponent {
       color,
       component,
       disabled,
-      float,
-      fullWidth,
       role,
-      size,
       tabIndex,
+      theme,
       type,
-      variant,
       ...other
-    } = this.props;
-
-    let ComponentProp = component;
-
+    } = this.props
+    let ComponentProp = StyledButton;
     if (other.href) {
-      ComponentProp = 'a';
-    } else {
-      ComponentProp = StyledButton;
+      ComponentProp = StyledLink;
     }
-
     const buttonProps = {};
-
-    if (ComponentProp === 'button') {
-      buttonProps.type = type || 'button';
+    if (component === "button") {
+      buttonProps.type = type || "button";
       buttonProps.disabled = disabled;
       buttonProps.role = undefined;
     } else {
-      buttonProps.role = 'button';
+      buttonProps.role = "button";
     }
-
-    const className = cx('Button', {
-      [classNameProp]: !!classNameProp,
-      'is-disabled': disabled,
-      'is-full-width': fullWidth,
-      [`is-size-${size}`]: !!size,
-      'is-link': !!other.href,
-      [`is-${color}`]: !!color,
-      [`is-${variant}`]: !!variant,
-      'is-float': !!float,
+    const className = cx("Button", {
+      [classNameProp]: !!classNameProp
     });
-
-    const { theme } = this.props;
     const _theme = Object.keys(theme).length ? theme : defaultTheme;
 
     return (
@@ -148,7 +97,6 @@ export class Button extends PureComponent {
         role={role}
         tabIndex={disabled ? -1 : parseInt(tabIndex, 10)}
         theme={_theme}
-        variant={variant}
         {...buttonProps}
         {...other}
       >
