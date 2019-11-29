@@ -1,42 +1,56 @@
 import styled from "@emotion/styled";
 import { space, layout, color, variant as useVariant } from "styled-system";
-import css from '@styled-system/css';
+import css from "@styled-system/css";
+
+const variants = {};
+["primary", "warning", "success", "danger", "brand"].forEach(c => {
+  variants[c] = {
+    color: "white",
+    bg: `${c}700`,
+    "&:hover": {
+      bg: `${c}600`
+    },
+    "&:disabled": {
+      bg: "disabled"
+    }
+  };
+});
 
 const variant = useVariant({
   prop: "variant",
-  variants: {
-    primary: {
-      color: "success900",
-      bg: "success400",
-      "&:hover": {
-        bg: "success900"
-      },
-      "&:disabled": {
-        bg: "disabled"
-      }
-    },
-    warning: {
-      color: "warning900",
-      bg: "warning400"
-    }
-  }
+  variants
 });
 
+const styles = `
+  box-sizing: border-box;
+  padding: 10px;
+  text-decoration: none;
+`;
+
 export const StyledButton = styled.button`
-  ${variant}
-  ${color}
-  ${layout}
-  ${space}
+  ${styles};
+  ${variant};
+  ${color};
+  ${layout};
+  ${space};
   ${props => css(props.css)};
+  transition: ${props => props.theme.transitions.button };
+  &:hover {
+    box-shadow: ${props => props.theme.shadows[props.shadow] };
+  }
 `;
 
 export const StyledLink = styled.a`
-  text-decoration: none;
-  ${variant}
-  ${color}
-  ${layout}
-  ${space}
+  ${styles};
+  ${variant};
+  ${color};
+  ${layout};
+  ${space};
   ${props => css(props.css)};
+  ${props => `transition: ${props.theme.transitions.button}`};
+  &:hover {
+    box-shadow: ${props => props.theme.shadows[props.shadow] };
+  }
 `;
 
 export default {

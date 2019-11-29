@@ -88,7 +88,6 @@ export class Button extends PureComponent {
       [classNameProp]: !!classNameProp
     });
     const _theme = Object.keys(theme).length ? theme : defaultTheme;
-
     return (
       <ComponentProp
         className={className}

@@ -11,9 +11,14 @@ storiesOf("buttons/Button", module)
   .add("default", () => (
     <Button
       disabled={boolean("disabled", false)}
+      shadow={select(
+        "shadow",
+        ["0", "1", "2", "3", "4"],
+        "4"
+      )}
       variant={select(
         "color",
-        ["primary", "warning", "success", "danger", "default"],
+        ["primary", "warning", "success", "danger", "brand"],
         "primary"
       )}
     >
@@ -24,13 +29,11 @@ storiesOf("buttons/Button", module)
     <Button
       variant={select(
         "color",
-        ["primary", "warning", "success", "danger", "default"],
+        ["primary", "warning", "success", "danger", "brand"],
         "primary"
       )}
       href="http://google.com/"
-      size={select("size", ["small", "medium", "large"], "medium")}
       target="_blank"
-      variant={select("variant", ["contained", "outlined"])}
     >
       Hello Button
     </Button>

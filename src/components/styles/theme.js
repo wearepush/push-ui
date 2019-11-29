@@ -1,25 +1,5 @@
 export default {
   colors: {
-    black900: "#0A1F44",
-    black800: "#14284B",
-    black700: "#283A5B",
-    black600: "#364766",
-    black500: "#455571",
-    black400: "#4E5D78",
-    black300: "#596780",
-    black200: "#627088",
-    black100: "#717D92",
-
-    gray900: "#8A94A6",
-    gray800: "#98A1B1",
-    gray700: "#A7AEBB",
-    gray600: "#B0B7C3",
-    gray500: "#C9CED6",
-    gray400: "#E1E4E8",
-    gray300: "#F1F2F4",
-    gray200: "#F7F8F9",
-    gray100: "#FAFBFB",
-
     brand900: "#FF584A",
     brand800: "#FE6C61",
     brand700: "#FF867E",
@@ -60,15 +40,15 @@ export default {
     danger200: "#FEF6F3",
     danger100: "#FFFBFA",
 
-    info900: "#01408F",
-    info800: "#026DD6",
-    info700: "#0284FE",
-    info600: "#4BA7FE",
-    info500: "#83C3FE",
-    info400: "#B3DAFF",
-    info300: "#DCEEFF",
-    info200: "#EEF7FF",
-    info100: "#F8FBFF",
+    primary900: "#01408F",
+    primary800: "#026DD6",
+    primary700: "#0284FE",
+    primary600: "#4BA7FE",
+    primary500: "#83C3FE",
+    primary400: "#B3DAFF",
+    primary300: "#DCEEFF",
+    primary200: "#EEF7FF",
+    primary100: "#F8FBFF",
 
     white: "#FFFFFF",
     black: "#000000",
@@ -77,6 +57,18 @@ export default {
     disabled: "#B0B7C3",
     light: "#A7AAB0",
     medium: "#505256",
-    dark: "#000000"
+  },
+  transitions: {
+    button: "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
+  },
+  shadows: {
+    "0": "none",
+    "1": "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1)",
+    "2": "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1)",
+    "3": "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1)",
+    "4":
+      "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)",
+    "5":
+      "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1)"
   },
 };
