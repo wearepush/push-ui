@@ -68,19 +68,24 @@ export default {
   },
   sizes: {
     xs: {
+      fontSize: '.75rem',
       padding: '0.5rem 1rem'
     },
     sm: {
+      fontSize: '1rem',
       padding: '0.75rem 1.25rem'
     },
     md: {
+      fontSize: '1.25rem',
       padding: '1rem 1.5rem'
     },
     lg: {
+      fontSize: '1.5rem',
       padding: '1.25rem 1.75rem'
     },
     xl: {
+      fontSize: '1.75rem',
       padding: '1.5rem 2rem'
     },
-  }
+  },
 };

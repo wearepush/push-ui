@@ -1,11 +1,11 @@
 import React, { PureComponent } from "react";
-import { bool, func, node, number, oneOfType, string } from "prop-types";
+import { bool, func, node, number, oneOfType, oneOf, object, string } from "prop-types";
 import cx from "classnames";
 import { withTheme } from "emotion-theming";
 import { theme as defaultTheme } from "../../styles";
 import { StyledButton, StyledLink } from "./Button.style";
 
-export class Button extends PureComponent {
+class Button extends PureComponent {
   static propTypes = {
     /**
      * Use that property to pass a ref callback to the native button component.
@@ -34,17 +34,59 @@ export class Button extends PureComponent {
      */
     role: string,
     /**
+     * Border raidus.
+     */
+    rounded: oneOf([
+      '0',
+      'xs',
+      'sm',
+      'md',
+      'lg',
+      'xl',
+      'circle',
+    ]),
+    /**
+     * Size.
+     */
+    size: oneOf([
+      'xs',
+      'sm',
+      'md',
+      'lg',
+      'xl',
+    ]),
+    /**
+     * Shadow.
+     */
+    shadow: oneOf([
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+    ]),
+    /**
      * @ignore
      */
     tabIndex: oneOfType([number, string]),
     /**
      * @ignore
      */
+    theme: object,
+    /**
+     * @ignore
+     */
     type: string,
     /**
-     * The button variant.
+     * Variant.
      */
-    variant: string,
+    variant: oneOf([
+      'primary',
+      'warning',
+      'success',
+      'danger',
+      'brand',
+    ]),
   };
 
   static defaultProps = {
@@ -57,6 +99,7 @@ export class Button extends PureComponent {
     shadow: "0",
     size: "sm",
     tabIndex: 0,
+    theme: {},
     type: "button",
     variant: "primary",
   };
@@ -66,7 +109,6 @@ export class Button extends PureComponent {
       buttonRef,
       children,
       className: classNameProp,
-      color,
       component,
       disabled,
       role,
@@ -94,7 +136,6 @@ export class Button extends PureComponent {
     return (
       <ComponentProp
         className={className}
-        color={color}
         ref={buttonRef}
         role={role}
         tabIndex={disabled ? -1 : parseInt(tabIndex, 10)}
@@ -108,4 +149,5 @@ export class Button extends PureComponent {
   }
 }
 
+export const ButtonComponent = Button;
 export default withTheme(Button);

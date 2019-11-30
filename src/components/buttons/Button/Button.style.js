@@ -19,7 +19,6 @@ const styles = `
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: 1;
   text-align: center;
@@ -33,6 +32,8 @@ const styles = `
   &:focus {
     outline: none;
   }
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
 `;
 
 export const StyledButton = styled.button`

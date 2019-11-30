@@ -3,17 +3,19 @@ import { storiesOf } from "@storybook/react";
 import { withKnobs, select, boolean } from "@storybook/addon-knobs";
 import { withInfo } from "@storybook/addon-info";
 
-import Button from "./Button";
+import Button, { ButtonComponent } from "./Button";
 
 storiesOf("buttons/Button", module)
-  .addDecorator(withInfo)
+  .addDecorator(withInfo({
+    propTables: [ButtonComponent],
+  }))
   .addDecorator(withKnobs)
   .add("default", () => (
     <Button
       disabled={boolean("disabled", false)}
       rounded={select(
         "rounded",
-        ["xs", "sm", "md", "lg", "xl", "circle"],
+        ["0", "xs", "sm", "md", "lg", "xl", "circle"],
         "sm"
       )}
       shadow={select(
@@ -40,6 +42,6 @@ storiesOf("buttons/Button", module)
       href="http://google.com/"
       target="_blank"
     >
-      Hello Button
+      Open google
     </Button>
   ));

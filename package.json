@@ -121,6 +121,8 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.stories.js",
+      "!src/**/*.style.js",
+      "!src/**/*.theme.js",
       "!src/**/__tests__/**/*.js"
     ],
     "coverageReporters": [
