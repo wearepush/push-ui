@@ -1,18 +1,18 @@
-# redux-components-ui
+# push-ui
 
 ---
 
-[![Build Status](https://travis-ci.org/wearepush/redux-starter.svg?branch=master&style=flat-square)](https://travis-ci.org/wearepush/push-ui)
+[![Build Status](https://api.travis-ci.org/wearepush/push-ui.svg?branch=master&style=flat-square)](https://travis-ci.org/wearepush/push-ui)
 [![Dependency Status](https://david-dm.org/wearepush/push-ui.svg?style=flat-square)](https://david-dm.org/wearepush/push-ui)
 [![devDependency Status](https://david-dm.org/wearepush/push-ui/dev-status.svg?style=flat-square)](https://david-dm.org/wearepush/push-ui?type=dev)
-[![NPM Version](https://img.shields.io/npm/v/redux-starter-ui.svg?style=flat)](https://www.npmjs.com/package/redux-starter-ui)
+[![NPM Version](https://img.shields.io/npm/v/push-ui.svg?style=flat)](https://www.npmjs.com/package/push-ui)
 [![NPM Downloads](https://img.shields.io/npm/dm/push-ui.svg?style=flat)](https://npmcharts.com/compare/push-ui?minimal=true)
-[![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://wearepush-push-ui.herokuapp.com)
+[![Demo on Heroku](https://img.shields.io/badge/wearepush-ui.svg?style=flat-square)](https://wearepush-ui.herokuapp.com)
 [![codecov](https://codecov.io/gh/wearepush/push-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/wearepush/push-ui)
 
 ---
 
-## [Live Demo](https://wearepush-redux-starter-ui.herokuapp.com) :eyes:
+## [Live Demo](https://wearepush-ui.herokuapp.com) :eyes:
 
 
 ## About
@@ -29,5 +29,5 @@ The starter ui includes the following technologies:
 ## Installation
 
 ```bash
-npm install redux-starter-ui --save
+npm install push-ui --save
 ```

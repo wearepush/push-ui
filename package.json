@@ -1,5 +1,5 @@
 {
-  "name": "redux-starter-ui",
+  "name": "push-ui",
   "version": "2.0.10",
   "description": "",
   "main": "./lib/index.js",
@@ -92,20 +92,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wearepush/redux-starter-ui.git"
+    "url": "git+https://github.com/wearepush/push-ui.git"
   },
   "author": "wearepush",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wearepush/redux-starter-ui/issues"
+    "url": "https://github.com/wearepush/push-ui/issues"
   },
-  "homepage": "https://github.com/wearepush/redux-starter-ui#readme",
+  "homepage": "https://github.com/wearepush/push-ui#readme",
   "files": [
     "README.md",
     "lib",
     "dist"
   ],
-  "npmName": "redux-starter-ui",
+  "npmName": "push-ui",
   "npmFileMap": [
     {
       "basePath": "/dist/",
