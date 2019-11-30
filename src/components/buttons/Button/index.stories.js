@@ -1,36 +1,47 @@
-import React from 'react';
+import React from "react";
+import { storiesOf } from "@storybook/react";
+import { withKnobs, select, boolean } from "@storybook/addon-knobs";
+import { withInfo } from "@storybook/addon-info";
 
-import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
+import Button, { ButtonComponent } from "./Button";
 
-import Button from './Button';
-
-storiesOf('buttons/Button', module)
-.addDecorator(withInfo)
-.addDecorator(withKnobs)
-.add('default', () =>
-  <Button
-    color={select('color', ['primary', 'warning', 'success', 'alert', 'default'], 'primary')}
-    disabled={boolean('disabled', false)}
-    float={boolean('float', false)}
-    fullWidth={boolean('fullWidth', false)}
-    size={select('size', ['small', 'medium', 'large'], 'medium')}
-    variant={select('variant', ['contained', 'outlined'])}
-  >
-    Hello Button
-  </Button>
-)
-.add('link', () =>
-  <Button
-    color={select('color', ['primary', 'warning', 'success', 'alert', 'default'], 'primary')}
-    href="http://google.com/"
-    float={boolean('float', false)}
-    fullWidth={boolean('fullWidth', false)}
-    size={select('size', ['small', 'medium', 'large'], 'medium')}
-    target="_blank"
-    variant={select('variant', ['contained', 'outlined'])}
-  >
-    Hello Button
-  </Button>
-);
+storiesOf("buttons/Button", module)
+  .addDecorator(withInfo({
+    propTables: [ButtonComponent],
+  }))
+  .addDecorator(withKnobs)
+  .add("default", () => (
+    <Button
+      disabled={boolean("disabled", false)}
+      rounded={select(
+        "rounded",
+        ["0", "xs", "sm", "md", "lg", "xl", "circle"],
+        "sm"
+      )}
+      shadow={select(
+        "shadow",
+        ["0", "1", "2", "3", "4"],
+        "4"
+      )}
+      size={select(
+        "size",
+        ["xs", "sm", "md", "lg", "xl"],
+        "sm"
+      )}
+      variant={select(
+        "variant",
+        ["primary", "warning", "success", "danger", "brand"],
+        "primary"
+      )}
+    >
+      Preview
+    </Button>
+  ))
+  .add("link", () => (
+    <Button
+      href="http://google.com/"
+      target="_blank"
+    >
+      Open google
+    </Button>
+  ));

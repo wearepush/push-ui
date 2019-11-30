@@ -4,14 +4,6 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    [
-      "css-modules-transform",
-      {
-        "extensions": [
-          ".scss"
-        ]
-      }
-    ]
+    "@babel/plugin-proposal-class-properties"
   ]
 }

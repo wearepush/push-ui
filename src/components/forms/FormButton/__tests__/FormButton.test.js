@@ -63,13 +63,11 @@ describe('FormButton', () => {
     });
     const dom = renderForm(Form, {}, {});
 
-    const inputElement = dom.find('.Button');
-
+    const inputElement = dom.find('button');
     // onClick
     inputElement.simulate('click');
     expect(onClickSpy).toHaveBeenCalled();
     expect(renderSpy).toHaveBeenCalledTimes(1);
-
 
     dom.unmount();
   });

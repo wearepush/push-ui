@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'; // eslint-disable-line
 import { bool, node, number, string, oneOf, oneOfType, arrayOf } from 'prop-types';

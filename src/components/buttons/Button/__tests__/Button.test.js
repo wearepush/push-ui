@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '../Button.js';
+import { ButtonComponent as Button } from '../Button.js';
 
 describe('Button', () => {
   describe('default props', () => {
@@ -11,11 +11,11 @@ describe('Button', () => {
           Button
         </Button>
       );
-      expect(button.name()).toEqual('button');
+      expect(button.name()).toEqual('Styled(button)');
       expect(button.prop('tabIndex')).toEqual(0);
       expect(button.prop('role')).toEqual(undefined);
-      expect(button.prop('color')).toEqual('primary');
-      expect(button.prop('variant')).toEqual('contained');
+      expect(button.prop('type')).toEqual('button');
+      expect(button.prop('variant')).toEqual('primary');
     });
 
     it('should render with type prop', () => {
@@ -57,19 +57,8 @@ describe('Button', () => {
           Button
         </Button>
       );
-      expect(button.hasClass('is-disabled')).toBe(true);
+      expect(button.prop('disabled')).toBe(true);
       expect(button.prop('tabIndex')).toEqual(-1);
-    });
-
-    it('should render with full width prop', () => {
-      const button = shallow(
-        <Button
-          fullWidth
-        >
-          Button
-        </Button>
-      );
-      expect(button.hasClass('is-full-width')).toBe(true);
     });
 
     it('should render href prop', () => {
@@ -81,9 +70,8 @@ describe('Button', () => {
           Button
         </Button>
       );
-      expect(button.hasClass('is-link')).toBe(true);
       expect(button.props().role).toEqual('button');
-      expect(button.name()).toEqual('a');
+      expect(button.name()).toEqual('Styled(a)');
     });
 
     it('should render with name prop', () => {
@@ -131,34 +119,12 @@ describe('Button', () => {
     it('should render size small prop', () => {
       const button = shallow(
         <Button
-          size="small"
+          size="xs"
         >
           Button
         </Button>
       );
-      expect(button.hasClass('is-size-small')).toBe(true);
-    });
-
-    it('should render size medium prop', () => {
-      const button = shallow(
-        <Button
-          size="medium"
-        >
-          Button
-        </Button>
-      );
-      expect(button.hasClass('is-size-medium')).toBe(true);
-    });
-
-    it('should render size large prop', () => {
-      const button = shallow(
-        <Button
-          size="large"
-        >
-          Button
-        </Button>
-      );
-      expect(button.hasClass('is-size-large')).toBe(true);
+      expect(button.prop('size')).toBe('xs');
     });
 
     it('should render custom prop', () => {
@@ -169,42 +135,28 @@ describe('Button', () => {
           Button
         </Button>
       );
-      expect(button.props()['data-test']).toEqual('test');
-    });
-
-    it('should render color', () => {
-      const button = shallow(
-        <Button
-          color="warning"
-        >
-          Button
-        </Button>
-      );
-      expect(button.hasClass('is-warning')).toBe(true);
-      expect(button.props().color).toEqual('warning');
+      expect(button.prop('data-test')).toEqual('test');
     });
 
     it('should render variant button', () => {
       const button = shallow(
         <Button
-          variant="outlined"
+          variant="warning"
         >
           Button
         </Button>
       );
-      expect(button.hasClass('is-outlined')).toBe(true);
-      expect(button.props().variant).toEqual('outlined');
+      expect(button.prop('variant')).toEqual('warning');
     });
 
-    it('should render float button', () => {
+    it('should render pass default theme', () => {
       const button = shallow(
         <Button
-          float
         >
           Button
         </Button>
       );
-      expect(button.hasClass('is-float')).toBe(true);
+      expect(button.prop('theme')).not.toEqual({});
     });
 
     it('should handle events', () => {
