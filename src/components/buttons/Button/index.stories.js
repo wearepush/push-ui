@@ -11,14 +11,23 @@ storiesOf("buttons/Button", module)
   .add("default", () => (
     <Button
       disabled={boolean("disabled", false)}
-      rounded="circle"
+      rounded={select(
+        "rounded",
+        ["xs", "sm", "md", "lg", "xl", "circle"],
+        "sm"
+      )}
       shadow={select(
         "shadow",
         ["0", "1", "2", "3", "4"],
         "4"
       )}
+      size={select(
+        "size",
+        ["xs", "sm", "md", "lg", "xl"],
+        "sm"
+      )}
       variant={select(
-        "color",
+        "variant",
         ["primary", "warning", "success", "danger", "brand"],
         "primary"
       )}
@@ -28,11 +37,6 @@ storiesOf("buttons/Button", module)
   ))
   .add("link", () => (
     <Button
-      variant={select(
-        "color",
-        ["primary", "warning", "success", "danger", "brand"],
-        "primary"
-      )}
       href="http://google.com/"
       target="_blank"
     >

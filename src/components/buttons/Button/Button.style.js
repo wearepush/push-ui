@@ -1,27 +1,16 @@
 import styled from "@emotion/styled";
 import { space, layout, color, variant as useVariant } from "styled-system";
 import css from "@styled-system/css";
-
-const variants = {};
-["primary", "warning", "success", "danger", "brand"].forEach(c => {
-  variants[c] = {
-    color: "white",
-    bg: `${c}700`,
-    borderColor: `${c}700`,
-    "&:hover": {
-      bg: `${c}600`,
-      borderColor: `${c}600`,
-    },
-    "&:disabled": {
-      bg: "disabled",
-      borderColor: "disabled",
-    }
-  };
-});
+import buttonsTheme from './Button.theme';
 
 const variant = useVariant({
   prop: "variant",
-  variants
+  variants: buttonsTheme.variants
+});
+
+const size = useVariant({
+  prop: "size",
+  variants: buttonsTheme.sizes
 });
 
 const styles = `
@@ -33,7 +22,6 @@ const styles = `
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: 1;
-  padding: 10px;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -50,6 +38,7 @@ const styles = `
 export const StyledButton = styled.button`
   ${styles};
   ${variant};
+  ${size};
   ${color};
   ${layout};
   ${space};
@@ -64,6 +53,7 @@ export const StyledButton = styled.button`
 export const StyledLink = styled.a`
   ${styles};
   ${variant};
+  ${size};
   ${color};
   ${layout};
   ${space};
