@@ -56,10 +56,20 @@ export default {
 
     disabled: "#B0B7C3",
     light: "#A7AAB0",
-    medium: "#505256",
+    medium: "#505256"
+  },
+  rounded: {
+    "0": "0px",
+    xs: "2px",
+    sm: "4px",
+    md: "6px",
+    lg: "8px",
+    xl: "12px",
+    circle: "1000rem"
   },
   transitions: {
-    button: "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
+    button:
+      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
   },
   shadows: {
     "0": "none",
@@ -70,5 +80,5 @@ export default {
       "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)",
     "5":
       "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1)"
-  },
+  }
 };

@@ -7,11 +7,14 @@ const variants = {};
   variants[c] = {
     color: "white",
     bg: `${c}700`,
+    borderColor: `${c}700`,
     "&:hover": {
-      bg: `${c}600`
+      bg: `${c}600`,
+      borderColor: `${c}600`,
     },
     "&:disabled": {
-      bg: "disabled"
+      bg: "disabled",
+      borderColor: "disabled",
     }
   };
 });
@@ -22,9 +25,26 @@ const variant = useVariant({
 });
 
 const styles = `
+  border-width: 1px;
+  border-style: solid;
   box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  line-height: 1;
   padding: 10px;
+  text-align: center;
   text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -34,6 +54,7 @@ export const StyledButton = styled.button`
   ${layout};
   ${space};
   ${props => css(props.css)};
+  border-radius: ${props => props.theme.rounded[props.rounded] };
   transition: ${props => props.theme.transitions.button };
   &:hover {
     box-shadow: ${props => props.theme.shadows[props.shadow] };
@@ -47,7 +68,8 @@ export const StyledLink = styled.a`
   ${layout};
   ${space};
   ${props => css(props.css)};
-  ${props => `transition: ${props.theme.transitions.button}`};
+  border-radius: ${props => props.theme.rounded[props.rounded] };
+  transition: ${props => props.theme.transitions.button };
   &:hover {
     box-shadow: ${props => props.theme.shadows[props.shadow] };
   }

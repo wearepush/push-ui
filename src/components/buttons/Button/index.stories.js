@@ -11,6 +11,7 @@ storiesOf("buttons/Button", module)
   .add("default", () => (
     <Button
       disabled={boolean("disabled", false)}
+      rounded="circle"
       shadow={select(
         "shadow",
         ["0", "1", "2", "3", "4"],
@@ -22,7 +23,7 @@ storiesOf("buttons/Button", module)
         "primary"
       )}
     >
-      Hello Button
+      Preview
     </Button>
   ))
   .add("link", () => (
