@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from '@emotion/core';
-import { space, layout, variant as useVariant } from "styled-system";
-// import buttonsTheme from './Button.theme';
+import { space, layout } from "styled-system";
 
 const inputStyle = (props) =>
   css`
