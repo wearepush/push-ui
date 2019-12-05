@@ -1,19 +1,32 @@
 import styled from "@emotion/styled";
-import { css } from '@emotion/core';
+import { css } from "@emotion/core";
 import { space, layout, variant as useVariant } from "styled-system";
-import buttonsTheme from './Button.theme';
 
 const variant = useVariant({
   prop: "variant",
-  variants: buttonsTheme.variants
+  scale: "buttonVariants",
+  variants: {
+    brand: {},
+    danger: {},
+    primary: {},
+    success: {},
+    warning: {},
+  }
 });
 
 const size = useVariant({
   prop: "size",
-  variants: buttonsTheme.sizes
+  scale: "buttonSizes",
+  variants: {
+    xs: {},
+    sm: {},
+    md: {},
+    lg: {},
+    xl: {},
+  }
 });
 
-const buttonStyle = (props) =>
+const buttonStyle = props =>
   css`
     border-radius: ${props.theme.rounded[props.rounded]};
     border-width: 1px;
@@ -43,7 +56,6 @@ const buttonStyle = (props) =>
       box-shadow: ${props.theme.shadows[props.shadow]};
     }
   `;
-
 
 export const StyledButton = styled.button`
   ${buttonStyle};

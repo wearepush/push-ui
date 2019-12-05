@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import TextField from './TextField';
@@ -19,6 +19,11 @@ storiesOf('inputs/TextField', module)
       onBlur={action('blur')}
       name="TextField-0"
       placeholder="TextField placeholder"
+      size={select(
+        "size",
+        ["xs", "sm", "md", "lg", "xl"],
+        "sm"
+      )}
       valid={boolean('valid', false)}
     />
   )
