@@ -1,5 +1,5 @@
 export default {
-  variants: {
+  buttonVariants: {
     primary: {
       color: "white",
       bg: 'primary700',
@@ -66,7 +66,7 @@ export default {
       }
     },
   },
-  sizes: {
+  buttonSizes: {
     xs: {
       fontSize: '.75rem',
       padding: '0.5rem 1rem'

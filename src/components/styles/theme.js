@@ -1,4 +1,9 @@
+import buttonTheme from '../buttons/Button/Button.theme';
+import inputTheme from '../inputs/TextField/Input.theme';
+
 export default {
+  ...buttonTheme,
+  ...inputTheme,
   colors: {
     brand900: "#FF584A",
     brand800: "#FE6C61",
@@ -57,15 +62,6 @@ export default {
     disabled: "#B0B7C3",
     light: "#A7AAB0",
     medium: "#505256"
-  },
-  input: {
-    backgroundColor: "#fff",
-    borderColor: "#C9CED6",
-    borderColorFocus: "#8A94A6",
-    borderColorInvalid: "red",
-    borderColorValid: "green",
-    borderRadius: "3px",
-    outlineFocus: "none",
   },
   rounded: {
     "0": "0px",

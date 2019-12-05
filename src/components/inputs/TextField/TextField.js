@@ -65,6 +65,16 @@ class TextField extends PureComponent {
     */
     name: string.isRequired,
     /**
+     * Size.
+     */
+    size: oneOf([
+      'xs',
+      'sm',
+      'md',
+      'lg',
+      'xl',
+    ]),
+    /**
     * @ignore
     */
     tabIndex: oneOfType([
@@ -110,6 +120,7 @@ class TextField extends PureComponent {
     onChange: undefined,
     onFocus: undefined,
     onKeyDown: undefined,
+    size: "sm",
     tabIndex: null,
     theme: {},
     type: 'text',
