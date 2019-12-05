@@ -29,6 +29,6 @@ describe('index', () => {
   });
 
   it('should export TextField', () => {
-    expect(typeof TextField).toBe('function');
+    expect(typeof TextField).toBe('object');
   });
 });

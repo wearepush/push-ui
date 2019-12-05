@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { space, layout, color, variant as useVariant } from "styled-system";
-import css from "@styled-system/css";
+import { css } from '@emotion/core';
+import { space, layout, variant as useVariant } from "styled-system";
 import buttonsTheme from './Button.theme';
 
 const variant = useVariant({
@@ -13,57 +13,52 @@ const size = useVariant({
   variants: buttonsTheme.sizes
 });
 
-const styles = `
-  border-width: 1px;
-  border-style: solid;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  &:disabled {
-    cursor: not-allowed;
-  }
-  &:focus {
-    outline: none;
-  }
-  -webkit-appearance: none;
-  -webkit-font-smoothing: antialiased;
-`;
+const buttonStyle = (props) =>
+  css`
+    border-radius: ${props.theme.rounded[props.rounded]};
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    transition: ${props.theme.transitions.button};
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    ${css(props.css)};
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      box-shadow: ${props.theme.shadows[props.shadow]};
+    }
+  `;
+
 
 export const StyledButton = styled.button`
-  ${styles};
+  ${buttonStyle};
   ${variant};
   ${size};
-  ${color};
   ${layout};
   ${space};
-  ${props => css(props.css)};
-  border-radius: ${props => props.theme.rounded[props.rounded] };
-  transition: ${props => props.theme.transitions.button };
-  &:hover {
-    box-shadow: ${props => props.theme.shadows[props.shadow] };
-  }
 `;
 
 export const StyledLink = styled.a`
-  ${styles};
+  ${buttonStyle};
   ${variant};
   ${size};
-  ${color};
   ${layout};
   ${space};
-  ${props => css(props.css)};
-  border-radius: ${props => props.theme.rounded[props.rounded] };
-  transition: ${props => props.theme.transitions.button };
-  &:hover {
-    box-shadow: ${props => props.theme.shadows[props.shadow] };
-  }
 `;
 
 export default {

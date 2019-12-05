@@ -73,7 +73,7 @@ describe('FormTextField', () => {
     });
     const dom = renderForm(Form, {}, {});
 
-    const inputElement = dom.find('.TextField__input');
+    const inputElement = dom.find('.TextField').first();
 
     // onFocus
     inputElement.simulate('focus');

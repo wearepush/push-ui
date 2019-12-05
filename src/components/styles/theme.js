@@ -58,6 +58,15 @@ export default {
     light: "#A7AAB0",
     medium: "#505256"
   },
+  input: {
+    backgroundColor: "#fff",
+    borderColor: "#C9CED6",
+    borderColorFocus: "#8A94A6",
+    borderColorInvalid: "red",
+    borderColorValid: "green",
+    borderRadius: "3px",
+    outlineFocus: "none",
+  },
   rounded: {
     "0": "0px",
     xs: "2px",
@@ -69,7 +78,8 @@ export default {
   },
   transitions: {
     button:
-      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
+      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out",
+    input: "border-color 0.4s ease-in-out"
   },
   shadows: {
     "0": "none",
@@ -80,5 +90,5 @@ export default {
       "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)",
     "5":
       "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1)"
-  },
+  }
 };

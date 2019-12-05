@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
-import { bool, func, number, oneOfType, oneOf, string } from 'prop-types';
+import { bool, func, number, oneOfType, oneOf, object, string } from 'prop-types';
 import cx from 'classnames';
-import {} from './TextField.scss';
+import { withTheme } from "emotion-theming";
+import { theme as defaultTheme } from "../../styles";
+import { StyledTextfield } from "./TextField.style";
 
-export default class TextField extends PureComponent {
+class TextField extends PureComponent {
   isControlled = null;
 
   static propTypes = {
@@ -57,23 +59,11 @@ export default class TextField extends PureComponent {
     /**
     * @ignore
     */
-    onKeyPress: func,
-    /**
-    * @ignore
-    */
     onKeyDown: func,
-    /**
-    * @ignore
-    */
-    onKeyUp: func,
     /**
     * The name of the `input` element.
     */
     name: string.isRequired,
-    /**
-    * The placeholder of the component.
-    */
-    placeholder: string,
     /**
     * @ignore
     */
@@ -81,6 +71,10 @@ export default class TextField extends PureComponent {
       number,
       string,
     ]),
+    /**
+     * @ignore
+     */
+    theme: object,
     /**
     * The type of the input.
     */
@@ -92,7 +86,7 @@ export default class TextField extends PureComponent {
       'text',
     ]),
     /**
-    * If `true`, the component is invalid.
+    * If `true`, the component is valid.
     */
     valid: bool,
     /**
@@ -109,17 +103,15 @@ export default class TextField extends PureComponent {
     className: '',
     disabled: false,
     defaultValue: undefined,
+    // id: '', prevent ovveride {...other}
     inputRef: undefined,
     invalid: false,
-    id: '',
     onBlur: undefined,
     onChange: undefined,
     onFocus: undefined,
-    onKeyPress: undefined,
     onKeyDown: undefined,
-    onKeyUp: undefined,
-    placeholder: '',
     tabIndex: null,
+    theme: {},
     type: 'text',
     valid: false,
     value: undefined,
@@ -127,193 +119,94 @@ export default class TextField extends PureComponent {
 
   constructor(props, context) {
     super(props, context);
-
-    this.isControlled = props.value != null;
-
+    this.isControlled = props.value !== undefined;
     if (!this.isControlled) {
       // not controlled, use internal state
-      this.state.value = props.defaultValue !== undefined ? props.defaultValue : undefined;
       this.state.active = props.active;
     }
-
     this.id = this.props.id || this.props.name;
-    this.onBlur = this.onBlur.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onKeyPress = this.onKeyPress.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
-    this.isActive = this.isActive.bind(this);
-    this.isEmpty = this.isEmpty.bind(this);
-    this.renderDefault = this.renderDefault.bind(this);
   }
 
   state = {};
 
-  onBlur(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
+  onBlur = (event) => {
     if (!this.isControlled) {
       this.setState({ active: false });
     }
-    this.props.onBlur && this.props.onBlur(event, value);
-    return true;
+    this.props.onBlur && this.props.onBlur(event);
   }
 
-  onChange(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
+  onChange = (event) => {
     if (!this.isControlled) {
-      if (this.props.type === 'number' && Number.isNaN(value)) {
-        return false;
+      if (this.props.type === 'number' && Number.isNaN(event.currentTarget.value)) {
+        return;
       }
-      this.setState({ value });
     }
-    this.props.onChange && this.props.onChange(event, value);
-    return true;
+    this.props.onChange && this.props.onChange(event);
   }
 
-  onFocus(event) {
-    if (this.props.disabled) {
-      return false;
-    }
+  onFocus = (event) => {
     if (!this.isControlled) {
       this.setState({ active: true });
     }
-    const value = this.isEventValue(event);
-    this.props.onFocus && this.props.onFocus(event, value);
-    return true;
+    this.props.onFocus && this.props.onFocus(event);
   }
 
-  onKeyPress(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    this.props.onKeyPress && this.props.onKeyPress(event, value);
-    return true;
-  }
-
-  onKeyDown(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
+  onKeyDown = (event) => {
     if (this.props.type === 'number' && event.keyCode >= 65 && event.keyCode <= 90) {
       event.preventDefault();
-      this.setState({ value });
-      return false;
+      return;
     }
-    this.props.onKeyDown && this.props.onKeyDown(event, value);
-    return true;
+    this.props.onKeyDown && this.props.onKeyDown(event);
   }
 
-  onKeyUp(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    this.props.onKeyUp && this.props.onKeyUp(event, value);
-    return true;
-  }
-
-  isEmpty() {
-    if (this.props.type === 'number') {
-      return this.isControlled ?
-        this.props.value !== 0 && !this.props.value
-        :
-        this.state.value !== 0 && !this.state.value;
-    }
-    return this.isControlled ? !this.props.value : !this.state.value;
-  }
-
-  isActive() {
+  isActive = () => {
     return this.isControlled ? this.props.active : this.state.active;
-  }
-
-  isEventValue(event) {
-    if (this.props.type === 'number') {
-      return parseInt(event.currentTarget.value, 10);
-    }
-    return event.currentTarget.value;
-  }
-
-  renderDefault() {
-    const {
-      defaultValue,
-      disabled,
-      inputRef,
-      invalid,
-      name,
-      placeholder,
-      tabIndex,
-      type,
-      valid,
-      value,
-    } = this.props;
-
-    const active = this.isActive();
-    const empty = this.isEmpty();
-
-    return (
-      <input
-        className={
-          cx('TextField__input', {
-            'is-active': active,
-            'is-disabled': disabled,
-            'is-empty': empty,
-            'is-invalid': invalid,
-            'is-not-empty': !empty,
-            'is-valid': valid,
-          })
-        }
-        defaultValue={defaultValue}
-        disabled={disabled}
-        id={this.id}
-        onBlur={this.onBlur}
-        onChange={this.onChange}
-        onFocus={this.onFocus}
-        onKeyPress={this.onKeyPress}
-        onKeyDown={this.onKeyDown}
-        onKeyUp={this.onKeyUp}
-        ref={inputRef}
-        name={name}
-        placeholder={placeholder}
-        tabIndex={active ? -1 : tabIndex || 0}
-        type={type}
-        value={value}
-      />
-    );
   }
 
   render() {
     const {
       className: classNameProp,
+      defaultValue,
       disabled,
+      inputRef,
       invalid,
+      name,
+      tabIndex,
+      theme,
+      type,
       valid,
+      value,
+      ...other
     } = this.props;
-
     const active = this.isActive();
-    const empty = this.isEmpty();
-    const className = cx('TextField', {
+    const className = cx("TextField", {
       [classNameProp]: !!classNameProp,
-      'is-active': active,
-      'is-empty': empty,
-      'is-disabled': disabled,
       'is-invalid': invalid,
-      'is-not-empty': !empty,
       'is-valid': valid,
     });
-
+    const _theme = Object.keys(theme).length ? theme : defaultTheme;
     return (
-      <div className={className}>
-        {this.renderDefault()}
-      </div>
+      <StyledTextfield
+        className={className}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        id={this.id}
+        ref={inputRef}
+        name={name}
+        tabIndex={active ? -1 : tabIndex || 0}
+        theme={_theme}
+        type={type}
+        value={value}
+        {...other}
+        onBlur={this.onBlur}
+        onChange={this.onChange}
+        onFocus={this.onFocus}
+        onKeyDown={this.onKeyDown}
+      />
     );
   }
 }
+
+export const TextFieldComponent = TextField;
+export default withTheme(TextField);
