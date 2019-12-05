@@ -12,6 +12,18 @@ module.exports = ({ config }) => {
     });
   }
 
+  config.module.rules.push({
+    test: /\.scss$/,
+    loaders: [
+      require.resolve('style-loader'),
+      {
+        loader: require.resolve('css-loader'),
+      },
+      require.resolve('sass-loader')
+    ],
+  });
+
+
   // Return the altered config
   return config;
 };
