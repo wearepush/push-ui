@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { array, bool, func, number, oneOfType, shape, string } from 'prop-types';
 import cx from 'classnames';
 import MaskedInput from 'react-text-mask';
-import {} from './TextMask.scss';
 
 export default class TextMask extends PureComponent {
   isControlled = null;

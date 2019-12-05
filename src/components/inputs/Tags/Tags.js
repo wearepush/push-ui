@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { WithContext, WithOutContext } from 'react-tag-input';
 import { array, bool, func, number, object, oneOf, string } from 'prop-types';
 import cx from 'classnames';
-import { } from './Tags.scss';
 
 const KeyCodes = {
   comma: 188,

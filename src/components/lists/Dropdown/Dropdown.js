@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'; // eslint-disable-line
 import { bool, node, number, string, oneOf, oneOfType, arrayOf } from 'prop-types';
 import cx from 'classnames';
-import { } from './Dropdown.scss';
 
 export const DropdownButton = ({
   className: classNameProp,

@@ -1,9 +1,7 @@
 'use strict';
 var webpack = require('webpack');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var env = process.env.NODE_ENV;
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 var reactExternal = {
   root: 'React',
@@ -36,52 +34,6 @@ var config = {
   module: {
     rules: [
       {
-        test: /\.(scss)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader : 'css-loader',
-            options:
-            {
-              sourceMap: true,
-              importLoaders: 2
-            }
-          },
-          {
-            loader : 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader : 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(css)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader : 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -101,14 +53,10 @@ var config = {
     ]
   },
   output: {
-    library: 'ReduxStarterUi',
+    library: 'push-ui',
     libraryTarget: 'umd'
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "index.css",
-      chunkFilename: "index.chunk.css"
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env)
     })
@@ -131,13 +79,6 @@ if (env === 'production') {
           }
         }
       }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          discardComments: {
-            removeAll: true
-          }
-        }
-      })
     ]
   };
 }

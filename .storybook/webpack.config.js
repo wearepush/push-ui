@@ -12,18 +12,6 @@ module.exports = ({ config }) => {
     });
   }
 
-  // Make whatever fine-grained changes you need
-  config.module.rules.push({
-    test: /\.scss$/,
-    loaders: [
-      require.resolve('style-loader'),
-      {
-        loader: require.resolve('css-loader'),
-      },
-      require.resolve('sass-loader')
-    ],
-  });
-
   // Return the altered config
   return config;
 };

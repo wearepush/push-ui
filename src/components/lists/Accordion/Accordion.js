@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import {} from './Accordion.scss';
 
 const Accordion = ({ children, className, ...other }) => {
   const classNames = classnames('Accordion', className);

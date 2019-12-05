@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { array, bool, func, number, node, object, oneOfType, string } from 'prop-types';
 import cx from 'classnames';
-import {} from './Select.scss';
 
 export default class Select extends PureComponent {
   isControlled = null;

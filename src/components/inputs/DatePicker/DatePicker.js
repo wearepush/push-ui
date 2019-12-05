@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Flatpickr from 'react-flatpickr';
 import cx from 'classnames';
 import { bool, string, func, oneOf, oneOfType, object } from 'prop-types';
-import { } from './DatePicker.scss';
 
 class DatePicker extends Component {
   isControlled = null;

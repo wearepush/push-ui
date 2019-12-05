@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { array, bool, func, number, object, oneOfType, node, string } from 'prop-types';
 import cx from 'classnames';
-import {} from './Radio.scss';
 
 export default class Radio extends PureComponent {
   isControlled = null;

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { bool, func, number, object, oneOfType, string } from 'prop-types';
 import cx from 'classnames';
-import {} from './TextArea.scss';
 
 export default class TextArea extends PureComponent {
   isControlled = null;

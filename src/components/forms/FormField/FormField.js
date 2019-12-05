@@ -2,7 +2,6 @@ import React from 'react';
 import { bool, node, shape, string } from 'prop-types';
 import { FormFieldLabel, FormFieldError } from '../../index';
 import cx from 'classnames';
-import { } from './FormField.scss';
 
 const FormField = ({
   children,
