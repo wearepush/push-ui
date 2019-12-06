@@ -1,4 +1,7 @@
 export default {
+  button: {
+    transition: "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
+  },
   buttonVariants: {
     primary: {
       color: "white",
@@ -72,7 +75,7 @@ export default {
       padding: '0.5rem 1rem'
     },
     sm: {
-      fontSize: '1rem',
+      fontSize: '14rem',
       padding: '0.75rem 1.25rem'
     },
     md: {

@@ -38,7 +38,7 @@ const buttonStyle = props =>
     line-height: 1;
     text-align: center;
     text-decoration: none;
-    transition: ${props.theme.transitions.button};
+    transition: ${props.theme.button.transition};
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
