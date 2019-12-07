@@ -28,8 +28,8 @@ const _FormTextArea = ({
         id={id}
         invalid={meta.touched && meta.invalid}
         onBlur={(event) => input.onBlur(event)}
-        onChange={(event, value) => input.onChange(value)}
-        onFocus={(event, value) => input.onFocus(value)}
+        onChange={(event) => input.onChange(event.currentTarget.value)}
+        onFocus={(event) => input.onFocus(event.currentTarget.value)}
         name={input.name}
         valid={!!input.value && !meta.error && !meta.warning && meta.valid}
         value={input.value}

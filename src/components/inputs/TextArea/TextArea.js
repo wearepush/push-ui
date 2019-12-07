@@ -1,294 +1,124 @@
-import React, { PureComponent } from 'react';
-import { bool, func, number, object, oneOfType, string } from 'prop-types';
-import cx from 'classnames';
+import React from "react";
+import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
+import { withTheme } from "emotion-theming";
+import { StyledTextArea } from "./TextArea.style";
+import { createInputClassName } from "../_helpers/inputHelpers";
+import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
 
-export default class TextArea extends PureComponent {
-  isControlled = null;
+const TextArea = ({
+  active,
+  className: classNameProp,
+  defaultValue,
+  disabled,
+  id,
+  invalid,
+  name,
+  tabIndex,
+  theme: themeProp,
+  valid,
+  value,
+  ...other
+}) => {
+  const className = createInputClassName({
+    componentClassName: "TextArea",
+    className: classNameProp,
+    invalid,
+    valid
+  });
+  const theme = createComponentTheme({
+    theme: themeProp
+  });
+  return (
+    <StyledTextArea
+      className={className}
+      defaultValue={defaultValue}
+      disabled={disabled}
+      id={id || name}
+      name={name}
+      tabIndex={active ? -1 : tabIndex || 0}
+      theme={theme}
+      value={value}
+      {...other}
+    />
+  );
+};
 
-  static propTypes = {
-    /**
-    * If `true`, the component is active.
-    */
-    active: bool,
-    /**
-    * @ignore
-    */
-    className: string,
-    /**
-    * If `true`, the switch will be disabled.
-    */
-    disabled: bool,
-    /**
-    * @ignore
-    */
-    defaultValue: oneOfType([
-      number,
-      string,
-    ]),
-    /**
-    * Properties applied to the `input` element.
-    */
-    inputProps: object,
-    /**
-    * Use that property to pass a ref callback to the native input component.
-    */
-    inputRef: func,
-    /**
-    * If `true`, the component is invalid.
-    */
-    invalid: bool,
-    /**
-    * The id of the `input` element.
-    */
-    id: string,
-    /**
-    * @ignore
-    */
-    onBlur: func,
-    /**
-    * Callback fired when the state is changed.
-    *
-    * @param {object} event The event source of the callback.
-    * You can pull out the new value by accessing `event.currentTarget.value`.
-    * @param {string} value The `value` of the input
-    */
-    onChange: func,
-    /**
-    * @ignore
-    */
-    onFocus: func,
-    /**
-    * @ignore
-    */
-    onKeyPress: func,
-    /**
-    * @ignore
-    */
-    onKeyDown: func,
-    /**
-    * @ignore
-    */
-    onKeyUp: func,
-    /**
-    * The name of the `input` element.
-    */
-    name: string.isRequired,
-    /**
-    * The placeholder of the component.
-    */
-    placeholder: string,
-    /**
-    * @ignore
-    */
-    tabIndex: oneOfType([
-      number,
-      string,
-    ]),
-    /**
-    * If `true`, the component is invalid.
-    */
-    valid: bool,
-    /**
-    * The value of the component.
-    */
-    value: oneOfType([
-      number,
-      string,
-    ]),
-  };
+TextArea.defaultProps = {
+  active: undefined,
+  className: "",
+  disabled: false,
+  defaultValue: undefined,
+  invalid: false,
+  size: "sm",
+  tabIndex: null,
+  theme: {},
+  valid: false
+};
 
-  static defaultProps = {
-    active: false,
-    className: '',
-    disabled: false,
-    defaultValue: undefined,
-    inputProps: null,
-    inputRef: undefined,
-    invalid: false,
-    id: '',
-    onBlur: undefined,
-    onChange: undefined,
-    onFocus: undefined,
-    onKeyPress: undefined,
-    onKeyDown: undefined,
-    onKeyUp: undefined,
-    placeholder: '',
-    tabIndex: null,
-    valid: false,
-    value: undefined,
-  };
+TextArea.propTypes = {
+  /**
+   * If `true`, the component is active.
+   */
+  active: bool,
+  /**
+   * @ignore
+   */
+  className: oneOfType([object, string]),
+  /**
+   * If `true`, the switch will be disabled.
+   */
+  disabled: bool,
+  /**
+   * @ignore
+   */
+  defaultValue: oneOfType([number, string]),
+  /**
+   * If `true`, the component is invalid.
+   */
+  invalid: bool,
+  /**
+   * The id of the `input` element.
+   */
+  id: string,
+  /**
+   * @ignore
+   */
+  onBlur: func,
+  /**
+   * Callback fired when the state is changed.
+   *
+   * @param {object} event The event source of the callback.
+   */
+  onChange: func,
+  /**
+   * @ignore
+   */
+  onFocus: func,
+  /**
+   * The name of the `input` element.
+   */
+  name: string.isRequired,
+  /**
+   * Size.
+   */
+  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  /**
+   * @ignore
+   */
+  tabIndex: oneOfType([number, string]),
+  /**
+   * @ignore
+   */
+  theme: object,
+  /**
+   * If `true`, the component is invalid.
+   */
+  valid: bool,
+  /**
+   * The value of the component.
+   */
+  value: oneOfType([number, string])
+};
 
-  constructor(props, context) {
-    super(props, context);
-
-    this.isControlled = props.value != null;
-
-    if (!this.isControlled) {
-      // not controlled, use internal state
-      this.state.value = props.defaultValue !== undefined ? props.defaultValue : undefined;
-      this.state.active = props.active;
-    }
-
-    this.id = this.props.id || this.props.name;
-    this.onBlur = this.onBlur.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onKeyPress = this.onKeyPress.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
-    this.isEmpty = this.isEmpty.bind(this);
-    this.renderDefault = this.renderDefault.bind(this);
-  }
-
-  state = {};
-
-  onBlur(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    if (!this.isControlled) {
-      this.setState({ active: false });
-    }
-    this.props.onBlur && this.props.onBlur(event, value);
-    return true;
-  }
-
-  onChange(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    if (!this.isControlled) {
-      this.setState({ value });
-    }
-    this.props.onChange && this.props.onChange(event, value);
-    return true;
-  }
-
-  onFocus(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    if (!this.isControlled) {
-      this.setState({ active: true });
-    }
-    const value = this.isEventValue(event);
-    this.props.onFocus && this.props.onFocus(event, value);
-    return true;
-  }
-
-  onKeyPress(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    this.props.onKeyPress && this.props.onKeyPress(event, value);
-    return true;
-  }
-
-  onKeyDown(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    this.props.onKeyDown && this.props.onKeyDown(event, value);
-    return true;
-  }
-
-  onKeyUp(event) {
-    if (this.props.disabled) {
-      return false;
-    }
-    const value = this.isEventValue(event);
-    this.props.onKeyUp && this.props.onKeyUp(event, value);
-    return true;
-  }
-
-  isEmpty() {
-    return this.isControlled ? !this.props.value : !this.state.value;
-  }
-
-  isActive() {
-    return this.isControlled ? this.props.active : this.state.active;
-  }
-
-  isEventValue(event) { // eslint-disable-line
-    return event.currentTarget.value;
-  }
-
-  renderDefault() {
-    const {
-      defaultValue,
-      disabled,
-      inputProps,
-      inputRef,
-      invalid,
-      name,
-      placeholder,
-      tabIndex,
-      valid,
-      value,
-    } = this.props;
-
-    const active = this.isActive();
-    const empty = this.isEmpty();
-
-    return (
-      <textarea
-        {...inputProps}
-        className={
-          cx('TextArea__input', {
-            'is-active': active,
-            'is-disabled': disabled,
-            'is-empty': empty,
-            'is-invalid': invalid,
-            'is-not-empty': !empty,
-            'is-valid': valid,
-          })
-        }
-        defaultValue={defaultValue}
-        disabled={disabled}
-        id={this.id}
-        onBlur={this.onBlur}
-        onChange={this.onChange}
-        onFocus={this.onFocus}
-        onKeyPress={this.onKeyPress}
-        onKeyDown={this.onKeyDown}
-        onKeyUp={this.onKeyUp}
-        ref={inputRef}
-        name={name}
-        placeholder={placeholder}
-        tabIndex={active ? -1 : tabIndex || 0}
-        value={value}
-      />
-    );
-  }
-
-  render() {
-    const {
-      className: classNameProp,
-      disabled,
-      invalid,
-      valid,
-    } = this.props;
-
-    const active = this.isActive();
-    const empty = this.isEmpty();
-    const className = cx('TextArea', {
-      [classNameProp]: !!classNameProp,
-      'is-active': active,
-      'is-empty': empty,
-      'is-disabled': disabled,
-      'is-invalid': invalid,
-      'is-not-empty': !empty,
-      'is-valid': valid,
-    });
-
-    return (
-      <div className={className}>
-        {this.renderDefault()}
-      </div>
-    );
-  }
-}
+export const TextAreaComponent = TextArea;
+export default withTheme(TextArea);

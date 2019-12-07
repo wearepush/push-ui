@@ -35,10 +35,10 @@ const buttonStyle = props =>
     cursor: pointer;
     display: inline-block;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.5;
     text-align: center;
     text-decoration: none;
-    transition: ${props.theme.transitions.button};
+    transition: ${props.theme.button.transition};
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;

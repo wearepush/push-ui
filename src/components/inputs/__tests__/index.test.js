@@ -10,7 +10,7 @@ describe("index", () => {
   });
 
   it("should export TextArea", () => {
-    expect(typeof TextArea).toBe("function");
+    expect(typeof TextArea).toBe("object");
   });
 
   it("should export TextField", () => {

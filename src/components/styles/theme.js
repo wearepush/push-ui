@@ -72,11 +72,6 @@ export default {
     xl: "12px",
     circle: "1000rem"
   },
-  transitions: {
-    button:
-      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out",
-    input: "border-color 0.4s ease-in-out"
-  },
   shadows: {
     "0": "none",
     "1": "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1)",

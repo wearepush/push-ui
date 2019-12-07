@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { space, layout, variant } from "styled-system";
+import { variant } from "styled-system";
 
-const size = variant({
+export const sizeVariant = variant({
   prop: "size",
   scale: "inputSizes",
   variants: {
@@ -14,48 +14,55 @@ const size = variant({
   }
 });
 
-const inputStyle = props =>
+export const inputStyle = ({
+  css: _css,
+  theme: {
+    input,
+  }
+}) =>
   css`
-    background-color: ${props.theme.input.backgroundColor};
+    background-color: ${input.backgroundColor};
     border: 1px solid;
-    border-color: ${props.theme.input.borderColor};
-    border-radius: ${props.theme.input.borderRadius};
+    border-color: ${input.borderColor};
+    border-radius: ${input.borderRadius};
     box-sizing: border-box;
-    color: ${props.theme.input.color};
+    color: ${input.color};
     display: block;
-    transition: ${props.theme.transitions.input};
+    fontSize: ${input.fontSize};
+    font-weight: 400;
+    line-height: 1.5;
+    padding: ${input.padding};
+    transition: ${input.transition};
     width: 100%;
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
-    ${css(props.css)};
+    ${css(_css)};
 
     &:focus {
-      border-color: ${props.theme.input.borderColorFocus};
-      outline: ${props.theme.input.outlineFocus};
+      border-color: ${input.borderColorFocus};
+      outline: ${input.outlineFocus};
     }
     &:disabled {
-      background-color: ${props.theme.input.backgroundColorDisabled};
-      border-color: ${props.theme.input.borderColorDisabled};
+      background-color: ${input.backgroundColorDisabled};
+      border-color: ${input.borderColorDisabled};
       cursor: not-allowed;
     }
     &::placeholder {
-      color: ${props.theme.input.placeholderColor};
+      color: ${input.placeholderColor};
     }
     &.is-invalid {
-      border-color: ${props.theme.input.borderColorInvalid};
+      border-color: ${input.borderColorInvalid};
     }
     &.is-valid {
-      border-color: ${props.theme.input.borderColorValid};
+      border-color: ${input.borderColorValid};
     }
   `;
 
-export const StyledTextfield = styled.input`
+export const StyledTextField = styled.input`
   ${inputStyle}
-  ${size}
-  ${layout};
-  ${space};
+  ${sizeVariant}
 `;
 
 export default {
-  StyledTextfield
+  StyledTextField
 };
