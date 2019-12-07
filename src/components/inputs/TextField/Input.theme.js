@@ -11,28 +11,28 @@ export default {
     borderRadius: "3px",
     outlineFocus: "none",
     placeholderColor: "#A6AEBC",
-    transition: "border-color 0.4s ease-in-out",
+    transition: "border-color 0.4s ease-in-out"
   },
   inputSizes: {
     xs: {
-      fontSize: '1rem',
-      padding: '.5rem .5rem'
+      fontSize: "1rem",
+      padding: ".5rem 1rem"
     },
     sm: {
-      fontSize: '1.rem',
-      padding: '1rem 1rem'
+      fontSize: "1.2rem",
+      padding: "0.7rem 1.2rem"
     },
     md: {
-      fontSize: '1.4rem',
-      padding: '1rem 1.5rem'
+      fontSize: "1.4rem",
+      padding: "0.9rem 1.2rem"
     },
     lg: {
-      fontSize: '1.5rem',
-      padding: '1.25rem 1.75rem'
+      fontSize: "1.6rem",
+      padding: "1.1rem 1.5rem"
     },
     xl: {
-      fontSize: '1.75rem',
-      padding: '1.5rem 2rem'
-    },
-  },
+      fontSize: "1.8rem",
+      padding: "1.3rem 1.7rem"
+    }
+  }
 };

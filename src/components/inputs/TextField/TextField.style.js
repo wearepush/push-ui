@@ -29,6 +29,8 @@ const inputStyle = ({
     color: ${input.color};
     display: block;
     fontSize: ${input.fontSize};
+    font-weight: 400;
+    line-height: 1.5;
     padding: ${input.padding};
     transition: ${input.transition};
     width: 100%;
