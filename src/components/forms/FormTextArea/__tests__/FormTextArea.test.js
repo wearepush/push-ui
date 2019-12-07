@@ -73,7 +73,7 @@ describe('FormTextArea', () => {
     });
     const dom = renderForm(Form, {}, {});
 
-    const inputElement = dom.find('.TextArea__input');
+    const inputElement = dom.find('.TextArea').first();
 
     // onFocus
     inputElement.simulate('focus');

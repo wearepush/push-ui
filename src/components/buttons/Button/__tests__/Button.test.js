@@ -96,26 +96,6 @@ describe('Button', () => {
       expect(button.hasClass('test')).toBe(true);
     });
 
-    it('should render with input ref prop', () => {
-      const button = shallow(
-        <Button
-          buttonRef={() => { }}
-        >
-          Button
-        </Button>
-      );
-      expect(button.instance().props.buttonRef).not.toBe(undefined);
-    });
-
-    it('shouldn\'t render with input ref prop', () => {
-      const button = shallow(
-        <Button>
-          Button
-        </Button>
-      );
-      expect(button.instance().props.inputRef).toBe(undefined);
-    });
-
     it('should render size small prop', () => {
       const button = shallow(
         <Button

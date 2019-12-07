@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { space, layout, variant } from "styled-system";
+import { variant } from "styled-system";
 
-const size = variant({
+export const sizeVariant = variant({
   prop: "size",
   scale: "inputSizes",
   variants: {
@@ -14,7 +14,7 @@ const size = variant({
   }
 });
 
-const inputStyle = ({
+export const inputStyle = ({
   css: _css,
   theme: {
     input,
@@ -58,13 +58,11 @@ const inputStyle = ({
     }
   `;
 
-export const StyledTextfield = styled.input`
+export const StyledTextField = styled.input`
   ${inputStyle}
-  ${size}
-  ${layout};
-  ${space};
+  ${sizeVariant}
 `;
 
 export default {
-  StyledTextfield
+  StyledTextField
 };
