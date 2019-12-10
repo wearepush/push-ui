@@ -114,7 +114,7 @@ Button.propTypes = {
   /**
    * Variant.
    */
-  variant: oneOf(["primary", "warning", "success", "danger", "brand"])
+  variant: oneOf(["primary", "warning", "success", "danger", "brand", "dark", "light"])
 };
 
 export const ButtonComponent = Button;

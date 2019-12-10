@@ -11,6 +11,8 @@ const colorVariant = useVariant({
     primary: {},
     success: {},
     warning: {},
+    dark: {},
+    light: {},
   }
 });
 
