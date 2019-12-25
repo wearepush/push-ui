@@ -1,6 +1,6 @@
 import React from 'react';
 import { array, bool, func, number, oneOfType, oneOf, object, shape, string } from "prop-types";
-import { withTheme } from "emotion-theming";
+import { withTheme } from "@emotion/core";
 import { StyledTextField } from "./../TextField/TextField.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";

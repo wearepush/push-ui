@@ -11,7 +11,7 @@ describe('Button', () => {
           Button
         </Button>
       );
-      expect(button.name()).toEqual('Styled(button)');
+      expect(button.name()).toEqual('StyledButton');
       expect(button.prop('tabIndex')).toEqual(0);
       expect(button.prop('role')).toEqual(undefined);
       expect(button.prop('type')).toEqual('button');
@@ -71,7 +71,7 @@ describe('Button', () => {
         </Button>
       );
       expect(button.props().role).toEqual('button');
-      expect(button.name()).toEqual('Styled(a)');
+      expect(button.name()).toEqual('StyledLink');
     });
 
     it('should render with name prop', () => {

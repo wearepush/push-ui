@@ -1,9 +1,11 @@
 import buttonTheme from '../buttons/Button/Button.theme';
 import inputTheme from '../inputs/TextField/Input.theme';
+import checkboxTheme from '../inputs/Checkbox/Checkbox.theme';
 
 export default {
   ...buttonTheme,
   ...inputTheme,
+  ...checkboxTheme,
   colors: {
     black900: "#0A1F44",
     black800: "#14284B",
@@ -80,8 +82,8 @@ export default {
     transparent: "rgba(0,0,0,0)",
 
     disabled: "#B0B7C3",
-    light: "#A7AAB0",
-    medium: "#505256"
+    // light: "#A7AAB0",
+    // medium: "#505256"
   },
   rounded: {
     "0": "0px",

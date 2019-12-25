@@ -11,7 +11,7 @@ export default {
     borderRadius: "3px",
     outlineFocus: "none",
     placeholderColor: "#A6AEBC",
-    transition: "border-color 0.4s ease-in-out"
+    transition: "border-color 0.4s ease-in-out, background-color 0.4s ease-in-out"
   },
   inputSizes: {
     xs: {

@@ -19,15 +19,16 @@ storiesOf('inputs/Checkbox', module)
       onBlur={action('blur')}
       name="checkbox-0"
       placeholder="Checkbox placeholder"
+      size={select("size", ["xs", "sm", "md", "lg", "xl"], "sm")}
       valid={boolean('valid', false)}
-      viewType={select('viewType', ['default', 'custom', 'toggle'], 'custom')}
-    />
+    >
+      Text asdsa iudhas iudhasiu dahsiu ahisud haisudh udaiu sdh isudh aisudaisudiuasdiuahiduash iduas
+    </Checkbox>
   )
   .add('controlled', () => (
     <Checkbox
       checked={false}
       name="checkbox-0"
       placeholder="Checkbox placeholder"
-      viewType="custom"
     />
   ));
