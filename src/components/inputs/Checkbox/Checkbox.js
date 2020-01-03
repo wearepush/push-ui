@@ -1,19 +1,38 @@
 import React from "react";
-import { bool, func, number, oneOfType, oneOf, object, string, node } from "prop-types";
+import {
+  bool,
+  func,
+  number,
+  oneOfType,
+  oneOf,
+  object,
+  string,
+  node
+} from "prop-types";
 import { withTheme } from "@emotion/core";
-import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Icon, Label } from "./Checkbox.style";
+import {
+  StyledCheckbox,
+  CheckboxContainer,
+  HiddenCheckbox,
+  Icon,
+  Label
+} from "./Checkbox.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
 
 const Checkbox = ({
   active,
+  checkboxClassName: checkboxClassNameProp,
   className: classNameProp,
   children,
   checked,
   defaultChecked,
   disabled,
+  iconClassName: iconClassNameProp,
   id,
+  inputClassName: inputClassNameProp,
   invalid,
+  labelClassName: labelClassNameProp,
   name,
   size,
   tabIndex,
@@ -27,14 +46,29 @@ const Checkbox = ({
     invalid,
     valid
   });
+  const inputClassName = createInputClassName({
+    componentClassName: "Checkbox__input",
+    className: inputClassNameProp
+  });
+  const checkboxClassName = createInputClassName({
+    componentClassName: "Checkbox__checkbox",
+    className: checkboxClassNameProp
+  });
+  const iconClassName = createInputClassName({
+    componentClassName: "Checkbox__icon",
+    className: iconClassNameProp
+  });
+  const labelClassName = createInputClassName({
+    componentClassName: "Checkbox__label",
+    className: labelClassNameProp
+  });
   const theme = createComponentTheme({
     theme: themeProp
   });
   return (
-    <CheckboxContainer
-      className={className}
-    >
+    <CheckboxContainer className={className} theme={theme}>
       <HiddenCheckbox
+        className={inputClassName}
         checked={checked}
         defaultChecked={defaultChecked}
         disabled={disabled}
@@ -42,21 +76,20 @@ const Checkbox = ({
         name={name}
         tabIndex={active ? -1 : tabIndex || 0}
         type="checkbox"
+        {...other}
       />
       <StyledCheckbox
+        className={checkboxClassName}
         checked={checked}
         size={size}
         theme={theme}
       >
-        <Icon viewBox="0 0 24 24">
+        <Icon className={iconClassName} viewBox="0 0 24 24" theme={theme}>
           <polyline points="20 6 9 17 4 12" />
         </Icon>
       </StyledCheckbox>
       {children && (
-        <Label
-          size={size}
-          theme={theme}
-        >
+        <Label className={labelClassName} size={size} theme={theme}>
           {children}
         </Label>
       )}
@@ -67,10 +100,14 @@ const Checkbox = ({
 Checkbox.defaultProps = {
   active: undefined,
   children: undefined,
+  checkboxClassName: undefined,
   className: "",
   disabled: false,
   defaultChecked: undefined,
+  iconClassName: undefined,
+  inputClassName: undefined,
   invalid: false,
+  labelClassName: undefined,
   size: "sm",
   tabIndex: null,
   theme: {},
@@ -141,9 +178,9 @@ Checkbox.propTypes = {
    */
   theme: object,
   /**
-   * If `true`, the component is invalid.
+   * If `true`, the component is valid.
    */
-  valid: bool,
+  valid: bool
 };
 
 export const CheckboxComponent = Checkbox;

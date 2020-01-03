@@ -1,7 +1,7 @@
-import React from 'react';
-import { array, bool, object, number, oneOfType, string } from 'prop-types';
-import { Field } from 'redux-form';
-import { FormField, Checkbox } from '../../index';
+import React from "react";
+import { array, bool, object, number, oneOfType, string } from "prop-types";
+import { Field } from "redux-form";
+import { FormField, Checkbox } from "../../index";
 
 const _FormCheckbox = ({
   disabled,
@@ -15,11 +15,7 @@ const _FormCheckbox = ({
 }) => {
   const _id = id || input.name;
   return (
-    <FormField
-      {...fieldProps}
-      label={label}
-      name={_id}
-    >
+    <FormField {...fieldProps} label={label} name={_id}>
       <Checkbox
         {...rest}
         active={meta.active}
@@ -27,9 +23,9 @@ const _FormCheckbox = ({
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={(event) => input.onBlur(event)}
-        onChange={(event, value) => input.onChange(value)}
-        onFocus={(event, value) => input.onFocus(value)}
+        onBlur={event => input.onBlur(event)}
+        onChange={event => input.onChange(event.currentTarget.checked)}
+        onFocus={event => input.onFocus(event.currentTarget.checked)}
         name={input.name}
         value={valueProp}
       />
@@ -44,22 +40,23 @@ _FormCheckbox.propTypes = {
   input: object.isRequired,
   label: string,
   meta: object.isRequired,
-  valueProp: oneOfType([
-    array,
-    bool,
-    object,
-    number,
-    string,
-  ]),
+  valueProp: oneOfType([array, bool, object, number, string])
 };
 
 _FormCheckbox.defaultProps = {
   disabled: false,
   fieldProps: null,
-  id: '',
-  label: '',
-  valueProp: undefined,
+  id: "",
+  label: "",
+  valueProp: undefined
 };
 
-const FormCheckbox = props => <Field {...props} component={_FormCheckbox} valueProp={props.value} type="checkbox" />; // eslint-disable-line
+const FormCheckbox = props => (
+  <Field
+    {...props}
+    component={_FormCheckbox}
+    valueProp={props.value}
+    type="checkbox"
+  />
+); // eslint-disable-line
 export default FormCheckbox;

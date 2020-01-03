@@ -1,10 +1,20 @@
-import React from 'react';
-import { array, bool, func, number, oneOfType, oneOf, object, shape, string } from "prop-types";
+import React from "react";
+import {
+  array,
+  bool,
+  func,
+  number,
+  oneOfType,
+  oneOf,
+  object,
+  shape,
+  string
+} from "prop-types";
 import { withTheme } from "@emotion/core";
 import { StyledTextField } from "./../TextField/TextField.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
-import MaskedInput from 'react-text-mask';
+import MaskedInput from "react-text-mask";
 
 const TextMask = ({
   active,
@@ -44,9 +54,7 @@ const TextMask = ({
       keepCharPositions={keepCharPositions}
       mask={mask}
       name={name}
-      render={(ref, props) => (
-        <StyledTextField ref={ref} {...props} />
-      )}
+      render={(ref, props) => <StyledTextField ref={ref} {...props} />}
       showMask={showMask}
       tabIndex={active ? -1 : tabIndex || 0}
       theme={theme}
@@ -88,15 +96,12 @@ TextMask.propTypes = {
    */
   disabled: bool,
   /**
-    * @ignore
-    */
-   defaultValue: oneOfType([
-    number,
-    string,
-  ]),
+   * @ignore
+   */
+  defaultValue: oneOfType([number, string]),
   /**
-  * If `true`, that tells the component whether to be in guide or no guide mode.
-  */
+   * If `true`, that tells the component whether to be in guide or no guide mode.
+   */
   guide: bool,
   /**
    * If `true`, the component is invalid.
@@ -107,9 +112,9 @@ TextMask.propTypes = {
    */
   id: string,
   /**
-    * If `true`, changes the general behavior of the Text Mask component.
-    */
-   keepCharPositions: bool,
+   * If `true`, changes the general behavior of the Text Mask component.
+   */
+  keepCharPositions: bool,
   /**
    * @ignore
    */
@@ -127,25 +132,25 @@ TextMask.propTypes = {
    */
   onFocus: func,
   /**
-    * Mask is an array or a function that defines how the user input is going to be masked.
-    */
-   mask: oneOfType([
+   * Mask is an array or a function that defines how the user input is going to be masked.
+   */
+  mask: oneOfType([
     array,
     func,
     bool,
     shape({
       mask: oneOfType([array, func]),
-      pipe: func,
-    }),
+      pipe: func
+    })
   ]).isRequired,
   /**
    * The name of the `input` element.
    */
   name: string.isRequired,
   /**
-    * If `true`, that tells the Text Mask component to display the mask as a placeholder in place of the regular placeholder when the input element value is empty.
-    */
-   showMask: bool,
+   * If `true`, that tells the Text Mask component to display the mask as a placeholder in place of the regular placeholder when the input element value is empty.
+   */
+  showMask: bool,
   /**
    * Size.
    */

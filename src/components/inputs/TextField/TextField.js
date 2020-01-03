@@ -1,5 +1,13 @@
 import React from "react";
-import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
+import {
+  bool,
+  func,
+  number,
+  oneOfType,
+  oneOf,
+  object,
+  string
+} from "prop-types";
 import { withTheme } from "@emotion/core";
 import { StyledTextField } from "./TextField.style";
 import { createInputClassName } from "../_helpers/inputHelpers";

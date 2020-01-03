@@ -111,7 +111,7 @@ TextArea.propTypes = {
    */
   theme: object,
   /**
-   * If `true`, the component is invalid.
+   * If `true`, the component is valid.
    */
   valid: bool,
   /**
