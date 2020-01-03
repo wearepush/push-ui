@@ -15,7 +15,6 @@ export const sizeVariant = variant({
 });
 
 export const inputStyle = ({
-  css: _css,
   theme: {
     input,
   }
@@ -36,7 +35,6 @@ export const inputStyle = ({
     width: 100%;
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
-    ${css(_css)};
 
     &:focus {
       border-color: ${input.borderColorFocus};

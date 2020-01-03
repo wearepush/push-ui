@@ -12,6 +12,7 @@ storiesOf('inputs/Checkbox', module)
   .addDecorator(withKnobs)
   .add('default', () =>
     <Checkbox
+      defaultChecked
       disabled={boolean('disabled', false)}
       invalid={boolean('invalid', false)}
       onFocus={action('focus')}
@@ -29,6 +30,9 @@ storiesOf('inputs/Checkbox', module)
     <Checkbox
       checked
       name="checkbox-0"
+      onFocus={action('focus')}
+      onChange={action('change')}
+      onBlur={action('blur')}
       placeholder="Checkbox placeholder"
     />
   ));

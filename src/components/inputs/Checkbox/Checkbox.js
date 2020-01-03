@@ -10,6 +10,7 @@ import {
   node
 } from "prop-types";
 import { withTheme } from "@emotion/core";
+import cx from "classnames";
 import {
   StyledCheckbox,
   CheckboxContainer,
@@ -46,22 +47,10 @@ const Checkbox = ({
     invalid,
     valid
   });
-  const inputClassName = createInputClassName({
-    componentClassName: "Checkbox__input",
-    className: inputClassNameProp
-  });
-  const checkboxClassName = createInputClassName({
-    componentClassName: "Checkbox__checkbox",
-    className: checkboxClassNameProp
-  });
-  const iconClassName = createInputClassName({
-    componentClassName: "Checkbox__icon",
-    className: iconClassNameProp
-  });
-  const labelClassName = createInputClassName({
-    componentClassName: "Checkbox__label",
-    className: labelClassNameProp
-  });
+  const inputClassName = cx("Checkbox__input", inputClassNameProp);
+  const checkboxClassName = cx("Checkbox__checkbox", checkboxClassNameProp);
+  const iconClassName = cx("Checkbox__icon", iconClassNameProp);
+  const labelClassName = cx("Checkbox__label", labelClassNameProp);
   const theme = createComponentTheme({
     theme: themeProp
   });
@@ -75,8 +64,8 @@ const Checkbox = ({
         id={id || name}
         name={name}
         tabIndex={active ? -1 : tabIndex || 0}
-        type="checkbox"
         {...other}
+        type="checkbox"
       />
       <StyledCheckbox
         className={checkboxClassName}
@@ -100,14 +89,14 @@ const Checkbox = ({
 Checkbox.defaultProps = {
   active: undefined,
   children: undefined,
-  checkboxClassName: undefined,
+  checkboxClassName: "",
   className: "",
   disabled: false,
   defaultChecked: undefined,
-  iconClassName: undefined,
-  inputClassName: undefined,
+  iconClassName: "",
+  inputClassName: "",
   invalid: false,
-  labelClassName: undefined,
+  labelClassName: "",
   size: "sm",
   tabIndex: null,
   theme: {},
@@ -119,6 +108,10 @@ Checkbox.propTypes = {
    * If `true`, the component is active.
    */
   active: bool,
+  /**
+   * @ignore
+   */
+  checkboxClassName: oneOfType([object, string]),
   /**
    * The value of the component.
    */
@@ -140,6 +133,14 @@ Checkbox.propTypes = {
    */
   defaultChecked: bool,
   /**
+   * @ignore
+   */
+  iconClassName: oneOfType([object, string]),
+  /**
+   * @ignore
+   */
+  inputClassName: oneOfType([object, string]),
+  /**
    * If `true`, the component is invalid.
    */
   invalid: bool,
@@ -147,6 +148,10 @@ Checkbox.propTypes = {
    * The id of the `input` element.
    */
   id: string,
+  /**
+   * @ignore
+   */
+  labelClassName: oneOfType([object, string]),
   /**
    * @ignore
    */

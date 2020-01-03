@@ -55,8 +55,8 @@ const FormCheckbox = props => (
   <Field
     {...props}
     component={_FormCheckbox}
-    valueProp={props.value}
+    valueProp={props.value} // eslint-disable-line
     type="checkbox"
   />
-); // eslint-disable-line
+);
 export default FormCheckbox;
