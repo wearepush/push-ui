@@ -54,10 +54,6 @@ class ControlledDropdown extends Component {
   }
 }
 
-export default ControlledDropdown;
-
-
-
 storiesOf('lists/Dropdown', module)
   .addDecorator(withInfo)
   .addDecorator(withKnobs)

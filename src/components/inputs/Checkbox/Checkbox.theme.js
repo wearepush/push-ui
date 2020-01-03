@@ -1,6 +1,13 @@
 import inputTheme from '../TextField/Input.theme.js';
 
 export default {
+  checkbox: {
+    backgroundCheckedColor: "#026dd6",
+    borderColor: "#c9ced6",
+    borderRadius: "3px",
+    iconColor: "#fff",
+    transition: "color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out"
+  },
   checkboxSizes: {
     xs: {
       width: "1.4rem",

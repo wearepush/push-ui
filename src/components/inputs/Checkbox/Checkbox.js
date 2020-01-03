@@ -1,5 +1,5 @@
 import React from "react";
-import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
+import { bool, func, number, oneOfType, oneOf, object, string, node } from "prop-types";
 import { withTheme } from "@emotion/core";
 import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Icon, Label } from "./Checkbox.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
@@ -66,6 +66,7 @@ const Checkbox = ({
 
 Checkbox.defaultProps = {
   active: undefined,
+  children: undefined,
   className: "",
   disabled: false,
   defaultChecked: undefined,
@@ -85,6 +86,10 @@ Checkbox.propTypes = {
    * The value of the component.
    */
   checked: bool,
+  /**
+   * @ignore
+   */
+  children: node,
   /**
    * @ignore
    */

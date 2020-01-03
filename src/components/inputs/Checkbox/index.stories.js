@@ -22,12 +22,12 @@ storiesOf('inputs/Checkbox', module)
       size={select("size", ["xs", "sm", "md", "lg", "xl"], "sm")}
       valid={boolean('valid', false)}
     >
-      Text asdsa iudhas iudhasiu dahsiu ahisud haisudh udaiu sdh isudh aisudaisudiuasdiuahiduash iduas
+      Normal Checkbox
     </Checkbox>
   )
   .add('controlled', () => (
     <Checkbox
-      checked={false}
+      checked
       name="checkbox-0"
       placeholder="Checkbox placeholder"
     />
