@@ -2,7 +2,7 @@ import { Checkbox, Radio, TextArea, TextField } from "../index";
 
 describe("index", () => {
   it("should export Checkbox", () => {
-    expect(typeof Checkbox).toBe("function");
+    expect(typeof Checkbox).toBe("object");
   });
 
   it("should export Radio", () => {

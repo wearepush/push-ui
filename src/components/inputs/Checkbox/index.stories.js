@@ -1,33 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
+import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { withKnobs, boolean, select } from "@storybook/addon-knobs";
+import { withInfo } from "@storybook/addon-info";
 
-import Checkbox from './Checkbox';
+import Checkbox from "./Checkbox";
 
-storiesOf('inputs/Checkbox', module)
+storiesOf("inputs/Checkbox", module)
   .addDecorator(withInfo)
   .addDecorator(withKnobs)
-  .add('default', () =>
+  .add("default", () => (
     <Checkbox
-      disabled={boolean('disabled', false)}
-      invalid={boolean('invalid', false)}
-      onFocus={action('focus')}
-      onChange={action('change')}
-      onBlur={action('blur')}
+      defaultChecked
+      disabled={boolean("disabled", false)}
+      invalid={boolean("invalid", false)}
+      onFocus={action("focus")}
+      onChange={action("change")}
+      onBlur={action("blur")}
       name="checkbox-0"
       placeholder="Checkbox placeholder"
-      valid={boolean('valid', false)}
-      viewType={select('viewType', ['default', 'custom', 'toggle'], 'custom')}
-    />
-  )
-  .add('controlled', () => (
+      size={select("size", ["xs", "sm", "md", "lg", "xl"], "sm")}
+      valid={boolean("valid", false)}
+    >
+      Normal Checkbox
+    </Checkbox>
+  ))
+  .add("controlled", () => (
     <Checkbox
-      checked={false}
+      checked
       name="checkbox-0"
+      onFocus={action("focus")}
+      onChange={action("change")}
+      onBlur={action("blur")}
       placeholder="Checkbox placeholder"
-      viewType="custom"
     />
   ));

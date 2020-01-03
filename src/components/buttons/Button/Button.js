@@ -1,7 +1,7 @@
 import React from "react";
 import { bool, func, node, number, oneOf, oneOfType, object, string } from "prop-types";
 import cx from "classnames";
-import { withTheme } from "emotion-theming";
+import { withTheme } from "@emotion/core";
 import { StyledButton, StyledLink } from "./Button.style";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
 
@@ -114,7 +114,7 @@ Button.propTypes = {
   /**
    * Variant.
    */
-  variant: oneOf(["primary", "warning", "success", "danger", "brand"])
+  variant: oneOf(["primary", "warning", "success", "danger", "brand", "dark", "light"])
 };
 
 export const ButtonComponent = Button;

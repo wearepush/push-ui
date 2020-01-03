@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { space, layout, variant as useVariant } from "styled-system";
+import { variant as useVariant } from "styled-system";
 
-const variant = useVariant({
+const colorVariant = useVariant({
   prop: "variant",
   scale: "buttonVariants",
   variants: {
@@ -11,10 +11,12 @@ const variant = useVariant({
     primary: {},
     success: {},
     warning: {},
+    dark: {},
+    light: {},
   }
 });
 
-const size = useVariant({
+const sizeVariant = useVariant({
   prop: "size",
   scale: "buttonSizes",
   variants: {
@@ -59,18 +61,14 @@ const buttonStyle = props =>
 
 export const StyledButton = styled.button`
   ${buttonStyle};
-  ${variant};
-  ${size};
-  ${layout};
-  ${space};
+  ${colorVariant};
+  ${sizeVariant};
 `;
 
 export const StyledLink = styled.a`
   ${buttonStyle};
-  ${variant};
-  ${size};
-  ${layout};
-  ${space};
+  ${colorVariant};
+  ${sizeVariant};
 `;
 
 export default {

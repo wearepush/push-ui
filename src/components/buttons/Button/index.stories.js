@@ -30,7 +30,7 @@ storiesOf("buttons/Button", module)
       )}
       variant={select(
         "variant",
-        ["primary", "warning", "success", "danger", "brand"],
+        ["primary", "warning", "success", "danger", "brand", "dark", "light"],
         "primary"
       )}
     >

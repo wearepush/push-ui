@@ -26,6 +26,9 @@ storiesOf("inputs/TextArea", module)
   .add("controlled", () => (
     <TextArea
       name="textArea-0"
+      onFocus={action("focus")}
+      onChange={action("change")}
+      onBlur={action("blur")}
       placeholder="TextArea placeholder"
       value="test"
     />

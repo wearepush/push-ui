@@ -1,10 +1,32 @@
 import buttonTheme from '../buttons/Button/Button.theme';
 import inputTheme from '../inputs/TextField/Input.theme';
+import checkboxTheme from '../inputs/Checkbox/Checkbox.theme';
 
 export default {
   ...buttonTheme,
   ...inputTheme,
+  ...checkboxTheme,
   colors: {
+    black900: "#0A1F44",
+    black800: "#14284B",
+    black700: "#283A5B",
+    black600: "#364766",
+    black500: "#455571",
+    black400: "#4E5D78",
+    black300: "#596780",
+    black200: "#627088",
+    black100: "#717D92",
+
+    gray900: "#8A94A6",
+    gray800: "#98A1B1",
+    gray700: "#A7AEBB",
+    gray600: "#B0B7C3",
+    gray500: "#C9CED6",
+    gray400: "#E1E4E8",
+    gray300: "#F1F2F4",
+    gray200: "#F7F8F9",
+    gray100: "#FAFBFB",
+
     brand900: "#FF584A",
     brand800: "#FE6C61",
     brand700: "#FF867E",
@@ -60,8 +82,8 @@ export default {
     transparent: "rgba(0,0,0,0)",
 
     disabled: "#B0B7C3",
-    light: "#A7AAB0",
-    medium: "#505256"
+    // light: "#A7AAB0",
+    // medium: "#505256"
   },
   rounded: {
     "0": "0px",

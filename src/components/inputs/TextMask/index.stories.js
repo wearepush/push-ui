@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import TextMask from './TextMask';
@@ -21,6 +21,7 @@ storiesOf('inputs/TextMask', module)
       onChange={action('change')}
       onBlur={action('blur')}
       placeholder="Enter a phone number"
+      size={select("size", ["xs", "sm", "md", "lg", "xl"], "sm")}
       valid={boolean('valid', false)}
     />
   )
@@ -29,6 +30,7 @@ storiesOf('inputs/TextMask', module)
       guide
       mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
       name="TextMask-0"
+      onChange={action('change')}
       placeholder="Enter a phone number"
       value="(234) 324-2342"
     />

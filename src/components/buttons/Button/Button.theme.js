@@ -1,7 +1,7 @@
 export default {
   button: {
     transition:
-      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out"
+      "color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out"
   },
   buttonVariants: {
     primary: {
@@ -63,6 +63,32 @@ export default {
       "&:hover": {
         bg: "brand600",
         borderColor: "brand600"
+      },
+      "&:disabled": {
+        bg: "disabled",
+        borderColor: "disabled"
+      }
+    },
+    dark: {
+      color: "white",
+      bg: "black700",
+      borderColor: "black700",
+      "&:hover": {
+        bg: "black600",
+        borderColor: "black600"
+      },
+      "&:disabled": {
+        bg: "disabled",
+        borderColor: "disabled"
+      }
+    },
+    light: {
+      color: "black",
+      bg: "white",
+      borderColor: "gray400",
+      "&:hover": {
+        bg: "white",
+        borderColor: "gray500"
       },
       "&:disabled": {
         bg: "disabled",

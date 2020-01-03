@@ -1,7 +1,7 @@
-import React from 'react';
-import { bool, object, oneOf, string } from 'prop-types';
-import { Field } from 'redux-form';
-import { FormField, TextField } from '../../index';
+import React from "react";
+import { bool, object, oneOf, string } from "prop-types";
+import { Field } from "redux-form";
+import { FormField, TextField } from "../../index";
 
 const _FormTextField = ({
   disabled,
@@ -29,9 +29,9 @@ const _FormTextField = ({
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={(event) => input.onBlur(event)}
-        onChange={(event) => input.onChange(event.currentTarget.value)}
-        onFocus={(event) => input.onFocus(event.currentTarget.value)}
+        onBlur={event => input.onBlur(event)}
+        onChange={event => input.onChange(event.currentTarget.value)}
+        onFocus={event => input.onFocus(event.currentTarget.value)}
         name={input.name}
         placeholder={placeholder}
         type={type}
@@ -51,23 +51,17 @@ _FormTextField.propTypes = {
   label: string,
   meta: object.isRequired,
   placeholder: string,
-  type: oneOf([
-    'date',
-    'email',
-    'number',
-    'password',
-    'text',
-  ]),
+  type: oneOf(["date", "email", "number", "password", "text"])
 };
 
 _FormTextField.defaultProps = {
   disabled: false,
   fieldProps: null,
-  id: '',
+  id: "",
   inputProps: null,
-  label: '',
-  placeholder: '',
-  type: 'text',
+  label: "",
+  placeholder: "",
+  type: "text"
 };
 
 const FormTextField = props => <Field {...props} component={_FormTextField} />;

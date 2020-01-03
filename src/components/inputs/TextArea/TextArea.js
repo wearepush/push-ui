@@ -1,6 +1,6 @@
 import React from "react";
 import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
-import { withTheme } from "emotion-theming";
+import { withTheme } from "@emotion/core";
 import { StyledTextArea } from "./TextArea.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
@@ -111,7 +111,7 @@ TextArea.propTypes = {
    */
   theme: object,
   /**
-   * If `true`, the component is invalid.
+   * If `true`, the component is valid.
    */
   valid: bool,
   /**

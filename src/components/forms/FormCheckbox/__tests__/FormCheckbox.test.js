@@ -77,7 +77,7 @@ describe('FormCheckbox', () => {
     });
     const dom = renderForm(Form, {}, {});
 
-    const inputElement = dom.find('.Checkbox__input');
+    const inputElement = dom.find('.Checkbox__input').first();
 
     // onFocus
     inputElement.simulate('focus');
@@ -86,7 +86,7 @@ describe('FormCheckbox', () => {
     expect(renderSpy).toHaveBeenCalledTimes(1);
 
     // onChange
-    inputElement.simulate('change', { target: { value: true } });
+    inputElement.simulate('change', { target: { checked: true } });
     expect(onChangeSpy).toHaveBeenCalled();
     expect(renderSpy).toHaveBeenCalledTimes(2);
 
