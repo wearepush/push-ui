@@ -26,6 +26,9 @@ storiesOf("inputs/TextField", module)
   .add("controlled", () => (
     <TextField
       name="TextField-0"
+      onFocus={action("focus")}
+      onChange={action("change")}
+      onBlur={action("blur")}
       placeholder="TextField placeholder"
       value="text"
     />
