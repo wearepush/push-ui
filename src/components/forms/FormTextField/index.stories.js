@@ -12,19 +12,14 @@ const form = {
   validate,
 };
 
-console.log('Field', Field);
-
 storiesOf('forms/FormTextField', module)
   .addDecorator(withInfo)
   .addDecorator(withForm({ form }))
   .add('default', () =>
     <Field
-      label="Email!!!!!"
+      label="Email"
       name="email"
       type="email"
       component="input"
-      onChange={(event) => {
-        console.log(event);
-      }}
     />
   );
