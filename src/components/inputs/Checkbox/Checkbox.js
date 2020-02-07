@@ -24,16 +24,21 @@ import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
 const Checkbox = ({
   active,
   checkboxClassName: checkboxClassNameProp,
+  checkboxProps,
   className: classNameProp,
   children,
   checked,
+  containerProps,
   defaultChecked,
   disabled,
   iconClassName: iconClassNameProp,
+  iconProps,
   id,
   inputClassName: inputClassNameProp,
+  inputProps,
   invalid,
   labelClassName: labelClassNameProp,
+  labelProps,
   name,
   size,
   tabIndex,
@@ -55,7 +60,11 @@ const Checkbox = ({
     theme: themeProp
   });
   return (
-    <CheckboxContainer className={className} theme={theme}>
+    <CheckboxContainer
+      {...containerProps}
+      className={className}
+      theme={theme}
+    >
       <HiddenCheckbox
         className={inputClassName}
         checked={checked}
@@ -68,17 +77,28 @@ const Checkbox = ({
         type="checkbox"
       />
       <StyledCheckbox
+        {...checkboxProps}
         className={checkboxClassName}
         checked={checked}
         size={size}
         theme={theme}
       >
-        <Icon className={iconClassName} viewBox="0 0 24 24" theme={theme}>
+        <Icon
+          {...iconProps}
+          className={iconClassName}
+          viewBox="0 0 24 24"
+          theme={theme}
+        >
           <polyline points="20 6 9 17 4 12" />
         </Icon>
       </StyledCheckbox>
       {children && (
-        <Label className={labelClassName} size={size} theme={theme}>
+        <Label
+          {...labelProps}
+          className={labelClassName}
+          size={size}
+          theme={theme}
+        >
           {children}
         </Label>
       )}
@@ -90,13 +110,18 @@ Checkbox.defaultProps = {
   active: undefined,
   children: undefined,
   checkboxClassName: "",
+  checkboxProps: undefined,
   className: "",
+  containerProps: undefined,
   disabled: false,
   defaultChecked: undefined,
   iconClassName: "",
+  iconProps: undefined,
   inputClassName: "",
+  inputProps: undefined,
   invalid: false,
   labelClassName: "",
+  labelProps: undefined,
   size: "sm",
   tabIndex: null,
   theme: {},

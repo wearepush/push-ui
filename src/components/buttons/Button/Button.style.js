@@ -46,7 +46,6 @@ const buttonStyle = props =>
     white-space: nowrap;
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
-    ${css(props.css)};
 
     &:disabled {
       cursor: not-allowed;
