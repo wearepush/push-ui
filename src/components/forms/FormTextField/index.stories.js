@@ -4,7 +4,6 @@ import { withInfo } from '@storybook/addon-info';
 
 import withForm from './../__mocks__/FormDecorator';
 import validate from './__mocks__/validateTextField';
-import { FormTextField } from '../../index';
 import { Field } from 'redux-form';
 
 const form = {
