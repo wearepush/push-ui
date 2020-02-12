@@ -66,6 +66,7 @@ const Checkbox = ({
       theme={theme}
     >
       <HiddenCheckbox
+        {...inputProps}
         className={inputClassName}
         checked={checked}
         defaultChecked={defaultChecked}
@@ -144,6 +145,14 @@ Checkbox.propTypes = {
   /**
    * @ignore
    */
+  checkboxProps: object,
+  /**
+   * @ignore
+   */
+  containerProps: object,
+  /**
+   * @ignore
+   */
   children: node,
   /**
    * @ignore
@@ -164,7 +173,15 @@ Checkbox.propTypes = {
   /**
    * @ignore
    */
+  iconProps: object,
+  /**
+   * @ignore
+   */
   inputClassName: oneOfType([object, string]),
+  /**
+   * @ignore
+   */
+  inputProps: object,
   /**
    * If `true`, the component is invalid.
    */
@@ -177,6 +194,10 @@ Checkbox.propTypes = {
    * @ignore
    */
   labelClassName: oneOfType([object, string]),
+  /**
+   * @ignore
+   */
+  labelProps: object,
   /**
    * @ignore
    */
