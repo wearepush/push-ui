@@ -23,7 +23,7 @@
     "clean": "rimraf $(cd src; ls) dist",
     "heroku-postbuild": "npm run build-storybook",
     "lint": "eslint .",
-    "lint:js": "cross-env NODE_ENV=production eslint --config .eslintrc.js src",
+    "lint:js": "cross-env NODE_ENV=production eslint --config .eslintrc.js src --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "lint:package": "sort-package-json",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "server": "node server.js",
