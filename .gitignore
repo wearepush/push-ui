@@ -1,5 +1,6 @@
 # Webstorm
 .idea/
+.vscode/
 
 # OSX
 .DS_Store
