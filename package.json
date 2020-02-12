@@ -2,10 +2,88 @@
   "name": "push-ui",
   "version": "1.0.7",
   "description": "",
+  "homepage": "https://github.com/wearepush/push-ui#readme",
+  "bugs": {
+    "url": "https://github.com/wearepush/push-ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wearepush/push-ui.git"
+  },
+  "license": "MIT",
+  "author": "wearepush",
   "main": "./lib/index.js",
+  "files": [
+    "README.md",
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook",
+    "build:lib": "babel src --out-dir lib --ignore src/**/__tests__,src/**/__mocks__,src/**/*.stories.js",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/index.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/index.min.js",
+    "clean": "rimraf $(cd src; ls) dist lib",
+    "heroku-postbuild": "npm run build-storybook",
+    "lint": "eslint -c .eslintrc src",
+    "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
+    "server": "node server.js",
+    "start": "start-storybook -p 6006",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "test:cov": "npm run test -- --coverage",
+    "test:watch": "npm test -- --watch",
+    "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.stories.js",
+      "!src/**/*.style.js",
+      "!src/**/*.theme.js",
+      "!src/**/__tests__/**/*.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleFileExtensions": [
+      "jsx",
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^.*\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "setupFiles": [
+      "<rootDir>/scripts/enzyme.config.js"
+    ],
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
   "dependencies": {
     "@emotion/core": "^11.0.0-next.8",
+    "@emotion/react": "^11.0.0-next.11",
     "@emotion/styled": "^11.0.0-next.8",
+    "@emotion/styled-base": "^11.0.0-next.3",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "prop-types": "^15.7.2",
@@ -23,17 +101,16 @@
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
-    "@storybook/addon-actions": "^5.3.13",
-    "@storybook/addon-info": "^5.3.13",
-    "@storybook/addon-knobs": "^5.3.13",
-    "@storybook/addon-links": "^5.3.13",
-    "@storybook/react": "^5.3.13",
+    "@storybook/addon-actions": "6.0.0-alpha.10",
+    "@storybook/addon-knobs": "6.0.0-alpha.10",
+    "@storybook/addon-links": "6.0.0-alpha.10",
+    "@storybook/react": "6.0.0-alpha.10",
     "autoprefixer": "^9.7.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-css-modules-transform": "^1.6.2",
-    "babel-plugin-emotion": "^10.0.27",
+    "@emotion/babel-plugin": "^11.0.0-next.11",
     "babel-plugin-react-docgen": "^4.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -57,41 +134,9 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   },
-  "scripts": {
-    "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "build:lib": "babel src --out-dir lib --ignore src/**/__tests__,src/**/__mocks__,src/**/*.stories.js",
-    "build:umd": "cross-env NODE_ENV=development webpack src/index.js -o dist/index.js",
-    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js -o dist/index.min.js",
-    "heroku-postbuild": "npm run build-storybook",
-    "server": "node server.js",
-    "clean": "rimraf $(cd src; ls) dist lib",
-    "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
-    "preversion": "npm run lint",
-    "postversion": "git push && git push --tags",
-    "validate": " npm run test:cov && npm run clean && npm run build && npm run lint",
-    "test": "cross-env NODE_ENV=test jest --runInBand",
-    "test:watch": "npm test -- --watch",
-    "test:cov": "npm run test -- --coverage",
-    "lint": "eslint -c .eslintrc src"
+  "publishConfig": {
+    "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wearepush/push-ui.git"
-  },
-  "author": "wearepush",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wearepush/push-ui/issues"
-  },
-  "homepage": "https://github.com/wearepush/push-ui#readme",
-  "files": [
-    "README.md",
-    "lib",
-    "dist"
-  ],
-  "npmName": "push-ui",
   "npmFileMap": [
     {
       "basePath": "/dist/",
@@ -100,48 +145,5 @@
       ]
     }
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.stories.js",
-      "!src/**/*.style.js",
-      "!src/**/*.theme.js",
-      "!src/**/__tests__/**/*.js"
-    ],
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
-    ],
-    "moduleFileExtensions": [
-      "jsx",
-      "js",
-      "json"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ],
-    "moduleNameMapper": {
-      "^.*\\.(css|scss)$": "identity-obj-proxy"
-    },
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "testEnvironment": "jsdom",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "setupFiles": [
-      "<rootDir>/scripts/enzyme.config.js"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
-  }
+  "npmName": "push-ui"
 }

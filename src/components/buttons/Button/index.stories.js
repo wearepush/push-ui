@@ -1,14 +1,10 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, select, boolean } from "@storybook/addon-knobs";
-import { withInfo } from "@storybook/addon-info";
 
-import Button, { ButtonComponent } from "./Button";
+import Button from "./Button";
 
 storiesOf("buttons/Button", module)
-  .addDecorator(withInfo({
-    propTables: [ButtonComponent],
-  }))
   .addDecorator(withKnobs)
   .add("default", () => (
     <Button
