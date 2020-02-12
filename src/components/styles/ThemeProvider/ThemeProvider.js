@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { node, object } from 'prop-types';
-import { ThemeProvider as EmotionThemeProvider } from '@emotion/core';
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
 export default class ThemeProvider extends Component {
   static propTypes = {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 
 import withForm from './../__mocks__/FormDecorator';
 import { FormDatePicker } from '../../index';
@@ -12,7 +11,6 @@ const form = {
 };
 
 storiesOf('forms/FormDatePicker', module)
-  .addDecorator(withInfo)
   .addDecorator(withForm({ form }))
   .add('default', () =>
     <FormDatePicker

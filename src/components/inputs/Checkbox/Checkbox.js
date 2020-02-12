@@ -9,7 +9,7 @@ import {
   string,
   node
 } from "prop-types";
-import { withTheme } from "@emotion/core";
+import { withTheme } from "@emotion/react";
 import cx from "classnames";
 import {
   StyledCheckbox,

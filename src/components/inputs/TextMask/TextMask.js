@@ -10,7 +10,7 @@ import {
   shape,
   string
 } from "prop-types";
-import { withTheme } from "@emotion/core";
+import { withTheme } from "@emotion/react";
 import { StyledTextField } from "./../TextField/TextField.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";

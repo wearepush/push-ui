@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'; // eslint-disable-line
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
 import Dropdown from './Dropdown';
 import Button from '../../buttons/Button/Button';
 
@@ -55,7 +54,6 @@ class ControlledDropdown extends Component {
 }
 
 storiesOf('lists/Dropdown', module)
-  .addDecorator(withInfo)
   .addDecorator(withKnobs)
   .add('default', () =>
     <Dropdown

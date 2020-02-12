@@ -3,12 +3,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
 
 import Select from './Select';
 
 storiesOf('inputs/Select', module)
-  .addDecorator(withInfo)
   .addDecorator(withKnobs)
   .add('default', () =>
     <Select

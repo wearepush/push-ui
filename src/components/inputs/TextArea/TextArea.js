@@ -1,6 +1,6 @@
 import React from "react";
 import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
-import { withTheme } from "@emotion/core";
+import { withTheme } from "@emotion/react";
 import { StyledTextArea } from "./TextArea.style";
 import { createInputClassName } from "../_helpers/inputHelpers";
 import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
