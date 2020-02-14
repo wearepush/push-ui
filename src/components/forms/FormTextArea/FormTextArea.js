@@ -40,5 +40,7 @@ FormComponentTextArea.defaultProps = {
   label: '',
 };
 
-const FormTextArea = props => <Field {...props} component={FormComponentTextArea} type="textarea" />;
+const FormTextArea = props => (
+  <Field {...props} component={FormComponentTextArea} type="textarea" />
+);
 export default FormTextArea;

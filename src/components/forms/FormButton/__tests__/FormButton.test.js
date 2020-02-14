@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 const makeForm = ({ renderSpy = undefined, onClickSpy = undefined }) => {
-  const Form = (props) => {
+  const Form = props => {
     renderSpy(props);
     return (
       <form>
@@ -20,7 +20,7 @@ const makeForm = ({ renderSpy = undefined, onClickSpy = undefined }) => {
         </FormButton>
       </form>
     );
-  }
+  };
   return Form;
 };
 
