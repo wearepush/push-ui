@@ -1,24 +1,20 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { variant } from "styled-system";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { variant } from 'styled-system';
 
 export const sizeVariant = variant({
-  prop: "size",
-  scale: "inputSizes",
+  prop: 'size',
+  scale: 'inputSizes',
   variants: {
     xs: {},
     sm: {},
     md: {},
     lg: {},
     xl: {},
-  }
+  },
 });
 
-export const inputStyle = ({
-  theme: {
-    input,
-  }
-}) =>
+export const inputStyle = ({ theme: { input } }) =>
   css`
     background-color: ${input.backgroundColor};
     border: 1px solid;
@@ -27,7 +23,7 @@ export const inputStyle = ({
     box-sizing: border-box;
     color: ${input.color};
     display: block;
-    fontSize: ${input.fontSize};
+    fontsize: ${input.fontSize};
     font-weight: 400;
     line-height: 1.5;
     padding: ${input.padding};
@@ -62,5 +58,5 @@ export const StyledTextField = styled.input`
 `;
 
 export default {
-  StyledTextField
+  StyledTextField,
 };

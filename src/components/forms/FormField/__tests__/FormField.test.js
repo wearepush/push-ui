@@ -1,26 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FormField from '../FormField.js';
+import FormField from '../FormField';
 
 describe('FormField', () => {
   it('it should render with initial state', () => {
-    const children = (<div>Children</div>);
-    const formField = shallow(
-      <FormField>
-        {children}
-      </FormField>
-    );
+    const children = <div>Children</div>;
+    const formField = shallow(<FormField>{children}</FormField>);
     expect(formField.find('.FormField').length).toBe(1);
     expect(formField.contains(children)).toEqual(true);
   });
 
   it('it should render with label', () => {
-    const children = (<div>Children</div>);
+    const children = <div>Children</div>;
     const formField = shallow(
-      <FormField
-        name="email"
-        label="Email"
-      >
+      <FormField name="email" label="Email">
         {children}
       </FormField>
     );
@@ -28,7 +21,7 @@ describe('FormField', () => {
   });
 
   it('it should render with error', () => {
-    const children = (<div>Children</div>);
+    const children = <div>Children</div>;
     const formField = shallow(
       <FormField
         meta={{
@@ -45,7 +38,7 @@ describe('FormField', () => {
   });
 
   it('it should render with warning', () => {
-    const children = (<div>Children</div>);
+    const children = <div>Children</div>;
     const formField = shallow(
       <FormField
         meta={{
@@ -62,13 +55,9 @@ describe('FormField', () => {
   });
 
   it('it should render with custom className', () => {
-    const children = (<div>Children</div>);
+    const children = <div>Children</div>;
     const formField = shallow(
-      <FormField
-        className="email-for-field"
-        name="email"
-        label="Email"
-      >
+      <FormField className="email-for-field" name="email" label="Email">
         {children}
       </FormField>
     );

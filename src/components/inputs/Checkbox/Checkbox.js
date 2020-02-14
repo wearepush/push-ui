@@ -1,25 +1,10 @@
-import React from "react";
-import {
-  bool,
-  func,
-  number,
-  oneOfType,
-  oneOf,
-  object,
-  string,
-  node
-} from "prop-types";
-import { withTheme } from "@emotion/react";
-import cx from "classnames";
-import {
-  StyledCheckbox,
-  CheckboxContainer,
-  HiddenCheckbox,
-  Icon,
-  Label
-} from "./Checkbox.style";
-import { createInputClassName } from "../_helpers/inputHelpers";
-import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
+import React from 'react';
+import { bool, number, oneOfType, oneOf, object, string, node } from 'prop-types';
+import { withTheme } from '@emotion/react';
+import cx from 'classnames';
+import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Icon, Label } from './Checkbox.style';
+import { createInputClassName } from '../_helpers/inputHelpers';
+import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const Checkbox = ({
   active,
@@ -47,24 +32,20 @@ const Checkbox = ({
   ...other
 }) => {
   const className = createInputClassName({
-    componentClassName: "Checkbox",
+    componentClassName: 'Checkbox',
     className: classNameProp,
     invalid,
-    valid
+    valid,
   });
-  const inputClassName = cx("Checkbox__input", inputClassNameProp);
-  const checkboxClassName = cx("Checkbox__checkbox", checkboxClassNameProp);
-  const iconClassName = cx("Checkbox__icon", iconClassNameProp);
-  const labelClassName = cx("Checkbox__label", labelClassNameProp);
+  const inputClassName = cx('Checkbox__input', inputClassNameProp);
+  const checkboxClassName = cx('Checkbox__checkbox', checkboxClassNameProp);
+  const iconClassName = cx('Checkbox__icon', iconClassNameProp);
+  const labelClassName = cx('Checkbox__label', labelClassNameProp);
   const theme = createComponentTheme({
-    theme: themeProp
+    theme: themeProp,
   });
   return (
-    <CheckboxContainer
-      {...containerProps}
-      className={className}
-      theme={theme}
-    >
+    <CheckboxContainer {...containerProps} className={className} theme={theme}>
       <HiddenCheckbox
         {...inputProps}
         className={inputClassName}
@@ -84,22 +65,12 @@ const Checkbox = ({
         size={size}
         theme={theme}
       >
-        <Icon
-          {...iconProps}
-          className={iconClassName}
-          viewBox="0 0 24 24"
-          theme={theme}
-        >
+        <Icon {...iconProps} className={iconClassName} viewBox="0 0 24 24" theme={theme}>
           <polyline points="20 6 9 17 4 12" />
         </Icon>
       </StyledCheckbox>
       {children && (
-        <Label
-          {...labelProps}
-          className={labelClassName}
-          size={size}
-          theme={theme}
-        >
+        <Label {...labelProps} className={labelClassName} size={size} theme={theme}>
           {children}
         </Label>
       )}
@@ -109,24 +80,26 @@ const Checkbox = ({
 
 Checkbox.defaultProps = {
   active: undefined,
+  checked: false,
   children: undefined,
-  checkboxClassName: "",
+  checkboxClassName: '',
   checkboxProps: undefined,
-  className: "",
+  className: '',
   containerProps: undefined,
   disabled: false,
   defaultChecked: undefined,
-  iconClassName: "",
+  iconClassName: '',
   iconProps: undefined,
-  inputClassName: "",
+  inputClassName: '',
   inputProps: undefined,
+  id: undefined,
   invalid: false,
-  labelClassName: "",
+  labelClassName: '',
   labelProps: undefined,
-  size: "sm",
+  size: 'sm',
   tabIndex: null,
   theme: {},
-  valid: false
+  valid: false,
 };
 
 Checkbox.propTypes = {
@@ -199,27 +172,13 @@ Checkbox.propTypes = {
    */
   labelProps: object,
   /**
-   * @ignore
-   */
-  onBlur: func,
-  /**
-   * Callback fired when the state is changed.
-   *
-   * @param {object} event The event source of the callback.
-   */
-  onChange: func,
-  /**
-   * @ignore
-   */
-  onFocus: func,
-  /**
    * The name of the `input` element.
    */
   name: string.isRequired,
   /**
    * Size.
    */
-  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * @ignore
    */
@@ -231,7 +190,7 @@ Checkbox.propTypes = {
   /**
    * If `true`, the component is valid.
    */
-  valid: bool
+  valid: bool,
 };
 
 export const CheckboxComponent = Checkbox;

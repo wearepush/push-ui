@@ -8,7 +8,7 @@ import TextMask from './TextMask';
 
 storiesOf('inputs/TextMask', module)
   .addDecorator(withKnobs)
-  .add('default', () =>
+  .add('default', () => (
     <TextMask
       disabled={boolean('disabled', false)}
       guide
@@ -19,11 +19,11 @@ storiesOf('inputs/TextMask', module)
       onChange={action('change')}
       onBlur={action('blur')}
       placeholder="Enter a phone number"
-      size={select("size", ["xs", "sm", "md", "lg", "xl"], "sm")}
+      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
       valid={boolean('valid', false)}
     />
-  )
-  .add('controlled', () =>
+  ))
+  .add('controlled', () => (
     <TextMask
       guide
       mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
@@ -32,4 +32,4 @@ storiesOf('inputs/TextMask', module)
       placeholder="Enter a phone number"
       value="(234) 324-2342"
     />
-  );
+  ));

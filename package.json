@@ -22,8 +22,8 @@
     "build:dist": "babel src --out-dir dist --ignore src/**/__tests__,src/**/__mocks__,src/**/*.stories.js",
     "clean": "rimraf $(cd src; ls) dist",
     "heroku-postbuild": "npm run build-storybook",
-    "lint": "eslint .",
-    "lint:js": "cross-env NODE_ENV=production eslint --config .eslintrc.js src --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
+    "lint:fix": "cross-env NODE_ENV=production eslint --config .eslintrc.js src --ignore-pattern !.eslintrc.js --fix",
+    "lint:js": "cross-env NODE_ENV=production eslint --config .eslintrc.js src --ignore-pattern !.eslintrc.js",
     "lint:package": "sort-package-json",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
     "server": "node server.js",
@@ -41,17 +41,11 @@
     }
   },
   "lint-staged": {
-    "*.html": [
-      "npm run lint:js --fix",
-      "git add"
-    ],
     "*.js": [
-      "npm run lint:js --fix",
-      "git add"
+      "npm run lint:fix"
     ],
     "package.json": [
-      "npm run lint:package",
-      "git add"
+      "npm run lint:package"
     ]
   },
   "jest": {
@@ -81,9 +75,6 @@
       "js",
       "json"
     ],
-    "moduleNameMapper": {
-      "^.*\\.(css|scss)$": "identity-obj-proxy"
-    },
     "roots": [
       "<rootDir>/src"
     ],
@@ -102,6 +93,7 @@
     "@emotion/styled": "^11.0.0-next.8",
     "@emotion/styled-base": "^11.0.0-next.3",
     "classnames": "^2.2.6",
+    "enzyme": "^3.11.0",
     "express": "^4.17.1",
     "husky": "^4.2.2",
     "prop-types": "^15.7.2",
@@ -135,7 +127,6 @@
     "codecov": "^4.0.0-0",
     "cross-env": "^7.0.0",
     "css-loader": "^3.4.2",
-    "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",

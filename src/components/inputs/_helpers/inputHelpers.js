@@ -1,18 +1,17 @@
-import cx from "classnames";
+import cx from 'classnames';
 
-export const createInputClassName = (options) => {
+export const createInputClassName = options => {
   if (!options) {
-    return "";
+    return '';
   }
-  const {
-    componentClassName,
-    className,
-    invalid,
-    valid,
-  } = options;
+  const { componentClassName, className, invalid, valid } = options;
 
-  return cx(componentClassName, {
-    "is-invalid": invalid,
-    "is-valid": valid,
-  }, className);
+  return cx(
+    componentClassName,
+    {
+      'is-invalid': invalid,
+      'is-valid': valid,
+    },
+    className
+  );
 };

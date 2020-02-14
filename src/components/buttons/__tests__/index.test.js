@@ -1,6 +1,4 @@
-import {
-  Button,
-} from '../index';
+import { Button } from '../index';
 
 describe('index', () => {
   it('should export Button', () => {

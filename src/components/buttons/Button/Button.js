@@ -1,9 +1,9 @@
-import React from "react";
-import { bool, func, node, number, oneOf, oneOfType, object, string } from "prop-types";
-import cx from "classnames";
-import { withTheme } from "@emotion/react";
-import { StyledButton, StyledLink } from "./Button.style";
-import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
+import React from 'react';
+import { bool, func, node, number, oneOf, oneOfType, object, string } from 'prop-types';
+import cx from 'classnames';
+import { withTheme } from '@emotion/react';
+import { StyledButton, StyledLink } from './Button.style';
+import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const Button = ({
   children,
@@ -21,16 +21,16 @@ const Button = ({
     ComponentProp = StyledLink;
   }
   const buttonProps = {};
-  if (component === "button") {
+  if (component === 'button') {
     buttonProps.type = type;
     buttonProps.disabled = disabled;
     buttonProps.role = undefined;
   } else {
-    buttonProps.role = "button";
+    buttonProps.role = 'button';
   }
-  const className = cx("Button", classNameProp);
+  const className = cx('Button', classNameProp);
   const theme = createComponentTheme({
-    theme: themeProp
+    theme: themeProp,
   });
   return (
     <ComponentProp
@@ -47,17 +47,18 @@ const Button = ({
 };
 
 Button.defaultProps = {
-  className: "",
-  component: "button",
+  buttonRef: undefined,
+  className: '',
+  component: 'button',
   disabled: false,
-  role: "button",
-  rounded: "sm",
-  shadow: "0",
-  size: "sm",
+  role: 'button',
+  rounded: 'sm',
+  shadow: '0',
+  size: 'sm',
   tabIndex: 0,
   theme: {},
-  type: "button",
-  variant: "primary"
+  type: 'button',
+  variant: 'primary',
 };
 
 Button.propTypes = {
@@ -90,15 +91,15 @@ Button.propTypes = {
   /**
    * Border raidus.
    */
-  rounded: oneOf(["0", "xs", "sm", "md", "lg", "xl", "circle"]),
+  rounded: oneOf(['0', 'xs', 'sm', 'md', 'lg', 'xl', 'circle']),
   /**
    * Size.
    */
-  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * Shadow.
    */
-  shadow: oneOf(["0", "1", "2", "3", "4"]),
+  shadow: oneOf(['0', '1', '2', '3', '4']),
   /**
    * @ignore
    */
@@ -114,7 +115,7 @@ Button.propTypes = {
   /**
    * Variant.
    */
-  variant: oneOf(["primary", "warning", "success", "danger", "brand", "dark", "light"])
+  variant: oneOf(['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light']),
 };
 
 export const ButtonComponent = Button;

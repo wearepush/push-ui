@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import withForm from './../__mocks__/FormDecorator';
+import withForm from '../__mocks__/FormDecorator';
 import validate from './__mocks__/validateTextMask';
 import { FormTextMask } from '../../index';
 
@@ -12,7 +12,7 @@ const form = {
 
 storiesOf('forms/FormTextMask', module)
   .addDecorator(withForm({ form }))
-  .add('default', () =>
+  .add('default', () => (
     <FormTextMask
       guide
       label="Phone"
@@ -20,4 +20,4 @@ storiesOf('forms/FormTextMask', module)
       name="phone"
       showMask
     />
-  );
+  ));

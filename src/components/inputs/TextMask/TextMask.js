@@ -1,20 +1,10 @@
-import React from "react";
-import {
-  array,
-  bool,
-  func,
-  number,
-  oneOfType,
-  oneOf,
-  object,
-  shape,
-  string
-} from "prop-types";
-import { withTheme } from "@emotion/react";
-import { StyledTextField } from "./../TextField/TextField.style";
-import { createInputClassName } from "../_helpers/inputHelpers";
-import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
-import MaskedInput from "react-text-mask";
+import React from 'react';
+import { array, bool, func, number, oneOfType, oneOf, object, shape, string } from 'prop-types';
+import { withTheme } from '@emotion/react';
+import MaskedInput from 'react-text-mask';
+import { StyledTextField } from '../TextField/TextField.style';
+import { createInputClassName } from '../_helpers/inputHelpers';
+import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextMask = ({
   active,
@@ -36,13 +26,13 @@ const TextMask = ({
   ...other
 }) => {
   const className = createInputClassName({
-    componentClassName: "TextMask",
+    componentClassName: 'TextMask',
     className: classNameProp,
     invalid,
-    valid
+    valid,
   });
   const theme = createComponentTheme({
-    theme: themeProp
+    theme: themeProp,
   });
   return (
     <MaskedInput
@@ -67,19 +57,20 @@ const TextMask = ({
 
 TextMask.defaultProps = {
   active: undefined,
-  className: "",
+  className: '',
   disabled: false,
   defaultValue: undefined,
   guide: false,
   keepCharPositions: false,
+  id: undefined,
   invalid: false,
-  size: "sm",
+  size: 'sm',
   showMask: false,
   tabIndex: null,
   theme: {},
-  type: "text",
+  type: 'text',
   valid: false,
-  value: undefined
+  value: undefined,
 };
 
 TextMask.propTypes = {
@@ -116,22 +107,6 @@ TextMask.propTypes = {
    */
   keepCharPositions: bool,
   /**
-   * @ignore
-   */
-  onBlur: func,
-  /**
-   * Callback fired when the state is changed.
-   *
-   * @param {object} event The event source of the callback.
-   * You can pull out the new value by accessing `event.currentTarget.value`.
-   * @param {string} value The `value` of the input
-   */
-  onChange: func,
-  /**
-   * @ignore
-   */
-  onFocus: func,
-  /**
    * Mask is an array or a function that defines how the user input is going to be masked.
    */
   mask: oneOfType([
@@ -140,8 +115,8 @@ TextMask.propTypes = {
     bool,
     shape({
       mask: oneOfType([array, func]),
-      pipe: func
-    })
+      pipe: func,
+    }),
   ]).isRequired,
   /**
    * The name of the `input` element.
@@ -154,7 +129,7 @@ TextMask.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * @ignore
    */
@@ -166,7 +141,7 @@ TextMask.propTypes = {
   /**
    * The type of the input.
    */
-  type: oneOf(["date", "email", "number", "password", "text"]),
+  type: oneOf(['date', 'email', 'number', 'password', 'text']),
   /**
    * If `true`, the component is valid.
    */
@@ -174,7 +149,7 @@ TextMask.propTypes = {
   /**
    * The value of the component.
    */
-  value: oneOfType([number, string])
+  value: oneOfType([number, string]),
 };
 
 export const TextMaskComponent = TextMask;

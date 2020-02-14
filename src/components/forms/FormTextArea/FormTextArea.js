@@ -3,33 +3,19 @@ import { bool, object, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TextArea } from '../../index';
 
-const _FormTextArea = ({
-  disabled,
-  fieldProps,
-  id,
-  input,
-  label,
-  meta,
-  ...rest
-}) => {
-  const _id = id || input.name;
+const FormComponentTextArea = ({ disabled, fieldProps, id, input, label, meta, ...rest }) => {
+  const generateId = id || input.name;
   return (
-    <FormField
-      {...fieldProps}
-      isEmpty={!input.value}
-      label={label}
-      meta={meta}
-      name={_id}
-    >
+    <FormField {...fieldProps} isEmpty={!input.value} label={label} meta={meta} name={generateId}>
       <TextArea
         {...rest}
         active={meta.active}
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={(event) => input.onBlur(event)}
-        onChange={(event) => input.onChange(event.currentTarget.value)}
-        onFocus={(event) => input.onFocus(event.currentTarget.value)}
+        onBlur={event => input.onBlur(event)}
+        onChange={event => input.onChange(event.currentTarget.value)}
+        onFocus={event => input.onFocus(event.currentTarget.value)}
         name={input.name}
         valid={!!input.value && !meta.error && !meta.warning && meta.valid}
         value={input.value}
@@ -38,7 +24,7 @@ const _FormTextArea = ({
   );
 };
 
-_FormTextArea.propTypes = {
+FormComponentTextArea.propTypes = {
   disabled: bool,
   fieldProps: object,
   id: string,
@@ -47,12 +33,12 @@ _FormTextArea.propTypes = {
   meta: object.isRequired,
 };
 
-_FormTextArea.defaultProps = {
+FormComponentTextArea.defaultProps = {
   disabled: false,
   fieldProps: null,
   id: '',
   label: '',
 };
 
-const FormTextArea = props => <Field {...props} component={_FormTextArea} type="textarea" />;
+const FormTextArea = props => <Field {...props} component={FormComponentTextArea} type="textarea" />;
 export default FormTextArea;

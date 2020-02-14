@@ -1,24 +1,24 @@
-import styled from "@emotion/styled";
-import { variant } from "styled-system";
+import styled from '@emotion/styled';
+import { variant } from 'styled-system';
 
 const variants = {
   xs: {},
   sm: {},
   md: {},
   lg: {},
-  xl: {}
+  xl: {},
 };
 
 export const checkboxSizeVariant = variant({
-  prop: "size",
-  scale: "checkboxSizes",
-  variants
+  prop: 'size',
+  scale: 'checkboxSizes',
+  variants,
 });
 
 export const labelSizeVariant = variant({
-  prop: "size",
-  scale: "checkboxLabelSizes",
-  variants
+  prop: 'size',
+  scale: 'checkboxLabelSizes',
+  variants,
 });
 
 const getInvalidColor = props => props.theme.input.borderColorInvalid;
@@ -123,5 +123,5 @@ export default {
   CheckboxContainer,
   Icon,
   HiddenCheckbox,
-  Label
+  Label,
 };

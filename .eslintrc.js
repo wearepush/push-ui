@@ -36,5 +36,18 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.stories.js'] }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'react/forbid-prop-types': ignore,
+    'import/no-cycle': ignore,
+  },
+  env: {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "globals": {
+    "localStorage": true,
+    "window": true,
+    "document": true
   },
 };
