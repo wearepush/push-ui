@@ -1,9 +1,9 @@
-import React from "react";
-import { array, bool, object, number, oneOfType, string } from "prop-types";
-import { Field } from "redux-form";
-import { FormField, Checkbox } from "../../index";
+import React from 'react';
+import { array, bool, object, number, oneOfType, string } from 'prop-types';
+import { Field } from 'redux-form';
+import { FormField, Checkbox } from '../../index';
 
-const _FormCheckbox = ({
+const FormComponentCheckbox = ({
   disabled,
   fieldProps,
   id,
@@ -13,9 +13,9 @@ const _FormCheckbox = ({
   valueProp,
   ...rest
 }) => {
-  const _id = id || input.name;
+  const generateId = id || input.name;
   return (
-    <FormField {...fieldProps} label={label} name={_id}>
+    <FormField {...fieldProps} label={label} name={generateId}>
       <Checkbox
         {...rest}
         active={meta.active}
@@ -33,28 +33,28 @@ const _FormCheckbox = ({
   );
 };
 
-_FormCheckbox.propTypes = {
+FormComponentCheckbox.propTypes = {
   disabled: bool,
   fieldProps: object,
   id: string,
   input: object.isRequired,
   label: string,
   meta: object.isRequired,
-  valueProp: oneOfType([array, bool, object, number, string])
+  valueProp: oneOfType([array, bool, object, number, string]),
 };
 
-_FormCheckbox.defaultProps = {
+FormComponentCheckbox.defaultProps = {
   disabled: false,
   fieldProps: null,
-  id: "",
-  label: "",
-  valueProp: undefined
+  id: '',
+  label: '',
+  valueProp: undefined,
 };
 
 const FormCheckbox = props => (
   <Field
     {...props}
-    component={_FormCheckbox}
+    component={FormComponentCheckbox}
     valueProp={props.value} // eslint-disable-line
     type="checkbox"
   />

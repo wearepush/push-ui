@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { reduxForm } from 'redux-form';
@@ -15,26 +15,25 @@ const makeForm = ({
   onFocusSpy = undefined,
   onChangeSpy = undefined,
   onBlurSpy = undefined,
-}) => (
-  class Form extends Component {
-    render() {
-      renderSpy(this.props);
-      return (
-        <form>
-          <FormTextArea
-            label="Title"
-            name="title"
-            placeholder="Title"
-            onFocus={onFocusSpy}
-            onChange={onChangeSpy}
-            onBlur={onBlurSpy}
-            value="0"
-          />
-        </form>
-      );
-    }
-  }
-);
+}) => {
+  const Form = props => {
+    renderSpy(props);
+    return (
+      <form>
+        <FormTextArea
+          label="Title"
+          name="title"
+          placeholder="Title"
+          onFocus={onFocusSpy}
+          onChange={onChangeSpy}
+          onBlur={onBlurSpy}
+          value="0"
+        />
+      </form>
+    );
+  };
+  return Form;
+};
 
 const renderForm = (Form, formState, config = {}) => {
   const Decorated = reduxForm({ form: 'testForm', ...config })(Form);
@@ -69,7 +68,7 @@ describe('FormTextArea', () => {
       renderSpy,
       onFocusSpy,
       onChangeSpy,
-      onBlurSpy
+      onBlurSpy,
     });
     const dom = renderForm(Form, {}, {});
 

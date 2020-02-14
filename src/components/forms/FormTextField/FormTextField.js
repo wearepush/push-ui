@@ -1,9 +1,9 @@
-import React from "react";
-import { bool, object, oneOf, string } from "prop-types";
-import { Field } from "redux-form";
-import { FormField, TextField } from "../../index";
+import React from 'react';
+import { bool, object, oneOf, string } from 'prop-types';
+import { Field } from 'redux-form';
+import { FormField, TextField } from '../../index';
 
-const _FormTextField = ({
+const FormComponentTextField = ({
   disabled,
   fieldProps,
   id,
@@ -14,15 +14,9 @@ const _FormTextField = ({
   type,
   ...rest
 }) => {
-  const _id = id || input.name;
+  const generateId = id || input.name;
   return (
-    <FormField
-      {...fieldProps}
-      isEmpty={!input.value}
-      label={label}
-      meta={meta}
-      name={_id}
-    >
+    <FormField {...fieldProps} isEmpty={!input.value} label={label} meta={meta} name={generateId}>
       <TextField
         {...rest}
         active={meta.active}
@@ -42,7 +36,7 @@ const _FormTextField = ({
   );
 };
 
-_FormTextField.propTypes = {
+FormComponentTextField.propTypes = {
   disabled: bool,
   fieldProps: object,
   id: string,
@@ -51,18 +45,18 @@ _FormTextField.propTypes = {
   label: string,
   meta: object.isRequired,
   placeholder: string,
-  type: oneOf(["date", "email", "number", "password", "text"])
+  type: oneOf(['date', 'email', 'number', 'password', 'text']),
 };
 
-_FormTextField.defaultProps = {
+FormComponentTextField.defaultProps = {
   disabled: false,
   fieldProps: null,
-  id: "",
+  id: '',
   inputProps: null,
-  label: "",
-  placeholder: "",
-  type: "text"
+  label: '',
+  placeholder: '',
+  type: 'text',
 };
 
-const FormTextField = props => <Field {...props} component={_FormTextField} />;
+const FormTextField = props => <Field {...props} component={FormComponentTextField} />;
 export default FormTextField;

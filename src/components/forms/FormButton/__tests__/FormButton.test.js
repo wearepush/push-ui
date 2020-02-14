@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { reduxForm } from 'redux-form';
@@ -10,26 +10,19 @@ beforeEach(() => {
   store = formStore;
 });
 
-const makeForm = ({
-  renderSpy = undefined,
-  onClickSpy = undefined,
-}) => (
-  class Form extends Component {
-    render() {
-      renderSpy(this.props);
-      return (
-        <form>
-          <FormButton
-            form="test"
-            onClick={onClickSpy}
-          >
-            Remote Button
-          </FormButton>
-        </form>
-      );
-    }
-  }
-);
+const makeForm = ({ renderSpy = undefined, onClickSpy = undefined }) => {
+  const Form = props => {
+    renderSpy(props);
+    return (
+      <form>
+        <FormButton form="test" onClick={onClickSpy}>
+          Remote Button
+        </FormButton>
+      </form>
+    );
+  };
+  return Form;
+};
 
 const renderForm = (Form, formState, config = {}) => {
   const Decorated = reduxForm({ form: 'testForm', ...config })(Form);

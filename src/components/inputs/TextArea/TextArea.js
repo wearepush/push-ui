@@ -1,9 +1,9 @@
-import React from "react";
-import { bool, func, number, oneOfType, oneOf, object, string } from "prop-types";
-import { withTheme } from "@emotion/react";
-import { StyledTextArea } from "./TextArea.style";
-import { createInputClassName } from "../_helpers/inputHelpers";
-import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
+import React from 'react';
+import { bool, number, oneOfType, oneOf, object, string } from 'prop-types';
+import { withTheme } from '@emotion/react';
+import { StyledTextArea } from './TextArea.style';
+import { createInputClassName } from '../_helpers/inputHelpers';
+import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextArea = ({
   active,
@@ -20,13 +20,13 @@ const TextArea = ({
   ...other
 }) => {
   const className = createInputClassName({
-    componentClassName: "TextArea",
+    componentClassName: 'TextArea',
     className: classNameProp,
     invalid,
-    valid
+    valid,
   });
   const theme = createComponentTheme({
-    theme: themeProp
+    theme: themeProp,
   });
   return (
     <StyledTextArea
@@ -45,14 +45,16 @@ const TextArea = ({
 
 TextArea.defaultProps = {
   active: undefined,
-  className: "",
+  className: '',
   disabled: false,
   defaultValue: undefined,
+  id: undefined,
   invalid: false,
-  size: "sm",
+  size: 'sm',
   tabIndex: null,
   theme: {},
-  valid: false
+  valid: false,
+  value: undefined,
 };
 
 TextArea.propTypes = {
@@ -81,27 +83,13 @@ TextArea.propTypes = {
    */
   id: string,
   /**
-   * @ignore
-   */
-  onBlur: func,
-  /**
-   * Callback fired when the state is changed.
-   *
-   * @param {object} event The event source of the callback.
-   */
-  onChange: func,
-  /**
-   * @ignore
-   */
-  onFocus: func,
-  /**
    * The name of the `input` element.
    */
   name: string.isRequired,
   /**
    * Size.
    */
-  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * @ignore
    */
@@ -117,7 +105,7 @@ TextArea.propTypes = {
   /**
    * The value of the component.
    */
-  value: oneOfType([number, string])
+  value: oneOfType([number, string]),
 };
 
 export const TextAreaComponent = TextArea;

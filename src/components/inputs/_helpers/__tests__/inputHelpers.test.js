@@ -1,48 +1,48 @@
-import { createInputClassName } from "../inputHelpers";
+import { createInputClassName } from '../inputHelpers';
 
-describe("inputHelpers", () => {
-  describe("createInputClassName", () => {
-    it("should return default input classnames", () => {
+describe('inputHelpers', () => {
+  describe('createInputClassName', () => {
+    it('should return default input classnames', () => {
       const className = createInputClassName();
-      expect(className).toBe("");
+      expect(className).toBe('');
     });
 
-    it("should return default component ClassName classname", () => {
+    it('should return default component ClassName classname', () => {
       const className = createInputClassName({
-        componentClassName: "component"
+        componentClassName: 'component',
       });
-      expect(className).toBe("component");
+      expect(className).toBe('component');
     });
 
-    it("should return default invalid classname", () => {
+    it('should return default invalid classname', () => {
       const className = createInputClassName({
-        invalid: true
+        invalid: true,
       });
-      expect(className).toBe("is-invalid");
+      expect(className).toBe('is-invalid');
     });
 
-    it("should return default valid classname", () => {
+    it('should return default valid classname', () => {
       const className = createInputClassName({
-        valid: true
+        valid: true,
       });
-      expect(className).toBe("is-valid");
+      expect(className).toBe('is-valid');
     });
 
-    it("should return default single classname", () => {
+    it('should return default single classname', () => {
       const className = createInputClassName({
-        className: "test"
+        className: 'test',
       });
-      expect(className).toBe("test");
+      expect(className).toBe('test');
     });
 
-    it("should return default multiple classnames", () => {
+    it('should return default multiple classnames', () => {
       const className = createInputClassName({
         className: {
           test1: true,
           test2: true,
-        }
+        },
       });
-      expect(className).toBe("test1 test2");
+      expect(className).toBe('test1 test2');
     });
   });
 });

@@ -2,24 +2,15 @@ import React from 'react';
 import { bool, string } from 'prop-types';
 import cx from 'classnames';
 
-const FormFieldLabel = ({
-  active,
-  invalid,
-  disabled,
-  htmlFor,
-  label,
-  isEmpty
-}) => (
+const FormFieldLabel = ({ active, invalid, disabled, htmlFor, label, isEmpty }) => (
   <label
-    className={
-      cx('FormFieldLabel', {
-        'is-active': active,
-        'is-invalid': invalid,
-        'is-disabled': disabled,
-        'is-empty': isEmpty,
-        'is-not-empty': !isEmpty,
-      })
-    }
+    className={cx('FormFieldLabel', {
+      'is-active': active,
+      'is-invalid': invalid,
+      'is-disabled': disabled,
+      'is-empty': isEmpty,
+      'is-not-empty': !isEmpty,
+    })}
     htmlFor={htmlFor}
   >
     {label}

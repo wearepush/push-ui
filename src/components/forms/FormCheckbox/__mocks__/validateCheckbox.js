@@ -1,4 +1,4 @@
-const isEmpty = value => value === undefined || value === null || value === '' || !value; // eslint-disable-line
+const isEmpty = value => value === undefined || value === null || value === '' || !value;
 
 const validate = values => {
   const errors = {};

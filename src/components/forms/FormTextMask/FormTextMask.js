@@ -3,7 +3,7 @@ import { bool, object, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TextMask } from '../../index';
 
-const _FormTextMask = ({
+const FormComponentTextMask = ({
   disabled,
   fieldProps,
   id,
@@ -13,22 +13,16 @@ const _FormTextMask = ({
   placeholder,
   ...rest
 }) => {
-  const _id = id || input.name;
+  const generateId = id || input.name;
   return (
-    <FormField
-      {...fieldProps}
-      isEmpty={!input.value}
-      label={label}
-      meta={meta}
-      name={_id}
-    >
+    <FormField {...fieldProps} isEmpty={!input.value} label={label} meta={meta} name={generateId}>
       <TextMask
         {...rest}
         active={meta.active}
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={(event) => input.onBlur(event)}
+        onBlur={event => input.onBlur(event)}
         onChange={(event, value) => input.onChange(value)}
         onFocus={(event, value) => input.onFocus(value)}
         name={input.name}
@@ -40,7 +34,7 @@ const _FormTextMask = ({
   );
 };
 
-_FormTextMask.propTypes = {
+FormComponentTextMask.propTypes = {
   disabled: bool,
   fieldProps: object,
   id: string,
@@ -51,7 +45,7 @@ _FormTextMask.propTypes = {
   placeholder: string,
 };
 
-_FormTextMask.defaultProps = {
+FormComponentTextMask.defaultProps = {
   disabled: false,
   fieldProps: null,
   id: '',
@@ -60,5 +54,5 @@ _FormTextMask.defaultProps = {
   placeholder: '',
 };
 
-const FormTextMask = props => <Field {...props} component={_FormTextMask} type="text" />; // eslint-disable-line
+const FormTextMask = props => <Field {...props} component={FormComponentTextMask} type="text" />; // eslint-disable-line
 export default FormTextMask;

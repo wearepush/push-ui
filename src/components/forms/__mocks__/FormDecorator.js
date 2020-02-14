@@ -9,17 +9,12 @@ import configureStore from './store';
 const withForm = ({ form = {}, state = {} }) => {
   const store = configureStore(state);
   const MountForm = reduxForm(form)(Form);
-  const Decorator = (storyFn) => (
-    <Root
-      store={store}
-    >
+  const Decorator = storyFn => (
+    <Root store={store}>
       <MountForm>
-        { storyFn() }
-        <FormButton
-          float
-          form={form.form}
-        >
-          {'Submit'}
+        {storyFn()}
+        <FormButton float form={form.form}>
+          Submit
         </FormButton>
       </MountForm>
     </Root>

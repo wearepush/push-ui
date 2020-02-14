@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { node, object } from 'prop-types';
-import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 
-export default class ThemeProvider extends Component {
-  static propTypes = {
-    children: node.isRequired,
-    theme: object.isRequired,
-  };
+const ThemeProvider = ({ children, theme }) => {
+  return <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>;
+};
 
-  render() {
-    return (
-      <EmotionThemeProvider theme={this.props.theme}>
-        {this.props.children}
-      </EmotionThemeProvider>
-    );
-  }
-}
+ThemeProvider.propTypes = {
+  children: node.isRequired,
+  theme: object.isRequired,
+};
+
+export default ThemeProvider;

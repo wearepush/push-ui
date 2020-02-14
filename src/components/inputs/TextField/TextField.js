@@ -1,17 +1,9 @@
-import React from "react";
-import {
-  bool,
-  func,
-  number,
-  oneOfType,
-  oneOf,
-  object,
-  string
-} from "prop-types";
-import { withTheme } from "@emotion/react";
-import { StyledTextField } from "./TextField.style";
-import { createInputClassName } from "../_helpers/inputHelpers";
-import { createComponentTheme } from "../../styles/_helpers/themeHelpers";
+import React from 'react';
+import { bool, number, oneOfType, oneOf, object, string } from 'prop-types';
+import { withTheme } from '@emotion/react';
+import { StyledTextField } from './TextField.style';
+import { createInputClassName } from '../_helpers/inputHelpers';
+import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextField = ({
   active,
@@ -29,13 +21,13 @@ const TextField = ({
   ...other
 }) => {
   const className = createInputClassName({
-    componentClassName: "TextField",
+    componentClassName: 'TextField',
     className: classNameProp,
     invalid,
-    valid
+    valid,
   });
   const theme = createComponentTheme({
-    theme: themeProp
+    theme: themeProp,
   });
   return (
     <StyledTextField
@@ -55,16 +47,17 @@ const TextField = ({
 
 TextField.defaultProps = {
   active: undefined,
-  className: "",
+  className: '',
   disabled: false,
   defaultValue: undefined,
+  id: undefined,
   invalid: false,
-  size: "sm",
+  size: 'sm',
   tabIndex: null,
   theme: {},
-  type: "text",
+  type: 'text',
   valid: false,
-  value: undefined
+  value: undefined,
 };
 
 TextField.propTypes = {
@@ -93,29 +86,13 @@ TextField.propTypes = {
    */
   id: string,
   /**
-   * @ignore
-   */
-  onBlur: func,
-  /**
-   * Callback fired when the state is changed.
-   *
-   * @param {object} event The event source of the callback.
-   * You can pull out the new value by accessing `event.currentTarget.value`.
-   * @param {string} value The `value` of the input
-   */
-  onChange: func,
-  /**
-   * @ignore
-   */
-  onFocus: func,
-  /**
    * The name of the `input` element.
    */
   name: string.isRequired,
   /**
    * Size.
    */
-  size: oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * @ignore
    */
@@ -127,7 +104,7 @@ TextField.propTypes = {
   /**
    * The type of the input.
    */
-  type: oneOf(["date", "email", "number", "password", "text"]),
+  type: oneOf(['date', 'email', 'number', 'password', 'text']),
   /**
    * If `true`, the component is valid.
    */
@@ -135,7 +112,7 @@ TextField.propTypes = {
   /**
    * The value of the component.
    */
-  value: oneOfType([number, string])
+  value: oneOfType([number, string]),
 };
 
 export const TextFieldComponent = TextField;

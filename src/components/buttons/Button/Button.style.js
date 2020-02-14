@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { variant as useVariant } from "styled-system";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { variant as applyVariant } from 'styled-system';
 
-const colorVariant = useVariant({
-  prop: "variant",
-  scale: "buttonVariants",
+const colorVariant = applyVariant({
+  prop: 'variant',
+  scale: 'buttonVariants',
   variants: {
     brand: {},
     danger: {},
@@ -13,19 +13,19 @@ const colorVariant = useVariant({
     warning: {},
     dark: {},
     light: {},
-  }
+  },
 });
 
-const sizeVariant = useVariant({
-  prop: "size",
-  scale: "buttonSizes",
+const sizeVariant = applyVariant({
+  prop: 'size',
+  scale: 'buttonSizes',
   variants: {
     xs: {},
     sm: {},
     md: {},
     lg: {},
     xl: {},
-  }
+  },
 });
 
 const buttonStyle = props =>
@@ -72,5 +72,5 @@ export const StyledLink = styled.a`
 
 export default {
   StyledButton,
-  StyledLink
+  StyledLink,
 };

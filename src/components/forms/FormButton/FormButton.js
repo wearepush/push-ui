@@ -2,17 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
 import { func, string } from 'prop-types';
-import { Button } from '../../index';
+import Button from '../../buttons/Button/Button';
 
-const FormButton = ({
-  dispatch,
-  form,
-  ...rest
-}) => (
+const FormButton = ({ dispatch, form, ...rest }) => (
   <Button
-    onClick={(e) => {
-      const action = dispatch(submit(form));
-      rest.onClick && rest.onClick(e, action);
+    onClick={e => {
+      if (rest.onClick) {
+        const action = dispatch(submit(form));
+        rest.onClick(e, action);
+      }
     }}
     type="button"
     {...rest}
@@ -24,7 +22,6 @@ FormButton.propTypes = {
   form: string.isRequired,
 };
 
-FormButton.defaultProps = {
-};
+FormButton.defaultProps = {};
 
 export default connect()(FormButton);

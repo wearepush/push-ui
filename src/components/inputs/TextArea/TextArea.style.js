@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { sizeVariant, inputStyle } from "../TextField/TextField.style";
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { sizeVariant, inputStyle } from '../TextField/TextField.style';
 
 const textAreaStyle = () =>
   css`
@@ -14,5 +14,5 @@ export const StyledTextArea = styled.textarea`
 `;
 
 export default {
-  StyledTextArea
+  StyledTextArea,
 };
