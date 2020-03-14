@@ -38,7 +38,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "lint-staged": {
@@ -48,6 +49,11 @@
     "package.json": [
       "npm run lint:package"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "jest": {
     "collectCoverage": true,
@@ -90,7 +96,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.0.0-next.11",
-    "@emotion/styled": "^11.0.0-next.8",
+    "@emotion/styled": "^11.0.0-next.11",
     "classnames": "^2.2.6",
     "enzyme": "^3.11.0",
     "express": "^4.17.1",
@@ -124,6 +130,7 @@
     "babel-preset-react": "^6.24.1",
     "codecov": "^4.0.0-0",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.1.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
