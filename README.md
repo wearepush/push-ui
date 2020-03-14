@@ -31,3 +31,10 @@ The starter ui includes the following technologies:
 ```bash
 npm install push-ui --save
 ```
+
+## Release
+
+```bash
+npm run release
+git push --follow-tags origin master
+```
