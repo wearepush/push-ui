@@ -27,6 +27,7 @@
     "lint:js": "cross-env NODE_ENV=production eslint --config .eslintrc.js src --ignore-pattern !.eslintrc.js",
     "lint:package": "sort-package-json",
     "prepublishOnly": "npm run test:cov && npm run clean && npm run build",
+    "release": "standard-version",
     "server": "node server.js",
     "start": "start-storybook -s ./static -p 6006",
     "storybook": "start-storybook",
@@ -129,6 +130,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "codecov": "^4.0.0-0",
+    "commitizen": "^4.0.3",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.1.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -153,6 +155,7 @@
     "rimraf": "^3.0.2",
     "serve-static": "^1.14.1",
     "sort-package-json": "^1.40.0",
+    "standard-version": "^7.1.0",
     "storybook-addon-deps": "^1.0.12"
   },
   "publishConfig": {
