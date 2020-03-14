@@ -121,7 +121,6 @@
     "@storybook/addon-docs": "6.0.0-alpha.27",
     "@storybook/addon-knobs": "6.0.0-alpha.27",
     "@storybook/addon-links": "6.0.0-alpha.27",
-    "@storybook/preset-create-react-app": "^2.0.0",
     "@storybook/react": "6.0.0-alpha.27",
     "autoprefixer": "^9.7.4",
     "babel-core": "^7.0.0-bridge.0",
