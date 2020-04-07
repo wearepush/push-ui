@@ -4,6 +4,7 @@ var serveStatic = require("serve-static");
 
 var app = express();
 app.use(serveStatic(__dirname + "/storybook-static"));
+app.use(express.static('static'));
 
 var port = process.env.PORT || 8080;
 app.listen(port);

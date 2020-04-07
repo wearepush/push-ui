@@ -9,6 +9,7 @@ COPY package.json package-lock.json ./
 
 # Install (local) NPM packages/dependencies
 RUN npm install
+RUN npm test
 RUN npm run build-storybook
 
 # Copy required stuff
