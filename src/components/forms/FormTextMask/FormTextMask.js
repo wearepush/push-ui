@@ -22,7 +22,7 @@ const FormComponentTextMask = ({
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={event => input.onBlur(event)}
+        onBlur={(event) => input.onBlur(event)}
         onChange={(event, value) => input.onChange(value)}
         onFocus={(event, value) => input.onFocus(value)}
         name={input.name}

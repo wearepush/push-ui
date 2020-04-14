@@ -1,6 +1,6 @@
 import cx from 'classnames';
 
-export const createInputClassName = options => {
+export const createInputClassName = (options) => {
   if (!options) {
     return '';
   }

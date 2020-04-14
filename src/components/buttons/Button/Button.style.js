@@ -28,7 +28,7 @@ const sizeVariant = applyVariant({
   },
 });
 
-const buttonStyle = props =>
+const buttonStyle = (props) =>
   css`
     border-radius: ${props.theme.rounded[props.rounded]};
     border-width: 1px;

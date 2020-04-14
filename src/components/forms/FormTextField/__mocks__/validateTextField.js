@@ -6,7 +6,7 @@ function email(value) { // eslint-disable-line
   }
 }
 
-const validate = values => {
+const validate = (values) => {
   const errors = {};
   if (values) {
     const validEmail = email(values.email);

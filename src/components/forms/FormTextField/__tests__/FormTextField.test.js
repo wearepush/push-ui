@@ -16,7 +16,7 @@ const makeForm = ({
   onChangeSpy = undefined,
   onBlurSpy = undefined,
 }) => {
-  const Form = props => {
+  const Form = (props) => {
     renderSpy(props);
     return (
       <form>
