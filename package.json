@@ -63,7 +63,8 @@
       "!src/**/*.stories.js",
       "!src/**/*.style.js",
       "!src/**/*.theme.js",
-      "!src/**/__tests__/**/*.js"
+      "!src/**/__tests__/**/*.js",
+      "!src/components/shared/*.js"
     ],
     "coverageDirectory": "./coverage/",
     "coveragePathIgnorePatterns": [
