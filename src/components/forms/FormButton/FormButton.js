@@ -12,7 +12,7 @@ const FormButton = ({ dispatch, form, ...rest }) => (
         rest.onClick(e, action);
       }
     }}
-    type="button"
+    type="submit"
     {...rest}
   />
 );
