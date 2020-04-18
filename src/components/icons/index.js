@@ -1,1 +1,1 @@
-export { default as SvgIcon } from './SvgIcon/SvgIcon';
+export { default as Icon } from './Icon/Icon';

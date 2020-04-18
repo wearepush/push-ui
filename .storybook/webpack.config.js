@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = async ({ config, mode }) => {
-  config.module.rules.find(rule =>
-    rule.test.test('.svg')
-  ).exclude = path.resolve(__dirname, '../src/');
+  config.module.rules.find((rule) => rule.test.test('.svg')).exclude = path.resolve(
+    __dirname,
+    '../src/'
+  );
 
   config.module.rules.push({
     test: /.svg$/,
@@ -12,14 +13,19 @@ module.exports = async ({ config, mode }) => {
         loader: '@svgr/webpack',
         options: {
           svgoConfig: {
-            plugins: {
-              removeViewBox: false
-            }
-          }
-        }
+            plugins: [
+              {
+                removeViewBox: true,
+              },
+              {
+                removeUselessStrokeAndFill: true,
+              },
+            ],
+          },
+        },
       },
-      'url-loader'
-    ]
+      'url-loader',
+    ],
   });
 
   return config;
