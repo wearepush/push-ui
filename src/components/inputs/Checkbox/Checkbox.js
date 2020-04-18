@@ -80,7 +80,7 @@ const Checkbox = ({
 
 Checkbox.defaultProps = {
   active: undefined,
-  checked: false,
+  checked: undefined,
   children: undefined,
   checkboxClassName: '',
   checkboxProps: undefined,

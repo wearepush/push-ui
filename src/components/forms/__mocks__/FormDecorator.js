@@ -13,7 +13,7 @@ const withForm = ({ form = {}, state = {} }) => {
     <Root store={store}>
       <MountForm>
         {storyFn()}
-        <FormButton float form={form.form}>
+        <FormButton type="submit" form={form.form}>
           Submit
         </FormButton>
       </MountForm>
