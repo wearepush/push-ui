@@ -6,14 +6,14 @@ import Button from '../../buttons/Button/Button';
 
 const FormButton = ({ dispatch, form, ...rest }) => (
   <Button
+    type="button"
+    {...rest}
     onClick={(e) => {
       if (rest.onClick) {
         const action = dispatch(submit(form));
         rest.onClick(e, action);
       }
     }}
-    type="submit"
-    {...rest}
   />
 );
 

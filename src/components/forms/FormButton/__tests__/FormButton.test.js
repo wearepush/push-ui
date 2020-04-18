@@ -10,12 +10,12 @@ beforeEach(() => {
   store = formStore;
 });
 
-const makeForm = ({ renderSpy = undefined, onClickSpy = undefined }) => {
+const makeForm = ({ renderSpy = undefined, onClickSpy = undefined, ...rest }) => {
   const Form = (props) => {
     renderSpy(props);
     return (
       <form>
-        <FormButton form="test" onClick={onClickSpy}>
+        <FormButton type="submit" form="test" onClick={onClickSpy} {...rest}>
           Remote Button
         </FormButton>
       </form>
@@ -47,6 +47,25 @@ describe('FormButton', () => {
     dom.unmount();
   });
 
+  it("shouldn't handle onClick", () => {
+    const renderSpy = jest.fn(() => {});
+    const onClickSpy = undefined;
+    const dispatchSpy = jest.fn();
+    const Form = makeForm({
+      renderSpy,
+      onClickSpy,
+      dispatch: dispatchSpy,
+    });
+    const dom = renderForm(Form, {}, {});
+
+    const inputElement = dom.find('button');
+    // onClick
+    inputElement.simulate('click');
+    expect(dispatchSpy).not.toHaveBeenCalled();
+
+    dom.unmount();
+  });
+
   it('should handle onClick', () => {
     const renderSpy = jest.fn(() => {});
     const onClickSpy = jest.fn();
@@ -59,7 +78,11 @@ describe('FormButton', () => {
     const inputElement = dom.find('button');
     // onClick
     inputElement.simulate('click');
-    expect(onClickSpy).toHaveBeenCalled();
+    expect(onClickSpy).toHaveBeenCalledWith(
+      expect.objectContaining({}),
+      expect.objectContaining({ meta: { form: 'test' }, type: '@@redux-form/SUBMIT' })
+    );
+
     expect(renderSpy).toHaveBeenCalledTimes(1);
 
     dom.unmount();
