@@ -1,21 +1,22 @@
 import { css } from '@emotion/react';
 import { color, typography } from './styles';
 
-export const bodyStyles = css`
+export const htmlStyles = css`
   font-family: ${typography.type.primary};
-  font-size: ${typography.size.s3}px;
+  font-size: ${typography.size.s2}px;
   color: ${color.darkest};
+`;
 
+export const bodyStyles = css`
   margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch;
+`;
 
+export const normalizeStyles = css`
   * {
     box-sizing: border-box;
   }
@@ -97,6 +98,12 @@ export const fontUrl =
   'https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,800,900&display=swap';
 
 export const GlobalStyle = css`
+  ${normalizeStyles}
+
+  html {
+    ${htmlStyles}
+  }
+
   body {
     ${bodyStyles}
   }

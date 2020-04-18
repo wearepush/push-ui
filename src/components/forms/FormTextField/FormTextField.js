@@ -23,9 +23,9 @@ const FormComponentTextField = ({
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={event => input.onBlur(event)}
-        onChange={event => input.onChange(event.currentTarget.value)}
-        onFocus={event => input.onFocus(event.currentTarget.value)}
+        onBlur={(event) => input.onBlur(event)}
+        onChange={(event) => input.onChange(event.currentTarget.value)}
+        onFocus={(event) => input.onFocus(event.currentTarget.value)}
         name={input.name}
         placeholder={placeholder}
         type={type}
@@ -58,5 +58,5 @@ FormComponentTextField.defaultProps = {
   type: 'text',
 };
 
-const FormTextField = props => <Field {...props} component={FormComponentTextField} />;
+const FormTextField = (props) => <Field {...props} component={FormComponentTextField} />;
 export default FormTextField;

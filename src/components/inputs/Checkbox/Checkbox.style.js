@@ -21,14 +21,14 @@ export const labelSizeVariant = variant({
   variants,
 });
 
-const getInvalidColor = props => props.theme.input.borderColorInvalid;
-const getValidColor = props => props.theme.input.borderColorValid;
-const getDisabledColor = props => props.theme.input.borderColorDisabled;
-const getBackgroundCheckedColor = props => props.theme.checkbox.backgroundCheckedColor;
+const getInvalidColor = (props) => props.theme.input.borderColorInvalid;
+const getValidColor = (props) => props.theme.input.borderColorValid;
+const getDisabledColor = (props) => props.theme.input.borderColorDisabled;
+const getBackgroundCheckedColor = (props) => props.theme.checkbox.backgroundCheckedColor;
 
 export const Icon = styled.svg`
   fill: none;
-  stroke: ${props => props.theme.checkbox.iconColor};
+  stroke: ${(props) => props.theme.checkbox.iconColor};
   stroke-width: 2px;
   visibility: hidden;
 `;
@@ -50,9 +50,9 @@ export const StyledCheckbox = styled.div`
   box-sizing: border-box;
   display: inline-block;
   border: 2px solid;
-  border-color: ${props => props.theme.checkbox.borderColor};
-  border-radius: ${props => props.theme.checkbox.borderRadius};
-  transition: ${props => props.theme.checkbox.transition};
+  border-color: ${(props) => props.theme.checkbox.borderColor};
+  border-radius: ${(props) => props.theme.checkbox.borderRadius};
+  transition: ${(props) => props.theme.checkbox.transition};
   ${checkboxSizeVariant}
 
   ${HiddenCheckbox}:checked + & {
@@ -69,7 +69,7 @@ export const StyledCheckbox = styled.div`
   }
 
   ${HiddenCheckbox}:disabled:not(:checked) + & {
-    background-color: ${props => props.theme.input.backgroundColorDisabled};
+    background-color: ${(props) => props.theme.input.backgroundColorDisabled};
   }
 
   ${HiddenCheckbox}:disabled + &,
@@ -81,7 +81,7 @@ export const StyledCheckbox = styled.div`
 
 export const Label = styled.span`
   ${labelSizeVariant};
-  transition: ${props => props.theme.checkbox.transition};
+  transition: ${(props) => props.theme.checkbox.transition};
   margin-left: 0.5rem;
 `;
 

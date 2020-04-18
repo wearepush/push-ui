@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
-    "@emotion"
+    "@emotion",
+    "inline-react-svg"
   ]
 }

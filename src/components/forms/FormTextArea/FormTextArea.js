@@ -13,9 +13,9 @@ const FormComponentTextArea = ({ disabled, fieldProps, id, input, label, meta, .
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={event => input.onBlur(event)}
-        onChange={event => input.onChange(event.currentTarget.value)}
-        onFocus={event => input.onFocus(event.currentTarget.value)}
+        onBlur={(event) => input.onBlur(event)}
+        onChange={(event) => input.onChange(event.currentTarget.value)}
+        onFocus={(event) => input.onFocus(event.currentTarget.value)}
         name={input.name}
         valid={!!input.value && !meta.error && !meta.warning && meta.valid}
         value={input.value}
@@ -40,7 +40,7 @@ FormComponentTextArea.defaultProps = {
   label: '',
 };
 
-const FormTextArea = props => (
+const FormTextArea = (props) => (
   <Field {...props} component={FormComponentTextArea} type="textarea" />
 );
 export default FormTextArea;

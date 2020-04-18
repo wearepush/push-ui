@@ -9,7 +9,7 @@ import configureStore from './store';
 const withForm = ({ form = {}, state = {} }) => {
   const store = configureStore(state);
   const MountForm = reduxForm(form)(Form);
-  const Decorator = storyFn => (
+  const Decorator = (storyFn) => (
     <Root store={store}>
       <MountForm>
         {storyFn()}

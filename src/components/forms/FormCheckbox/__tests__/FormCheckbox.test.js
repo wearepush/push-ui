@@ -18,7 +18,7 @@ const makeForm = ({
   iconChecked = null,
   iconUnChecked = null,
 }) => {
-  const Form = props => {
+  const Form = (props) => {
     renderSpy(props);
     return (
       <form>

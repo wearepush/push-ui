@@ -23,9 +23,9 @@ const FormComponentCheckbox = ({
         disabled={disabled}
         id={id}
         invalid={meta.touched && meta.invalid}
-        onBlur={event => input.onBlur(event)}
-        onChange={event => input.onChange(event.currentTarget.checked)}
-        onFocus={event => input.onFocus(event.currentTarget.checked)}
+        onBlur={(event) => input.onBlur(event)}
+        onChange={(event) => input.onChange(event.currentTarget.checked)}
+        onFocus={(event) => input.onFocus(event.currentTarget.checked)}
         name={input.name}
         value={valueProp}
       />
@@ -51,7 +51,7 @@ FormComponentCheckbox.defaultProps = {
   valueProp: undefined,
 };
 
-const FormCheckbox = props => (
+const FormCheckbox = (props) => (
   <Field
     {...props}
     component={FormComponentCheckbox}

@@ -3,7 +3,7 @@ import { Form as ReduxForm } from 'redux-form';
 import { func, node } from 'prop-types';
 
 export default class Form extends Component {
-  onSubmit = values => {
+  onSubmit = (values) => {
     console.log(values); // eslint-disable-line
   };
 
