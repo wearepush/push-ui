@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.15](https://github.com/wearepush/push-ui/compare/v1.0.14...v1.0.15) (2020-04-19)
+
+
+### Bug Fixes
+
+* **checkbox:** fix default checkbox's default props ([#34](https://github.com/wearepush/push-ui/issues/34)) ([58734f1](https://github.com/wearepush/push-ui/commit/58734f1a03fcd4e4f6990499da367abde7de72a6))
+
+
+### Tests
+
+* **formbutton:** fix form button tests ([#35](https://github.com/wearepush/push-ui/issues/35)) ([07d744c](https://github.com/wearepush/push-ui/commit/07d744cb13131fd6c328ddd1c52e65de1be7ae28))
+
 ### [1.0.14](https://github.com/wearepush/push-ui/compare/v1.0.13...v1.0.14) (2020-04-18)
 
 
