@@ -40,7 +40,9 @@ const buttonStyle = (props) =>
     line-height: 1.5;
     text-align: center;
     text-decoration: none;
-    transition: ${props.theme.button.transition};
+    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out,
+      box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-outcolor 0.4s ease-in-out,
+      background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out;
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
@@ -54,7 +56,7 @@ const buttonStyle = (props) =>
       outline: none;
     }
     &:hover {
-      box-shadow: ${props.theme.shadows[props.shadow]};
+      box-shadow: var(--shadow__ ${props.shadow});
     }
   `;
 

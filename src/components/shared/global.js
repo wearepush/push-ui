@@ -113,11 +113,13 @@ export const rootStyles = css`
     --color__standard__text: var(--color__black);
     --color__standard__background: var(--color__white);
 
-    --boxshadow__elevation0: 0 0 0 0 transparent;
-    --boxshadow__elevation1: 0 0 12px 0 rgba(0, 0, 0, 0.12);
-    --boxshadow__elevation2: 0 0 40px 0 rgba(0, 0, 0, 0.8);
-    --boxshadow__focusring: 0 0 0 3px var(--color__utility__focusring);
-    --spacing__base_unit: 8px;
+    // shadow
+    --shadow__0: none;
+    --shadow__1: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1);
+    --shadow__2: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1);
+    --shadow__3: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1);
+    --shadow__4: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1);
+    --shadow__5: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1);
 
     // font family
     --type__primary: -apple-system, 'Helvetica Neue', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
