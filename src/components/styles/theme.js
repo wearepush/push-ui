@@ -84,7 +84,7 @@ export default {
     disabled: '#B0B7C3',
   },
   rounded: {
-    '0': '0px',
+    0: '0px',
     xs: '2px',
     sm: '4px',
     md: '6px',
@@ -93,11 +93,11 @@ export default {
     circle: '1000rem',
   },
   shadows: {
-    '0': 'none',
-    '1': '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1)',
-    '2': '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1)',
-    '3': '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1)',
-    '4': '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)',
-    '5': '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1)',
+    0: 'none',
+    1: '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1)',
+    2: '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1)',
+    3: '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1)',
+    4: '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)',
+    5: '0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1)',
   },
 };

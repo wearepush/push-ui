@@ -2,89 +2,89 @@ import { css } from '@emotion/react';
 
 export const rootStyles = css`
   :root {
-    --color__black900: #0a1f44;
-    --color__black800: #14284b;
-    --color__black700: #283a5b;
-    --color__black600: #364766;
-    --color__black500: #455571;
-    --color__black400: #4e5d78;
-    --color__black300: #596780;
-    --color__black200: #627088;
-    --color__black100: #717d92;
+    --color--black900: #0a1f44;
+    --color--black800: #14284b;
+    --color--black700: #283a5b;
+    --color--black600: #364766;
+    --color--black500: #455571;
+    --color--black400: #4e5d78;
+    --color--black300: #596780;
+    --color--black200: #627088;
+    --color--black100: #717d92;
 
-    --color__gray900: #8a94a6;
-    --color__gray800: #98a1b1;
-    --color__gray700: #a7aebb;
-    --color__gray600: #b0b7c3;
-    --color__gray500: #c9ced6;
-    --color__gray400: #e1e4e8;
-    --color__gray300: #f1f2f4;
-    --color__gray200: #f7f8f9;
-    --color__gray100: #fafbfb;
+    --color--gray900: #8a94a6;
+    --color--gray800: #98a1b1;
+    --color--gray700: #a7aebb;
+    --color--gray600: #b0b7c3;
+    --color--gray500: #c9ced6;
+    --color--gray400: #e1e4e8;
+    --color--gray300: #f1f2f4;
+    --color--gray200: #f7f8f9;
+    --color--gray100: #fafbfb;
 
-    --color__brand900: #ff584a;
-    --color__brand800: #fe6c61;
-    --color__brand700: #ff867e;
-    --color__brand600: #ffa29b;
-    --color__brand500: #ffbdb8;
-    --color__brand400: #ffcac6;
-    --color__brand300: #ffd7d4;
-    --color__brand200: #ffe4e3;
-    --color__brand100: #ffeeed;
+    --color--brand900: #ff584a;
+    --color--brand800: #fe6c61;
+    --color--brand700: #ff867e;
+    --color--brand600: #ffa29b;
+    --color--brand500: #ffbdb8;
+    --color--brand400: #ffcac6;
+    --color--brand300: #ffd7d4;
+    --color--brand200: #ffe4e3;
+    --color--brand100: #ffeeed;
 
-    --color__success900: #136a4a;
-    --color__success800: #23825f;
-    --color__success700: #36ab80;
-    --color__success600: #6fcaa8;
-    --color__success500: #a9dcc9;
-    --color__success400: #d0eddf;
-    --color__success300: #eaf7f1;
-    --color__success200: #f5fbf8;
-    --color__success100: #fafdfc;
+    --color--success900: #136a4a;
+    --color--success800: #23825f;
+    --color--success700: #36ab80;
+    --color--success600: #6fcaa8;
+    --color--success500: #a9dcc9;
+    --color--success400: #d0eddf;
+    --color--success300: #eaf7f1;
+    --color--success200: #f5fbf8;
+    --color--success100: #fafdfc;
 
-    --color__warning900: #ef8511;
-    --color__warning800: #f69d2c;
-    --color__warning700: #f7af22;
-    --color__warning600: #fbc050;
-    --color__warning500: #fbe0a1;
-    --color__warning400: #fdeecb;
-    --color__warning300: #fef7e6;
-    --color__warning200: #fefaf1;
-    --color__warning100: #fffdf8;
+    --color--warning900: #ef8511;
+    --color--warning800: #f69d2c;
+    --color--warning700: #f7af22;
+    --color--warning600: #fbc050;
+    --color--warning500: #fbe0a1;
+    --color--warning400: #fdeecb;
+    --color--warning300: #fef7e6;
+    --color--warning200: #fefaf1;
+    --color--warning100: #fffdf8;
 
-    --color__danger900: #a32801;
-    --color__danger800: #d13a06;
-    --color__danger700: #f4541d;
-    --color__danger600: #f7926f;
-    --color__danger500: #fabeaa;
-    --color__danger400: #fcd7ca;
-    --color__danger300: #fde8e1;
-    --color__danger200: #fef6f3;
-    --color__danger100: #fffbfa;
+    --color--danger900: #a32801;
+    --color--danger800: #d13a06;
+    --color--danger700: #f4541d;
+    --color--danger600: #f7926f;
+    --color--danger500: #fabeaa;
+    --color--danger400: #fcd7ca;
+    --color--danger300: #fde8e1;
+    --color--danger200: #fef6f3;
+    --color--danger100: #fffbfa;
 
-    --color__primary900: #01408f;
-    --color__primary800: #026dd6;
-    --color__primary700: #0284fe;
-    --color__primary600: #4ba7fe;
-    --color__primary500: #83c3fe;
-    --color__primary400: #b3daff;
-    --color__primary300: #dceeff;
-    --color__primary200: #eef7ff;
-    --color__primary100: #f8fbff;
+    --color--primary900: #01408f;
+    --color--primary800: #026dd6;
+    --color--primary700: #0284fe;
+    --color--primary600: #4ba7fe;
+    --color--primary500: #83c3fe;
+    --color--primary400: #b3daff;
+    --color--primary300: #dceeff;
+    --color--primary200: #eef7ff;
+    --color--primary100: #f8fbff;
 
-    --color__white: #ffffff;
-    --color__black: #000000;
-    --color__transparent: rgba(0, 0, 0, 0);
-    --color__disabled: #b0b7c3;
+    --color--white: #ffffff;
+    --color--black: #000000;
+    --color--transparent: rgba(0, 0, 0, 0);
+    --color--disabled: #b0b7c3;
 
     // radius
-    --radius__0: 0px;
-    --radius__xs: 2px;
-    --radius__sm: 4px;
-    --radius__md: 6px;
-    --radius__lg: 6px;
-    --radius__xl: 6px;
-    --radius__circle: 6px;
+    --radius--0: 0px;
+    --radius--xs: 2px;
+    --radius--sm: 4px;
+    --radius--md: 6px;
+    --radius--lg: 8px;
+    --radius--xl: 12px;
+    --radius--circle: 1000rem;
 
     // border
     --border__color__standart: rgba(0, 0, 0, 0.1);
@@ -101,31 +101,31 @@ export const rootStyles = css`
     --motion__time--slowest: 1.2s;
 
     // breakpoint
-    --breakpoint__xsmall: 367px;
-    --breakpoint__small: 767px;
-    --breakpoint__medium: 1024px;
-    --breakpoint__large: 1600px;
-    --breakpoint__xlarge: 1920px;
+    --breakpoint--xsmall: 367px;
+    --breakpoint--small: 767px;
+    --breakpoint--medium: 1024px;
+    --breakpoint--large: 1600px;
+    --breakpoint--xlarge: 1920px;
 
     // theme
-    --color__theme__primary: var(--color__primary700);
+    --color__theme__primary: var(--color--primary700);
 
-    --color__theme__disabled: var(--color__disabled);
+    --color__theme__disabled: var(--color--disabled);
 
-    --color__standard__text: var(--color__black);
-    --color__standard__background: var(--color__white);
+    --color__standard__text: var(--color--black);
+    --color__standard__background: var(--color--white);
 
     // shadow
-    --shadow__0: none;
-    --shadow__1: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1);
-    --shadow__2: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1);
-    --shadow__3: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1);
-    --shadow__4: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1);
-    --shadow__5: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1);
+    --shadow--0: none;
+    --shadow--1: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 1px 1px 0 rgba(8, 11, 14, 0.1);
+    --shadow--2: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 3px 3px -1px rgba(8, 11, 14, 0.1);
+    --shadow--3: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 6px 6px -1px rgba(8, 11, 14, 0.1);
+    --shadow--4: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1);
+    --shadow--5: 0 0 1px 0 rgba(8, 11, 14, 0.06), 0 32px 40px -1px rgba(8, 11, 14, 0.1);
 
     // font family
-    --type__primary: -apple-system, 'Helvetica Neue', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, 'Fira Sans', 'Droid Sans', sans-serif;
+    --type__primary: -apple-system, 'Helvetica Neue', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      'Fira Sans', 'Droid Sans', sans-serif;
     --type__code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 
     // font weight
