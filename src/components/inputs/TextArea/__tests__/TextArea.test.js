@@ -32,9 +32,7 @@ describe('TextArea', () => {
     });
 
     it('should render with className prop', () => {
-      const input = shallow(
-        <TextArea className="TextArea__test" name="name" placeholder="placeholder" />
-      );
+      const input = shallow(<TextArea className="TextArea__test" name="name" placeholder="placeholder" />);
       expect(input.hasClass('TextArea__test')).toBe(true);
     });
 

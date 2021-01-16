@@ -58,13 +58,7 @@ const Checkbox = ({
         {...other}
         type="checkbox"
       />
-      <StyledCheckbox
-        {...checkboxProps}
-        className={checkboxClassName}
-        checked={checked}
-        size={size}
-        theme={theme}
-      >
+      <StyledCheckbox {...checkboxProps} className={checkboxClassName} checked={checked} size={size} theme={theme}>
         <Icon {...iconProps} className={iconClassName} viewBox="0 0 24 24" theme={theme}>
           <polyline points="20 6 9 17 4 12" />
         </Icon>

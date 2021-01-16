@@ -1,9 +1,9 @@
-import buttonTheme from '../buttons/Button/Button.theme';
+// import buttonTheme from '../buttons/Button/Button.theme';
 import inputTheme from '../inputs/TextField/Input.theme';
 import checkboxTheme from '../inputs/Checkbox/Checkbox.theme';
 
 export default {
-  ...buttonTheme,
+  // ...buttonTheme,
   ...inputTheme,
   ...checkboxTheme,
   colors: {

@@ -1,24 +1,64 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-// brand: {},
-// danger: {},
-// primary: {},
-// success: {},
-// warning: {},
-// dark: {},
-// light: {},
+// xs: {
+//   fontSize: '1rem',
+//   padding: '0.5rem 1rem',
+// },
+// sm: {
+//   fontSize: '1.2rem',
+//   padding: '0.7rem 1.2rem',
+// },
+// md: {
+//   fontSize: '1.4rem',
+//   padding: '0.9rem 1.2rem',
+// },
+// lg: {
+//   fontSize: '1.6rem',
+//   padding: '1.1rem 1.5rem',
+// },
+// xl: {
+//   fontSize: '1.8rem',
+//   padding: '1.3rem 1.7rem',
+// },
 
-// xs: {},
-// sm: {},
-// md: {},
-// lg: {},
-// xl: {},
+const buttonVariants = (variant) => {
+  if (variant === 'light') {
+    return `
+      color: var(--button__color, var(--color--black));
+      background-color: var(--button__background__color--${variant}, var(--color--white));
+      border-color: var(--button__border__color--${variant}, var(--color--gray400));
+      &:hover {
+        background-color: var(--button__background__color--hover--${variant}, var(--color--white));
+        border-color: var(--button__border__color--hover--${variant}, var(--color--gray500));
+      }
+    `;
+  }
+  if (variant === 'dark') {
+    return `
+      color: var(--button__color, var(--color--white));
+      background-color: var(--button__background__color--${variant}, var(--color--black));
+      border-color: var(--button__border__color--${variant}, var(--color--black600));
+      &:hover {
+        background-color: var(--button__background__color--hover--${variant}, var(--color--black));
+        border-color: var(--button__border__color--hover--${variant}, var(--color--black600));
+      }
+    `;
+  }
+  return `
+    color: var(--button__color, var(--color--white));
+    background-color: var(--button__background__color--${variant}, var(--color--${variant}700));
+    border-color: var(--button__border__color--${variant}, var(--color--${variant}700));
+    &:hover {
+      background-color: var(--button__background__color--hover--${variant}, var(--color--${variant}600));
+      border-color: var(--button__border__color--hover--${variant}, var(--color--${variant}600));
+    }
+  `;
+};
 
 const buttonStyle = (props) =>
   css`
-    background-color: var(--button__background__color--${props.variant}, var(--color--${props.variant}700));
-    border-color: var(--button__border__color--${props.variant}, var(--color--${props.variant}700));
+    ${buttonVariants(props.variant)}
     border-radius: var(--radius--${props.rounded});
     border-width: 1px;
     border-style: solid;
@@ -38,9 +78,7 @@ const buttonStyle = (props) =>
     -webkit-font-smoothing: antialiased;
 
     &:hover {
-      box-shadow: var(--button__box_shadow, var(--shadow--${props.shadow}));
-      background-color: var(--button__background__color--${props.variant}, var(--color--${props.variant}600));
-      border-color: var(--button__border__color--${props.variant}, var(--color--${props.variant}600));
+      box-shadow: var(--button__box_shadow--hover, var(--shadow--${props.shadow}));
     }
     &:disabled {
       cursor: not-allowed;

@@ -57,9 +57,7 @@ describe('TextField', () => {
     });
 
     it('should render with className prop', () => {
-      const input = shallow(
-        <TextField className="TextField__test" name="name" placeholder="placeholder" />
-      );
+      const input = shallow(<TextField className="TextField__test" name="name" placeholder="placeholder" />);
       expect(input.hasClass('TextField__test')).toBe(true);
     });
 

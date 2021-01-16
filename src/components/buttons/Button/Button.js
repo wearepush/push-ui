@@ -3,16 +3,7 @@ import { bool, func, node, number, oneOf, oneOfType, object, string } from 'prop
 import cx from 'classnames';
 import { StyledButton, StyledLink } from './Button.style';
 
-const Button = ({
-  children,
-  className: classNameProp,
-  component,
-  disabled,
-  role,
-  tabIndex,
-  type,
-  ...other
-}) => {
+const Button = ({ children, className: classNameProp, component, disabled, role, tabIndex, type, ...other }) => {
   let ComponentProp = StyledButton;
   if (other.href) {
     ComponentProp = StyledLink;

@@ -6,8 +6,7 @@ export default {
     borderColor: '#c9ced6',
     borderRadius: '3px',
     iconColor: '#fff',
-    transition:
-      'color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out',
+    transition: 'color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out',
   },
   checkboxSizes: {
     xs: {
