@@ -79,10 +79,12 @@ export const rootStyles = css`
 
     // radius
     --radius__0: 0px;
-    --radius__xsmall: 2px;
-    --radius__small: 4px;
-    --radius__medium: 6px;
-    --radius__large: 6px;
+    --radius__xs: 2px;
+    --radius__sm: 4px;
+    --radius__md: 6px;
+    --radius__lg: 6px;
+    --radius__xl: 6px;
+    --radius__circle: 6px;
 
     // border
     --border__color__standart: rgba(0, 0, 0, 0.1);

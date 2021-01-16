@@ -30,7 +30,7 @@ const sizeVariant = applyVariant({
 
 const buttonStyle = (props) =>
   css`
-    border-radius: ${props.theme.rounded[props.rounded]};
+    border-radius: var(--radius__ ${props.rounded});
     border-width: 1px;
     border-style: solid;
     box-sizing: border-box;
@@ -41,8 +41,7 @@ const buttonStyle = (props) =>
     text-align: center;
     text-decoration: none;
     transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out,
-      box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-outcolor 0.4s ease-in-out,
-      background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out;
+      box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out;
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
