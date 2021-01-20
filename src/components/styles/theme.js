@@ -1,11 +1,11 @@
 // import buttonTheme from '../buttons/Button/Button.theme';
 import inputTheme from '../inputs/TextField/Input.theme';
-import checkboxTheme from '../inputs/Checkbox/Checkbox.theme';
+// import checkboxTheme from '../inputs/Checkbox/Checkbox.theme';
 
 export default {
   // ...buttonTheme,
   ...inputTheme,
-  ...checkboxTheme,
+  // ...checkboxTheme,
   colors: {
     black900: '#0A1F44',
     black800: '#14284B',

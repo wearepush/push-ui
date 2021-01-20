@@ -72,8 +72,8 @@ export const rootStyles = css`
     --color--primary200: #eef7ff;
     --color--primary100: #f8fbff;
 
-    --color--white: #ffffff;
-    --color--black: #000000;
+    --color--white: #fff;
+    --color--black: #000;
     --color--transparent: rgba(0, 0, 0, 0);
     --color--disabled: #b0b7c3;
 
@@ -88,6 +88,9 @@ export const rootStyles = css`
 
     // border
     --border__color__standart: rgba(0, 0, 0, 0.1);
+    --border__color__invalid: red;
+    --border__color__valid: green;
+    --border__color__disabled: #e1e4e8;
 
     // transition
     --motion__ease--inout: cubic-bezier(0.42, 0, 0.58, 1);
