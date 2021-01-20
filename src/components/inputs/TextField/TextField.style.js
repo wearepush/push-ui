@@ -37,18 +37,18 @@ export const inputStyle = ({ theme: { input } }) =>
       outline: ${input.outlineFocus};
     }
     &:disabled {
-      background-color: ${input.backgroundColorDisabled};
-      border-color: ${input.borderColorDisabled};
+      background-color: var(--color--gray300);
+      border-color: var(--border__color__disabled);
       cursor: not-allowed;
     }
     &::placeholder {
       color: ${input.placeholderColor};
     }
     &.is-invalid {
-      border-color: ${input.borderColorInvalid};
+      border-color: var(--border__color__invalid);
     }
     &.is-valid {
-      border-color: ${input.borderColorValid};
+      border-color: var(--border__color__valid);
     }
   `;
 
