@@ -92,6 +92,19 @@ export const rootStyles = css`
     --border__color__valid: green;
     --border__color__disabled: #e1e4e8;
 
+    // inputs
+    --input--fontsize--xs: 1rem;
+    --input--fontsize--sm: 1.2rem;
+    --input--fontsize--md: 1.4rem;
+    --input--fontsize--lg: 1.6rem;
+    --input--fontsize--xl: 1.8rem;
+
+    --input--padding--xs: 0.5rem 1rem;
+    --input--padding--sm: 0.7rem 1.2rem;
+    --input--padding--md: 0.9rem 1.2rem;
+    --input--padding--lg: 1.1rem 1.5rem;
+    --input--padding--xl: 1.3rem 1.7rem;
+
     // transition
     --motion__ease--inout: cubic-bezier(0.42, 0, 0.58, 1);
     --motion__ease--linear: linear;

@@ -37,18 +37,6 @@ const buttonVariants = (variant) => {
 
 const buttonStyle = (props) =>
   css`
-    --button--fontsize--xs: 1rem;
-    --button--fontsize--sm: 1.2rem;
-    --button--fontsize--md: 1.4rem;
-    --button--fontsize--lg: 1.6rem;
-    --button--fontsize--xl: 1.8rem;
-
-    --button--padding--xs: 0.5rem 1rem;
-    --button--padding--sm: 0.7rem 1.2rem;
-    --button--padding--md: 0.9rem 1.2rem;
-    --button--padding--lg: 1.1rem 1.5rem;
-    --button--padding--xl: 1.3rem 1.7rem;
-
     ${buttonVariants(props.variant)}
     border-radius: var(--radius--${props.rounded});
     border-width: 1px;
@@ -56,8 +44,8 @@ const buttonStyle = (props) =>
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
-    padding: var(--button--padding--${props.size});
-    font-size: var(--button--fontsize--${props.size});
+    padding: var(--input--padding--${props.size});
+    font-size: var(--input--fontsize--${props.size});
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
