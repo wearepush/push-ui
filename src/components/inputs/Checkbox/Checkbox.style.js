@@ -28,9 +28,8 @@ const checkboxSize = (props) =>
     --checkbox--size--md: 1.8rem;
     --checkbox--size--lg: 2rem;
     --checkbox--size--xl: 2.2rem;
-
-    width: var(--checkbox--size-- ${props.size});
-    height: var(--checkbox--size-- ${props.size});
+    width: var(--checkbox--size--${props.size});
+    height: var(--checkbox--size--${props.size});
   `;
 
 export const StyledCheckbox = styled.div`
@@ -68,13 +67,12 @@ export const StyledCheckbox = styled.div`
 
 const checkboxLabelSize = (props) =>
   css`
-    --checkbox--label--size--xs: 1rem;
-    --checkbox--label--size--sm: 1.2rem;
-    --checkbox--label--size--md: 1.4rem;
-    --checkbox--label--size--lg: 1.6rem;
-    --checkbox--label--size--xl: 1.8rem;
-
-    font-size: var(--checkbox--label--size-- ${props.size});
+    --checkbox--label__size--xs: 1rem;
+    --checkbox--label__size--sm: 1.2rem;
+    --checkbox--label__size--md: 1.4rem;
+    --checkbox--label__size--lg: 1.6rem;
+    --checkbox--label__size--xl: 1.8rem;
+    font-size: var(--checkbox--label__size--${props.size});
   `;
 
 export const Label = styled.span`
