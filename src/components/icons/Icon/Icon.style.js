@@ -12,9 +12,9 @@ export const iconStyle = (props) =>
     width: var(--icon--size--${props.size});
     height: var(--icon--size--${props.size});
 
-    --icon--fill--black: #2D2D3C;
-    --icon--fill--dark-orange: #C13A23;
-    fill: var(--icon--fill--${props.fill})
+    --icon--fill--black: #2d2d3c;
+    --icon--fill--dark-orange: #c13a23;
+    fill: var(--icon--fill--${props.fill});
   `;
 
 export const StyledIcon = (c) => styled(c)`
