@@ -36,11 +36,6 @@ describe('TextArea', () => {
       expect(input.hasClass('TextArea__test')).toBe(true);
     });
 
-    it('should render pass default theme', () => {
-      const input = shallow(<TextArea name="name" placeholder="placeholder" />);
-      expect(input.prop('theme')).not.toEqual({});
-    });
-
     it('should render with tabIndex prop', () => {
       const input = shallow(<TextArea name="name" placeholder="placeholder" tabIndex="-10" />);
       expect(input.prop('tabIndex')).toBe('-10');

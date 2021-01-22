@@ -69,11 +69,6 @@ describe('Checkbox', () => {
       expect(children.length).toBe(1);
     });
 
-    it('should render pass default theme', () => {
-      const input = shallow(<Checkbox name="name" />);
-      expect(input.prop('theme')).not.toEqual({});
-    });
-
     it('should render with tabIndex prop', () => {
       const checkbox = shallow(<Checkbox name="name" tabIndex="-10" />);
       const input = checkbox.find('.Checkbox__input');

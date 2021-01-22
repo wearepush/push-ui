@@ -2,16 +2,7 @@ import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
 import { DocsPage } from 'storybook-addon-deps/blocks';
 import { Global } from '@emotion/react';
-import { ThemeProvider, theme } from '../src/components/styles';
 import { GlobalStyle } from '../src/components/shared/global';
-
-const withThemeProvider = story => (
-  <ThemeProvider
-    theme={theme}
-  >
-    {story()}
-  </ThemeProvider>
-);
 
 addParameters({
   options: {
@@ -28,8 +19,6 @@ addParameters({
     hideEmpty: true,
   }
 });
-
-addDecorator(withThemeProvider);
 
 addDecorator(story => (
   <>

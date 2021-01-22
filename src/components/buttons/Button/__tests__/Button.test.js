@@ -79,11 +79,6 @@ describe('Button', () => {
       expect(button.prop('variant')).toEqual('warning');
     });
 
-    it('should render pass default theme', () => {
-      const button = shallow(<Button>Button</Button>);
-      expect(button.prop('theme')).not.toEqual({});
-    });
-
     it('should handle events', () => {
       const onClickSpy = jest.fn();
       const onBlurSpy = jest.fn();

@@ -1,10 +1,8 @@
 import React from 'react';
 import { bool, number, oneOfType, oneOf, object, string, node } from 'prop-types';
-import { withTheme } from '@emotion/react';
 import cx from 'classnames';
 import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Icon, Label } from './Checkbox.style';
 import { createInputClassName } from '../_helpers/inputHelpers';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const Checkbox = ({
   active,
@@ -27,7 +25,6 @@ const Checkbox = ({
   name,
   size,
   tabIndex,
-  theme: themeProp,
   valid,
   ...other
 }) => {
@@ -41,11 +38,8 @@ const Checkbox = ({
   const checkboxClassName = cx('Checkbox__checkbox', checkboxClassNameProp);
   const iconClassName = cx('Checkbox__icon', iconClassNameProp);
   const labelClassName = cx('Checkbox__label', labelClassNameProp);
-  const theme = createComponentTheme({
-    theme: themeProp,
-  });
   return (
-    <CheckboxContainer {...containerProps} className={className} theme={theme}>
+    <CheckboxContainer {...containerProps} className={className}>
       <HiddenCheckbox
         {...inputProps}
         className={inputClassName}
@@ -58,13 +52,13 @@ const Checkbox = ({
         {...other}
         type="checkbox"
       />
-      <StyledCheckbox {...checkboxProps} className={checkboxClassName} checked={checked} size={size} theme={theme}>
-        <Icon {...iconProps} className={iconClassName} viewBox="0 0 24 24" theme={theme}>
+      <StyledCheckbox {...checkboxProps} className={checkboxClassName} checked={checked} size={size}>
+        <Icon {...iconProps} className={iconClassName} viewBox="0 0 24 24">
           <polyline points="20 6 9 17 4 12" />
         </Icon>
       </StyledCheckbox>
       {children && (
-        <Label {...labelProps} className={labelClassName} size={size} theme={theme}>
+        <Label {...labelProps} className={labelClassName} size={size}>
           {children}
         </Label>
       )}
@@ -92,7 +86,6 @@ Checkbox.defaultProps = {
   labelProps: undefined,
   size: 'sm',
   tabIndex: null,
-  theme: {},
   valid: false,
 };
 
@@ -178,14 +171,9 @@ Checkbox.propTypes = {
    */
   tabIndex: oneOfType([number, string]),
   /**
-   * @ignore
-   */
-  theme: object,
-  /**
    * If `true`, the component is valid.
    */
   valid: bool,
 };
 
-export const CheckboxComponent = Checkbox;
-export default withTheme(Checkbox);
+export default Checkbox;

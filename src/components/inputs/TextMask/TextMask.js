@@ -1,10 +1,8 @@
 import React from 'react';
 import { array, bool, func, number, oneOfType, oneOf, object, shape, string } from 'prop-types';
-import { withTheme } from '@emotion/react';
 import MaskedInput from 'react-text-mask';
 import { StyledTextField } from '../TextField/TextField.style';
 import { createInputClassName } from '../_helpers/inputHelpers';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextMask = ({
   active,
@@ -19,7 +17,6 @@ const TextMask = ({
   name,
   showMask,
   tabIndex,
-  theme: themeProp,
   type,
   valid,
   value,
@@ -30,9 +27,6 @@ const TextMask = ({
     className: classNameProp,
     invalid,
     valid,
-  });
-  const theme = createComponentTheme({
-    theme: themeProp,
   });
   return (
     <MaskedInput
@@ -47,7 +41,6 @@ const TextMask = ({
       render={(ref, props) => <StyledTextField ref={ref} {...props} />}
       showMask={showMask}
       tabIndex={active ? -1 : tabIndex || 0}
-      theme={theme}
       type={type}
       value={value}
       {...other}
@@ -67,7 +60,6 @@ TextMask.defaultProps = {
   size: 'sm',
   showMask: false,
   tabIndex: null,
-  theme: {},
   type: 'text',
   valid: false,
   value: undefined,
@@ -135,10 +127,6 @@ TextMask.propTypes = {
    */
   tabIndex: oneOfType([number, string]),
   /**
-   * @ignore
-   */
-  theme: object,
-  /**
    * The type of the input.
    */
   type: oneOf(['date', 'email', 'number', 'password', 'text']),
@@ -152,5 +140,4 @@ TextMask.propTypes = {
   value: oneOfType([number, string]),
 };
 
-export const TextMaskComponent = TextMask;
-export default withTheme(TextMask);
+export default TextMask;

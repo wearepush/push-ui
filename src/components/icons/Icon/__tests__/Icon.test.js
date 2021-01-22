@@ -51,8 +51,4 @@ describe('Icon', () => {
     expect(icon.props().preserveAspectRatio).toBe('xMidYMid slice');
   });
 
-  it('should render pass default theme', () => {
-    const icon = shallow(<Icon name="test" />);
-    expect(icon.prop('theme')).not.toEqual({});
-  });
 });
