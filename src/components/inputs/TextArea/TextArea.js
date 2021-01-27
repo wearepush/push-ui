@@ -1,9 +1,7 @@
 import React from 'react';
 import { bool, number, oneOfType, oneOf, object, string } from 'prop-types';
-import { withTheme } from '@emotion/react';
 import { StyledTextArea } from './TextArea.style';
 import { createInputClassName } from '../_helpers/inputHelpers';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextArea = ({
   active,
@@ -14,7 +12,6 @@ const TextArea = ({
   invalid,
   name,
   tabIndex,
-  theme: themeProp,
   valid,
   value,
   ...other
@@ -25,9 +22,6 @@ const TextArea = ({
     invalid,
     valid,
   });
-  const theme = createComponentTheme({
-    theme: themeProp,
-  });
   return (
     <StyledTextArea
       className={className}
@@ -36,7 +30,6 @@ const TextArea = ({
       id={id || name}
       name={name}
       tabIndex={active ? -1 : tabIndex || 0}
-      theme={theme}
       value={value}
       {...other}
     />
@@ -52,7 +45,6 @@ TextArea.defaultProps = {
   invalid: false,
   size: 'sm',
   tabIndex: null,
-  theme: {},
   valid: false,
   value: undefined,
 };
@@ -95,10 +87,6 @@ TextArea.propTypes = {
    */
   tabIndex: oneOfType([number, string]),
   /**
-   * @ignore
-   */
-  theme: object,
-  /**
    * If `true`, the component is valid.
    */
   valid: bool,
@@ -108,5 +96,4 @@ TextArea.propTypes = {
   value: oneOfType([number, string]),
 };
 
-export const TextAreaComponent = TextArea;
-export default withTheme(TextArea);
+export default TextArea;

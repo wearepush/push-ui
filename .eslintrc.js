@@ -11,7 +11,7 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
-        printWidth: 100,
+        printWidth: 120,
         tabWidth: 2,
         bracketSpacing: true,
         trailingComma: 'es5',
@@ -40,14 +40,14 @@ module.exports = {
     'import/no-cycle': ignore,
   },
   env: {
-    "commonjs": true,
-    "es6": true,
-    "node": true,
-    "jest/globals": true
+    commonjs: true,
+    es6: true,
+    node: true,
+    'jest/globals': true,
   },
-  "globals": {
-    "localStorage": true,
-    "window": true,
-    "document": true
+  globals: {
+    localStorage: true,
+    window: true,
+    document: true,
   },
 };

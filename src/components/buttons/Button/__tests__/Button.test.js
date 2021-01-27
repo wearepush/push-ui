@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ButtonComponent as Button } from '../Button';
+import Button from '../Button';
 
 describe('Button', () => {
   describe('default props', () => {
@@ -77,11 +77,6 @@ describe('Button', () => {
     it('should render variant button', () => {
       const button = shallow(<Button variant="warning">Button</Button>);
       expect(button.prop('variant')).toEqual('warning');
-    });
-
-    it('should render pass default theme', () => {
-      const button = shallow(<Button>Button</Button>);
-      expect(button.prop('theme')).not.toEqual({});
     });
 
     it('should handle events', () => {

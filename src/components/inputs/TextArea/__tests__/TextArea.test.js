@@ -32,15 +32,8 @@ describe('TextArea', () => {
     });
 
     it('should render with className prop', () => {
-      const input = shallow(
-        <TextArea className="TextArea__test" name="name" placeholder="placeholder" />
-      );
+      const input = shallow(<TextArea className="TextArea__test" name="name" placeholder="placeholder" />);
       expect(input.hasClass('TextArea__test')).toBe(true);
-    });
-
-    it('should render pass default theme', () => {
-      const input = shallow(<TextArea name="name" placeholder="placeholder" />);
-      expect(input.prop('theme')).not.toEqual({});
     });
 
     it('should render with tabIndex prop', () => {

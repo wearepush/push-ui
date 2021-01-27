@@ -8,9 +8,8 @@ storiesOf('icons/Icon', module)
   .add('icon', () => (
     <Icon
       className="test"
-      height={select('height', ['1rem', '2rem', '3rem', '4rem'], '4rem')}
-      fill={select('fill', ['#2D2D3C', '#C13A23'], '#2D2D3C')}
+      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      fill={select('fill', ['black', 'dark-orange'], 'black')}
       name={select('name', [], 'person')}
-      width={select('width', ['1rem', '2rem', '3rem', '4rem'], '4rem')}
     />
   ));

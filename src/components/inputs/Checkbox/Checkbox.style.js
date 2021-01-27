@@ -1,34 +1,9 @@
 import styled from '@emotion/styled';
-import { variant } from 'styled-system';
-
-const variants = {
-  xs: {},
-  sm: {},
-  md: {},
-  lg: {},
-  xl: {},
-};
-
-export const checkboxSizeVariant = variant({
-  prop: 'size',
-  scale: 'checkboxSizes',
-  variants,
-});
-
-export const labelSizeVariant = variant({
-  prop: 'size',
-  scale: 'checkboxLabelSizes',
-  variants,
-});
-
-const getInvalidColor = (props) => props.theme.input.borderColorInvalid;
-const getValidColor = (props) => props.theme.input.borderColorValid;
-const getDisabledColor = (props) => props.theme.input.borderColorDisabled;
-const getBackgroundCheckedColor = (props) => props.theme.checkbox.backgroundCheckedColor;
+import { css } from '@emotion/react';
 
 export const Icon = styled.svg`
   fill: none;
-  stroke: ${(props) => props.theme.checkbox.iconColor};
+  stroke: var(--color--white);
   stroke-width: 2px;
   visibility: hidden;
 `;
@@ -46,42 +21,63 @@ export const HiddenCheckbox = styled.input`
   width: 1px;
 `;
 
+const checkboxSize = (props) =>
+  css`
+    --checkbox--size--xs: 1.4rem;
+    --checkbox--size--sm: 1.6rem;
+    --checkbox--size--md: 1.8rem;
+    --checkbox--size--lg: 2rem;
+    --checkbox--size--xl: 2.2rem;
+    width: var(--checkbox--size--${props.size});
+    height: var(--checkbox--size--${props.size});
+  `;
+
 export const StyledCheckbox = styled.div`
+  ${checkboxSize};
   box-sizing: border-box;
   display: inline-block;
   border: 2px solid;
-  border-color: ${(props) => props.theme.checkbox.borderColor};
-  border-radius: ${(props) => props.theme.checkbox.borderRadius};
-  transition: ${(props) => props.theme.checkbox.transition};
-  ${checkboxSizeVariant}
+  border-color: var(--color--gray500);
+  border-radius: 3px;
+  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
 
   ${HiddenCheckbox}:checked + & {
-    border-color: ${getBackgroundCheckedColor};
-    background-color: ${getBackgroundCheckedColor};
+    border-color: var(--color--primary800);
+    background-color: var(--color--primary800);
     ${Icon} {
       visibility: visible;
     }
   }
 
   ${HiddenCheckbox}:disabled + & {
-    border-color: ${getDisabledColor};
-    background-color: ${getDisabledColor};
+    border-color: var(--border__color__disabled);
+    background-color: var(--border__color__disabled);
   }
 
   ${HiddenCheckbox}:disabled:not(:checked) + & {
-    background-color: ${(props) => props.theme.input.backgroundColorDisabled};
+    background-color: var(--color--gray300);
   }
 
   ${HiddenCheckbox}:disabled + &,
   ${HiddenCheckbox}:disabled + & + span {
     cursor: not-allowed;
-    color: ${getDisabledColor};
+    color: var(--border__color__disabled);
   }
 `;
 
+const checkboxLabelSize = (props) =>
+  css`
+    --checkbox--label__size--xs: 1rem;
+    --checkbox--label__size--sm: 1.2rem;
+    --checkbox--label__size--md: 1.4rem;
+    --checkbox--label__size--lg: 1.6rem;
+    --checkbox--label__size--xl: 1.8rem;
+    font-size: var(--checkbox--label__size--${props.size});
+  `;
+
 export const Label = styled.span`
-  ${labelSizeVariant};
-  transition: ${(props) => props.theme.checkbox.transition};
+  ${checkboxLabelSize};
+  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
   margin-left: 0.5rem;
 `;
 
@@ -93,27 +89,27 @@ export const CheckboxContainer = styled.label`
 
   &.is-invalid {
     ${StyledCheckbox} {
-      border-color: ${getInvalidColor};
+      border-color: var(--border__color__invalid);
     }
     ${HiddenCheckbox}:checked + ${StyledCheckbox} {
-      background-color: ${getInvalidColor};
-      border-color: ${getInvalidColor};
+      background-color: var(--border__color__invalid);
+      border-color: var(--border__color__invalid);
     }
     ${Label} {
-      color: ${getInvalidColor};
+      color: var(--border__color__invalid);
     }
   }
 
   &.is-valid {
     ${StyledCheckbox} {
-      border-color: ${getValidColor};
+      border-color: var(--border__color__valid);
     }
     ${HiddenCheckbox}:checked + ${StyledCheckbox} {
-      background-color: ${getValidColor};
-      border-color: ${getValidColor};
+      background-color: var(--border__color__valid);
+      border-color: var(--border__color__valid);
     }
     ${Label} {
-      color: ${getValidColor};
+      color: var(--border__color__valid);
     }
   }
 `;

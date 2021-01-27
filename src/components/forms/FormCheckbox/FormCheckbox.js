@@ -3,16 +3,7 @@ import { array, bool, object, number, oneOfType, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, Checkbox } from '../../index';
 
-const FormComponentCheckbox = ({
-  disabled,
-  fieldProps,
-  id,
-  input,
-  label,
-  meta,
-  valueProp,
-  ...rest
-}) => {
+const FormComponentCheckbox = ({ disabled, fieldProps, id, input, label, meta, valueProp, ...rest }) => {
   const generateId = id || input.name;
   return (
     <FormField {...fieldProps} label={label} name={generateId}>

@@ -11,11 +11,7 @@ storiesOf('buttons/Button', module)
       rounded={select('rounded', ['0', 'xs', 'sm', 'md', 'lg', 'xl', 'circle'], 'sm')}
       shadow={select('shadow', ['0', '1', '2', '3', '4'], '4')}
       size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
-      variant={select(
-        'variant',
-        ['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light'],
-        'primary'
-      )}
+      variant={select('variant', ['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light'], 'primary')}
     >
       Preview
     </Button>

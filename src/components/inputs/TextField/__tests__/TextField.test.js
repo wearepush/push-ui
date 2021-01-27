@@ -57,15 +57,8 @@ describe('TextField', () => {
     });
 
     it('should render with className prop', () => {
-      const input = shallow(
-        <TextField className="TextField__test" name="name" placeholder="placeholder" />
-      );
+      const input = shallow(<TextField className="TextField__test" name="name" placeholder="placeholder" />);
       expect(input.hasClass('TextField__test')).toBe(true);
-    });
-
-    it('should render pass default theme', () => {
-      const input = shallow(<TextField name="name" placeholder="placeholder" />);
-      expect(input.prop('theme')).not.toEqual({});
     });
 
     it('should render with tabIndex prop', () => {

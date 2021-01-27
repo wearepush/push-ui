@@ -1,21 +1,9 @@
 import React from 'react';
 import { bool, func, node, number, oneOf, oneOfType, object, string } from 'prop-types';
 import cx from 'classnames';
-import { withTheme } from '@emotion/react';
 import { StyledButton, StyledLink } from './Button.style';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
-const Button = ({
-  children,
-  className: classNameProp,
-  component,
-  disabled,
-  role,
-  tabIndex,
-  theme: themeProp,
-  type,
-  ...other
-}) => {
+const Button = ({ children, className: classNameProp, component, disabled, role, tabIndex, type, ...other }) => {
   let ComponentProp = StyledButton;
   if (other.href) {
     ComponentProp = StyledLink;
@@ -29,15 +17,11 @@ const Button = ({
     buttonProps.role = 'button';
   }
   const className = cx('Button', classNameProp);
-  const theme = createComponentTheme({
-    theme: themeProp,
-  });
   return (
     <ComponentProp
       className={className}
       role={role}
       tabIndex={disabled ? -1 : parseInt(tabIndex, 10)}
-      theme={theme}
       {...buttonProps}
       {...other}
     >
@@ -56,7 +40,6 @@ Button.defaultProps = {
   shadow: '0',
   size: 'sm',
   tabIndex: 0,
-  theme: {},
   type: 'button',
   variant: 'primary',
 };
@@ -107,10 +90,6 @@ Button.propTypes = {
   /**
    * @ignore
    */
-  theme: object,
-  /**
-   * @ignore
-   */
   type: string,
   /**
    * Variant.
@@ -118,5 +97,4 @@ Button.propTypes = {
   variant: oneOf(['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light']),
 };
 
-export const ButtonComponent = Button;
-export default withTheme(Button);
+export default Button;

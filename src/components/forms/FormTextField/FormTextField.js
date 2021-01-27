@@ -3,17 +3,7 @@ import { bool, object, oneOf, string } from 'prop-types';
 import { Field } from 'redux-form';
 import { FormField, TextField } from '../../index';
 
-const FormComponentTextField = ({
-  disabled,
-  fieldProps,
-  id,
-  input,
-  label,
-  meta,
-  placeholder,
-  type,
-  ...rest
-}) => {
+const FormComponentTextField = ({ disabled, fieldProps, id, input, label, meta, placeholder, type, ...rest }) => {
   const generateId = id || input.name;
   return (
     <FormField {...fieldProps} isEmpty={!input.value} label={label} meta={meta} name={generateId}>

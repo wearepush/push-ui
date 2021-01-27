@@ -12,6 +12,4 @@ const form = {
 
 storiesOf('forms/FormTextField', module)
   .addDecorator(withForm({ form }))
-  .add('default', () => (
-    <FormTextField label="Email" name="email" type="email" component="input" />
-  ));
+  .add('default', () => <FormTextField label="Email" name="email" type="email" component="input" />);

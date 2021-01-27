@@ -1,9 +1,7 @@
 import React from 'react';
 import { bool, number, oneOfType, oneOf, object, string } from 'prop-types';
-import { withTheme } from '@emotion/react';
 import { StyledTextField } from './TextField.style';
 import { createInputClassName } from '../_helpers/inputHelpers';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
 const TextField = ({
   active,
@@ -14,7 +12,6 @@ const TextField = ({
   invalid,
   name,
   tabIndex,
-  theme: themeProp,
   type,
   valid,
   value,
@@ -26,9 +23,6 @@ const TextField = ({
     invalid,
     valid,
   });
-  const theme = createComponentTheme({
-    theme: themeProp,
-  });
   return (
     <StyledTextField
       className={className}
@@ -37,7 +31,6 @@ const TextField = ({
       id={id || name}
       name={name}
       tabIndex={active ? -1 : tabIndex || 0}
-      theme={theme}
       type={type}
       value={value}
       {...other}
@@ -54,7 +47,6 @@ TextField.defaultProps = {
   invalid: false,
   size: 'sm',
   tabIndex: null,
-  theme: {},
   type: 'text',
   valid: false,
   value: undefined,
@@ -98,10 +90,6 @@ TextField.propTypes = {
    */
   tabIndex: oneOfType([number, string]),
   /**
-   * @ignore
-   */
-  theme: object,
-  /**
    * The type of the input.
    */
   type: oneOf(['date', 'email', 'number', 'password', 'text']),
@@ -115,5 +103,4 @@ TextField.propTypes = {
   value: oneOfType([number, string]),
 };
 
-export const TextFieldComponent = TextField;
-export default withTheme(TextField);
+export default TextField;

@@ -1,22 +1,10 @@
 import React from 'react';
-import { oneOfType, object, string } from 'prop-types';
+import { oneOfType, oneOf, object, string } from 'prop-types';
 import cx from 'classnames';
-import { withTheme } from '@emotion/react';
 import { StyledIcon } from './Icon.style';
 import icons from './svgs/index';
-import { createComponentTheme } from '../../styles/_helpers/themeHelpers';
 
-const Icon = ({
-  className: classNameProp,
-  fill,
-  height,
-  name,
-  preserveAspectRatio,
-  theme: themeProp,
-  viewBox,
-  width,
-  ...other
-}) => {
+const Icon = ({ className: classNameProp, name, preserveAspectRatio, viewBox, ...other }) => {
   if (!name || !icons[name]) {
     console.error('Missing name file'); // eslint-disable-line
     return null;
@@ -25,18 +13,11 @@ const Icon = ({
   const className = cx('Icon', classNameProp, {
     [`Icon-${name}`]: !!name,
   });
-  const theme = createComponentTheme({
-    theme: themeProp,
-  });
   return (
     <IconComponent
       className={className}
-      fill={fill}
-      height={height}
       preserveAspectRatio={preserveAspectRatio}
-      theme={theme}
       viewBox={viewBox}
-      width={width}
       {...other}
     />
   );
@@ -44,13 +25,11 @@ const Icon = ({
 
 Icon.defaultProps = {
   className: '',
-  fill: '#000',
-  height: undefined,
+  fill: 'black',
+  size: 'sm',
   name: '',
   preserveAspectRatio: 'xMidYMid meet',
-  theme: {},
   viewBox: '0 0 48 48',
-  width: undefined,
 };
 
 Icon.propTypes = {
@@ -61,11 +40,11 @@ Icon.propTypes = {
   /**
    * Fill (color) of the SVG icon.
    */
-  fill: string,
+  fill: oneOf(['black', 'dark-orange']),
   /**
-   * Height of the SVG icon.
+   * Size of the SVG icon.
    */
-  height: string,
+  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   /**
    * Name of the SVG icon.
    */
@@ -75,18 +54,9 @@ Icon.propTypes = {
    */
   preserveAspectRatio: string,
   /**
-   * @ignore
-   */
-  theme: object,
-  /**
    * ViewBox of the SVG icon.
    */
   viewBox: string,
-  /**
-   * Width of the SVG icon.
-   */
-  width: string,
 };
 
-export const IconComponent = Icon;
-export default withTheme(Icon);
+export default Icon;
