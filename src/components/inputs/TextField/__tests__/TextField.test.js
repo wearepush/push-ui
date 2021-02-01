@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TextFieldComponent as TextField } from '../TextField';
+import TextField from '../TextField';
 
 describe('TextField', () => {
   describe('default props', () => {
