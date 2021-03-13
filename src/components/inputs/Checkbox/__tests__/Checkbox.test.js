@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CheckboxComponent as Checkbox } from '../Checkbox';
+import Checkbox from '../Checkbox';
 
 describe('Checkbox', () => {
   describe('default props', () => {

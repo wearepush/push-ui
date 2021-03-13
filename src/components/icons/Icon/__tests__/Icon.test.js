@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import { shallow } from 'enzyme';
-import { IconComponent as Icon } from '../Icon';
+import Icon from '../Icon';
 
 describe('Icon', () => {
   it('should render null', () => {
@@ -50,5 +50,4 @@ describe('Icon', () => {
     const icon = shallow(<Icon name="test" preserveAspectRatio="xMidYMid slice" />);
     expect(icon.props().preserveAspectRatio).toBe('xMidYMid slice');
   });
-
 });
