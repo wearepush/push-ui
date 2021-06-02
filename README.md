@@ -12,17 +12,16 @@
 
 ## [Live Demo](https://push-ui.herokuapp.com) :eyes:
 
-
 ## About
 
 The starter ui includes the following technologies:
 
-| Technology                                                                                                                                                                                                                  | Description                                                     |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| [Node 14.0.0 LTS](https://nodejs.org/en/)                                          | Node |
-| [React 17](https://github.com/facebook/react)                                     | JavaScript library for building user interfaces  |
-| [Redux](http://redux.js.org/)                                                     | Redux is a predictable state container for JavaScript apps                           |
-| [Redux-Form](http://redux-form.com)                                               | A Higher Order Component using react-redux to keep form state in a Redux store                                          |
+| Technology                                    | Description                                                                    |
+| --------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Node 14.0.0 LTS](https://nodejs.org/en/)     | Node                                                                           |
+| [React 17](https://github.com/facebook/react) | JavaScript library for building user interfaces                                |
+| [Redux](http://redux.js.org/)                 | Redux is a predictable state container for JavaScript apps                     |
+| [Redux-Form](http://redux-form.com)           | A Higher Order Component using react-redux to keep form state in a Redux store |
 
 ## Installation
 
@@ -33,6 +32,18 @@ npm install push-ui --save
 ## Release
 
 ```bash
-npm run release
+npm run release -- --release-as minor
+```
+
+## Patch
+
+```bash
+npm run release -- --release-as patch
+```
+
+
+## Push version to the git
+
+```bash
 git push --follow-tags origin master
 ```
