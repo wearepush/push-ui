@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/wearepush/push-ui/compare/v1.2.1...v1.3.0) (2021-06-02)
+
+
+### Others
+
+* **release:** 1.2.2 ([99085fa](https://github.com/wearepush/push-ui/commit/99085fa417a3957af30482375dfba0c0383d674a))
+* **release:** 1.2.3 ([b550f5e](https://github.com/wearepush/push-ui/commit/b550f5ee152f706adf89faa373f24e3b0ab8a696))
+
 ### [1.2.3](https://github.com/wearepush/push-ui/compare/v1.2.1...v1.2.3) (2021-06-02)
 
 
