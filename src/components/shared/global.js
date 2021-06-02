@@ -1,5 +1,8 @@
 import { css } from '@emotion/react';
 
+const rootSize = 16;
+const pxToRem = (pxSize) => `${pxSize / rootSize}rem`;
+
 export const rootStyles = css`
   :root {
     --color--black900: #0a1f44;
@@ -79,11 +82,11 @@ export const rootStyles = css`
 
     // radius
     --radius--0: 0px;
-    --radius--xs: 2px;
-    --radius--sm: 4px;
-    --radius--md: 6px;
-    --radius--lg: 8px;
-    --radius--xl: 12px;
+    --radius--xsmall: 2px;
+    --radius--small: 4px;
+    --radius--medium: 6px;
+    --radius--large: 8px;
+    --radius--xlarge: 12px;
     --radius--circle: 1000rem;
 
     // border
@@ -93,17 +96,17 @@ export const rootStyles = css`
     --border__color__disabled: #e1e4e8;
 
     // inputs
-    --input--fontsize--xs: 1rem;
-    --input--fontsize--sm: 1.2rem;
-    --input--fontsize--md: 1.4rem;
-    --input--fontsize--lg: 1.6rem;
-    --input--fontsize--xl: 1.8rem;
+    --input--fontsize--xsmall: ${pxToRem(10)};
+    --input--fontsize--small: ${pxToRem(12)};
+    --input--fontsize--medium: ${pxToRem(14)};
+    --input--fontsize--large: ${pxToRem(16)};
+    --input--fontsize--xlarge: ${pxToRem(18)};
 
-    --input--padding--xs: 0.5rem 1rem;
-    --input--padding--sm: 0.7rem 1.2rem;
-    --input--padding--md: 0.9rem 1.2rem;
-    --input--padding--lg: 1.1rem 1.5rem;
-    --input--padding--xl: 1.3rem 1.7rem;
+    --input--padding--xsmall: ${pxToRem(5)} ${pxToRem(10)};
+    --input--padding--small: ${pxToRem(7)} ${pxToRem(12)};
+    --input--padding--medium: ${pxToRem(9)} ${pxToRem(12)};
+    --input--padding--large: ${pxToRem(11)} ${pxToRem(15)};
+    --input--padding--xlarge: ${pxToRem(13)} ${pxToRem(17)};
 
     // transition
     --motion__ease--inout: cubic-bezier(0.42, 0, 0.58, 1);
@@ -152,44 +155,44 @@ export const rootStyles = css`
     --type__weight--black: 800;
 
     // font sizes
-    --type__body__xsmall--fontsize: 10px;
+    --type__body__xsmall--fontsize: ${pxToRem(10)};
     --type__body__xsmall--fontweight: 400;
     --type__body__xsmall--fontweight_strong: 500;
-    --type__body__xsmall--lineheight: 18px;
+    --type__body__xsmall--lineheight: ${pxToRem(18)};
 
-    --type__body__small--fontsize: 12px;
+    --type__body__small--fontsize: ${pxToRem(12)};
     --type__body__small--fontweight: 400;
     --type__body__small--fontweight_strong: 500;
-    --type__body__small--lineheight: 20px;
+    --type__body__small--lineheight: ${pxToRem(20)};
 
-    --type__body__standard--fontsize: 14px;
+    --type__body__standard--fontsize: ${pxToRem(14)};
     --type__body__standard--fontweight: 400;
     --type__body__standard--fontweight_strong: 500;
-    --type__body__standard--lineheight: 22px;
+    --type__body__standard--lineheight: ${pxToRem(22)};
 
-    --type__body__large--fontsize: 16px;
+    --type__body__large--fontsize: ${pxToRem(16)};
     --type__body__large--fontweight: 400;
     --type__body__large--fontweight_strong: 500;
-    --type__body__large--lineheight: 24px;
+    --type__body__large--lineheight: ${pxToRem(24)};
 
-    --type__title__small--fontsize: 16px;
+    --type__title__small--fontsize: ${pxToRem(16)};
     --type__title__small--fontweight: 400;
     --type__title__small--fontweight_strong: 500;
-    --type__title__small--lineheight: 26px;
+    --type__title__small--lineheight: ${pxToRem(26)};
 
-    --type__title__standard--fontsize: 22px;
+    --type__title__standard--fontsize: ${pxToRem(22)};
     --type__title__standard--fontweight: 500;
-    --type__title__standard--lineheight: 28px;
+    --type__title__standard--lineheight: ${pxToRem(28)};
 
-    --type__title__large--fontsize: 28px;
+    --type__title__large--fontsize: ${pxToRem(28)};
     --type__title__large--fontweight: 500;
-    --type__title__large--lineheight: 36px;
+    --type__title__large--lineheight: ${pxToRem(36)};
   }
 `;
 
 export const htmlStyles = css`
   font-family: var(--type__primary);
-  font-size: var(--type__body__standard--fontsize);
+  font-size: var(--type__body__large--fontsize);
   color: var(--color__standard__text);
 
   -webkit-font-smoothing: antialiased;

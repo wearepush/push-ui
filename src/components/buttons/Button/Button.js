@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, func, node, number, oneOf, oneOfType, object, string } from 'prop-types';
+import { bool, node, number, oneOf, oneOfType, object, string } from 'prop-types';
 import cx from 'classnames';
 import { StyledButton, StyledLink } from './Button.style';
 
@@ -31,24 +31,19 @@ const Button = ({ children, className: classNameProp, component, disabled, role,
 };
 
 Button.defaultProps = {
-  buttonRef: undefined,
   className: '',
   component: 'button',
   disabled: false,
   role: 'button',
-  rounded: 'sm',
+  rounded: 'medium',
   shadow: '0',
-  size: 'sm',
+  size: 'medium',
   tabIndex: 0,
   type: 'button',
   variant: 'primary',
 };
 
 Button.propTypes = {
-  /**
-   * Use that property to pass a ref callback to the native button component.
-   */
-  buttonRef: func,
   /**
    * The content of the button.
    */
@@ -72,15 +67,15 @@ Button.propTypes = {
    */
   role: string,
   /**
-   * Border raidus.
+   * Border raidus
    */
-  rounded: oneOf(['0', 'xs', 'sm', 'md', 'lg', 'xl', 'circle']),
+  rounded: oneOf(['0', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'circle']),
   /**
-   * Size.
+   * Size
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
-   * Shadow.
+   * Shadow
    */
   shadow: oneOf(['0', '1', '2', '3', '4']),
   /**
@@ -92,7 +87,7 @@ Button.propTypes = {
    */
   type: string,
   /**
-   * Variant.
+   * Variant
    */
   variant: oneOf(['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light']),
 };

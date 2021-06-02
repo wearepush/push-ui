@@ -8,9 +8,9 @@ storiesOf('buttons/Button', module)
   .add('default', () => (
     <Button
       disabled={boolean('disabled', false)}
-      rounded={select('rounded', ['0', 'xs', 'sm', 'md', 'lg', 'xl', 'circle'], 'sm')}
+      rounded={select('rounded', ['0', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'circle'], 'medium')}
       shadow={select('shadow', ['0', '1', '2', '3', '4'], '4')}
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       variant={select('variant', ['primary', 'warning', 'success', 'danger', 'brand', 'dark', 'light'], 'primary')}
     >
       Preview

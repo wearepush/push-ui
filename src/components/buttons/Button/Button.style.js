@@ -39,34 +39,40 @@ const buttonStyle = (props) =>
   css`
     ${buttonVariants(props.variant)}
     border-radius: var(--radius--${props.rounded});
-    border-width: 1px;
-    border-style: solid;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: var(--input--padding--${props.size});
-    font-size: var(--input--fontsize--${props.size});
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
-      border-color 0.4s ease-in-out;
-    user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    -webkit-appearance: none;
-    -webkit-font-smoothing: antialiased;
+    border-style: var(--button--borderstyle, solid);
+    border-width: var(--button--borderwidth, 1px);
+    box-sizing: var(--button--boxsizing, border-box);
+    cursor: var(--button--cursor, pointer);
+    display: var(--button--display, inline-block);
+    font-size: var(--button--fontsize--${props.size}, var(--input--fontsize--${props.size}));
+    font-weight: var(--button--fontweight--${props.size}, 400);
+    line-height: var(--button--lineheight--${props.size}, 1.2);
+    padding: var(--button--padding--${props.size}, var(--input--padding--${props.size}));
+    text-align: var(--button--textalign, center);
+    text-decoration: var(--button--textdecoration, none);
+    transition: color var(--button--transition-time, var(--motion__time--faster))
+        var(--button--transition-func, var(--motion__ease--inout)),
+      background-color var(--button--transition-time, var(--motion__time--faster))
+        var(--button--transition-func, var(--motion__ease--inout)),
+      box-shadow var(--button--transition-time, var(--motion__time--faster))
+        var(--button--transition-func, var(--motion__ease--inout)),
+      border-color var(--button--transition-time, var(--motion__time--faster))
+        var(--button--transition-func, var(--motion__ease--inout));
+    user-select: var(--button--userselect, none);
+    vertical-align: var(--button--verticalalign, middle);
+    white-space: var(--button--whitespace, nowrap);
 
     &:hover {
       box-shadow: var(--button__box_shadow--hover, var(--shadow--${props.shadow}));
     }
+
     &:disabled {
       cursor: not-allowed;
       background-color: var(--button__background__color--disabled, var(--color--disabled));
       border-color: var(--button__border__color--disabled, var(--color--disabled));
       box-shadow: none;
     }
+
     &:focus {
       outline: none;
     }
