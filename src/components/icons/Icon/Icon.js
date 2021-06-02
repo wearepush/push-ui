@@ -13,14 +13,7 @@ const Icon = ({ className: classNameProp, name, preserveAspectRatio, viewBox, ..
   const className = cx('Icon', classNameProp, {
     [`Icon-${name}`]: !!name,
   });
-  return (
-    <IconComponent
-      className={className}
-      preserveAspectRatio={preserveAspectRatio}
-      viewBox={viewBox}
-      {...other}
-    />
-  );
+  return <IconComponent className={className} preserveAspectRatio={preserveAspectRatio} viewBox={viewBox} {...other} />;
 };
 
 Icon.defaultProps = {
@@ -40,7 +33,7 @@ Icon.propTypes = {
   /**
    * Fill (color) of the SVG icon.
    */
-  fill: oneOf(['black', 'dark-orange']),
+  fill: string,
   /**
    * Size of the SVG icon.
    */

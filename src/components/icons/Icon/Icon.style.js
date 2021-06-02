@@ -13,7 +13,6 @@ export const iconStyle = (props) =>
     height: var(--icon--size--${props.size});
 
     --icon--fill--black: #2d2d3c;
-    --icon--fill--dark-orange: #c13a23;
     fill: var(--icon--fill--${props.fill});
   `;
 
