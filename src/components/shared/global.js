@@ -155,6 +155,8 @@ export const rootStyles = css`
     --type__weight--black: 800;
 
     // font sizes
+    --root--fontsize: ${rootSize}px;
+
     --type__body__xsmall--fontsize: ${pxToRem(10)};
     --type__body__xsmall--fontweight: 400;
     --type__body__xsmall--fontweight_strong: 500;
@@ -192,7 +194,7 @@ export const rootStyles = css`
 
 export const htmlStyles = css`
   font-family: var(--type__primary);
-  font-size: var(--type__body__large--fontsize);
+  font-size: var(--root--fontsize);
   color: var(--color__standard__text);
 
   -webkit-font-smoothing: antialiased;
