@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/wearepush/push-ui/compare/v1.0.15...v1.2.0) (2021-06-02)
+
+
+### Features
+
+* fix enzyme adapter ([0e9100e](https://github.com/wearepush/push-ui/commit/0e9100e5808fee5f9f7ea9dc18ae3f56d3322ba5))
+* test commit ([5780a74](https://github.com/wearepush/push-ui/commit/5780a74b5d7e5fcac24532550cde64835ad9c5dd))
+* update deps ([b766aee](https://github.com/wearepush/push-ui/commit/b766aee248f742454581110838052fad633f6330))
+* **storybook:** fix storybook config ([9f5752e](https://github.com/wearepush/push-ui/commit/9f5752e6bcaa81b57dd6ef98ad9ccbd573b7f67e))
+* defined css variables ([#36](https://github.com/wearepush/push-ui/issues/36)) ([23380f2](https://github.com/wearepush/push-ui/commit/23380f2c28bb9295e2e9cd9b8dd0ab9c5a4ea389))
+
+
+### Bug Fixes
+
+* fix svg ([5dad1ca](https://github.com/wearepush/push-ui/commit/5dad1ca8d9d4da564a9501d872924cf1f9786ab3))
+
+
+### Others
+
+* **release:** 1.1.0 ([4d7d370](https://github.com/wearepush/push-ui/commit/4d7d370b6d44e97c8ed5fbf6d4eaf08fe34780d9))
+* update deps ([fd609ad](https://github.com/wearepush/push-ui/commit/fd609ad96323833d6c26e0d4921a8606f5fe9809))
+* update deps ([215ac23](https://github.com/wearepush/push-ui/commit/215ac2391b1d1511bf26b8bb7749cbdd3b1b63ae))
+
 ## [1.1.0](https://github.com/wearepush/push-ui/compare/v1.0.15...v1.1.0) (2021-06-02)
 
 
