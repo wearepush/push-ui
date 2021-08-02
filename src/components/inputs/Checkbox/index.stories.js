@@ -18,7 +18,7 @@ storiesOf('inputs/Checkbox', module)
       onBlur={action('blur')}
       name="checkbox-0"
       placeholder="Checkbox placeholder"
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       valid={boolean('valid', false)}
     >
       Normal Checkbox

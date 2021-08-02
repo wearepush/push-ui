@@ -65,8 +65,8 @@ describe('Button', () => {
     });
 
     it('should render size small prop', () => {
-      const button = shallow(<Button size="xs">Button</Button>);
-      expect(button.prop('size')).toBe('xs');
+      const button = shallow(<Button size="small">Button</Button>);
+      expect(button.prop('size')).toBe('small');
     });
 
     it('should render custom prop', () => {

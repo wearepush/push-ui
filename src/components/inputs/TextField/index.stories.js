@@ -17,7 +17,7 @@ storiesOf('inputs/TextField', module)
       onBlur={action('blur')}
       name="TextField-0"
       placeholder="TextField placeholder"
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       valid={boolean('valid', false)}
     />
   ))

@@ -5,7 +5,7 @@ import Icon from '../Icon';
 
 describe('Icon', () => {
   it('should render null', () => {
-    const spy = jest.spyOn(global.console, 'error');
+    const spy = jest.spyOn(global.console, 'info');
     const icon = shallow(<Icon />);
     expect(icon).toEqual({});
     expect(spy).toHaveBeenCalled();

@@ -39,17 +39,13 @@ const TextField = ({
 };
 
 TextField.defaultProps = {
-  active: undefined,
   className: '',
   disabled: false,
-  defaultValue: undefined,
-  id: undefined,
   invalid: false,
-  size: 'sm',
+  size: 'medium',
   tabIndex: null,
   type: 'text',
   valid: false,
-  value: undefined,
 };
 
 TextField.propTypes = {
@@ -84,7 +80,7 @@ TextField.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * @ignore
    */

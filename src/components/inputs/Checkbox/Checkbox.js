@@ -67,24 +67,14 @@ const Checkbox = ({
 };
 
 Checkbox.defaultProps = {
-  active: undefined,
-  checked: undefined,
-  children: undefined,
   checkboxClassName: '',
-  checkboxProps: undefined,
   className: '',
-  containerProps: undefined,
   disabled: false,
-  defaultChecked: undefined,
   iconClassName: '',
-  iconProps: undefined,
   inputClassName: '',
-  inputProps: undefined,
-  id: undefined,
   invalid: false,
   labelClassName: '',
-  labelProps: undefined,
-  size: 'sm',
+  size: 'medium',
   tabIndex: null,
   valid: false,
 };
@@ -165,7 +155,7 @@ Checkbox.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * @ignore
    */

@@ -38,6 +38,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/forbid-prop-types': ignore,
     'import/no-cycle': ignore,
+    'react/require-default-props': ignore,
   },
   env: {
     commonjs: true,

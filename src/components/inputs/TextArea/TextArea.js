@@ -43,7 +43,7 @@ TextArea.defaultProps = {
   defaultValue: undefined,
   id: undefined,
   invalid: false,
-  size: 'sm',
+  size: 'medium',
   tabIndex: null,
   valid: false,
   value: undefined,
@@ -81,7 +81,7 @@ TextArea.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * @ignore
    */

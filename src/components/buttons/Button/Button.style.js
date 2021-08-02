@@ -5,32 +5,32 @@ const buttonVariants = (variant) => {
   if (variant === 'light') {
     return `
       color: var(--button__color, var(--color--black));
-      background-color: var(--button__background__color--${variant}, var(--color--white));
-      border-color: var(--button__border__color--${variant}, var(--color--gray400));
+      background-color: var(--button__background-olor--${variant}, var(--color--white));
+      border-color: var(--button__border-color--${variant}, var(--color--gray400));
       &:hover {
-        background-color: var(--button__background__color--hover--${variant}, var(--color--white));
-        border-color: var(--button__border__color--hover--${variant}, var(--color--gray500));
+        background-color: var(--button__background-olor--hover--${variant}, var(--color--white));
+        border-color: var(--button__border-color--hover--${variant}, var(--color--gray500));
       }
     `;
   }
   if (variant === 'dark') {
     return `
       color: var(--button__color, var(--color--white));
-      background-color: var(--button__background__color--${variant}, var(--color--black));
-      border-color: var(--button__border__color--${variant}, var(--color--black600));
+      background-color: var(--button__background-olor--${variant}, var(--color--black));
+      border-color: var(--button__border-color--${variant}, var(--color--black600));
       &:hover {
-        background-color: var(--button__background__color--hover--${variant}, var(--color--black));
-        border-color: var(--button__border__color--hover--${variant}, var(--color--black600));
+        background-color: var(--button__background-olor--hover--${variant}, var(--color--black));
+        border-color: var(--button__border-color--hover--${variant}, var(--color--black600));
       }
     `;
   }
   return `
     color: var(--button__color, var(--color--white));
-    background-color: var(--button__background__color--${variant}, var(--color--${variant}700));
-    border-color: var(--button__border__color--${variant}, var(--color--${variant}700));
+    background-color: var(--button__background-olor--${variant}, var(--color--${variant}700));
+    border-color: var(--button__border-color--${variant}, var(--color--${variant}700));
     &:hover {
-      background-color: var(--button__background__color--hover--${variant}, var(--color--${variant}600));
-      border-color: var(--button__border__color--hover--${variant}, var(--color--${variant}600));
+      background-color: var(--button__background-olor--hover--${variant}, var(--color--${variant}600));
+      border-color: var(--button__border-color--hover--${variant}, var(--color--${variant}600));
     }
   `;
 };
@@ -39,42 +39,42 @@ const buttonStyle = (props) =>
   css`
     ${buttonVariants(props.variant)}
     border-radius: var(--radius--${props.rounded});
-    border-style: var(--button--borderstyle, solid);
-    border-width: var(--button--borderwidth, 1px);
-    box-sizing: var(--button--boxsizing, border-box);
-    cursor: var(--button--cursor, pointer);
-    display: var(--button--display, inline-block);
-    font-size: var(--button--fontsize--${props.size}, var(--input--fontsize--${props.size}));
-    font-weight: var(--button--fontweight--${props.size}, 400);
-    line-height: var(--button--lineheight--${props.size}, 1.2);
-    padding: var(--button--padding--${props.size}, var(--input--padding--${props.size}));
-    text-align: var(--button--textalign, center);
-    text-decoration: var(--button--textdecoration, none);
-    transition: color var(--button--transition-time, var(--motion__time--faster))
-        var(--button--transition-func, var(--motion__ease--inout)),
-      background-color var(--button--transition-time, var(--motion__time--faster))
-        var(--button--transition-func, var(--motion__ease--inout)),
-      box-shadow var(--button--transition-time, var(--motion__time--faster))
-        var(--button--transition-func, var(--motion__ease--inout)),
-      border-color var(--button--transition-time, var(--motion__time--faster))
-        var(--button--transition-func, var(--motion__ease--inout));
-    user-select: var(--button--userselect, none);
-    vertical-align: var(--button--verticalalign, middle);
-    white-space: var(--button--whitespace, nowrap);
+    border-style: var(--button__border-style, solid);
+    border-width: var(--button__border-width, 1px);
+    box-sizing: var(--button__box-sizing, border-box);
+    cursor: var(--button__cursor, pointer);
+    display: var(--button__display, inline-block);
+    font-size: var(--button__font-size--${props.size}, var(--input__fontsize--${props.size}));
+    font-weight: var(--button__font-weight, 400);
+    line-height: var(--button__line-height, 1.2);
+    padding: var(--button__padding--${props.size}, var(--input__padding--${props.size}));
+    text-align: var(--button__text-align, center);
+    text-decoration: var(--button__text-decoration, none);
+    transition: color var(--button__transition-time, var(--motion__time--faster))
+        var(--button__transition-func, var(--motion__ease--inout)),
+      background-color var(--button__transition-time, var(--motion__time--faster))
+        var(--button__transition-func, var(--motion__ease--inout)),
+      box-shadow var(--button__transition-time, var(--motion__time--faster))
+        var(--button__transition-func, var(--motion__ease--inout)),
+      border-color var(--button__transition-time, var(--motion__time--faster))
+        var(--button__transition-func, var(--motion__ease--inout));
+    user-select: var(--button__user-select, none);
+    vertical-align: var(--button__vertical-align, middle);
+    white-space: var(--button__white-space, nowrap);
 
     &:hover {
-      box-shadow: var(--button__box_shadow--hover, var(--shadow--${props.shadow}));
+      box-shadow: var(--button__box-shadow--hover, var(--shadow--${props.shadow}));
     }
 
     &:disabled {
-      cursor: not-allowed;
-      background-color: var(--button__background__color--disabled, var(--color--disabled));
-      border-color: var(--button__border__color--disabled, var(--color--disabled));
-      box-shadow: none;
+      background-color: var(--button__background-olor--disabled, var(--color--disabled));
+      border-color: var(--button__border-color--disabled, var(--color--disabled));
+      box-shadow: var(--button__box-shadow--disabled, none);
+      cursor: var(--button__cursor--disabled, not-allowed);
     }
 
     &:focus {
-      outline: none;
+      outline: var(--button__outline--focus, none);
     }
   `;
 
