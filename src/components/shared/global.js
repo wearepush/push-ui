@@ -133,13 +133,6 @@ export const rootStyles = css`
     --motion__time--slower: 1s;
     --motion__time--slowest: 1.2s;
 
-    // breakpoint
-    --breakpoint--xsmall: 367px;
-    --breakpoint--small: 767px;
-    --breakpoint--medium: 1024px;
-    --breakpoint--large: 1600px;
-    --breakpoint--xlarge: 1920px;
-
     // theme
     --color__theme__primary: var(--color--primary700);
 

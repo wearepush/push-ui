@@ -10,6 +10,10 @@ storiesOf('icons/Icon', module)
       className="test"
       size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       fill={select('fill', ['black', 'red'], 'black')}
-      name={select('name', [], 'person')}
+      name={select(
+        'name',
+        ['checkbox_checked', 'checkbox_unchecked', 'radio_checked', 'radio_unchecked'],
+        'checkbox_checked'
+      )}
     />
   ));

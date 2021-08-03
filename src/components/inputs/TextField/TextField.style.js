@@ -34,7 +34,7 @@ export const inputStyle = (props) =>
     &:disabled {
       background-color: var(--input__background-color--disabled);
       border-color: var(--input__border-color--disabled);
-      cursor: var(--button--cursor--disabled, not-allowed);
+      cursor: var(--input__cursor--disabled, not-allowed);
     }
 
     &::placeholder {
