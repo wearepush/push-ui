@@ -1,6 +1,6 @@
 import React from 'react';
 import { array, bool, object, number, oneOfType, string } from 'prop-types';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { FormField, Checkbox } from '../../index';
 
 const FormComponentCheckbox = ({ disabled, fieldProps, id, input, label, meta, valueProp, ...rest }) => {

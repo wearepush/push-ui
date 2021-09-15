@@ -1,23 +1,15 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
-
 import Form from './Form';
-import Root from './Root';
 import { FormButton } from '../../../index';
-import configureStore from './store';
 
-const withForm = ({ form = {}, state = {} }) => {
-  const store = configureStore(state);
-  const MountForm = reduxForm(form)(Form);
+const withForm = ({ form = {} }) => {
   const Decorator = (storyFn) => (
-    <Root store={store}>
-      <MountForm>
-        {storyFn()}
-        <FormButton type="submit" form={form.form}>
-          Submit
-        </FormButton>
-      </MountForm>
-    </Root>
+    <Form {...form}>
+      {storyFn()}
+      <FormButton type="submit" form={form.name}>
+        Submit
+      </FormButton>
+    </Form>
   );
   return Decorator;
 };

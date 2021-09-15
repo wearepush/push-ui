@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import { Form as ReduxForm } from 'redux-form';
-import { func, node } from 'prop-types';
+import React from 'react';
+import { node } from 'prop-types';
+import { Form as FinalForm } from 'react-final-form';
 
-export default class Form extends Component {
-  onSubmit = (values) => {
+const Form = ({ children, ...rest }) => {
+  const onSubmit = (values) => {
     console.log(values); // eslint-disable-line
   };
-
-  render() {
-    const { children, handleSubmit } = this.props;
-    return <ReduxForm onSubmit={handleSubmit(this.onSubmit)}>{children}</ReduxForm>;
-  }
-}
+  return (
+    <FinalForm onSubmit={onSubmit} {...rest}>
+      {({ handleSubmit }) => <form onSubmit={handleSubmit}>{children}</form>}
+    </FinalForm>
+  );
+};
 
 Form.propTypes = {
   children: node.isRequired,
-  handleSubmit: func.isRequired,
 };
+
+export default Form;

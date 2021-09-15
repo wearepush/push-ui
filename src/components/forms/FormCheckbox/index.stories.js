@@ -6,7 +6,7 @@ import validate from './__mocks__/validateCheckbox';
 import { FormCheckbox } from '../../index';
 
 const form = {
-  form: 'testForm',
+  name: 'testForm',
   validate,
 };
 
