@@ -1,13 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-export const Icon = styled.svg`
-  fill: none;
-  stroke: var(--color--white);
-  stroke-width: 2px;
-  visibility: hidden;
-`;
-
 export const HiddenCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
@@ -21,95 +14,98 @@ export const HiddenCheckbox = styled.input`
   width: 1px;
 `;
 
-const checkboxSize = (props) =>
-  css`
-    --checkbox--size--xs: 1.4rem;
-    --checkbox--size--sm: 1.6rem;
-    --checkbox--size--md: 1.8rem;
-    --checkbox--size--lg: 2rem;
-    --checkbox--size--xl: 2.2rem;
-    width: var(--checkbox--size--${props.size});
-    height: var(--checkbox--size--${props.size});
-  `;
-
 export const StyledCheckbox = styled.div`
-  ${checkboxSize};
-  box-sizing: border-box;
-  display: inline-block;
-  border: 2px solid;
-  border-color: var(--color--gray500);
-  border-radius: 3px;
-  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  box-sizing: var(--input_checkbox__boxsizing, border-box);
+  display: var(--input_checkbox__display, flex);
+  line-height: var(--input_checkbox__line-height, 1);
+
+  .Checkbox__icon {
+    fill: var(--input__border-color);
+    transition: fill var(--input__transition-time, var(--motion__time--faster))
+      var(--input__transition-func, var(--motion__ease--inout));
+  }
+  .Checkbox__icon--checked {
+    display: none;
+  }
 
   ${HiddenCheckbox}:checked + & {
-    border-color: var(--color--primary800);
-    background-color: var(--color--primary800);
-    ${Icon} {
-      visibility: visible;
+    .Checkbox__icon {
+      fill: var(--color--primary800);
+    }
+    .Checkbox__icon--unchecked {
+      display: none;
+    }
+    .Checkbox__icon--checked {
+      display: block;
     }
   }
 
   ${HiddenCheckbox}:disabled + & {
-    border-color: var(--border__color__disabled);
-    background-color: var(--border__color__disabled);
+    .Checkbox__icon {
+      fill: var(--input__border-color--disabled) !important;
+    }
+    .Checkbox__icon--checked {
+      display: block;
+    }
+    .Checkbox__icon--unchecked {
+      display: none;
+    }
   }
 
   ${HiddenCheckbox}:disabled:not(:checked) + & {
-    background-color: var(--color--gray300);
+    .Checkbox__icon {
+      fill: var(--input__border-color--disabled);
+    }
+    .Checkbox__icon--unchecked {
+      display: block;
+    }
+    .Checkbox__icon--checked {
+      display: none;
+    }
   }
 
   ${HiddenCheckbox}:disabled + &,
   ${HiddenCheckbox}:disabled + & + span {
-    cursor: not-allowed;
+    cursor: var(--input__cursor--disabled, not-allowed);
     color: var(--border__color__disabled);
   }
 `;
 
 const checkboxLabelSize = (props) =>
   css`
-    --checkbox--label__size--xs: 1rem;
-    --checkbox--label__size--sm: 1.2rem;
-    --checkbox--label__size--md: 1.4rem;
-    --checkbox--label__size--lg: 1.6rem;
-    --checkbox--label__size--xl: 1.8rem;
-    font-size: var(--checkbox--label__size--${props.size});
+    font-size: var(--input__font-size--${props.size});
+    font-weight: var(--input__font-weight, 400);
+    line-height: var(--input__line-height, 1.2);
   `;
 
 export const Label = styled.span`
   ${checkboxLabelSize};
-  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
-  margin-left: 0.5rem;
+  transition: color var(--input__transition-time, var(--motion__time--faster))
+    var(--input__transition-func, var(--motion__ease--inout));
+  margin: var(--input_checkbox_label__margin, 0 0 0 0.5rem);
 `;
 
 export const CheckboxContainer = styled.label`
-  box-sizing: border-box;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: flex-start;
+  align-items: var(--input_checkbox_container__align-items, center);
+  box-sizing: var(--input_checkbox_container__box-sizing, border-box);
+  cursor: var(--input_checkbox_container__cursor, pointer);
+  display: var(--input_checkbox_container__display, inline-flex);
 
   &.is-invalid {
-    ${StyledCheckbox} {
-      border-color: var(--border__color__invalid);
-    }
-    ${HiddenCheckbox}:checked + ${StyledCheckbox} {
-      background-color: var(--border__color__invalid);
-      border-color: var(--border__color__invalid);
+    .Checkbox__icon {
+      fill: var(--input__border-color--invalid) !important;
     }
     ${Label} {
-      color: var(--border__color__invalid);
+      color: var(--input__border-color--invalid);
     }
   }
 
   &.is-valid {
-    ${StyledCheckbox} {
-      border-color: var(--border__color__valid);
-    }
-    ${HiddenCheckbox}:checked + ${StyledCheckbox} {
-      background-color: var(--border__color__valid);
-      border-color: var(--border__color__valid);
+    .Checkbox__icon {
+      fill: var(--input__border-color--valid) !important;
     }
     ${Label} {
-      color: var(--border__color__valid);
+      color: var(--input__border-color--valid);
     }
   }
 `;
@@ -117,7 +113,6 @@ export const CheckboxContainer = styled.label`
 export default {
   StyledCheckbox,
   CheckboxContainer,
-  Icon,
   HiddenCheckbox,
   Label,
 };

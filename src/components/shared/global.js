@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 const rootSize = 16;
-const pxToRem = (pxSize) => `${pxSize / rootSize}rem`;
+export const pxToRem = (pxSize) => `${pxSize / rootSize}rem`;
 
 export const rootStyles = css`
   :root {
@@ -96,17 +96,31 @@ export const rootStyles = css`
     --border__color__disabled: #e1e4e8;
 
     // inputs
-    --input--fontsize--xsmall: ${pxToRem(10)};
-    --input--fontsize--small: ${pxToRem(12)};
-    --input--fontsize--medium: ${pxToRem(14)};
-    --input--fontsize--large: ${pxToRem(16)};
-    --input--fontsize--xlarge: ${pxToRem(18)};
+    --input__font-size--xsmall: ${pxToRem(10)};
+    --input__font-size--small: ${pxToRem(12)};
+    --input__font-size--medium: ${pxToRem(14)};
+    --input__font-size--large: ${pxToRem(16)};
+    --input__font-size--xlarge: ${pxToRem(18)};
 
-    --input--padding--xsmall: ${pxToRem(5)} ${pxToRem(10)};
-    --input--padding--small: ${pxToRem(7)} ${pxToRem(12)};
-    --input--padding--medium: ${pxToRem(9)} ${pxToRem(12)};
-    --input--padding--large: ${pxToRem(11)} ${pxToRem(15)};
-    --input--padding--xlarge: ${pxToRem(13)} ${pxToRem(17)};
+    --input__padding--xsmall: ${pxToRem(5)} ${pxToRem(10)};
+    --input__padding--small: ${pxToRem(7)} ${pxToRem(12)};
+    --input__padding--medium: ${pxToRem(9)} ${pxToRem(12)};
+    --input__padding--large: ${pxToRem(11)} ${pxToRem(15)};
+    --input__padding--xlarge: ${pxToRem(13)} ${pxToRem(17)};
+
+    --input__background-color: var(--color--white);
+    --input__color: var(--color--black900);
+    --input__border-color: var(--color--gray400);
+
+    --input__border-color--focus: var(--color--gray900);
+
+    --input__background-color--disabled: var(--color--gray300);
+    --input__border-color--disabled: var(--color--gray400);
+
+    --input__border-color--valid: var(--border__color__valid);
+    --input__border-color--invalid: var(--border__color__invalid);
+
+    --input__color--placeholder: var(--color--gray600);
 
     // transition
     --motion__ease--inout: cubic-bezier(0.42, 0, 0.58, 1);
@@ -118,13 +132,6 @@ export const rootStyles = css`
     --motion__time--slow: 600ms;
     --motion__time--slower: 1s;
     --motion__time--slowest: 1.2s;
-
-    // breakpoint
-    --breakpoint--xsmall: 367px;
-    --breakpoint--small: 767px;
-    --breakpoint--medium: 1024px;
-    --breakpoint--large: 1600px;
-    --breakpoint--xlarge: 1920px;
 
     // theme
     --color__theme__primary: var(--color--primary700);

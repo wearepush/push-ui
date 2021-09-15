@@ -19,7 +19,7 @@ storiesOf('inputs/TextMask', module)
       onChange={action('change')}
       onBlur={action('blur')}
       placeholder="Enter a phone number"
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       valid={boolean('valid', false)}
     />
   ))

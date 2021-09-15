@@ -49,20 +49,16 @@ const TextMask = ({
 };
 
 TextMask.defaultProps = {
-  active: undefined,
   className: '',
   disabled: false,
-  defaultValue: undefined,
   guide: false,
   keepCharPositions: false,
-  id: undefined,
   invalid: false,
-  size: 'sm',
+  size: 'medium',
   showMask: false,
   tabIndex: null,
   type: 'text',
   valid: false,
-  value: undefined,
 };
 
 TextMask.propTypes = {
@@ -121,7 +117,7 @@ TextMask.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * @ignore
    */

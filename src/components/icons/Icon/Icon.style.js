@@ -1,19 +1,18 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { pxToRem } from '../../shared/global';
 
 export const iconStyle = (props) =>
   css`
-    display: inline-block;
-    --icon--size--xs: 1rem;
-    --icon--size--sm: 2rem;
-    --icon--size--md: 3rem;
-    --icon--size--lg: 4rem;
-    --icon--size--xl: 5rem;
-    width: var(--icon--size--${props.size});
-    height: var(--icon--size--${props.size});
+    --icon__size--xsmall: ${pxToRem(12)};
+    --icon__size--small: ${pxToRem(16)};
+    --icon__size--medium: ${pxToRem(20)};
+    --icon__size--large: ${pxToRem(24)};
+    --icon__size--xlarge: ${pxToRem(28)};
 
-    --icon--fill--black: #2d2d3c;
-    fill: var(--icon--fill--${props.fill});
+    display: var(--icon__display, inline-block);
+    height: var(--icon__size--${props.size});
+    width: var(--icon__size--${props.size});
   `;
 
 export const StyledIcon = (c) => styled(c)`

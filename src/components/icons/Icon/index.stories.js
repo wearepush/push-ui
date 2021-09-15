@@ -8,8 +8,12 @@ storiesOf('icons/Icon', module)
   .add('icon', () => (
     <Icon
       className="test"
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
-      fill={select('fill', ['black', 'dark-orange'], 'black')}
-      name={select('name', [], 'person')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
+      fill={select('fill', ['black', 'red'], 'black')}
+      name={select(
+        'name',
+        ['checkbox_checked', 'checkbox_unchecked', 'radio_checked', 'radio_unchecked'],
+        'checkbox_checked'
+      )}
     />
   ));

@@ -1,21 +1,24 @@
 import React from 'react';
 import { bool, number, oneOfType, oneOf, object, string, node } from 'prop-types';
 import cx from 'classnames';
-import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Icon, Label } from './Checkbox.style';
+import { StyledCheckbox, CheckboxContainer, HiddenCheckbox, Label } from './Checkbox.style';
 import { createInputClassName } from '../_helpers/inputHelpers';
+import Icon from '../../icons/Icon/Icon';
 
 const Checkbox = ({
   active,
   checkboxClassName: checkboxClassNameProp,
   checkboxProps,
-  className: classNameProp,
-  children,
   checked,
+  children,
+  className: classNameProp,
   containerProps,
   defaultChecked,
   disabled,
+  iconCheckedName,
   iconClassName: iconClassNameProp,
   iconProps,
+  iconUncheckedName,
   id,
   inputClassName: inputClassNameProp,
   inputProps,
@@ -36,7 +39,8 @@ const Checkbox = ({
   });
   const inputClassName = cx('Checkbox__input', inputClassNameProp);
   const checkboxClassName = cx('Checkbox__checkbox', checkboxClassNameProp);
-  const iconClassName = cx('Checkbox__icon', iconClassNameProp);
+  const iconClassNameUnchecked = cx('Checkbox__icon', 'Checkbox__icon--unchecked', iconClassNameProp);
+  const iconClassNameChecked = cx('Checkbox__icon', 'Checkbox__icon--checked', iconClassNameProp);
   const labelClassName = cx('Checkbox__label', labelClassNameProp);
   return (
     <CheckboxContainer {...containerProps} className={className}>
@@ -53,9 +57,8 @@ const Checkbox = ({
         type="checkbox"
       />
       <StyledCheckbox {...checkboxProps} className={checkboxClassName} checked={checked} size={size}>
-        <Icon {...iconProps} className={iconClassName} viewBox="0 0 24 24">
-          <polyline points="20 6 9 17 4 12" />
-        </Icon>
+        <Icon {...iconProps} name={iconUncheckedName} className={iconClassNameUnchecked} size={size} />
+        <Icon {...iconProps} name={iconCheckedName} className={iconClassNameChecked} size={size} />
       </StyledCheckbox>
       {children && (
         <Label {...labelProps} className={labelClassName} size={size}>
@@ -67,24 +70,16 @@ const Checkbox = ({
 };
 
 Checkbox.defaultProps = {
-  active: undefined,
-  checked: undefined,
-  children: undefined,
   checkboxClassName: '',
-  checkboxProps: undefined,
   className: '',
-  containerProps: undefined,
   disabled: false,
-  defaultChecked: undefined,
+  iconCheckedName: 'checkbox_checked',
   iconClassName: '',
-  iconProps: undefined,
+  iconUncheckedName: 'checkbox_unchecked',
   inputClassName: '',
-  inputProps: undefined,
-  id: undefined,
   invalid: false,
   labelClassName: '',
-  labelProps: undefined,
-  size: 'sm',
+  size: 'medium',
   tabIndex: null,
   valid: false,
 };
@@ -129,6 +124,14 @@ Checkbox.propTypes = {
   /**
    * @ignore
    */
+  iconCheckedName: string,
+  /**
+   * @ignore
+   */
+  iconUncheckedName: string,
+  /**
+   * @ignore
+   */
   iconClassName: oneOfType([object, string]),
   /**
    * @ignore
@@ -165,7 +168,7 @@ Checkbox.propTypes = {
   /**
    * Size.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * @ignore
    */

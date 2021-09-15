@@ -17,7 +17,7 @@ storiesOf('inputs/TextArea', module)
       onBlur={action('blur')}
       name="textArea-0"
       placeholder="TextArea placeholder"
-      size={select('size', ['xs', 'sm', 'md', 'lg', 'xl'], 'sm')}
+      size={select('size', ['xsmall', 'small', 'medium', 'large', 'xlarge'], 'medium')}
       valid={boolean('valid', false)}
     />
   ))

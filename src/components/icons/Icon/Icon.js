@@ -6,7 +6,7 @@ import icons from './svgs/index';
 
 const Icon = ({ className: classNameProp, name, preserveAspectRatio, viewBox, ...other }) => {
   if (!name || !icons[name]) {
-    console.error('Missing name file'); // eslint-disable-line
+    console.info('Missing name file'); // eslint-disable-line
     return null;
   }
   const IconComponent = StyledIcon(icons[name]);
@@ -19,7 +19,7 @@ const Icon = ({ className: classNameProp, name, preserveAspectRatio, viewBox, ..
 Icon.defaultProps = {
   className: '',
   fill: 'black',
-  size: 'sm',
+  size: 'medium',
   name: '',
   preserveAspectRatio: 'xMidYMid meet',
   viewBox: '0 0 48 48',
@@ -37,7 +37,7 @@ Icon.propTypes = {
   /**
    * Size of the SVG icon.
    */
-  size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  size: oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
    * Name of the SVG icon.
    */
