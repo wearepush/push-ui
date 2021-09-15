@@ -15,9 +15,9 @@ export const HiddenCheckbox = styled.input`
 `;
 
 export const StyledCheckbox = styled.div`
-  box-sizing: border-box;
-  display: inline-block;
-  line-height: 1;
+  box-sizing: var(--input_checkbox__boxsizing, border-box);
+  display: var(--input_checkbox__display, flex);
+  line-height: var(--input_checkbox__line-height, 1);
 
   .Checkbox__icon {
     fill: var(--input__border-color);
@@ -75,21 +75,21 @@ const checkboxLabelSize = (props) =>
   css`
     font-size: var(--input__font-size--${props.size});
     font-weight: var(--input__font-weight, 400);
-    line-height: var(--input__line-height, 1.5);
+    line-height: var(--input__line-height, 1.2);
   `;
 
 export const Label = styled.span`
   ${checkboxLabelSize};
   transition: color var(--input__transition-time, var(--motion__time--faster))
     var(--input__transition-func, var(--motion__ease--inout));
-  margin-left: 0.5rem;
+  margin: var(--input_checkbox_label__margin, 0 0 0 0.5rem);
 `;
 
 export const CheckboxContainer = styled.label`
-  align-items: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: inline-flex;
+  align-items: var(--input_checkbox_container__align-items, center);
+  box-sizing: var(--input_checkbox_container__box-sizing, border-box);
+  cursor: var(--input_checkbox_container__cursor, pointer);
+  display: var(--input_checkbox_container__display, inline-flex);
 
   &.is-invalid {
     .Checkbox__icon {

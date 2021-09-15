@@ -13,7 +13,7 @@ export const inputStyle = (props) =>
     display: var(--input__display, block);
     font-size: var(--input__font-size--${props.size});
     font-weight: var(--input__font-weight, 400);
-    line-height: var(--input__line-height, 1.5);
+    line-height: var(--input__line-height, 1.2);
     padding: var(--input__padding--${props.size});
     transition: color var(--input__transition-time, var(--motion__time--faster))
         var(--input__transition-func, var(--motion__ease--inout)),

@@ -48,12 +48,15 @@ describe('Checkbox', () => {
         </Checkbox>
       );
       const checkboxInput = checkbox.find('.Checkbox__checkbox');
-      const icon = checkbox.find('.Checkbox__icon');
+      const iconUnchecked = checkbox.find('.Checkbox__icon--unchecked');
+      const iconChecked = checkbox.find('.Checkbox__icon--checked');
       const input = checkbox.find('.Checkbox__input');
       const label = checkbox.find('.Checkbox__label');
 
       expect(checkboxInput.hasClass('Checkbox__checkbox_test')).toBe(true);
-      expect(icon.hasClass('Checkbox__icon_test')).toBe(true);
+      expect(iconUnchecked.hasClass('Checkbox__icon_test')).toBe(true);
+      expect(iconChecked.hasClass('Checkbox__icon_test')).toBe(true);
+
       expect(input.hasClass('Checkbox__input_test')).toBe(true);
       expect(checkbox.hasClass('Checkbox__test')).toBe(true);
       expect(label.hasClass('Checkbox__label_test')).toBe(true);
