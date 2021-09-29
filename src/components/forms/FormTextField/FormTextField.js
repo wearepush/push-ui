@@ -1,6 +1,6 @@
 import React from 'react';
 import { bool, object, oneOf, string } from 'prop-types';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { FormField, TextField } from '../../index';
 
 const FormComponentTextField = ({ disabled, fieldProps, id, input, label, meta, placeholder, type, ...rest }) => {
@@ -40,9 +40,7 @@ FormComponentTextField.propTypes = {
 
 FormComponentTextField.defaultProps = {
   disabled: false,
-  fieldProps: null,
   id: '',
-  inputProps: null,
   label: '',
   placeholder: '',
   type: 'text',

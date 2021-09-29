@@ -1,6 +1,6 @@
 import React from 'react';
 import { bool, object, string } from 'prop-types';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { FormField, TextArea } from '../../index';
 
 const FormComponentTextArea = ({ disabled, fieldProps, id, input, label, meta, ...rest }) => {
@@ -35,7 +35,6 @@ FormComponentTextArea.propTypes = {
 
 FormComponentTextArea.defaultProps = {
   disabled: false,
-  fieldProps: null,
   id: '',
   label: '',
 };

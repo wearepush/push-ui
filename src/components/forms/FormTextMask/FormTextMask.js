@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { bool, object, string } from 'prop-types';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { FormField, TextMask } from '../../index';
 
-const FormComponentTextMask = ({ disabled, fieldProps, id, input, label, meta, placeholder, ...rest }) => {
+const FormComponentTextMask = ({ disabled, fieldProps, id, input, label, meta, placeholder, render, ...rest }) => {
   const generateId = id || input.name;
   return (
     <FormField {...fieldProps} isEmpty={!input.value} label={label} meta={meta} name={generateId}>
@@ -38,12 +39,10 @@ FormComponentTextMask.propTypes = {
 
 FormComponentTextMask.defaultProps = {
   disabled: false,
-  fieldProps: null,
   id: '',
-  inputProps: null,
   label: '',
   placeholder: '',
 };
 
-const FormTextMask = props => <Field {...props} component={FormComponentTextMask} type="text" />; // eslint-disable-line
+const FormTextMask = (props) => <Field {...props} component={FormComponentTextMask} type="text" />; // eslint-disable-line
 export default FormTextMask;

@@ -36,10 +36,8 @@ FormComponentCheckbox.propTypes = {
 
 FormComponentCheckbox.defaultProps = {
   disabled: false,
-  fieldProps: null,
   id: '',
   label: '',
-  valueProp: undefined,
 };
 
 const FormCheckbox = (props) => (

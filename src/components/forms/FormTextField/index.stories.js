@@ -6,7 +6,7 @@ import validate from './__mocks__/validateTextField';
 import { FormTextField } from '../../index';
 
 const form = {
-  form: 'testForm',
+  name: 'testForm',
   validate,
 };
 
