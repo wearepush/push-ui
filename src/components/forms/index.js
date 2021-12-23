@@ -1,3 +1,4 @@
+export * as FinalForm from 'react-final-form';
 export { default as FormButton } from './FormButton/FormButton';
 export { default as FormCheckbox } from './FormCheckbox/FormCheckbox';
 export { default as FormField } from './FormField/FormField';
