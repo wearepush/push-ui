@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/wearepush/push-ui/compare/v1.3.0...v1.3.1) (2021-12-23)
+
+
+### Features
+
+* add final form ([4b6b8a0](https://github.com/wearepush/push-ui/commit/4b6b8a06d652f2029abf7a2c46c34f6fa166c3fb))
+* empty commmit ([d2f29ac](https://github.com/wearepush/push-ui/commit/d2f29ac7defd1ce1a53301fd8f8b27dde1208190))
+* fix styles ([738a747](https://github.com/wearepush/push-ui/commit/738a747a1f3d7ffbf5d8a5996020ffdbf56a50d8))
+* **form:** update inputs components ([589e8f4](https://github.com/wearepush/push-ui/commit/589e8f45df38ac127d2674545579786695192d09))
+* **input:** refactor input component ([c242d51](https://github.com/wearepush/push-ui/commit/c242d51ed9960a949ef7c72534651441815b49eb))
+
+
+### Code Refactoring
+
+* add final form ([b002163](https://github.com/wearepush/push-ui/commit/b002163b3a0465ea81ca61f286cf284bc929e781))
+* **button:** update button styles ([436aad0](https://github.com/wearepush/push-ui/commit/436aad0555b54b7ca0df29ff98f4077442355d85))
+* **checkbox:** refactor checkbox ([aa77110](https://github.com/wearepush/push-ui/commit/aa7711084d2ed650a317d7e20533c24069079059))
+* **ui:** set base root fontsize ([5ee97b6](https://github.com/wearepush/push-ui/commit/5ee97b60bf5631120dc684ff28efedc814a25047))
+
+
+### Tests
+
+* temporary remove tests ([0dd39fc](https://github.com/wearepush/push-ui/commit/0dd39fc3d72b35808a0cc660cb27300d06c01102))
+
+
+### Others
+
+* update deps ([da76535](https://github.com/wearepush/push-ui/commit/da765357d2ba0d0c57100f51431a2ccfe9fffa90))
+* update deps ([32127ee](https://github.com/wearepush/push-ui/commit/32127ee4d59831772fbdc7323d76a8e58e95e1d0))
+* update to nodejs 16 ([fe75881](https://github.com/wearepush/push-ui/commit/fe75881fda522d62f6be2b5b1651861d85d6058b))
+
 ## [1.3.0](https://github.com/wearepush/push-ui/compare/v1.2.1...v1.3.0) (2021-06-02)
 
 
